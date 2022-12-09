@@ -1,5 +1,5 @@
 * {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 $primary-bg-papier: #249fda;
@@ -8,7 +8,6 @@ $primary-bg-papier: #249fda;
   background-color: $primary-bg-papier;
   color: #fff;
 }
-
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
@@ -20,7 +19,7 @@ $primary-bg-papier: #249fda;
 
 // 4. Include any default map overrides here
 $theme-colors: (
-  "primary": #0060C2,
+  "primary": #0060c2,
 );
 
 // 5. Include remainder of required parts

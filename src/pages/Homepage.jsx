@@ -1,6 +1,6 @@
-import React from 'react'
-import ImageSlider from '../components/slider/Slider'
-import './Homepage.scss'
+import React from "react";
+import ImageSlider from "../components/slider/Slider";
+import "./Homepage.scss";
 
 const Homepage = () => {
   return (
@@ -8,11 +8,11 @@ const Homepage = () => {
       <div className="container mt-5 carousel">
         <div className="slider_title">
           <h3>Destinasi</h3>
-          <ImageSlider/>
+          <ImageSlider />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;
