@@ -6,16 +6,16 @@ import "./navbar.scss";
 
 const NavigationBar = () => {
   return (
-    <div className="container-fluid mb-3 fixed-top" id="flight">
+    <div className="container-fluid mb-3 fixed-top">
       <Navbar expand="lg" className="justify-content-center bg-white rounded shadow-sm">
         <Container fluid className="navbar-content">
           {/* <Link to={"/"}> */}
-            <img
-              src={brand}
-              alt="Logo"
-              width="70"
-              className="d-inline-block align-text-top"
-            />
+          <img
+            src={brand}
+            alt="Logo"
+            width="70"
+            className="d-inline-block align-text-top"
+          />
           {/* </Link> */}
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
           <Navbar.Offcanvas
@@ -31,7 +31,7 @@ const NavigationBar = () => {
             <Offcanvas.Body>
               <Nav className="justify-content-center flex-grow-1">
                 <div className="navbar-nav ms-0">
-                  <Nav.Link className="me-4" href="#root">Penerbangan</Nav.Link>
+                  <Nav.Link className="me-4" href="#main">Penerbangan</Nav.Link>
                   <Nav.Link className="me-4" href="#destinasi">Destinasi</Nav.Link>
                   <Nav.Link className="me-4" href="#testi">Testimonial</Nav.Link>
                   <Nav.Link className="me-4" href="#about">Tentang Kami</Nav.Link>

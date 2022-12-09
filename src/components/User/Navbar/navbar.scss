@@ -12,12 +12,12 @@
 }
 
 @media (max-width: 992px) {
-  .navbar-nav .btn {
-    width: max-content;
-    margin-top: 8px;
-  }
-
   .navbar-nav {
     align-items: flex-start;
+
+    .btn {
+      width: max-content;
+      margin-top: 8px;
+    }
   }
 }

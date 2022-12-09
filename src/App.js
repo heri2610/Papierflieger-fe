@@ -1,12 +1,19 @@
 import React from 'react';
 import './App.scss';
+import Banner from './components/User/Banner/Banner';
+import { Footer } from './components/User/Footer/Footer';
 import NavigationBar from './components/User/Navbar/NavigationBar';
-// import Homepage from './pages/Homepage';
+import SearchTicket from './components/User/SearchTicket/SearchTicket';
+import Slider from './components/User/Slider/Slider';
 
 function App() {
   return (
     <div className="App">
       <NavigationBar />
+      <Banner />
+      <SearchTicket />
+      <Slider />
+      <Footer />
     </div>
   );
 }

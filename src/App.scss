@@ -1,3 +1,32 @@
 * {
   font-family: 'Rubik', sans-serif;
 }
+
+$primary-bg-papier: #249fda;
+
+.bg-papier {
+  background-color: $primary-bg-papier;
+  color: #fff;
+}
+
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../node_modules/bootstrap/scss/variables";
+
+// 4. Include any default map overrides here
+$theme-colors: (
+  "primary": #0060C2,
+);
+
+// 5. Include remainder of required parts
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "../node_modules/bootstrap/scss/buttons";
