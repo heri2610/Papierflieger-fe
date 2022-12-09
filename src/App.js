@@ -1,10 +1,12 @@
-import './App.scss'
-import Homepage from './pages/Homepage';
+import React from 'react';
+import './App.scss';
+import NavigationBar from './components/User/Navbar/NavigationBar';
+// import Homepage from './pages/Homepage';
 
 function App() {
   return (
     <div className="App">
-      <Homepage/>
+      <NavigationBar />
     </div>
   );
 }
