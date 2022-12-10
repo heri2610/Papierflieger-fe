@@ -71,23 +71,17 @@ const NavigationBar = () => {
         </Container>
       </Navbar>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header className="login softblue"></Modal.Header>
-        <Modal.Body className="softblue">
+        <Modal.Body className="softblue ">
           <Modal.Title className="mx-6">Masuk</Modal.Title>
           <Login />
-          <Button
+          {/* <Button
             className="mt-3 w-75 mx-7"
             variant="primary"
             onClick={handleClose}
           >
             Masuk
-          </Button>
-          <br className="mt-2" /> Belum punya akun? Silakan{" "}
-          <Nav.Link className="" href="#register">
-            daftar
-          </Nav.Link>
+          </Button> */}
         </Modal.Body>
-        <Modal.Footer className="softblue"></Modal.Footer>
       </Modal>
     </div>
   );
