@@ -3,17 +3,6 @@ import "./App.scss";
 import Banner from "./components/User/Banner/Banner";
 import { Footer } from "./components/User/Footer/Footer";
 import NavigationBar from "./components/User/Navbar/NavigationBar";
-import SearchTicket from "./components/User/SearchTicket/SearchTicket";
-import Slider from "./components/User/Slider/Slider";
-import Login from "./components/User/Login/Login";
-import React from "react";
-import "./App.scss";
-import ImageSlider from "./components/User/slider/Slider";
-import Banner from "./components/User/Banner/Banner";
-import { Footer } from "./components/User/Footer/Footer";
-import NavigationBar from "./components/User/Navbar/NavigationBar";
-// import SearchTicket from './components/User/SearchTicket/SearchTicket';
-// import Slider from './components/User/Slider/Slider';
 
 function App() {
   return (
@@ -22,7 +11,7 @@ function App() {
       <Banner />
       {/* <SearchTicket /> */}
       {/* <Slider /> */}
-      <ImageSlider />
+      {/* <ImageSlider /> */}
       <Footer />
     </div>
   );
