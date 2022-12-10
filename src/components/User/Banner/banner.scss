@@ -10,9 +10,23 @@
   background-color: transparent;
 }
 
+h5 {
+  font-size: 28px;
+  padding-top: 35px;
+}
+
+h1 {
+  font-size: 60px;
+  padding-top: 15px;
+}
+
+.me-6 {
+  margin-right: -100px;
+}
+
 .home {
   overflow-x: hidden;
-  margin-top: 75px;
+  margin-top: 30px;
 }
 
 .card.search-flight {
@@ -21,8 +35,8 @@
 }
 
 .navbar-nav .nav-link.active {
-  background-color: #0060C2;
-  border: 1px solid #0060C2;
+  background-color: #0060c2;
+  border: 1px solid #0060c2;
   border-radius: 15px;
   color: #fff;
 }

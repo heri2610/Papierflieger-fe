@@ -1,0 +1,148 @@
+.slider-title{
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2px;
+  }
+  
+    .carousel{
+    .slick-dots{
+        bottom: -2.5vw;
+        li{
+            button{
+                width: 20px;
+                height: 20px;
+                border: 1px solid #FFFFFF;
+                border-radius: 20px;
+                &:before{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 10px;
+                    content: "";
+                    text-align: center;
+                    color: #000;
+                    background-color: #FFFFFF;
+                    transform: translate(-50%, -50%);
+                    transition: all .3s ease-in-out;
+                }
+            }
+            &.slick-active,
+            &:hover{
+                button{
+                    border-color: #FFFFFF;
+                    &:before{
+                        background-color: #FFFFFF;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    .slick-prev, .slick-next{
+        width: 50px;
+        height: 50px;
+        background-color: #FFFFFF;
+    }
+    .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus{
+        color: #FFFFFF;
+        outline: none;
+        background-color: #FFFFFF;
+    }
+    .slick-prev:before, .slick-next:before{
+        color: #000;
+    }
+    .slick-next{
+        right: -55px;
+    }
+    .slick-prev{
+        left: -55px;
+    }
+}
+
+.card-wrapper{
+    position: relative;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    &:active,&:hover,&:focus{
+        outline: none;
+        border: none;
+    }
+}
+
+.card{
+    width: 100%;
+    height: 450px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+
+    .card-image{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: #000;
+        transition:.5s;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+    }
+    &:hover{
+        img{
+            opacity:.4;
+            transition:.5s;
+        }
+        .card-image{
+            // transform: translateY(-100px);
+            transition: all .9s;
+        }
+    }
+}
+
+.text-country{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    li{
+        list-style: none;
+        button{
+            position: relative;
+            display: block;
+            text-align: center;
+            font-size: 23px;
+            background: none;
+            border: none;
+            // color: #333;
+            font-weight: bold;
+            margin: 0 6px;
+            transition: .4s;
+            // transform: translateY(200px);
+            opacity: 0;
+            p{
+                color: antiquewhite;
+            }
+        }
+    }
+}
+
+.card:hover{
+    .text-country li button {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+

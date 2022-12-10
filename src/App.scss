@@ -18,14 +18,3 @@ $theme-colors: (
 
 // 6. Optionally include any other parts as needed
 @import "../node_modules/bootstrap/scss/buttons";
-
-* {
-  font-family: "Rubik", sans-serif;
-}
-
-$primary-bg-papier: #249fda;
-
-.bg-papier {
-  background-color: $primary-bg-papier;
-  color: #fff;
-}
