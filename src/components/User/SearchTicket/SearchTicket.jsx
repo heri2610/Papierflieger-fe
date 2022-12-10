@@ -2,98 +2,118 @@ import React from "react";
 
 export default function SearchTicket() {
   return (
-    <div
-      className="d-flex justify-content-md-center position-relative"
-      style={{ bottom: "5rem" }}
-    >
-      <div className="col-8 card search-flight">
-        <div className="card-body">
-          <h4 className="mt-1 mb-3">Booking Ticket</h4>
-          <div className="row row-cols-4 mb-4">
-            <div className="col">
-              <select
-                className="form-select"
-                aria-label="Default select example"
-              >
-                <option defaultValue hidden>
-                  Dari
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+    <>
+      <div
+        className="row justify-content-md-center position-relative"
+        style={{ bottom: "6rem" }}
+      >
+        <div className="col-8 card">
+          <div className="card-body">
+            <h4>Pemesanan Tiket</h4>
+            <div className="row row-cols-4 mb-3">
+              <div className="col">
+                <div class="form-floating">
+                  <select
+                    class="form-select"
+                    id="floatingSelect"
+                    aria-label="Floating label select example"
+                  >
+                    <option selected>Jakarta (CGK)</option>
+                    <option value="1">Sydney</option>
+                    <option value="2">Tokyo</option>
+                    <option value="3">Jeddah</option>
+                  </select>
+                  <label for="floatingSelect">Dari</label>
+                </div>
+              </div>
+              <div className="col">
+                <div class="form-floating">
+                  <select
+                    class="form-select"
+                    id="floatingSelect"
+                    aria-label="Floating label select example"
+                  >
+                    <option selected>Singapura (SIN)</option>
+                    <option value="1">Sydney</option>
+                    <option value="2">Tokyo</option>
+                    <option value="3">Jeddah</option>
+                  </select>
+                  <label for="floatingSelect">Ke</label>
+                </div>
+              </div>
+              <div className="col">
+                <div class="form-floating mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="floatingInput"
+                    placeholder="name@example.com"
+                  />
+                  <label for="floatingInput">Penumpang</label>
+                </div>
+              </div>
+              <div className="col">
+                <div class="form-floating">
+                  <select
+                    class="form-select"
+                    id="floatingSelect"
+                    aria-label="Floating label select example"
+                  >
+                    <option selected>One-Way</option>
+                    <option value="1">Round-trip</option>
+                  </select>
+                  <label for="floatingSelect">Keberengkatan</label>
+                </div>
+              </div>
             </div>
-            <div className="col">
-              <select
-                className="form-select"
-                aria-label="Default select example"
-              >
-                <option defaultValue hidden>
-                  Ke
-                </option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div className="col">
-              <input
-                type="text"
-                className="form-control"
-                id="floatingInput"
-                placeholder="Penumpang"
-              />
-            </div>
-            <div className="col">
-              <select
-                className="form-select"
-                aria-label="Default select example"
-              >
-                <option defaultValue hidden>
-                  Keberangkatan
-                </option>
-                <option value="One-Way">One-Way</option>
-                <option value="Round-trip">Round-trip</option>
-              </select>
-            </div>
-          </div>
-          <div className="row row-cols-4 mb-3">
-            <div className="col">
-              <select
-                className="form-select"
-                aria-label="Default select example"
-              >
-                <option defaultValue hidden>
-                  Kelas
-                </option>
-                <option value="Economy">Ekonomi</option>
-                <option value="Business">Bisnis</option>
-              </select>
-            </div>
-            <div className="col">
-              <input
-                type="date"
-                className="form-control"
-                placeholder="Last name"
-                aria-label="Last name"
-              />
-            </div>
-            <div className="col">
-              <input
-                type="date"
-                className="form-control"
-                placeholder="Last name"
-                aria-label="Last name"
-              />
-            </div>
-            <div className="col">
-              <button type="submit" className="btn btn-primary w-100">
-                Cari Penerbangan
-              </button>
+            <div className="row row-cols-4 mb-3">
+              <div className="col">
+                <div class="form-floating">
+                  <select
+                    class="form-select"
+                    id="floatingSelect"
+                    aria-label="Floating label select example"
+                  >
+                    <option selected>Ekonomi</option>
+                    <option value="1">Bisnis</option>
+                  </select>
+                  <label for="floatingSelect">Kelas</label>
+                </div>
+              </div>
+              <div className="col">
+                <div class="form-floating mb-3">
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="floatingInput"
+                    placeholder="name@example.com"
+                  />
+                  <label for="floatingInput">Pergi</label>
+                </div>
+              </div>
+              <div className="col">
+                <div class="form-floating mb-3">
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="floatingInput"
+                    placeholder="name@example.com"
+                  />
+                  <label for="floatingInput">Pulang</label>
+                </div>
+              </div>
+              <div className="col">
+                <button type="submit" className="btn btn-primary w-100 h-75">
+                  Cari Penerbangan
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <div className="row row-cols-12">
+        <div className="col"></div>
+      </div>
+    </>
   );
 }

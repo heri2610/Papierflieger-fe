@@ -9,6 +9,9 @@ $primary-bg-papier: #249fda;
   color: #fff;
 }
 
+.mx-7 {
+  margin-left: 12%;
+}
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
 
