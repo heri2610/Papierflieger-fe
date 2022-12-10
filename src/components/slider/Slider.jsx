@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css" ;
-import "slick-carousel/slick/slick-theme.css"
+import "slick-carousel/slick/slick.scss" ;
+import "slick-carousel/slick/slick-theme.scss"
 import Korea from './destinasi/Korea.png'
 import Dubai from './destinasi/Dubai.png'
 import Bali from './destinasi/Bali.png'
@@ -17,6 +17,10 @@ function ImageSlider() {
         cssEase: "linear"
     }
   return (
+    <div className="container mt-5 carousel">
+        <div className="slider_title">
+          <h3>Destinasi</h3>
+        </div>
     <Slider {...settings}>
         <div className="card-wrapper">
             <div className="card">
@@ -109,6 +113,7 @@ function ImageSlider() {
             </div>
         </div>
     </Slider>
+    </div>
   )
 }
 
