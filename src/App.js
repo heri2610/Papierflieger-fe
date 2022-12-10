@@ -1,20 +1,27 @@
-import React from 'react';
-import './App.scss';
-import ImageSlider from './components/User/slider/Slider';
-import Banner from './components/User/Banner/Banner';
-import { Footer } from './components/User/Footer/Footer';
-import NavigationBar from './components/User/Navbar/NavigationBar';
-// import SearchTicket from './components/User/SearchTicket/SearchTicket';
-// import Slider from './components/User/Slider/Slider';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.scss";
+import LandingPage from "./pages/user/LandingPage";
+// import ProtectedRoute from "./pages/user/ProtectedRoute";
+import Footer from "./components/User/Footer/Footer";
+import NavigationBar from "./components/Navbar/NavigationBar";
 
 function App() {
   return (
     <div className="App">
       <NavigationBar />
-      <Banner />
-      {/* <SearchTicket /> */}
-      {/* <Slider /> */}
-      <ImageSlider/>
+      <Router>
+        <div className="App">
+          <Routes>
+            {/* <Route element={<ProtectedRoute />}>
+              <Route path="/" element={<Chat />} />
+            </Route> */}
+            <Route path="/" element={<LandingPage />} />
+            {/* klo mau nambahin router d sibi yak */}
+            {/* <Route path="/register" element={<Register />} /> */}
+          </Routes>
+        </div>
+      </Router>
       <Footer />
     </div>
   );

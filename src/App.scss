@@ -1,3 +1,14 @@
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+$primary-bg-papier: #249fda;
+
+.bg-papier {
+  background-color: $primary-bg-papier;
+  color: #fff;
+}
+
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
 
