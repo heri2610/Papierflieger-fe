@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import LandingPage from "./pages/user/LandingPage";
 // import ProtectedRoute from "./pages/user/ProtectedRoute";
-import Footer from "./components/User/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import NavigationBar from "./components/Navbar/NavigationBar";
 
 function App() {

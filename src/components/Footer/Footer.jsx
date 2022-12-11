@@ -1,13 +1,15 @@
-import React from 'react';
-import brandWhite from "../../../assets/images/logo-white.svg";
+import React from "react";
+import brandWhite from "../../assets/images/logo-white.svg";
 
-export function Footer() {
+export default function Footer() {
   const tahun = new Date().getFullYear();
   return (
     <footer className="container-fluid bg-papier mt-5">
       <div className="d-flex justify-content-between p-5">
         <div>
-          <span className="text-white d-inline-flex mb-2">Connect with us:</span>
+          <span className="text-white d-inline-flex mb-2">
+            Connect with us:
+          </span>
           <ul className="justify-content-start list-unstyled d-flex">
             <li className="me-3">
               <button
