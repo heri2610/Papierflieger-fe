@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Container, Row } from 'react-bootstrap';
-
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { register } from '../../../store/actions/auth.js';

@@ -5,7 +5,7 @@ import Register from '../../components/User/Register/Register';
 function RegisterPage() {
   return (
     <div>
-      <img src={bannerPesawat} alt="banner pesawat" />
+      <img src={bannerPesawat} alt="banner pesawat" className='w-100' />
       <Register />
     </div>
   );
