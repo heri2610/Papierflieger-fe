@@ -1,6 +1,6 @@
 import React from "react";
-import ImageSlider from "./components/User/Slider/Slider";
-import Banner from "./components/User/Banner/Banner";
+import ImageSlider from "../../components/User/Slider/Slider";
+import Banner from "../../components/User/Banner/Banner";
 
 function LandingPage() {
   return (

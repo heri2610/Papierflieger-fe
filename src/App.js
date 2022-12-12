@@ -5,6 +5,7 @@ import LandingPage from "./pages/user/LandingPage";
 // import ProtectedRoute from "./pages/user/ProtectedRoute";
 import Footer from "./components/User/Footer/Footer";
 import NavigationBar from "./components/Navbar/NavigationBar";
+import Register from "./pages/user/Register";
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
               <Route path="/" element={<Chat />} />
             </Route> */}
             <Route path="/" element={<LandingPage />} />
-            {/* klo mau nambahin router d sibi yak */}
-            {/* <Route path="/register" element={<Register />} /> */}
+            {/* klo mau nambahin router d sini yak */}
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </Router>
