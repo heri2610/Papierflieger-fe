@@ -37,7 +37,7 @@ function ImageSlider() {
                 <div className="card-image">
                     <img src={Dubai} alt="" />
                 </div>
-                <ul class='text-country'>
+                <ul className='text-country'>
                     <li><button><p>Dubai, Uni Emirat Arab</p></button></li>
                 </ul>
             </div>

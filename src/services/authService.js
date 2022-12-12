@@ -4,7 +4,8 @@ const AuthService = {
   login: async function (data) {
     try {
       const response = await API.post('/auth/login', data);
-      API.defaults.headers['Authorization'] = `Bearer ${response.token}`;
+      console.log(response.data);
+      API.defaults.headers['Authorization'] = `${response.token}`;
       setHeadersAndStorage(response.data);
       return response;
     } catch (err) {
@@ -16,8 +17,6 @@ const AuthService = {
   register: async function (data) {
     try {
       const response = await API.post('/auth/register', data);
-      API.defaults.headers['Authorization'] = `Bearer ${response.token}`;
-      setHeadersAndStorage(response.data);
       return response;
     } catch (err) {
       console.log('Auth service error', err);
@@ -34,9 +33,9 @@ const AuthService = {
   updateProfile: async function (data) {
     try {
       const headers = {
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-      }
-      const response = await API.put('/users/update', data, headers);
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      };
+      const response = await API.put('/auth/update-profile', data, headers);
       localStorage.setItem('user', JSON.stringify(data));
       return response;
     } catch (err) {
@@ -45,12 +44,12 @@ const AuthService = {
     }
   },
 
-}
+};
 
 const setHeadersAndStorage = ({ user, token }) => {
-  API.defaults.headers['Authorization'] = `Bearer ${token}`;
+  API.defaults.headers['Authorization'] = `${token}`;
   localStorage.setItem('user', JSON.stringify(user));
   localStorage.setItem('token', token);
-}
+};
 
 export default AuthService;

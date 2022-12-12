@@ -5,25 +5,23 @@ import LandingPage from "./pages/user/LandingPage";
 // import ProtectedRoute from "./pages/user/ProtectedRoute";
 import Footer from "./components/User/Footer/Footer";
 import NavigationBar from "./components/Navbar/NavigationBar";
-import Register from "./pages/user/Register";
+import RegisterPage from "./pages/user/Register";
 
 function App() {
   return (
     <div className="App">
-      <NavigationBar />
       <Router>
-        <div className="App">
-          <Routes>
-            {/* <Route element={<ProtectedRoute />}>
+        <NavigationBar />
+        <Routes>
+          {/* <Route element={<ProtectedRoute />}>
               <Route path="/" element={<Chat />} />
             </Route> */}
-            <Route path="/" element={<LandingPage />} />
-            {/* klo mau nambahin router d sini yak */}
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </div>
+          <Route path="/" element={<LandingPage />} />
+          {/* klo mau nambahin router d sini yak */}
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+        <Footer />
       </Router>
-      <Footer />
     </div>
   );
 }

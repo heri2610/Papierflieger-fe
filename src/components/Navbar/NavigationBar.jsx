@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/actions/auth.js';
+
 import {
   Navbar,
   Nav,
@@ -13,6 +17,8 @@ import brand from "../../assets/images/logo.svg";
 import "./navbar.scss";
 
 const NavigationBar = () => {
+  const token = window.localStorage.getItem("token");
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,14 +30,14 @@ const NavigationBar = () => {
         className="justify-content-center bg-white rounded shadow-sm"
       >
         <Container fluid className="navbar-content">
-          {/* <Link to={"/"}> */}
-          <img
-            src={brand}
-            alt="Logo"
-            width="70"
-            className="d-inline-block align-text-top"
-          />
-          {/* </Link> */}
+          <Link to={"/"}>
+            <img
+              src={brand}
+              alt="Logo"
+              width="70"
+              className="d-inline-block align-text-top"
+            />
+          </Link>
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-lg"
@@ -63,24 +69,18 @@ const NavigationBar = () => {
                   </Nav.Link>
                 </div>
               </Nav>
-              <Button variant="primary" onClick={handleShow}>
-                Datar/masuk
-              </Button>
+              {token ?
+                <Button className="bg-danger" onClick={() => { dispatch(logout()); window.location.reload(); }}>Logout</Button>
+                : <Button variant="primary" onClick={handleShow}> Datar/masuk </Button>}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Body className="softblue ">
-          <Modal.Title className="mx-6">Masuk</Modal.Title>
+        <Modal.Body className="softblue text-center">
+          <Modal.Title className="mb-3">Masuk</Modal.Title>
           <Login />
-          {/* <Button
-            className="mt-3 w-75 mx-7"
-            variant="primary"
-            onClick={handleClose}
-          >
-            Masuk
-          </Button> */}
+          <p>Belum punya akun? Silakan <a href="/register">Daftar</a></p>
         </Modal.Body>
       </Modal>
     </div>
