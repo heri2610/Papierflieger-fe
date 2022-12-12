@@ -1,16 +1,14 @@
-import React from 'react'
-import NavigationBar from '../../components/Navbar/NavigationBar';
-import bannerPesawat from '../../assets/images/bannerPesawat.svg'
+import React from 'react';
+import bannerPesawat from '../../assets/images/bannerPesawat.svg';
+import Register from '../../components/User/Register/Register';
 
-function Register() {
+function RegisterPage() {
   return (
     <div>
-        <NavigationBar/>
-        {bannerPesawat}
-        <Register/>
-        <footer/>
+      <img src={bannerPesawat} alt="banner pesawat" />
+      <Register />
     </div>
-  )
+  );
 }
 
-export default Register
+export default RegisterPage;
