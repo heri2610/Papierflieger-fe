@@ -4,17 +4,17 @@ export default function SearchTicket() {
   return (
     <>
       <div
-        className="row justify-content-md-center position-relative"
+        className="d-flex justify-content-md-center position-relative"
         style={{ bottom: "6rem" }}
       >
         <div className="col-8 card">
           <div className="card-body">
-            <h4>Pemesanan Tiket</h4>
+            <h4>Pencarian Tiket</h4>
             <div className="row row-cols-4 mb-3">
               <div className="col">
-                <div class="form-floating">
+                <div className="form-floating">
                   <select
-                    class="form-select"
+                    className="form-select"
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
@@ -27,9 +27,9 @@ export default function SearchTicket() {
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating">
+                <div className="form-floating">
                   <select
-                    class="form-select"
+                    className="form-select"
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
@@ -42,10 +42,10 @@ export default function SearchTicket() {
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="floatingInput"
                     placeholder="name@example.com"
                   />
@@ -53,9 +53,9 @@ export default function SearchTicket() {
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating">
+                <div className="form-floating">
                   <select
-                    class="form-select"
+                    className="form-select"
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
@@ -68,9 +68,9 @@ export default function SearchTicket() {
             </div>
             <div className="row row-cols-4 mb-3">
               <div className="col">
-                <div class="form-floating">
+                <div className="form-floating">
                   <select
-                    class="form-select"
+                    className="form-select"
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
@@ -81,10 +81,10 @@ export default function SearchTicket() {
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="date"
-                    class="form-control"
+                    className="form-control"
                     id="floatingInput"
                     placeholder="name@example.com"
                   />
@@ -92,10 +92,10 @@ export default function SearchTicket() {
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="date"
-                    class="form-control"
+                    className="form-control"
                     id="floatingInput"
                     placeholder="name@example.com"
                   />

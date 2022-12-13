@@ -1,7 +1,7 @@
 import React from "react";
 import brandWhite from "../../assets/images/logo-white.svg";
 
-export default function Footer() {
+const Footer = () => {
   const tahun = new Date().getFullYear();
   return (
     <footer className="container-fluid bg-papier mt-5">
@@ -79,4 +79,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

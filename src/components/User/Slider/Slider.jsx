@@ -40,112 +40,124 @@ function ImageSlider() {
           <div className="card">
             <div className="card-image">
               <img src={Dubai} alt="" />
+              <div className="card">
+                <div className="card-image">
+                  <img src={Dubai} alt="" />
+                </div>
+                <ul className="text-country">
+                  <li>
+                    <button>
+                      <p>Dubai, Uni Emirat Arab</p>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <ul class="text-country">
+                <li>
+                  <button>
+                    <p>Dubai, Uni Emirat Arab</p>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul class="text-country">
-              <li>
-                <button>
-                  <p>Dubai, Uni Emirat Arab</p>
-                </button>
-              </li>
-            </ul>
           </div>
-        </div>
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card-image">
-              <img src={Bali} alt="" />
+          <div className="card-wrapper">
+            <div className="card">
+              <div className="card-image">
+                <img src={Bali} alt="" />
+              </div>
+              <ul className="text-country">
+                <li>
+                  <button>
+                    <p>Bali, Indonesia</p>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul className="text-country">
-              <li>
-                <button>
-                  <p>Bali, Indonesia</p>
-                </button>
-              </li>
-            </ul>
           </div>
-        </div>
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card-image">
-              <img src={Korea} alt="" />
+          <div className="card-wrapper">
+            <div className="card">
+              <div className="card-image">
+                <img src={Korea} alt="" />
+              </div>
+              <ul className="text-country">
+                <li>
+                  <button>
+                    <p>Seoul, Korea</p>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul className="text-country">
-              <li>
-                <button>
-                  <p>Seoul, Korea</p>
-                </button>
-              </li>
-            </ul>
           </div>
-        </div>
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card-image">
-              <img src={Dubai} alt="" />
+          <div className="card-wrapper">
+            <div className="card">
+              <div className="card-image">
+                <img src={Dubai} alt="" />
+              </div>
+              <ul className="text-country">
+                <li>
+                  <button>
+                    <p>Dubai, Uni Emirat Arab</p>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul className="text-country">
-              <li>
-                <button>
-                  <p>Dubai, Uni Emirat Arab</p>
-                </button>
-              </li>
-            </ul>
           </div>
-        </div>
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card-image">
-              <img src={Bali} alt="" />
+          <div className="card-wrapper">
+            <div className="card">
+              <div className="card-image">
+                <img src={Bali} alt="" />
+              </div>
+              <ul className="text-country">
+                <li>
+                  <button>
+                    <p>Bali, Indonesia</p>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul className="text-country">
-              <li>
-                <button>
-                  <p>Bali, Indonesia</p>
-                </button>
-              </li>
-            </ul>
           </div>
-        </div>
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card-image">
-              <img src={Korea} alt="" />
+          <div className="card-wrapper">
+            <div className="card">
+              <div className="card-image">
+                <img src={Korea} alt="" />
+              </div>
+              <ul className="text-country">
+                <li>
+                  <button>
+                    <p>Seoul, Korea</p>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul className="text-country">
-              <li>
-                <button>
-                  <p>Seoul, Korea</p>
-                </button>
-              </li>
-            </ul>
           </div>
-        </div>
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card-image">
-              <img src={Dubai} alt="" />
+          <div className="card-wrapper">
+            <div className="card">
+              <div className="card-image">
+                <img src={Dubai} alt="" />
+              </div>
+              <ul className="text-country">
+                <li>
+                  <button>
+                    <p>Dubai, Uni Emirat Arab</p>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul className="text-country">
-              <li>
-                <button>
-                  <p>Dubai, Uni Emirat Arab</p>
-                </button>
-              </li>
-            </ul>
           </div>
-        </div>
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card-image">
-              <img src={Bali} alt="" />
+          <div className="card-wrapper">
+            <div className="card">
+              <div className="card-image">
+                <img src={Bali} alt="" />
+              </div>
+              <ul className="text-country">
+                <li>
+                  <button>
+                    <p>Bali, Indonesia</p>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul className="text-country">
-              <li>
-                <button>
-                  <p>Bali, Indonesia</p>
-                </button>
-              </li>
-            </ul>
           </div>
         </div>
       </Slider>
