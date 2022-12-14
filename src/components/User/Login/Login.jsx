@@ -9,17 +9,18 @@ import { login } from '../../../store/actions/auth.js';
 
 import "./login.scss";
 
-function Login() {
-
+function Login(props) {
   const dispatch = useDispatch();
   const history = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // const handleClose = () => props.onHide;
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    // handleClose();
     const data = {
       email,
       password,

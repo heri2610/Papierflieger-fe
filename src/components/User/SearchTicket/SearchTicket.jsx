@@ -18,12 +18,12 @@ export default function SearchTicket() {
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
-                    <option selected>Jakarta (CGK)</option>
+                    <option defaultValue>Jakarta (CGK)</option>
                     <option value="1">Sydney</option>
                     <option value="2">Tokyo</option>
                     <option value="3">Jeddah</option>
                   </select>
-                  <label for="floatingSelect">Dari</label>
+                  <label htmlFor="floatingSelect">Dari</label>
                 </div>
               </div>
               <div className="col">
@@ -33,12 +33,12 @@ export default function SearchTicket() {
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
-                    <option selected>Singapura (SIN)</option>
+                    <option defaultValue>Singapura (SIN)</option>
                     <option value="1">Sydney</option>
                     <option value="2">Tokyo</option>
                     <option value="3">Jeddah</option>
                   </select>
-                  <label for="floatingSelect">Ke</label>
+                  <label htmlFor="floatingSelect">Ke</label>
                 </div>
               </div>
               <div className="col">
@@ -46,10 +46,10 @@ export default function SearchTicket() {
                   <input
                     type="email"
                     className="form-control"
-                    id="floatingInput"
+                    id="inputenumpang"
                     placeholder="name@example.com"
                   />
-                  <label for="floatingInput">Penumpang</label>
+                  <label htmlFor="inputenumpang">Penumpang</label>
                 </div>
               </div>
               <div className="col">
@@ -59,10 +59,10 @@ export default function SearchTicket() {
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
-                    <option selected>One-Way</option>
-                    <option value="1">Round-trip</option>
+                    <option defaultValue="one-way">One-Way</option>
+                    <option value="round-trip">Round-trip</option>
                   </select>
-                  <label for="floatingSelect">Keberengkatan</label>
+                  <label htmlFor="floatingSelect">Keberengkatan</label>
                 </div>
               </div>
             </div>
@@ -74,10 +74,10 @@ export default function SearchTicket() {
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
-                    <option selected>Ekonomi</option>
-                    <option value="1">Bisnis</option>
+                    <option defaultValue="ekonomi">Ekonomi</option>
+                    <option value="bisnis">Bisnis</option>
                   </select>
-                  <label for="floatingSelect">Kelas</label>
+                  <label htmlFor="floatingSelect">Kelas</label>
                 </div>
               </div>
               <div className="col">
@@ -85,10 +85,10 @@ export default function SearchTicket() {
                   <input
                     type="date"
                     className="form-control"
-                    id="floatingInput"
+                    id="inputPergi"
                     placeholder="name@example.com"
                   />
-                  <label for="floatingInput">Pergi</label>
+                  <label htmlFor="inputPergi">Pergi</label>
                 </div>
               </div>
               <div className="col">
@@ -96,10 +96,10 @@ export default function SearchTicket() {
                   <input
                     type="date"
                     className="form-control"
-                    id="floatingInput"
+                    id="inputPulang"
                     placeholder="name@example.com"
                   />
-                  <label for="floatingInput">Pulang</label>
+                  <label htmlFor="inputPulang">Pulang</label>
                 </div>
               </div>
               <div className="col">

@@ -3,8 +3,8 @@ import store from "../store";
 import { logout } from "../store/actions/auth";
 
 const API = axios.create({
-  baseURL: "http://localhost:3001/api",
-  // baseURL: "https://web-production-e882.up.railway.app/api",
+  // baseURL: "http://localhost:3001/api",
+  baseURL: "https://papierflieger-api.up.railway.app/api",
   headers: {
     Accept: "application/json",
     Authorization: `${localStorage.getItem("token") || ""}`,
