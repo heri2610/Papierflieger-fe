@@ -16,6 +16,9 @@
   left: 35%;
   top: 130px;
 }
+.modal-content {
+  border-radius: 25px;
+}
 
 .navbar-nav {
   display: flex;
@@ -24,6 +27,7 @@
 
 .softblue {
   background-color: #c2d9f1;
+  border-radius: 15px;
 }
 
 @media (max-width: 992px) {

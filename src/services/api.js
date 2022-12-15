@@ -3,10 +3,11 @@ import store from "../store";
 import { logout } from "../store/actions/auth";
 
 const API = axios.create({
-  baseURL: "http://127.0.0.1:3001",
+  // baseURL: "http://localhost:3001/api",
+  baseURL: "https://papierflieger-api.up.railway.app/api",
   headers: {
     Accept: "application/json",
-    Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+    Authorization: `${localStorage.getItem("token") || ""}`,
   },
 });
 

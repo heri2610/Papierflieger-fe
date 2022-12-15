@@ -4,102 +4,102 @@ export default function SearchTicket() {
   return (
     <>
       <div
-        className="row justify-content-md-center position-relative"
+        className="d-flex justify-content-md-center position-relative"
         style={{ bottom: "6rem" }}
       >
         <div className="col-8 card">
           <div className="card-body">
-            <h4>Pemesanan Tiket</h4>
+            <h4>Pencarian Tiket</h4>
             <div className="row row-cols-4 mb-3">
               <div className="col">
-                <div class="form-floating">
+                <div className="form-floating">
                   <select
-                    class="form-select"
+                    className="form-select"
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
-                    <option selected>Jakarta (CGK)</option>
+                    <option defaultValue>Jakarta (CGK)</option>
                     <option value="1">Sydney</option>
                     <option value="2">Tokyo</option>
                     <option value="3">Jeddah</option>
                   </select>
-                  <label for="floatingSelect">Dari</label>
+                  <label htmlFor="floatingSelect">Dari</label>
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating">
+                <div className="form-floating">
                   <select
-                    class="form-select"
+                    className="form-select"
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
-                    <option selected>Singapura (SIN)</option>
+                    <option defaultValue>Singapura (SIN)</option>
                     <option value="1">Sydney</option>
                     <option value="2">Tokyo</option>
                     <option value="3">Jeddah</option>
                   </select>
-                  <label for="floatingSelect">Ke</label>
+                  <label htmlFor="floatingSelect">Ke</label>
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="email"
-                    class="form-control"
-                    id="floatingInput"
+                    className="form-control"
+                    id="inputenumpang"
                     placeholder="name@example.com"
                   />
-                  <label for="floatingInput">Penumpang</label>
+                  <label htmlFor="inputenumpang">Penumpang</label>
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating">
+                <div className="form-floating">
                   <select
-                    class="form-select"
+                    className="form-select"
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
-                    <option selected>One-Way</option>
-                    <option value="1">Round-trip</option>
+                    <option defaultValue="one-way">One-Way</option>
+                    <option value="round-trip">Round-trip</option>
                   </select>
-                  <label for="floatingSelect">Keberengkatan</label>
+                  <label htmlFor="floatingSelect">Keberengkatan</label>
                 </div>
               </div>
             </div>
             <div className="row row-cols-4 mb-3">
               <div className="col">
-                <div class="form-floating">
+                <div className="form-floating">
                   <select
-                    class="form-select"
+                    className="form-select"
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
-                    <option selected>Ekonomi</option>
-                    <option value="1">Bisnis</option>
+                    <option defaultValue="ekonomi">Ekonomi</option>
+                    <option value="bisnis">Bisnis</option>
                   </select>
-                  <label for="floatingSelect">Kelas</label>
+                  <label htmlFor="floatingSelect">Kelas</label>
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="date"
-                    class="form-control"
-                    id="floatingInput"
+                    className="form-control"
+                    id="inputPergi"
                     placeholder="name@example.com"
                   />
-                  <label for="floatingInput">Pergi</label>
+                  <label htmlFor="inputPergi">Pergi</label>
                 </div>
               </div>
               <div className="col">
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                   <input
                     type="date"
-                    class="form-control"
-                    id="floatingInput"
+                    className="form-control"
+                    id="inputPulang"
                     placeholder="name@example.com"
                   />
-                  <label for="floatingInput">Pulang</label>
+                  <label htmlFor="inputPulang">Pulang</label>
                 </div>
               </div>
               <div className="col">

@@ -1,120 +1,72 @@
-import React from 'react';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.scss" ;
-import "slick-carousel/slick/slick-theme.scss"
-import Korea from './destinasi/Korea.png'
-import Dubai from './destinasi/Dubai.png'
-import Bali from './destinasi/Bali.png'
-import './Slider.scss'
+import React from "react";
+import Korea from './destinasi/Korea.png';
+import Dubai from './destinasi/Dubai.png';
+import Bali from './destinasi/Bali.png';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-function ImageSlider() {
-    let settings = {
-        dot: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        cssEase: "linear"
-    }
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+import "./Slider.scss";
+
+// import required modules
+import { Pagination } from "swiper";
+
+const Slider = () => {
   return (
-    <div className="container mt-5 carousel">
-        <div className="slider_title">
-          <h3>Destinasi</h3>
-        </div>
-    <Slider {...settings}>
-        <div className="card-wrapper">
-            <div className="card">
-                <div className="card-image">
-                    <img src={Korea} alt="" />
-                </div>
-                <ul className='text-country'>
-                    <li><button><p>Seoul, Korea</p></button></li>
-                </ul>
+    <div className="slider">
+      <h2 className="text-center fw-bold">DESTINASI</h2>
+      <Swiper
+        slidesPerView={3}
+        loop={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <div className="template">
+            <div className="box">
+              <div className="box-image">
+                <img src={Korea} alt="" />
+              </div>
+              <ul className='title'>
+                <li><button><p>Seoul, Korea</p></button></li>
+              </ul>
             </div>
-        </div>
-        <div className="card-wrapper">
-            <div className="card">
-                <div className="card-image">
-                    <img src={Dubai} alt="" />
-                </div>
-                <ul class='text-country'>
-                    <li><button><p>Dubai, Uni Emirat Arab</p></button></li>
-                </ul>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="template">
+            <div className="box">
+              <div className="box-image">
+                <img src={Bali} alt="" />
+              </div>
+              <ul className='title'>
+                <li><button><p>Bali, Indonesia</p></button></li>
+              </ul>
             </div>
-        </div>
-        <div className="card-wrapper">
-            <div className="card">
-                <div className="card-image">
-                    <img src={Bali} alt="" />
-                </div>
-                <ul className='text-country'>
-                    <li><button><p>Bali, Indonesia</p></button></li>
-                </ul>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="template">
+            <div className="box">
+              <div className="box-image">
+                <img src={Dubai} alt="" />
+              </div>
+              <ul className='title'>
+                <li><button><p>Dubai, Uni Emirat Arab</p></button></li>
+              </ul>
             </div>
-        </div>
-        <div className="card-wrapper">
-            <div className="card">
-                <div className="card-image">
-                    <img src={Korea} alt="" />
-                </div>
-                <ul className='text-country'>
-                    <li><button><p>Seoul, Korea</p></button></li>
-                </ul>
-            </div>
-        </div>
-        <div className="card-wrapper">
-            <div className="card">
-                <div className="card-image">
-                    <img src={Dubai} alt="" />
-                </div>
-                <ul className='text-country'>
-                    <li><button><p>Dubai, Uni Emirat Arab</p></button></li>
-                </ul>
-            </div>
-        </div>
-        <div className="card-wrapper">
-            <div className="card">
-                <div className="card-image">
-                    <img src={Bali} alt="" />
-                </div>
-                <ul className='text-country'>
-                    <li><button><p>Bali, Indonesia</p></button></li>
-                </ul>
-            </div>
-        </div>
-        <div className="card-wrapper">
-            <div className="card">
-                <div className="card-image">
-                    <img src={Korea} alt="" />
-                </div>
-                <ul className='text-country'>
-                    <li><button><p>Seoul, Korea</p></button></li>
-                </ul>
-            </div>
-        </div>
-        <div className="card-wrapper">
-            <div className="card">
-                <div className="card-image">
-                    <img src={Dubai} alt="" />
-                </div>
-                <ul className='text-country'>
-                    <li><button><p>Dubai, Uni Emirat Arab</p></button></li>
-                </ul>
-            </div>
-        </div>
-        <div className="card-wrapper">
-            <div className="card">
-                <div className="card-image">
-                    <img src={Bali} alt="" />
-                </div>
-                <ul className='text-country'>
-                    <li><button><p>Bali, Indonesia</p></button></li>
-                </ul>
-            </div>
-        </div>
-    </Slider>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
-  )
-}
+  );
+};
 
-export default ImageSlider
+export default Slider;
