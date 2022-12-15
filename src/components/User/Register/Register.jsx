@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Button, Col, Form, Container, Row } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Button, Col, Form, Container, Row } from "react-bootstrap";
 
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { register } from '../../../store/actions/auth.js';
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { register } from "../../../store/actions/auth.js";
 
-import './Register.scss';
+import "./Register.scss";
 
 function Register() {
   const dispatch = useDispatch();
@@ -13,10 +13,10 @@ function Register() {
 
   const [validated, setValidated] = useState(false);
 
-  const [username, setUsername] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleUsername = (event) => {
     setUsername(event.target.value);
@@ -55,7 +55,7 @@ function Register() {
   };
 
   return (
-    <div className='mt-5'>
+    <div className="mt-5">
       <div>
         <Form validated={validated} onSubmit={handleSubmit}>
           <Container>
@@ -120,7 +120,9 @@ function Register() {
                 feedbackType="invalid"
               />
             </Form.Group>
-            <Button className='btn-primary' type="submit" value="Submit">Submit</Button>
+            <Button className="btn-primary mb-5" type="submit" value="Submit">
+              Submit
+            </Button>
           </Container>
         </Form>
       </div>

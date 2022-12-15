@@ -23,6 +23,10 @@ $theme-colors: (
   font-family: "Rubik", sans-serif;
 }
 
+body {
+  background-color: #f4f4f4;
+}
+
 $primary-bg-papier: #249fda;
 
 .bg-papier {
@@ -30,10 +34,15 @@ $primary-bg-papier: #249fda;
   color: #fff;
 }
 
+.bg-babyblue {
+  background-color: #c2d9f1;
+}
+
 .mx-7 {
   margin-left: 12%;
 }
 
-body {
-  background-color: #f4f4f4;
+.font-title {
+  font-weight: bold;
+  font-size: 25px;
 }
