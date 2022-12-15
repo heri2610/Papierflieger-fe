@@ -6,6 +6,7 @@ import LandingPage from "./pages/user/LandingPage";
 import Footer from "./components/Footer/Footer";
 import NavigationBar from "./components/Navbar/NavigationBar";
 import RegisterPage from "./pages/user/Register";
+import Dashboard from "./pages/admin/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           {/* klo mau nambahin router d sini yak */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/admin" element={<Dashboard />} />
         </Routes>
         <Footer />
       </Router>
