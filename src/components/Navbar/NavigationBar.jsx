@@ -9,8 +9,8 @@ import {
   Button,
   Modal,
 } from "react-bootstrap";
-import Login from "../Login/Login";
-import brand from "../../../assets/images/logo.svg";
+import Login from "../User/Login/Login";
+import brand from "../../assets/images/logo.svg";
 import "./navbar.scss";
 import DropdownNav from "./DropdownNav.jsx";
 

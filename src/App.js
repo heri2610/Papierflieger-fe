@@ -16,8 +16,8 @@ function App() {
           {/* <Route element={<ProtectedRoute />}>
               <Route path="/" element={<Chat />} />
             </Route> */}
-          <Route path="/" element={<LandingPage />} />
           {/* klo mau nambahin router d sini yak */}
+          <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
         <Footer />
