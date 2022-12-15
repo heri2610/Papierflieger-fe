@@ -1,12 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
-<<<<<<< HEAD
-=======
-import { useDispatch } from "react-redux";
-import { logout } from "../../store/actions/auth.js";
-
->>>>>>> Muel
 import {
   Navbar,
   Nav,
@@ -62,7 +55,6 @@ const NavigationBar = () => {
                   </Nav.Link>
                 </div>
               </Nav>
-<<<<<<< HEAD
               {token ?
                 <div className="d-flex align-items-center">
                   <Nav.Link href="/" className="me-3">
@@ -74,24 +66,7 @@ const NavigationBar = () => {
                   <DropdownNav />
                 </div>
                 : <Button variant="primary" onClick={handleShow}> Daftar/Masuk </Button>}
-=======
-              {token ? (
-                <Button
-                  className="bg-danger"
-                  onClick={() => {
-                    dispatch(logout());
-                    window.location.reload();
-                  }}
-                >
-                  Logout
-                </Button>
-              ) : (
-                <Button variant="primary" onClick={handleShow}>
-                  {" "}
-                  Datar/masuk{" "}
-                </Button>
-              )}
->>>>>>> Muel
+
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
@@ -99,16 +74,9 @@ const NavigationBar = () => {
       <Modal show={show} onHide={handleClose}>
  <Modal.Body className="softblue text-center">
           <Modal.Title className="mb-3">Masuk</Modal.Title>
-<<<<<<< HEAD
           <Login onHide={handleClose} />
           <p>Belum punya akun? Silakan <a href="/register">Daftar</a></p>
 
-=======
-          <Login />
-          <p>
-            Belum punya akun? Silakan <a href="/register">Daftar</a>
-          </p>
->>>>>>> Muel
         </Modal.Body>
       </Modal>
     </div>
