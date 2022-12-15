@@ -4,7 +4,7 @@ import brandWhite from "../../assets/images/logo-white.svg";
 const Footer = () => {
   const tahun = new Date().getFullYear();
   return (
-    <footer className="container-fluid bg-papier mt-5">
+    <footer className="container-fluid bg-papier">
       <div className="d-flex justify-content-between p-5">
         <div>
           <span className="text-white d-inline-flex mb-2">
