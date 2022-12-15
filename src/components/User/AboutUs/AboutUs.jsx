@@ -1,11 +1,5 @@
 import React from "react";
 import Heri from "../../../assets/images/Heri.svg";
-// import Bregsi from "../../../assets/images/Bregsi.svg";
-// import Muel from "../../../assets/images/Muel.svg";
-// import Sri from "../../../assets/images/Sri.svg";
-// import Ican from "../../../assets/images/Ican.svg";
-// import Gevin from "../../../assets/images/Gevin.svg";
-// import Izzu from "../../../assets/images/Izzu.svg";
 
 const AboutUs = () => {
   return (
