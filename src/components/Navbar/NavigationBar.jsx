@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useDispatch } from 'react-redux';
-import { logout } from '../../store/actions/auth.js';
-
 import {
   Navbar,
   Nav,
@@ -15,10 +12,10 @@ import {
 import Login from "../User/Login/Login";
 import brand from "../../assets/images/logo.svg";
 import "./navbar.scss";
+import DropdownNav from "./DropdownNav.jsx";
 
 const NavigationBar = () => {
   const token = window.localStorage.getItem("token");
-  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -61,7 +58,7 @@ const NavigationBar = () => {
                   <Nav.Link className="me-4" href="#destinasi">
                     Destinasi
                   </Nav.Link>
-                  <Nav.Link className="me-4" href="#testi">
+                  <Nav.Link className="me-4" href="#testimonial">
                     Testimonial
                   </Nav.Link>
                   <Nav.Link className="me-4" href="#about">
@@ -70,8 +67,16 @@ const NavigationBar = () => {
                 </div>
               </Nav>
               {token ?
-                <Button className="bg-danger" onClick={() => { dispatch(logout()); window.location.reload(); }}>Logout</Button>
-                : <Button variant="primary" onClick={handleShow}> Datar/masuk </Button>}
+                <div className="d-flex align-items-center">
+                  <Nav.Link href="/" className="me-3">
+                    <i className="bi bi-bell-fill"></i>
+                  </Nav.Link>
+                  <Nav.Link href="/" className="me-3">
+                    <img src={window.localStorage.getItem("avatar")} alt="foto profil" width={"40px"} height={"40px"} className="rounded-circle" />
+                  </Nav.Link>
+                  <DropdownNav />
+                </div>
+                : <Button variant="primary" onClick={handleShow}> Daftar/Masuk </Button>}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
@@ -79,7 +84,7 @@ const NavigationBar = () => {
       <Modal show={show} onHide={handleClose}>
         <Modal.Body className="softblue text-center">
           <Modal.Title className="mb-3">Masuk</Modal.Title>
-          <Login />
+          <Login onHide={handleClose} />
           <p>Belum punya akun? Silakan <a href="/register">Daftar</a></p>
         </Modal.Body>
       </Modal>

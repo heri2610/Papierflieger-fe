@@ -10,7 +10,7 @@ const Testimonial = () => {
     <div className="card-item" id="testimonial">
       <div className="container px-lg-5 mt-5">
         <div className="textCarou">
-          <h2 className="text-center">TESTIMONIAL</h2>
+          <h2 className="text-center fw-bold">TESTIMONIAL</h2>
         </div>
         <div className="row mt-5 ms-2">
           <div className="col col-md-4">
