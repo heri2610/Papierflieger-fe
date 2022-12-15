@@ -1,7 +1,7 @@
 import airportService from "../../services/airportService";
 import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT } from "../types/index";
 
-export const getAirport = (params) =>
+export const getAirport = () =>
   async function (dispatch) {
     try {
       const response = await airportService.getAirport();
