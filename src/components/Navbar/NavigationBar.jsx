@@ -20,7 +20,10 @@ const NavigationBar = () => {
   const handleShow = () => setShow(true);
   return (
     <div className="container-fluid mb-3 fixed-top">
-      <Navbar expand="lg" className="justify-content-center bg-white rounded shadow-sm">
+      <Navbar
+        expand="lg"
+        className="justify-content-center bg-white rounded shadow-sm"
+      >
         <Container fluid className="navbar-content">
           <Link to={"/"}>
             <img
@@ -31,9 +34,16 @@ const NavigationBar = () => {
             />
           </Link>
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
-          <Navbar.Offcanvas id="offcanvasNavbar-expand-lg" aria-labelledby="offcanvasNavbarLabel-expand-lg" placement="end">
+          <Navbar.Offcanvas
+            id="offcanvasNavbar-expand-lg"
+            aria-labelledby="offcanvasNavbarLabel-expand-lg"
+            placement="end"
+          >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title className="fw-bold" id="offcanvasNavbarLabel-expand-lg">
+              <Offcanvas.Title
+                className="fw-bold"
+                id="offcanvasNavbarLabel-expand-lg"
+              >
                 Menu
               </Offcanvas.Title>
             </Offcanvas.Header>
@@ -54,19 +64,27 @@ const NavigationBar = () => {
                   </Nav.Link>
                 </div>
               </Nav>
-              {
-                token ?
-                  <div className="d-flex align-items-center">
-                    <Nav.Link href="/" className="me-3">
-                      <i className="bi bi-bell-fill"></i>
-                    </Nav.Link>
-                    <Nav.Link href="/" className="me-3">
-                      <img src={window.localStorage.getItem("avatar")} alt="foto profil" width={"40px"} height={"40px"} className="rounded-circle" />
-                    </Nav.Link>
-                    <DropdownNav />
-                  </div>
-                  : <Button variant="primary" onClick={handleShow}> Daftar/Masuk </Button>
-              }
+              {token ? (
+                <div className="d-flex align-items-center">
+                  <Nav.Link href="/" className="me-3">
+                    <i className="bi bi-bell-fill"></i>
+                  </Nav.Link>
+                  <Nav.Link href="/" className="me-3">
+                    <img
+                      src={window.localStorage.getItem("avatar")}
+                      alt="foto profil"
+                      width={"40px"}
+                      height={"40px"}
+                      className="rounded-circle"
+                    />
+                  </Nav.Link>
+                  <DropdownNav />
+                </div>
+              ) : (
+                <Button variant="primary" onClick={handleShow}>
+                  Daftar/Masuk
+                </Button>
+              )}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
