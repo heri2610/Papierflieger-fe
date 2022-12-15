@@ -22,8 +22,6 @@ import {
 const Admin = () => {
   return (
     <div className="App">
-      <BrowserRouter>
-      <Routes>
         <Route path='/'>
           <Route index element={<Dashboard/>}/>
           {/* <Route path='transaction'>
@@ -56,8 +54,6 @@ const Admin = () => {
             <Route index element={<Users/>}/>
           </Route>   */}
         </Route>
-      </Routes>
-      </BrowserRouter>
     </div>
   );
 }
