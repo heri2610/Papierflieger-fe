@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useDispatch } from 'react-redux';
-import { logout } from '../../store/actions/auth.js';
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/actions/auth.js";
 
 import {
   Navbar,
@@ -61,17 +61,30 @@ const NavigationBar = () => {
                   <Nav.Link className="me-4" href="#destinasi">
                     Destinasi
                   </Nav.Link>
-                  <Nav.Link className="me-4" href="#testi">
+                  <Nav.Link className="me-4" href="#testimonial">
                     Testimonial
                   </Nav.Link>
-                  <Nav.Link className="me-4" href="#about">
+                  <Nav.Link className="me-4" href="#aboutus">
                     Tentang Kami
                   </Nav.Link>
                 </div>
               </Nav>
-              {token ?
-                <Button className="bg-danger" onClick={() => { dispatch(logout()); window.location.reload(); }}>Logout</Button>
-                : <Button variant="primary" onClick={handleShow}> Datar/masuk </Button>}
+              {token ? (
+                <Button
+                  className="bg-danger"
+                  onClick={() => {
+                    dispatch(logout());
+                    window.location.reload();
+                  }}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button variant="primary" onClick={handleShow}>
+                  {" "}
+                  Datar/masuk{" "}
+                </Button>
+              )}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
@@ -80,7 +93,9 @@ const NavigationBar = () => {
         <Modal.Body className="softblue text-center">
           <Modal.Title className="mb-3">Masuk</Modal.Title>
           <Login />
-          <p>Belum punya akun? Silakan <a href="/register">Daftar</a></p>
+          <p>
+            Belum punya akun? Silakan <a href="/register">Daftar</a>
+          </p>
         </Modal.Body>
       </Modal>
     </div>
