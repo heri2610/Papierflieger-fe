@@ -1,0 +1,42 @@
+.nav {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#offcanvasNavbar-expand-lg {
+  width: 50%;
+}
+
+.mx-6 {
+  margin-left: 145px;
+}
+
+.modal {
+  height: 643px;
+  width: 400px;
+  left: 35%;
+  top: 130px;
+}
+.modal-content {
+  border-radius: 25px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.softblue {
+  background-color: #c2d9f1;
+  border-radius: 15px;
+}
+
+@media (max-width: 992px) {
+  .navbar-nav {
+    align-items: flex-start;
+
+    .btn {
+      width: max-content;
+      margin-top: 8px;
+    }
+  }
+}
