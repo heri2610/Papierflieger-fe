@@ -8,7 +8,7 @@ export const login = (params, history) =>
       dispatch({ type: LOGIN, payload: response.data });
       history("/");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       throw error;
     }
   };

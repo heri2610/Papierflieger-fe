@@ -8,7 +8,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
 
   return (
     <>
-      {isLoggedIn ? <Outlet /> : <Navigate to='/login' />}
+      {isLoggedIn ? <Outlet /> : <Navigate to='/' />}
     </>
   )
 }
