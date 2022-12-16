@@ -24,13 +24,13 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/profile/edit" element={<EditProfile />} />
+            <Route path="/user/wishlist" element={<Wishlist />} />
           </Route>
           {/* klo mau nambahin router d sini yak */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/penerbangan" element={<Penerbangan />} />
           <Route path="/destinasi" element={<DestinationPage />} />
-          <Route path="/user/wishlist" element={<Wishlist />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/airplane" element={<Airplane />} />
           <Route path="/admin/airplane/new" element={<NewAirplane />} />
