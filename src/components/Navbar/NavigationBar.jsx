@@ -50,7 +50,7 @@ const NavigationBar = () => {
             <Offcanvas.Body>
               <Nav className="justify-content-center flex-grow-1">
                 <div className="navbar-nav ms-0">
-                  <Nav.Link className="me-4" href="#main">
+                  <Nav.Link className="me-4" href="/penerbangan">
                     Penerbangan
                   </Nav.Link>
                   <Nav.Link className="me-4" href="#destinasi">
