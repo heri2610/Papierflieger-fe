@@ -1,5 +1,5 @@
 import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT } from "../types/index";
-  
+
 const initialState = {
   message: false,
   data: false
@@ -18,18 +18,18 @@ const airportReducer = (state = initialState, action) => {
     case ADD_AIRPORT:
       return {
         ...state,
-        message: "Data berhasil Ditambahkan",
+        message: "Data berhasil ditambahkan",
         data: payload.airports,
       };
     case PUT_AIRPORT:
       return {
         ...state,
-        message: "Data berhasil Di Ubah",
+        message: "Data berhasil diubah",
       };
     case DELETE_AIRPORT:
       return {
         ...state,
-        message: "Data berhasil Di Hapus",
+        message: "Data berhasil dihapus",
       };
     default: {
       return state;
