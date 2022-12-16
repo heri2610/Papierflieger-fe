@@ -21,7 +21,10 @@ function Register() {
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    history("/");
+  };
 
   const handleUsername = (event) => {
     setUsername(event.target.value);
@@ -53,7 +56,7 @@ function Register() {
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
 
-    // console.log(res.error);
+    console.log(res);
 
     if (res.error) {
       setError(true);
@@ -131,7 +134,7 @@ function Register() {
               <Form.Group className="mb-3">
                 <Form.Check
                   required
-                  label="Agree to terms and conditions"
+                  label={<p>Saya menyetujui segala <span className="text-danger">syarat dan ketentuan</span> maskapai Papierflieger</p>}
                   feedback="You must agree before submitting."
                   feedbackType="invalid"
                 />
@@ -145,17 +148,19 @@ function Register() {
       </div>
       <Modal
         show={show}
-        onHide={handleClose}
+        onHide={() => setShow(false)}
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton />
         <Modal.Body>
-
+          <p><strong>Registrasi berhasil.</strong></p>
+          <p className="mb-0">
+            Silakan cek email dan verifikasi akun untuk melanjutkan.
+          </p>
+          <div className="d-flex justify-content-end">
+            <Button variant="primary" onClick={handleClose}>OK</Button>
+          </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>OK</Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
