@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import {
   Navbar,
   Nav,
   Container,
   Offcanvas,
   Button,
-  Modal,
 } from "react-bootstrap";
 import Login from "../User/Login/Login";
 import brand from "../../assets/images/logo.svg";
@@ -52,7 +50,7 @@ const NavigationBar = () => {
             <Offcanvas.Body>
               <Nav className="justify-content-center flex-grow-1">
                 <div className="navbar-nav ms-0">
-                  <Nav.Link className="me-4" href="#main">
+                  <Nav.Link className="me-4" href="/penerbangan">
                     Penerbangan
                   </Nav.Link>
                   <Nav.Link className="me-4" href="#destinasi">
@@ -61,33 +59,37 @@ const NavigationBar = () => {
                   <Nav.Link className="me-4" href="#testimonial">
                     Testimonial
                   </Nav.Link>
-                  <Nav.Link className="me-4" href="#about">
+                  <Nav.Link className="me-4" href="#aboutus">
                     Tentang Kami
                   </Nav.Link>
                 </div>
               </Nav>
-              {token ?
+              {token ? (
                 <div className="d-flex align-items-center">
                   <Nav.Link href="/" className="me-3">
                     <i className="bi bi-bell-fill"></i>
                   </Nav.Link>
                   <Nav.Link href="/" className="me-3">
-                    <img src={window.localStorage.getItem("avatar")} alt="foto profil" width={"40px"} height={"40px"} className="rounded-circle" />
+                    <img
+                      src={window.localStorage.getItem("avatar")}
+                      alt="foto profil"
+                      width={"40px"}
+                      height={"40px"}
+                      className="rounded-circle"
+                    />
                   </Nav.Link>
                   <DropdownNav />
                 </div>
-                : <Button variant="primary" onClick={handleShow}> Daftar/Masuk </Button>}
+              ) : (
+                <Button variant="primary" onClick={handleShow}>
+                  Daftar/Masuk
+                </Button>
+              )}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Body className="softblue text-center">
-          <Modal.Title className="mb-3">Masuk</Modal.Title>
-          <Login onHide={handleClose} />
-          <p>Belum punya akun? Silakan <a href="/register">Daftar</a></p>
-        </Modal.Body>
-      </Modal>
+      <Login show={show} onHide={handleClose} />
     </div>
   );
 };

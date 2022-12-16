@@ -1,0 +1,14 @@
+.edit-button {
+  text-align: right;
+  align-items: right;
+  justify-content: end;
+  margin-right: 115px;
+  margin-top: 10px;
+}
+
+@media (min-width: 992px) {
+  .upload-pp {
+    position: absolute;
+    margin-right: 3rem;
+  }
+}
