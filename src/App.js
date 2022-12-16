@@ -8,6 +8,7 @@ import NavigationBar from "./components/Navbar/NavigationBar";
 import RegisterPage from "./pages/user/Register";
 import Penerbangan from "./components/User/Penerbangan/Penerbangan";
 import DestinationPage from "./pages/user/DestinationPage";
+import Wishlist from "./components/User/Wishlist/Wishlist";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
 import EditProfile from "./pages/user/EditProfile";
 import Profile from "./pages/user/Profile";
@@ -29,6 +30,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/penerbangan" element={<Penerbangan />} />
           <Route path="/destinasi" element={<DestinationPage />} />
+          <Route path="/user/wishlist" element={<Wishlist />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/airplane" element={<Airplane />} />
           <Route path="/admin/airplane/new" element={<NewAirplane />} />
