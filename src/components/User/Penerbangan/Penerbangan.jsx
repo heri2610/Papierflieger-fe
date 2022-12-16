@@ -62,7 +62,7 @@ function Penerbangan(){
                 </Col>
                 <Col>
             <Form.Group className='mb-3'>
-                <Form.Label>Keberangkatan</Form.Label>
+                <Form.Label>Pergi</Form.Label>
                 <Form.Select aria-label="Default select example">
       <option>Open this select menu</option>
       <option value="1">One</option>
@@ -73,7 +73,7 @@ function Penerbangan(){
                 </Col>
                 <Col>
             <Form.Group className='mb-3'>
-                <Form.Label>Kepulangan</Form.Label>
+                <Form.Label>Pulang</Form.Label>
                 <Form.Select aria-label="Default select example">
       <option>Open this select menu</option>
       <option value="1">One</option>
@@ -92,42 +92,7 @@ function Penerbangan(){
     </Container>
     <Container fluid className='section--body pt-4 pb-4'>
         <Row>
-            <Col md='3'>
-                <div className='bg-white m-2 p-3 rounded'>
-                    <h4>Filter Berdasarkan</h4>
-                <Form.Group className='border-top border-dark mb-4'>
-                <Form.Label className='mt-2'>Jumlah Perhentian</Form.Label>
-                <Form.Check 
-            type='radio' label='Apapun' name='perhentian'
-          />
-          <Form.Check 
-            type='radio' label='Langsung' name='perhentian'
-          />
-          <Form.Check 
-            type='radio' label='Transit' name='perhentian'
-          />
-    </Form.Group>
-    <Form.Group className='border-top border-dark mb-4'>
-                <Form.Label className='mt-2'>Durasi Terbang</Form.Label>
-          <Form.Check 
-            type='radio' label='Tercepat' name='durasipenerbangan'
-          />
-          <Form.Check 
-            type='radio' label='Dini Hari' name='durasipenerbangan'
-          />
-    </Form.Group>
-    <Form.Group className='border-top border-dark'>
-                <Form.Label className='mt-2'>Harga</Form.Label>
-          <Form.Check 
-            type='radio' label='Termurah' name='harga'
-          />
-          <Form.Check 
-            type='radio' label='Termahal' name='harga'
-          />
-    </Form.Group>
-                </div>
-            </Col>
-            <Col md='9'>
+            <Col md='12'>
             <h3>Pilihan Penerbangan</h3>
             <div className='bg-white p-3 rounded'>
                 <DetailPenerbangan />

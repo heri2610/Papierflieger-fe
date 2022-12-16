@@ -1,7 +1,7 @@
 import React from "react";
 import {Row,Col,Badge,Accordion,Button} from "react-bootstrap";
 import Arrow from './Vector.svg';
-import "./Penerbangan.scss";
+import "./DetailPenerbangan.scss";
 
 export default function DetailPenerbangan({kelas, kode,harga,keberangkatan,pendaratan,durasi,istransit,transit}){
 return <>
@@ -49,13 +49,33 @@ return <>
         <Accordion.Item eventKey='0' className='border border-0'>
             <Accordion.Header><Button variant='primary' className="w-25"><h4 className='m-0'>Pesan</h4></Button><h4 className='d-inline ms-auto me-3 mb-0'>Pratinjau Rincian</h4></Accordion.Header>
             <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+            <div id="timeline-content" className='border-bottom'>
+  <ul class="timeline">
+    <li class="event" data-date="08.00" data-day='16 Desember'>
+      <h1>Jakarta</h1>
+      <p>Soekarno Hatta International Airport (CGK)</p>
+      <p>Armada : PapierFlieger, Boeing 737<br/>Durasi Tebang : 3 jam 40 menit</p>
+    </li>
+    <li class="event" data-date="08.00" data-day='16 Desember'>
+      <h1>Jakarta</h1>
+      <p>Soekarno Hatta International Airport (CGK)</p>
+      <p>Armada : PapierFlieger, Boeing 737<br/>Durasi Tebang : 3 jam 40 menit</p>
+    </li>
+    <li class="event" data-date="08.00" data-day='16 Desember'>
+      <h1>Jakarta</h1>
+      <p>Soekarno Hatta International Airport (CGK)</p>
+      <p>Armada : PapierFlieger, Boeing 737<br/>Durasi Tebang : 3 jam 40 menit</p>
+    </li>
+  </ul>
+</div>
+<Row>
+  <Col>
+  <h5>Komplementer Bagasi</h5>
+  <p>Harga tiket sudah termasuk beban bagasi per-orang dengan rincian beban sebagasi berikut :</p>
+  <h5 style={{paddingTop:0}}><i class="bi bi-file-zip-fill"></i> Tas/Koper 7 kg x 1</h5>
+  <p className='text-primary'><strong>Tas/Koper yang diperiksa</strong></p>
+  </Col>
+</Row>
         </Accordion.Body>
         </Accordion.Item>
     </Accordion>
