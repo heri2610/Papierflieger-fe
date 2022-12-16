@@ -11,6 +11,8 @@ import DestinationPage from "./pages/user/DestinationPage";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
 import EditProfile from "./pages/user/EditProfile";
 import Profile from "./pages/user/Profile";
+import Airplane from "./pages/admin/Airplane/Airplane";
+import NewAirplane from "./pages/admin/Airplane/NewAirplane";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/penerbangan" element={<Penerbangan />} />
           <Route path="/destinasi" element={<DestinationPage />} />
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/admin/airplane" element={<Airplane />} />
+          <Route path="/admin/airplane/new" element={<NewAirplane />} />
         </Routes>
         <Footer />
       </Router>
