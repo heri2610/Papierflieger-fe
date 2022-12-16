@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAirport } from "../../../store/actions/airport";
 
 export default function SearchTicket() {
-  const { data } = useSelector((state) => state.airportReducer);
+  // const { data } = useSelector((state) => state.airportReducer);
 
   const dispatch = useDispatch();
   useEffect(() => {

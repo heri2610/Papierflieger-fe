@@ -24,7 +24,7 @@ const FormEditProfile = () => {
               <Row className="row-cols-md-2 row-cols-1">
                 <Col>
                   <Form.Group className="mb-3">
-                    <Form.Label>NAMA LENGKAP</Form.Label>
+                    <Form.Label>Nama Lengkap</Form.Label>
                     <Form.Control
                       required
                       type="text"
@@ -32,15 +32,14 @@ const FormEditProfile = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>TANGGAL LAHIR</Form.Label>
+                    <Form.Label>Tanggal Lahir</Form.Label>
                     <Form.Control
                       required
                       type="date"
-                    // placeholder="yy/mm/dd"
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>PASSWORD</Form.Label>
+                    <Form.Label>Password</Form.Label>
                     <Form.Control
                       required
                       type="password"
@@ -48,7 +47,7 @@ const FormEditProfile = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>KEBANGSAAN</Form.Label>
+                    <Form.Label>Kebangsaan</Form.Label>
                     <Form.Control
                       required
                       type="text"
@@ -56,7 +55,7 @@ const FormEditProfile = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>PROVINSI</Form.Label>
+                    <Form.Label>Provinsi</Form.Label>
                     <Form.Control
                       required
                       type="text"
@@ -64,7 +63,7 @@ const FormEditProfile = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>NOMOR TELEPON</Form.Label>
+                    <Form.Label>Nomor Telepon</Form.Label>
                     <Form.Control
                       required
                       type="text"
@@ -74,7 +73,7 @@ const FormEditProfile = () => {
                 </Col>
                 <Col>
                   <Form.Group className="mb-3">
-                    <Form.Label>NAMA PENGGUNA</Form.Label>
+                    <Form.Label>Nama Pengguna</Form.Label>
                     <Form.Control
                       required
                       type="text"
@@ -82,7 +81,7 @@ const FormEditProfile = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>EMAIL</Form.Label>
+                    <Form.Label>Email</Form.Label>
                     <Form.Control
                       required
                       type="email"
@@ -90,7 +89,7 @@ const FormEditProfile = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>KONFIRMASI PASSWORD</Form.Label>
+                    <Form.Label>Konfirmasi Password</Form.Label>
                     <Form.Control
                       required
                       type="password"
@@ -106,7 +105,7 @@ const FormEditProfile = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>KABUPATEN/KOTA</Form.Label>
+                    <Form.Label>Kabupaten/Kota</Form.Label>
                     <Form.Control
                       required
                       type="text"
@@ -114,10 +113,10 @@ const FormEditProfile = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>SAPAAN</Form.Label>
+                    <Form.Label>Sapaan</Form.Label>
                     <Form.Select aria-label="Default select example">
-                      <option value="1">Mr.</option>
-                      <option value="2">Mrs.</option>
+                      <option value="1">Bapak</option>
+                      <option value="2">Ibu</option>
                     </Form.Select>
                   </Form.Group>
                 </Col>
