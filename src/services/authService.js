@@ -9,7 +9,7 @@ const AuthService = {
       setHeadersAndStorage(response.data);
       return response;
     } catch (err) {
-      console.log('Auth service error', err);
+      // console.log('Auth service error', err);
       throw err;
     }
   },
@@ -28,6 +28,7 @@ const AuthService = {
     API.defaults.headers['Authorization'] = '';
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    localStorage.removeItem('avatar');
   },
 
   updateProfile: async function (data) {
@@ -46,10 +47,11 @@ const AuthService = {
 
 };
 
-const setHeadersAndStorage = ({ user, token }) => {
+const setHeadersAndStorage = ({ username, token, avatar }) => {
   API.defaults.headers['Authorization'] = `${token}`;
-  localStorage.setItem('user', JSON.stringify(user));
+  localStorage.setItem('user', username);
   localStorage.setItem('token', token);
+  localStorage.setItem('avatar', avatar);
 };
 
 export default AuthService;

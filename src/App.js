@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import LandingPage from "./pages/user/LandingPage";
 // import ProtectedRoute from "./pages/user/ProtectedRoute";
-import Footer from "./components/User/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import NavigationBar from "./components/Navbar/NavigationBar";
 import RegisterPage from "./pages/user/Register";
 import Penerbangan from "./components/User/Penerbangan/Penerbangan";
+import DestinationPage from "./pages/user/DestinationPage";
+import Dashboard from "./pages/admin/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -16,12 +18,14 @@ function App() {
         <Routes>
           {/* <Route element={<ProtectedRoute />}>
               <Route path="/" element={<Chat />} />
-            </Route> */}
+            </Route> 
+           klo mau nambahin router d sini yak */}
           <Route path="/" element={<LandingPage />} />
-          {/* klo mau nambahin router d sini yak */}
           <Route path="/register" element={<RegisterPage />} />
           {/*Halaman ican*/}
           <Route path="/penerbangan" element={<Penerbangan />} />
+          <Route path="/destinasi" element={<DestinationPage />} />
+          <Route path="/admin" element={<Dashboard />} />
         </Routes>
         <Footer />
       </Router>

@@ -1,9 +1,10 @@
 import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE } from "../types/index";
 
 const initialState = {
-  // user: JSON.parse(localStorage.getItem("user")) || {},
+  user: localStorage.getItem("user") || {},
   token: localStorage.getItem("token"),
   isLoggedIn: localStorage.getItem("user") ? true : false,
+  message: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -13,16 +14,15 @@ const authReducer = (state = initialState, action) => {
     case LOGIN:
       return {
         ...state,
-        user: payload.user,
+        user: payload.username,
         token: payload.token,
         isLoggedIn: true,
+        message: payload.message
       };
     case REGISTER:
       return {
         ...state,
-        user: payload.user,
-        token: payload.token,
-        isLoggedIn: true,
+        message: payload.message,
       };
     case LOGOUT:
       return {
