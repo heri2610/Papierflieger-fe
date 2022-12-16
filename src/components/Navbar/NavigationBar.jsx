@@ -6,7 +6,6 @@ import {
   Container,
   Offcanvas,
   Button,
-  Modal,
 } from "react-bootstrap";
 import Login from "../User/Login/Login";
 import brand from "../../assets/images/logo.svg";
@@ -51,7 +50,7 @@ const NavigationBar = () => {
             <Offcanvas.Body>
               <Nav className="justify-content-center flex-grow-1">
                 <div className="navbar-nav ms-0">
-                  <Nav.Link className="me-4" href="#main">
+                  <Nav.Link className="me-4" href="/penerbangan">
                     Penerbangan
                   </Nav.Link>
                   <Nav.Link className="me-4" href="#destinasi">
@@ -90,15 +89,7 @@ const NavigationBar = () => {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Body className="softblue text-center">
-          <Modal.Title className="mb-3">Masuk</Modal.Title>
-          <Login onHide={handleClose} />
-          <p>
-            Belum punya akun? Silakan <a href="/register">Daftar</a>
-          </p>
-        </Modal.Body>
-      </Modal>
+      <Login show={show} onHide={handleClose} />
     </div>
   );
 };

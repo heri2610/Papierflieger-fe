@@ -1,33 +1,43 @@
 import airportService from "../../services/airportService";
 import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT } from "../types/index";
 
-export const getAirport = (params) =>
+export const getAirport = () =>
   async function (dispatch) {
     try {
-      const response = await airportService.login(params);
+      const response = await airportService.getAirport();
       dispatch({ type: GET_AIRPORT, payload: response.data });
     } catch (error) {
       console.log(error);
       throw error;
     }
   };
-
-export const addAirport = (params, history) =>
+export const getAirportById = (id) =>
   async function (dispatch) {
     try {
-      const response = await airportService.register(params);
+      const response = await airportService.getAirportById(id);
+      dispatch({ type: GET_AIRPORT, payload: response.data });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+;
+export const addAirport = (data) =>
+  async function (dispatch) {
+    try {
+      const response = await airportService.addAirport(data);
       dispatch({ type: ADD_AIRPORT, payload: response.data });
-      history("/");
+      // history("/");
     } catch (error) {
       console.log(error);
       throw error;
     }
   };
 
-export const deleteAirport = (params, history) =>
+export const deleteAirport = (id) =>
   async function (dispatch) {
     try {
-      airportService.logout(params);
+      airportService.deleteAirport(id);
       dispatch({ type: PUT_AIRPORT });
     } catch (error) {
       console.log(error);
@@ -35,10 +45,10 @@ export const deleteAirport = (params, history) =>
     }
   };
 
-export const updateAirport = (params) =>
+export const updateAirport = (data, id) =>
   async function (dispatch) {
     try {
-      const response = await airportService.updateProfile(params);
+      const response = await airportService.updateAirport(data, id);
       dispatch({ type: DELETE_AIRPORT, payload: response.data });
     } catch (error) {
       console.log(error);

@@ -1,0 +1,39 @@
+.section--form {
+  background-color: #c2d9f1;
+}
+
+.section--body {
+  background-color: #d9d9d9;
+}
+
+.bg-info {
+  background-color: #c2d9f1 !important;
+}
+
+.accordion-button {
+  &:after {
+    margin-left: 0 !important;
+  }
+
+  &:focus {
+    border-color: #fff !important;
+    background-color: #fff !important;
+  }
+
+  &:focus {
+    border-color: #fff !important;
+    background-color: #fff !important;
+  }
+
+  &:not(.collapsed) {
+    color: #212529;
+    background-color: #fff !important;
+  }
+}
+
+.accordion {
+  &:focus {
+    border-color: #fff !important;
+    background-color: #fff !important;
+  }
+}
