@@ -3,8 +3,6 @@ import FormEditProfile from '../../components/User/FormProfile/FormProfile';
 import {Button} from 'react-bootstrap';
 import './Profile.scss';
 
-import {Link} from 'react-router-dom'
-
 const EditProfile = () => {
   return (
     <div className="edit-profile mt-3">
