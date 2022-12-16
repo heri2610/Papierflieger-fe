@@ -8,6 +8,8 @@ import NavigationBar from "./components/Navbar/NavigationBar";
 import RegisterPage from "./pages/user/Register";
 import DestinationPage from "./pages/user/DestinationPage";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
+import EditProfile from "./pages/user/EditProfile";
+import Profile from "./pages/user/Profile";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/destinasi" element={<DestinationPage />} />
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/edit" element={<EditProfile />} />
         </Routes>
         <Footer />
       </Router>
