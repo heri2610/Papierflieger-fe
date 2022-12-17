@@ -9,6 +9,8 @@ import RegisterPage from "./pages/user/Register";
 import Penerbangan from "./components/User/Penerbangan/Penerbangan";
 import DestinationPage from "./pages/user/DestinationPage";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
+import DetailTicket from "./components/User/Ticket/DetailTicket";
+import Identitas from './components/User/Identitas/Identitas';
 
 function App() {
   return (
@@ -24,8 +26,10 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           {/*Halaman ican*/}
           <Route path="/penerbangan" element={<Penerbangan />} />
+          <Route path="/detail" element={<DetailTicket />} />
           <Route path="/destinasi" element={<DestinationPage />} />
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/identitas" element={<Identitas />} />
         </Routes>
         <Footer />
       </Router>
