@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const ProtectedRoute = ({ component: Component, ...props }) => {
 const Admin = useSelector((state) => state.authReducer.isAdmin);
 
-  return <>{Admin ? <Outlet /> : <Navigate to="/login" />}</>;
+  return <>{Admin ? <Outlet /> : <Navigate to="/" />}</>;
 };
 
 export default ProtectedRoute;

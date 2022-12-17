@@ -14,7 +14,6 @@ const airportService = {
       const response = await API.get(`/airports/${id}`);
       return response;
     } catch (err) {
-      console.log("Auth service error", err);
       throw err;
     }
   },
@@ -31,7 +30,6 @@ const airportService = {
       const response = await API.delete(`/airports/${id}`);
       return response;
     } catch (err) {
-      console.log("Auth service error", err);
       throw err;
     }
   },
@@ -40,7 +38,6 @@ const airportService = {
       const response = await API.put(`/airports/${id}`, data);
       return response;
     } catch (err) {
-      console.log("Auth service error", err);
       throw err;
     }
   },

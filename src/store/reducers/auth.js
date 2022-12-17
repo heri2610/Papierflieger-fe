@@ -4,7 +4,8 @@ const initialState = {
   user: localStorage.getItem("user") || {},
   token: localStorage.getItem("token"),
   isLoggedIn: localStorage.getItem("user") ? true : false,
-  message: false
+  message: false,
+  isAdmin : localStorage.getItem("Admin") ? true : false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -17,7 +18,8 @@ const authReducer = (state = initialState, action) => {
         user: payload.username,
         token: payload.token,
         isLoggedIn: true,
-        message: payload.message
+        message: payload.message,
+        isAdmin: payload.isAdmin,
       };
     case REGISTER:
       return {

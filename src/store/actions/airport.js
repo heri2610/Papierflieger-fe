@@ -1,5 +1,5 @@
 import airportService from "../../services/airportService";
-import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT } from "../types/index";
+import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT, GET_AIRPORTBYID } from "../types/index";
 
 export const getAirport = () =>
   async function (dispatch) {
@@ -15,7 +15,7 @@ export const getAirportById = (id) =>
   async function (dispatch) {
     try {
       const response = await airportService.getAirportById(id);
-      dispatch({ type: GET_AIRPORT, payload: response.data });
+      dispatch({ type: GET_AIRPORTBYID, payload: response.data });
     } catch (error) {
       console.log(error);
       throw error;
