@@ -3,12 +3,33 @@ import { GET_AIRPLANE, ADD_AIRPLANE, PUT_AIRPLANE, DELETE_AIRPLANE, GET_AIRPLANE
 
 export const getAirplane = () =>
   async function (dispatch) {
+    dispatch({
+      type: GET_AIRPLANE,
+      payload: {
+        loading: true,
+        data: false,
+        errorMessage: false,
+      },
+    });
     try {
       const response = await airportService.getAirplane();
-      dispatch({ type: GET_AIRPLANE, payload: response.data });
+      dispatch({
+        type: GET_AIRPLANE,
+        payload: {
+          loading: false,
+          data: response.data,
+          errorMessage: false,
+        },
+      });
     } catch (error) {
-      console.log(error);
-      throw error;
+      dispatch({
+        type: GET_AIRPLANE,
+        payload: {
+          loading: false,
+          data: false,
+          errorMessage: error.message,
+        },
+      });
     }
   };
 export const getAirplaneById = (id) =>
@@ -21,12 +42,12 @@ export const getAirplaneById = (id) =>
       throw error;
     }
   };
-export const addAirplane = (data) =>
+export const addAirplane = (data, history) =>
   async function (dispatch) {
     try {
       const response = await airportService.addAirplane(data);
       dispatch({ type: ADD_AIRPLANE, payload: response.data });
-      // history("/");
+      history("/admin/airplane", { state: { message: response.data.message } });
     } catch (error) {
       console.log(error);
       throw error;

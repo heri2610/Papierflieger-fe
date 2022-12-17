@@ -2,8 +2,10 @@ import { GET_AIRPLANE, ADD_AIRPLANE, PUT_AIRPLANE, DELETE_AIRPLANE, GET_AIRPLANE
 
 const initialState = {
   message: false,
-  data: false,
   dataById: false,
+  data: [],
+  loading: false,
+  errorMessage: false,
 };
 
 const airplaneReducer = (state = initialState, action) => {
@@ -13,8 +15,10 @@ const airplaneReducer = (state = initialState, action) => {
     case GET_AIRPLANE:
       return {
         ...state,
-        message: payload.message,
-        data: payload.airports,
+        message: payload.data.message,
+        data: payload.data.dataAirplane,
+        loading: payload.loading,
+        errorMessage: payload.errorMessage,
       };
     case GET_AIRPLANEBYID:
       return {
