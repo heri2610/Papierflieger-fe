@@ -11,6 +11,7 @@ import DestinationPage from "./pages/user/DestinationPage";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
 import DetailTicket from "./components/User/Ticket/DetailTicket";
 import Identitas from './components/User/Identitas/Identitas';
+import Payment from "./components/User/Payment/Payment";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/destinasi" element={<DestinationPage />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/identitas" element={<Identitas />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
         <Footer />
       </Router>
