@@ -5,8 +5,8 @@ import {
   // Routes,
   Route
 } from 'react-router-dom'
-import Airplane from './Airplane/Airplane';
-import NewAirplane from './Airplane/NewAirplane';
+// import Airplane from './Airplane/Airplane';
+// import NewAirplane from './Airplane/NewAirplane';
 // import Payment from './pages/Payment/Payment';
 // import NewPayment from './pages/Payment/NewPayment';
 // import Ticket from './pages/Ticket/Ticket';
