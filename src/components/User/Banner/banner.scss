@@ -27,6 +27,21 @@ h1 {
 .home {
   overflow-x: hidden;
   margin-top: 30px;
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+    -webkit-border-radius: 60px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 60px;
+    -moz-background-clip: padding;
+    border-radius: 60px;
+    background-clip: padding-box;
+    margin: 7px 0 0 5px;
+    float: left;
+    background-size: cover;
+    background-position: center center;
+  }
 }
 
 .card.search-flight {
@@ -39,4 +54,12 @@ h1 {
   border: 1px solid #0060c2;
   border-radius: 15px;
   color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .home {
+    .banner {
+      height: 430px;
+    }
+  }
 }

@@ -1,40 +1,73 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import brand from "../../../assets/images/brand.svg";
 import "./banner.scss";
 
 const Banner = () => {
+  const token = window.localStorage.getItem("token");
+  const avatar = window.localStorage.getItem("avatar");
+  const [matches, setMatches] = useState(
+    window.matchMedia("(min-width: 768px)").matches
+  );
+
+  useEffect(() => {
+    window
+      .matchMedia("(min-width: 768px)")
+      .addEventListener('change', e => setMatches(e.matches));
+  }, []);
+
   return (
     <div className="home" id="main">
-      <div
-        className="container-fluid mt-5 bg-papier"
-        style={{ height: "430px" }}
-      >
-        <div className="row">
-          <div className="col-md-3 pt-5">
-            <div className="banner-titles my-5">
-              <h5 className="mx-5">Hi, kenalin!</h5>
+      <div className="container-fluid mt-5 bg-papier banner">
+        {matches && (
+          <div className="row row-cols-lg-4">
+            <div className="col pt-5">
+              <div className="banner-titles my-5">
+                <h5 className="mx-5">Hi, kenalin!</h5>
+              </div>
+            </div>
+            <div className="col mt-4">
+              <div className="logo img-fluid">
+                <img src={brand} alt="" />
+              </div>
+            </div>
+            <div className="col mt-5">
+              <div className="banner-titles my-5">
+                <h5 className="me-6">Pilihan Penerbanganmu</h5>
+              </div>
+            </div>
+            <div className="col mt-5">
+              <div className="banner-titles my-5">
+                <h1>
+                  To Infinity <br /> & Beyond!
+                </h1>
+              </div>
             </div>
           </div>
-          <div className="col-md-3 mt-4">
-            <div className="logo">
-              <img src={brand} alt="" />
+        )}
+        {!matches && token && (
+          <div className="pt-3 pb-5 mx-2 d-flex justify-content-between">
+            <div className="me-3">
+              <p className="fs-5 mb-0">Welcome!</p>
+              <p className="fs-4 text-capitalize">{window.localStorage.getItem("user")}</p>
+            </div>
+            <div className="avatar" style={{ backgroundImage: `url(${avatar})` }}>
             </div>
           </div>
-          <div className="col-md-3 mt-5">
-            <div className="banner-titles my-5">
-              <h5 className="me-6">Pilihan Penerbanganmu</h5>
+        )}
+        {!matches && !token && (
+          <div className="pt-3 pb-5 mx-2 d-flex justify-content-between">
+            <div className="me-3">
+              <p className="fs-5 mb-0">Hai, kenalin!</p>
+              <p className="fs-4">Pilihan penerbanganmu.</p>
+            </div>
+            <div className="w-25">
+              <img src={brand} height="60px" width="60px" alt="pp" />
+              <p className="mt-2">To Infinity & Beyond!</p>
             </div>
           </div>
-          <div className="col-md-3 mt-5">
-            <div className="banner-titles my-5">
-              <h1>
-                To Infinity <br /> & Beyond!
-              </h1>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
-    </div>
+    </div >
   );
 };
 
