@@ -5,30 +5,37 @@ import { Button, Container, Table, Alert } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "./DataAirplane.scss";
-import { Link, useLocation } from "react-router-dom";
-import { getAirplane } from "../../../store/actions/airplane";
+import { Link } from "react-router-dom";
+import { getAirplane, deleteAirplane } from "../../../store/actions/airplane";
 
 const DataAirplane = () => {
-  const { state } = useLocation();
   const { loading, data, errorMessage, message } = useSelector((state) => state.airplaneReducer);
   const [messages, setMessages] = useState("");
+  const [eror, setEror] = useState("");
+  const [edit, setEdit] = useState({});
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirplane());
   }, [dispatch]);
-
   useEffect(() => {
-    if (state) {
-      console.log(state);
-      setMessages(state.message);
+    if (errorMessage) {
+      setEror(errorMessage);
       window.setTimeout(() => {
         setMessages("");
-      }, 2000);
+      }, 3000);
     }
-  }, []);
-  // console.log(loading);
-  // console.log(data);
-  // console.log(errorMessage);
+    if (message) {
+      setMessages(message);
+      window.setTimeout(() => {
+        setMessages("");
+      }, 3000);
+    }
+  }, [data]);
+ console.log(message)
+  console.log(data);
+  const handleDelete = (id) => {
+      dispatch(deleteAirplane(id));
+  };
   return (
     <div className="data-airplane">
       <Container>
@@ -39,14 +46,14 @@ const DataAirplane = () => {
         </Link>
         {messages && (
           <Alert key="primary" variant="primary">
-            <>{messages}</>
+            <>{message}</>
           </Alert>
         )}
-        {/* {message && (
-          <Alert key="primary" variant="primary">
-            {message}
+        {eror && (
+          <Alert key="danger" variant="danger">
+            {eror}
           </Alert>
-        )} */}
+        )}
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -63,12 +70,12 @@ const DataAirplane = () => {
                 <td>{airplane.airplaneCode}</td>
                 <td>{airplane.class}</td>
                 <td>
-                  <Link to="/admin/airplane/edit" style={{ textDecoration: "none" }}>
-                    <Button>
+                  {/* <Link to="/admin/airplane/edit" style={{ textDecoration: "none" }}> */}
+                    <Button onClick={()=>{setEdit(airplane);}}>
                       <FiEdit />
                     </Button>
-                  </Link>
-                  <Button className="delete">
+                  {/* </Link> */}
+                  <Button className="delete" onClick={() => handleDelete(airplane.id)}>
                     <MdDelete />
                   </Button>
                 </td>
@@ -76,6 +83,7 @@ const DataAirplane = () => {
             ))}
           </tbody>
         </Table>
+        {loading && <h1>loadiiiiiing.......</h1>}
       </Container>
     </div>
   );

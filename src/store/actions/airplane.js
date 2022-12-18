@@ -34,12 +34,33 @@ export const getAirplane = () =>
   };
 export const getAirplaneById = (id) =>
   async function (dispatch) {
+    dispatch({
+      type: GET_AIRPLANEBYID,
+      payload: {
+        loading: true,
+        data: false,
+        errorMessage: false,
+      },
+    });
     try {
       const response = await airportService.getAirplaneById(id);
-      dispatch({ type: GET_AIRPLANEBYID, payload: response.data });
+      dispatch({
+        type: GET_AIRPLANEBYID,
+        payload: {
+          loading: false,
+          data: response.data,
+          errorMessage: false,
+        },
+      });
     } catch (error) {
-      console.log(error);
-      throw error;
+      dispatch({
+        type: GET_AIRPLANEBYID,
+        payload: {
+          loading: true,
+          data: false,
+          errorMessage: false,
+        },
+      });
     }
   };
 export const addAirplane = (data, history) =>
@@ -47,7 +68,8 @@ export const addAirplane = (data, history) =>
     try {
       const response = await airportService.addAirplane(data);
       dispatch({ type: ADD_AIRPLANE, payload: response.data });
-      history("/admin/airplane", { state: { message: response.data.message } });
+      history("/admin/airplane");
+      // , { state: { message: response.data.message } }
     } catch (error) {
       console.log(error);
       throw error;
@@ -57,8 +79,9 @@ export const addAirplane = (data, history) =>
 export const deleteAirplane = (id) =>
   async function (dispatch) {
     try {
-      airportService.deleteAirplane(id);
-      dispatch({ type: PUT_AIRPLANE });
+      const response = await airportService.deleteAirplane(id);
+      const response2 = await airportService.getAirplane();
+      dispatch({ type: DELETE_AIRPLANE, payload: { message: response.data.message, data: response2.data } });
     } catch (error) {
       console.log(error);
       throw error;
@@ -69,7 +92,7 @@ export const updateAirplane = (data, id) =>
   async function (dispatch) {
     try {
       const response = await airportService.updateAirplane(data, id);
-      dispatch({ type: DELETE_AIRPLANE, payload: response.data });
+      dispatch({ type: PUT_AIRPLANE, payload: response.data });
     } catch (error) {
       console.log(error);
       throw error;

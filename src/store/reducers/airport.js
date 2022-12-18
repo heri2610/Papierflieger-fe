@@ -2,8 +2,10 @@ import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT, GET_AIRPORTBYID 
 
 const initialState = {
   message: false,
-  data: false,
-  dataById: false
+  dataById: false,
+  data: [],
+  loading: false,
+  errorMessage: false,
 };
 
 const airportReducer = (state = initialState, action) => {
@@ -13,8 +15,9 @@ const airportReducer = (state = initialState, action) => {
     case GET_AIRPORT:
       return {
         ...state,
-        message: payload.message,
-        data: payload.airports,
+        data: payload.data.airports,
+        loading: payload.loading,
+        errorMessage: payload.errorMessage,
       };
     case GET_AIRPORTBYID:
       return {
@@ -36,7 +39,8 @@ const airportReducer = (state = initialState, action) => {
     case DELETE_AIRPORT:
       return {
         ...state,
-        message: "Data berhasil dihapus",
+        data: payload.data.airports,
+        message: payload.message,
       };
     default: {
       return state;

@@ -3,31 +3,74 @@ import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT, GET_AIRPORTBYID 
 
 export const getAirport = () =>
   async function (dispatch) {
+       dispatch({
+         type: GET_AIRPORT,
+         payload: {
+           loading: true,
+           data: false,
+           errorMessage: false,
+         },
+       });
     try {
       const response = await airportService.getAirport();
-      dispatch({ type: GET_AIRPORT, payload: response.data });
+      dispatch({
+        type: GET_AIRPORT,
+        payload: {
+          loading: false,
+          data: response.data,
+          errorMessage: false,
+        },
+      });
+      console.log(response.data);
     } catch (error) {
-      console.log(error);
-      throw error;
+      dispatch({
+        type: GET_AIRPORT,
+        payload: {
+          loading: false,
+          data: false,
+          errorMessage: error.message,
+        },
+      })
     }
   };
 export const getAirportById = (id) =>
   async function (dispatch) {
+           dispatch({
+             type: GET_AIRPORTBYID,
+             payload: {
+               loading: true,
+               data: false,
+               errorMessage: false,
+             },
+           });
     try {
       const response = await airportService.getAirportById(id);
-      dispatch({ type: GET_AIRPORTBYID, payload: response.data });
+      dispatch({
+        type: GET_AIRPORTBYID,
+        payload: {
+          loading: false,
+          data: response.data,
+          errorMessage: false,
+        },
+      });
     } catch (error) {
-      console.log(error);
-      throw error;
+      dispatch({
+        type: GET_AIRPORT,
+        payload: {
+          loading: false,
+          data: false,
+          errorMessage: error.message,
+        },
+      });
     }
   };
 ;
-export const addAirport = (data) =>
+export const addAirport = (data, history) =>
   async function (dispatch) {
     try {
       const response = await airportService.addAirport(data);
       dispatch({ type: ADD_AIRPORT, payload: response.data });
-      // history("/");
+      history("/admin/airport");
     } catch (error) {
       console.log(error);
       throw error;
@@ -37,8 +80,9 @@ export const addAirport = (data) =>
 export const deleteAirport = (id) =>
   async function (dispatch) {
     try {
-      airportService.deleteAirport(id);
-      dispatch({ type: PUT_AIRPORT });
+      const response = await airportService.deleteAirport(id);
+      const response2 = await airportService.getAirport();
+      dispatch({ type: DELETE_AIRPORT, payload: { message: response.data.message, data: response2.data } });
     } catch (error) {
       console.log(error);
       throw error;
@@ -49,7 +93,7 @@ export const updateAirport = (data, id) =>
   async function (dispatch) {
     try {
       const response = await airportService.updateAirport(data, id);
-      dispatch({ type: DELETE_AIRPORT, payload: response.data });
+      dispatch({ type: PUT_AIRPORT, payload: response.data });
     } catch (error) {
       console.log(error);
       throw error;

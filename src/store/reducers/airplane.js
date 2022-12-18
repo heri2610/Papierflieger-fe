@@ -15,7 +15,6 @@ const airplaneReducer = (state = initialState, action) => {
     case GET_AIRPLANE:
       return {
         ...state,
-        message: payload.data.message,
         data: payload.data.dataAirplane,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
@@ -23,8 +22,9 @@ const airplaneReducer = (state = initialState, action) => {
     case GET_AIRPLANEBYID:
       return {
         ...state,
-        message: payload.message,
-        data: payload.airports,
+        data: payload.data.dataAirplane,
+        loading: payload.loading,
+        errorMessage: payload.errorMessage,
       };
     case ADD_AIRPLANE:
       return {
@@ -40,12 +40,13 @@ const airplaneReducer = (state = initialState, action) => {
     case DELETE_AIRPLANE:
       return {
         ...state,
-        message: "Data berhasil dihapus",
+        data: payload.data.dataAirplane,
+        message: payload.message,
       };
     default: {
       return state;
     }
   }
 };
-
+      
 export default airplaneReducer;
