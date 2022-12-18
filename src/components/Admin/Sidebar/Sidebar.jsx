@@ -3,7 +3,8 @@ import {
     BsFillHouseFill,
     BsPersonPlusFill,
     BsFillCreditCard2FrontFill,
-    BsPaypal
+    BsPaypal,
+    BsCartPlusFill
 } from "react-icons/bs";
 import { 
     BiPaperPlane,
@@ -45,6 +46,11 @@ const Sidebar = () => {
                 <Link to="/admin/users" style={{textDecoration:"none"}}>
                     <li>
                         <BsPersonPlusFill className='icon'/><span>Pengguna</span>
+                    </li>
+                </Link>
+                <Link to="/admin/order" style={{textDecoration:"none"}}>
+                    <li>
+                        <BsCartPlusFill className='icon'/><span>Pesanan</span>
                     </li>
                 </Link>
                 <Link to="/admin/airplane" style={{textDecoration:"none"}}>
