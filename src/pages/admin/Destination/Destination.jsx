@@ -1,8 +1,8 @@
-import React from 'react'
-import AddAirport from '../../../components/Admin/Airport/AddAirport';
+import React from 'react';
+import DataDestination from '../../../components/Admin/Destination/DataDestination';
 import NavigationBar from '../../../components/Admin/Navbar/NavigationBar';
 import Sidebar from '../../../components/Admin/Sidebar/Sidebar';
-import './Airport.scss'
+import './Destination.scss'
 
 function Airport() {
   return (
@@ -13,10 +13,10 @@ function Airport() {
         <Sidebar />
       </div>
       <div className="home">
-        <div className="title-airport">
-          <h3>Menambahkan Data Bandara</h3>
+        <div className="title-destination">
+          <h3>Destination</h3>
         </div>
-        <AddAirport />
+        <DataDestination />
       </div>
     </div>
 </div>

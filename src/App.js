@@ -16,6 +16,8 @@ import Airplane from "./pages/admin/Airplane/Airplane";
 import NewAirplane from "./pages/admin/Airplane/NewAirplane";
 import Airport from "./pages/admin/Airport/Airport";
 import NewAirport from "./pages/admin/Airport/NewAirport";
+import Destination from "./pages/admin/Destination/Destination";
+import NewDestination from "./pages/admin/Destination/NewDestination";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
           <Route path="/admin/airplane/new" element={<NewAirplane />} />
           <Route path="/admin/airport" element={<Airport />} />
           <Route path="/admin/airport/new" element={<NewAirport />} />
+          <Route path="/admin/destination" element={<Destination />} />
+          <Route path="/admin/destination/new" element={<NewDestination />} />
         </Routes>
         <Footer />
       </Router>

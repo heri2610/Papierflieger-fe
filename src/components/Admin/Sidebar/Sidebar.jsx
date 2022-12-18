@@ -27,6 +27,21 @@ const Sidebar = () => {
                         <BsFillHouseFill className='icon'/><span>Dashboard</span>
                     </li>
                 </Link>
+                <Link to="/admin/airport" style={{textDecoration:"none"}}>
+                    <li>
+                        <BiPaperPlane className='icon'/><span>Bandara</span>
+                    </li>
+                </Link>
+                <Link to="/admin/destination" style={{textDecoration:"none"}}>
+                    <li>
+                        <MdAttractions className='icon'/><span>Destinasi</span>
+                    </li>
+                </Link>
+                <Link to="/admin/payment" style={{textDecoration:"none"}}>
+                    <li>
+                        <BsFillCreditCard2FrontFill className='icon'/><span>Pembayaran</span>
+                    </li>
+                </Link>
                 <Link to="/admin/users" style={{textDecoration:"none"}}>
                     <li>
                         <BsPersonPlusFill className='icon'/><span>Pengguna</span>
@@ -35,21 +50,6 @@ const Sidebar = () => {
                 <Link to="/admin/airplane" style={{textDecoration:"none"}}>
                     <li>
                         <FaPlane className='icon'/><span>Pesawat</span>
-                    </li>
-                </Link>
-                <Link to="/admin/airport" style={{textDecoration:"none"}}>
-                    <li>
-                        <BiPaperPlane className='icon'/><span>Bandara</span>
-                    </li>
-                </Link>
-                <Link to="/admin/payment" style={{textDecoration:"none"}}>
-                    <li>
-                        <BsFillCreditCard2FrontFill className='icon'/><span>Pembayaran</span>
-                    </li>
-                </Link>
-                <Link to="/admin/destination" style={{textDecoration:"none"}}>
-                    <li>
-                        <MdAttractions className='icon'/><span>Destinasi</span>
                     </li>
                 </Link>
                 <Link to="/admin/ticket" style={{textDecoration:"none"}}>
