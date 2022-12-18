@@ -13,78 +13,89 @@ import "swiper/css/pagination";
 import "./Slider.scss";
 
 // import required modules
-import { Pagination } from "swiper";
+import { Pagination, Navigation } from "swiper";
 
 const Slider = () => {
   return (
-    <div className="slider">
-      <h2 className="text-center fw-bold" id="destinasi">
-        DESTINASI
-      </h2>
-      <Swiper
-        slidesPerView={3}
-        loop={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <Link to={"/destinasi"}>
-            <div className="template">
-              <div className="box">
-                <div className="box-image">
-                  <img src={Korea} alt="" />
+    <div className="container">
+      <div className="slider">
+        <h2 className="font-title mt-0" id="destinasi">DESTINASI</h2>
+        <Swiper
+          slidesPerView={1}
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          breakpoints={{
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+          }}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <Link to={"/destinasi"}>
+              <div className="template">
+                <div className="box">
+                  <div className="box-image">
+                    <img src={Korea} alt="" />
+                  </div>
+                  <ul className="title">
+                    <li>
+                      <button>
+                        <p>Seoul, Korea</p>
+                      </button>
+                    </li>
+                  </ul>
                 </div>
-                <ul className="title">
-                  <li>
-                    <button>
-                      <p>Seoul, Korea</p>
-                    </button>
-                  </li>
-                </ul>
               </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to={"/destinasi"}>
-            <div className="template">
-              <div className="box">
-                <div className="box-image">
-                  <img src={Bali} alt="" />
+            </Link>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Link to={"/destinasi"}>
+              <div className="template">
+                <div className="box">
+                  <div className="box-image">
+                    <img src={Bali} alt="" />
+                  </div>
+                  <ul className="title">
+                    <li>
+                      <button>
+                        <p>Bali, Indonesia</p>
+                      </button>
+                    </li>
+                  </ul>
                 </div>
-                <ul className="title">
-                  <li>
-                    <button>
-                      <p>Bali, Indonesia</p>
-                    </button>
-                  </li>
-                </ul>
               </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to={"/destinasi"}>
-            <div className="template">
-              <div className="box">
-                <div className="box-image">
-                  <img src={Dubai} alt="" />
+            </Link>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Link to={"/destinasi"}>
+              <div className="template">
+                <div className="box">
+                  <div className="box-image">
+                    <img src={Dubai} alt="" />
+                  </div>
+                  <ul className="title">
+                    <li>
+                      <button>
+                        <p>Dubai, Uni Emirat Arab</p>
+                      </button>
+                    </li>
+                  </ul>
                 </div>
-                <ul className="title">
-                  <li>
-                    <button>
-                      <p>Dubai, Uni Emirat Arab</p>
-                    </button>
-                  </li>
-                </ul>
               </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-      </Swiper>
+            </Link>
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </div>
   );
 };
