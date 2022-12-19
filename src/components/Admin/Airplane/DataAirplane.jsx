@@ -6,9 +6,13 @@ import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "./DataAirplane.scss";
 import { Link } from "react-router-dom";
-import { getAirplane, deleteAirplane, updateAirplane } from "../../../store/actions/airplane";
+import {
+  getAirplane,
+  deleteAirplane,
+  updateAirplane,
+} from "../../../store/actions/airplane";
 import Select from "react-select";
-// import EditAirplane from "./EditAirplane"
+import Loading from "../../UIComponents/Loading";
 const classAirplane = [
   { value: "Business", label: "Business" },
   { value: "Ekonomy", label: "Ekonomy" },
@@ -29,10 +33,12 @@ const DataAirplane = () => {
     console.log(datas);
     // dispatch(updateAirplane(datas, edit.id));
   };
-  const { loading, data, errorMessage, message } = useSelector((state) => state.airplaneReducer);
+  const { loading, data, errorMessage, message } = useSelector(
+    (state) => state.airplaneReducer
+  );
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
-  
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirplane());
@@ -51,24 +57,23 @@ const DataAirplane = () => {
       }, 3000);
     }
   }, [data]);
- console.log(message)
+  console.log(message);
   console.log(data);
   const handleDelete = (id) => {
-    if(window.confirm("yakin mau dihapus?")){
+    if (window.confirm("yakin mau dihapus?")) {
       dispatch(deleteAirplane(id));
     }
-
   };
-   const handleClose = () => setShow(false);
-   const handleShow = () => setShow(true);
-  const handleDataEdit = (airplane)=>{
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleDataEdit = (airplane) => {
     setCode(airplane.airplaneCode);
     setName(airplane.airplaneName);
     setklass(airplane.class);
     setLabel({ value: airplane.class, label: airplane.class });
-  }
-  
-  console.log(label)
+  };
+
+  console.log(label);
   return (
     <div className="data-airplane">
       <Container>
@@ -108,7 +113,10 @@ const DataAirplane = () => {
                       <FiEdit />
                     </Button>
                   </Link>
-                  <Button className="delete" onClick={() => handleDelete(airplane.id)}>
+                  <Button
+                    className="delete"
+                    onClick={() => handleDelete(airplane.id)}
+                  >
                     <MdDelete />
                   </Button>
                 </td>
@@ -116,7 +124,12 @@ const DataAirplane = () => {
             ))}
           </tbody>
         </Table>
-        {loading && <h1>loadiiiiiing.......</h1>}
+        {loading && (
+          <div className="loading-center">
+            {" "}
+            <Loading />{" "}
+          </div>
+        )}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Menambahkan Data Pesawat</Modal.Title>
@@ -127,17 +140,42 @@ const DataAirplane = () => {
               <div className="container-airplane">
                 <Form onSubmit={handleSubmit}>
                   <Container>
-                    <Form.Group className="form mb-3" controlId="validationCustom01">
+                    <Form.Group
+                      className="form mb-3"
+                      controlId="validationCustom01"
+                    >
                       <Form.Label>Nama Pesawat</Form.Label>
-                      <Form.Control required type="text" placeholder="Boeing 737-800" onChange={(e) => setName(e.target.value)} value={name} />
+                      <Form.Control
+                        required
+                        type="text"
+                        placeholder="Boeing 737-800"
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                      />
                     </Form.Group>
-                    <Form.Group className="form mb-3" controlId="validationCustom01">
+                    <Form.Group
+                      className="form mb-3"
+                      controlId="validationCustom01"
+                    >
                       <Form.Label>Kode Pesawat</Form.Label>
-                      <Form.Control required type="text" placeholder="AF12345" onChange={(e) => setCode(e.target.value)} value={code} />
+                      <Form.Control
+                        required
+                        type="text"
+                        placeholder="AF12345"
+                        onChange={(e) => setCode(e.target.value)}
+                        value={code}
+                      />
                     </Form.Group>
-                    <Form.Group className="form mb-3" controlId="validationCustom01">
+                    <Form.Group
+                      className="form mb-3"
+                      controlId="validationCustom01"
+                    >
                       <Form.Label>Kelas</Form.Label>
-                      <Select options={classAirplane} onChange={(e) => setklass(e.value)} defaultValue={label} />
+                      <Select
+                        options={classAirplane}
+                        onChange={(e) => setklass(e.value)}
+                        defaultValue={label}
+                      />
                     </Form.Group>
                     <br />
                     <div className="add-airplane">
