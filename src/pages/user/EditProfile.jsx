@@ -17,7 +17,7 @@ const EditProfile = () => {
             <Form>
               <div className="d-flex flex-wrap">
                 <div className="position-relative">
-                  <img src={window.localStorage.getItem("avatar")} alt="foto profil" width="150" height="150" className="mb-3 me-5 flex-shrink-0" />
+                  <div className="avatar mb-3 me-5 flex-shrink-0" style={{ backgroundImage: `url(${window.localStorage.getItem("avatar")})` }}></div>
                   <Form.Group controlId="formFile" className="mb-3 upload-pp">
                     <Form.Label>Ubah Foto</Form.Label>
                     <Form.Control type="file" />
@@ -35,7 +35,7 @@ const EditProfile = () => {
                         <Form.Control
                           required
                           type="date"
-                          // placeholder="yy/mm/dd"
+                        // placeholder="yy/mm/dd"
                         />
                       </Form.Group>
                       <Form.Group className="mb-3">

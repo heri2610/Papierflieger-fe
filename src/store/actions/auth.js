@@ -1,5 +1,5 @@
 import AuthService from "../../services/authService";
-import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE } from "../types/index";
+import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE } from "../types/index";
 
 export const login = (params, history) =>
   async function (dispatch) {
@@ -30,6 +30,20 @@ export const logout = (params, history) =>
     try {
       AuthService.logout(params);
       dispatch({ type: LOGOUT });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+
+export const detailProfile = (params) =>
+  async function (dispatch) {
+    try {
+      const response = await AuthService.detailProfile();
+      dispatch({
+        type: DETAIL_PROFILE,
+        data: response.data
+      });
     } catch (error) {
       console.log(error);
       throw error;

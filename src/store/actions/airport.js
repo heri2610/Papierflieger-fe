@@ -3,14 +3,14 @@ import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT, GET_AIRPORTBYID 
 
 export const getAirport = () =>
   async function (dispatch) {
-       dispatch({
-         type: GET_AIRPORT,
-         payload: {
-           loading: true,
-           data: false,
-           errorMessage: false,
-         },
-       });
+    dispatch({
+      type: GET_AIRPORT,
+      payload: {
+        loading: true,
+        data: false,
+        errorMessage: false,
+      },
+    });
     try {
       const response = await airportService.getAirport();
       dispatch({
@@ -30,19 +30,19 @@ export const getAirport = () =>
           data: false,
           errorMessage: error.message,
         },
-      })
+      });
     }
   };
 export const getAirportById = (id) =>
   async function (dispatch) {
-           dispatch({
-             type: GET_AIRPORTBYID,
-             payload: {
-               loading: true,
-               data: false,
-               errorMessage: false,
-             },
-           });
+    dispatch({
+      type: GET_AIRPORTBYID,
+      payload: {
+        loading: true,
+        data: false,
+        errorMessage: false,
+      },
+    });
     try {
       const response = await airportService.getAirportById(id);
       dispatch({

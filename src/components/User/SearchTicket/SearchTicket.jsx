@@ -43,6 +43,9 @@ export default function SearchTicket() {
                           </option>
                         ))
                       }
+                      {!data &&
+                        <option>memuat...</option>
+                      }
                     </select>
                     <label htmlFor="floatingSelectFrom">Dari</label>
                   </div>
@@ -59,6 +62,9 @@ export default function SearchTicket() {
                             </div>
                           </option>
                         ))
+                      }
+                      {!data &&
+                        <option>memuat...</option>
                       }
                     </select>
                     <label htmlFor="floatingSelectTo">Ke</label>
