@@ -6,9 +6,25 @@
   margin-top: 10px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .upload-pp {
     position: absolute;
     margin-right: 3rem;
+    top: 170px;
+  }
+}
+
+.form-edit {
+  .avatar {
+    width: 150px;
+    height: 150px;
+    -webkit-border-radius: 20px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 20px;
+    -moz-background-clip: padding;
+    border-radius: 20px;
+    background-clip: padding-box;
+    background-size: cover;
+    background-position: center center;
   }
 }

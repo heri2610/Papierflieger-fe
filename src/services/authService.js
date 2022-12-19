@@ -45,6 +45,15 @@ const AuthService = {
     }
   },
 
+  detailProfile: async function () {
+    try {
+      const response = await API.get('/auth/profile');
+      return response;
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  },
 };
 
 const setHeadersAndStorage = ({ username, token, avatar }) => {
