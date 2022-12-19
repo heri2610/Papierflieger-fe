@@ -1,14 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Container, Table, Alert } from "react-bootstrap";
+import { Modal, Button, Container, Table, Alert } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "./DataAirplane.scss";
 import { Link } from "react-router-dom";
 import { getAirplane, deleteAirplane } from "../../../store/actions/airplane";
+import EditAirplane from "./EditAirplane"
 
 const DataAirplane = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const { loading, data, errorMessage, message } = useSelector((state) => state.airplaneReducer);
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
@@ -73,11 +79,25 @@ const DataAirplane = () => {
                 <td>{airplane.airplaneCode}</td>
                 <td>{airplane.class}</td>
                 <td>
-                  {/* <Link to="/admin/airplane/edit" style={{ textDecoration: "none" }}> */}
-                    <Button onClick={()=>{setEdit(airplane);}}>
+                  <Link>
+                    <Button variant="primary" onClick={handleShow}>
                       <FiEdit />
                     </Button>
-                  {/* </Link> */}
+                    <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Menambahkan Data Pesawat</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body><EditAirplane/></Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                      <Button variant="primary" onClick={handleClose}>
+                        Save Changes
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                  </Link>
                   <Button className="delete" onClick={() => handleDelete(airplane.id)}>
                     <MdDelete />
                   </Button>

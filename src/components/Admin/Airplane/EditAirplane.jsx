@@ -7,8 +7,8 @@ import { addAirplane } from "../../../store/actions/airplane";
 import Select from "react-select"
 
 const classAirplane = [
-  {value: "Bisnis", label: "Bisnis"},
-  {value: "Ekonomi", label: "Ekonomi"}
+    {value: "Bisnis", label: "Bisnis"},
+    {value: "Ekonomi", label: "Ekonomi"}
 ]
 
 const AddAirplane = () => {
@@ -42,9 +42,7 @@ const AddAirplane = () => {
             </Form.Group>
             <Form.Group className="form mb-3" controlId="validationCustom01">
               <Form.Label>Kelas</Form.Label>
-              <Form.Select aria-label="Default select example" onChange={(e) => setklass(e.target.value)}>
-                <Select options={classAirplane} onChange={(e) => setklass(e.target.value)} />
-              </Form.Select>
+              <Select options={classAirplane} onChange={(e) => setklass(e.target.value)} />
             </Form.Group>
             <br />
             <div className="add-airplane">
