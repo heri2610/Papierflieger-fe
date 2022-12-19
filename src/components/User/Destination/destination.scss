@@ -1,0 +1,17 @@
+@media (max-width: 1024px) {
+  .destination-img img {
+    width: 85%;
+    height: auto;
+  }
+}
+
+.icon-wishlist {
+  svg {
+    width: 100%;
+
+    &:hover {
+      cursor: pointer;
+      color: #0060c2;
+    }
+  }
+}
