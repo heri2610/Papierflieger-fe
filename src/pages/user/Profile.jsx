@@ -1,4 +1,6 @@
 import React from 'react';
+import Footer from "../../components/Footer/Footer";
+import NavigationBar from "../../components/Navbar/NavigationBar";
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 // import FormProfile from '../../components/User/FormProfile/FormProfile';
@@ -6,6 +8,7 @@ import { Link } from 'react-router-dom';
 const Profile = () => {
   return (
     <>
+    <NavigationBar/>
       <div className="form-edit pt-5">
         <Container className="mt-5">
           <h3 className="mb-3">Halaman Profil</h3>
@@ -128,7 +131,6 @@ const Profile = () => {
               </div>
             </div>
           </Form>
-
           <div className="d-flex justify-content-end">
             <Link to="/user/profile/edit">
               <Button className="btn-primary my-5">
@@ -138,6 +140,7 @@ const Profile = () => {
           </div>
         </Container>
       </div>
+      <Footer/>
     </>
   );
 };

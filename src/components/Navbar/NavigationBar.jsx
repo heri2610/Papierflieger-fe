@@ -13,6 +13,7 @@ import "./navbar.scss";
 import DropdownNav from "./DropdownNav.jsx";
 
 const NavigationBar = () => {
+  const regis = window.location.pathname === "/register"
   const token = window.localStorage.getItem("token");
   const [show, setShow] = useState(false);
 
@@ -20,30 +21,15 @@ const NavigationBar = () => {
   const handleShow = () => setShow(true);
   return (
     <div className="container-fluid mb-3 fixed-top">
-      <Navbar
-        expand="lg"
-        className="justify-content-center bg-white rounded shadow-sm"
-      >
+      <Navbar expand="lg" className="justify-content-center bg-white rounded shadow-sm">
         <Container fluid className="navbar-content">
           <Link to={"/"}>
-            <img
-              src={brand}
-              alt="Logo"
-              width="70"
-              className="d-inline-block align-text-top"
-            />
+            <img src={brand} alt="Logo" width="70" className="d-inline-block align-text-top" />
           </Link>
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg" />
-          <Navbar.Offcanvas
-            id="offcanvasNavbar-expand-lg"
-            aria-labelledby="offcanvasNavbarLabel-expand-lg"
-            placement="end"
-          >
+          <Navbar.Offcanvas id="offcanvasNavbar-expand-lg" aria-labelledby="offcanvasNavbarLabel-expand-lg" placement="end">
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title
-                className="fw-bold"
-                id="offcanvasNavbarLabel-expand-lg"
-              >
+              <Offcanvas.Title className="fw-bold" id="offcanvasNavbarLabel-expand-lg">
                 Menu
               </Offcanvas.Title>
             </Offcanvas.Header>
@@ -70,16 +56,14 @@ const NavigationBar = () => {
                     <i className="bi bi-bell-fill"></i>
                   </Nav.Link>
                   <Nav.Link href="/" className="me-3">
-                    <img
-                      src={window.localStorage.getItem("avatar")}
-                      alt="foto profil"
-                      width={"40px"}
-                      height={"40px"}
-                      className="rounded-circle"
-                    />
+                    <img src={window.localStorage.getItem("avatar")} alt="foto profil" width={"40px"} height={"40px"} className="rounded-circle" />
                   </Nav.Link>
                   <DropdownNav />
                 </div>
+              ) : regis ? (
+                <Button variant="primary" onClick={handleShow}>
+                  Masuk
+                </Button>
               ) : (
                 <Button variant="primary" onClick={handleShow}>
                   Daftar/Masuk
