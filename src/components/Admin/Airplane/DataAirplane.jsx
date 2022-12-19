@@ -1,24 +1,38 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal, Button, Container, Table, Alert } from "react-bootstrap";
+import { Modal, Button, Container, Table, Alert, Form } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "./DataAirplane.scss";
 import { Link } from "react-router-dom";
-import { getAirplane, deleteAirplane } from "../../../store/actions/airplane";
-import EditAirplane from "./EditAirplane"
-
+import { getAirplane, deleteAirplane, updateAirplane } from "../../../store/actions/airplane";
+import Select from "react-select";
+// import EditAirplane from "./EditAirplane"
+const classAirplane = [
+  { value: "Bisnis", label: "Bisnis" },
+  { value: "Ekonomi", label: "Ekonomi" },
+];
 const DataAirplane = () => {
   const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const [code, setCode] = useState("");
+  const [name, setName] = useState("");
+  const [klass, setklass] = useState("");
+  const [label, setLabel] = useState({ value: "Ekonomi", label: "Ekonomi" });
+  const datas = {
+    airplaneCode: code,
+    airplaneName: name,
+    class: klass,
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(datas);
+    // dispatch(updateAirplane(datas, edit.id));
+  };
   const { loading, data, errorMessage, message } = useSelector((state) => state.airplaneReducer);
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
-  const [edit, setEdit] = useState({});
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirplane());
@@ -45,6 +59,18 @@ const DataAirplane = () => {
     }
 
   };
+   const handleClose = () => setShow(false);
+   const handleShow = () => setShow(true);
+  const handleDataEdit = (airplane)=>{
+    setCode(airplane.airplaneCode);
+    setName(airplane.airplaneName);
+    setklass(airplane.class);
+  }
+  const handleKlass = (e)=>{
+    setklass(e)
+    setLabel({value:e, label:e})
+  }
+  console.log(label)
   return (
     <div className="data-airplane">
       <Container>
@@ -79,24 +105,10 @@ const DataAirplane = () => {
                 <td>{airplane.airplaneCode}</td>
                 <td>{airplane.class}</td>
                 <td>
-                  <Link>
+                  <Link onClick={() => handleDataEdit(airplane)}>
                     <Button variant="primary" onClick={handleShow}>
                       <FiEdit />
                     </Button>
-                    <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Menambahkan Data Pesawat</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body><EditAirplane/></Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
                   </Link>
                   <Button className="delete" onClick={() => handleDelete(airplane.id)}>
                     <MdDelete />
@@ -107,6 +119,48 @@ const DataAirplane = () => {
           </tbody>
         </Table>
         {loading && <h1>loadiiiiiing.......</h1>}
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Menambahkan Data Pesawat</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {/* <EditAirplane /> */}
+            <div className="add-airplane">
+              <div className="container-airplane">
+                <Form onSubmit={handleSubmit}>
+                  <Container>
+                    <Form.Group className="form mb-3" controlId="validationCustom01">
+                      <Form.Label>Nama Pesawat</Form.Label>
+                      <Form.Control required type="text" placeholder="Boeing 737-800" onChange={(e) => setName(e.target.value)} value={name} />
+                    </Form.Group>
+                    <Form.Group className="form mb-3" controlId="validationCustom01">
+                      <Form.Label>Kode Pesawat</Form.Label>
+                      <Form.Control required type="text" placeholder="AF12345" onChange={(e) => setCode(e.target.value)} value={code} />
+                    </Form.Group>
+                    <Form.Group className="form mb-3" controlId="validationCustom01">
+                      <Form.Label>Kelas</Form.Label>
+                      <Select options={classAirplane} onChange={(e) => handleKlass(e.value)} defaultValue={label} />
+                    </Form.Group>
+                    <br />
+                    <div className="add-airplane">
+                      <Button variant="primary" type="submit">
+                        Tambahkan
+                      </Button>
+                    </div>
+                  </Container>
+                </Form>
+              </div>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </div>
   );
