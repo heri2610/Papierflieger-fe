@@ -48,6 +48,10 @@ export default function SearchTicket() {
                         ))
                       }
                     </select> */}
+                      {!data &&
+                        <option>memuat...</option>
+                      }
+                    {/* </select> */}
                     <label htmlFor="floatingSelectFrom">Dari</label>
                     <SelectOptions options={data} onChange={(e) => handleBerangkat(e)} className="form-select" id="floatingSelectFrom" />
                   </div>
@@ -67,6 +71,9 @@ export default function SearchTicket() {
                             </div>
                           </option>
                         ))}
+                      {!data &&
+                        <option>memuat...</option>
+                      }
                     </select>
                     <label htmlFor="floatingSelectTo">Ke</label>
                   </div>

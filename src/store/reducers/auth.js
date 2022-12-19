@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE } from "../types/index";
+import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE } from "../types/index";
 
 const initialState = {
   user: localStorage.getItem("user") || {},
@@ -32,6 +32,11 @@ const authReducer = (state = initialState, action) => {
         user: {},
         token: "",
         isLoggedIn: false,
+      };
+    case DETAIL_PROFILE:
+      return {
+        ...state,
+        user: payload,
       };
     case UPDATE_PROFILE:
       return {
