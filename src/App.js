@@ -6,7 +6,7 @@ import ProtectedRoute from "./pages/user/ProtectedRoute";
 import RegisterPage from "./pages/user/Register";
 import Penerbangan from "./components/User/Penerbangan/Penerbangan";
 import DestinationPage from "./pages/user/DestinationPage";
-import Wishlist from "./components/User/Wishlist/Wishlist";
+import WishlistPage from "./pages/user/WishlistPage";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
 import EditProfile from "./pages/user/EditProfile";
 import Profile from "./pages/user/Profile";
@@ -27,7 +27,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/profile/edit" element={<EditProfile />} />
-            <Route path="/user/wishlist" element={<Wishlist />} />
+            <Route path="/user/wishlist" element={<WishlistPage />} />
             <Route element={<ProtectedRouteAdmin />}>
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/airplane" element={<Airplane />} />

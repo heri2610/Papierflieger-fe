@@ -72,7 +72,7 @@ const Destination = () => {
                         </Tooltip>
                       }
                     >
-                      <div className="icon-wishlist"><BsFillBookmarkStarFill /></div>
+                      <div className="icon-wishlist"><BsFillBookmarkStarFill size="25px" /></div>
                     </OverlayTrigger>
                   </div>
                 </div>
