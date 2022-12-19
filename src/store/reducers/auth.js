@@ -5,7 +5,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   isLoggedIn: localStorage.getItem("user") ? true : false,
   message: false,
-  isAdmin : localStorage.getItem("Admin") ? true : false
+  isAdmin: localStorage.getItem("accessToken") === "A-*dmin?&&%mlm-plgsnwngbuay-$563iedjnjdxgdj" ? true : false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -15,10 +15,10 @@ const authReducer = (state = initialState, action) => {
     case LOGIN:
       return {
         ...state,
-        user: payload.username,
-        token: payload.token,
+        user: payload.data.username,
+        token: payload.data.token,
         isLoggedIn: true,
-        message: payload.message,
+        message: payload.data.message,
         isAdmin: payload.isAdmin,
       };
     case REGISTER:

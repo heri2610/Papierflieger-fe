@@ -4,7 +4,6 @@ const AuthService = {
   login: async function (data) {
     try {
       const response = await API.post('/auth/login', data);
-      console.log(response.data);
       API.defaults.headers['Authorization'] = `${response.token}`;
       setHeadersAndStorage(response.data);
       return response;
@@ -29,6 +28,7 @@ const AuthService = {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     localStorage.removeItem('avatar');
+    localStorage.removeItem("accessToken");
   },
 
   updateProfile: async function (data) {
@@ -47,11 +47,16 @@ const AuthService = {
 
 };
 
-const setHeadersAndStorage = ({ username, token, avatar }) => {
-  API.defaults.headers['Authorization'] = `${token}`;
-  localStorage.setItem('user', username);
-  localStorage.setItem('token', token);
-  localStorage.setItem('avatar', avatar);
+const setHeadersAndStorage = ({ username, token, avatar, role }) => {
+  API.defaults.headers["Authorization"] = `${token}`;
+  localStorage.setItem("user", username);
+  localStorage.setItem("token", token);
+  localStorage.setItem("avatar", avatar);
+  if(role === "Admin"){
+    localStorage.setItem("accessToken", "A-*dmin?&&%mlm-plgsnwngbuay-$563iedjnjdxgdj");
+  }else{
+    localStorage.setItem("accessToken", "C-jaijsswem;iia*$-ustum-%4231999kkksjiwi-er");
+  }
 };
 
 export default AuthService;

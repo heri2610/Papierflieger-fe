@@ -68,9 +68,9 @@ const Sidebar = () => {
                         <BsPaypal className='icon'/><span>Transaksi</span>
                     </li>
                 </Link>
-                <Link to="/logout" style={{textDecoration:"none"}}>
+                <Link to="/" style={{textDecoration:"none"}}>
                     <li>
-                        <BiLogOut className='icon'/><span>Keluar</span>
+                        <BiLogOut className='icon'/><span>Kembali</span>
                     </li>
                 </Link>
             </ul>

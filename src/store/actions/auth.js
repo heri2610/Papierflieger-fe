@@ -5,7 +5,8 @@ export const login = (params, history) =>
   async function (dispatch) {
     try {
       const response = await AuthService.login(params);
-      dispatch({ type: LOGIN, payload: response.data });
+      const admin = response.data.role === "Admin" ? true : false;
+      dispatch({ type: LOGIN, payload: {data :response.data, isAdmin : admin} });
       history("/");
     } catch (error) {
       // console.log(error);

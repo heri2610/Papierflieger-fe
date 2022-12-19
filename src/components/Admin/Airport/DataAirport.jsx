@@ -13,7 +13,6 @@ const DataAirport = () => {
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
   const [edit, setEdit] = useState({});
-  console.log(data)
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(getAirport());
