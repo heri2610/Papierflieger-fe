@@ -34,7 +34,10 @@ const DataAirplane = () => {
  console.log(message)
   console.log(data);
   const handleDelete = (id) => {
+    if(window.confirm("yakin mau dihapus?")){
       dispatch(deleteAirplane(id));
+    }
+
   };
   return (
     <div className="data-airplane">
