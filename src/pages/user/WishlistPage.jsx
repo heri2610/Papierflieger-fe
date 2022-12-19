@@ -6,11 +6,9 @@ import NavigationBar from "../../components/Navbar/NavigationBar";
 const WishlistPage = () => {
   return (
     <>
-    <NavigationBar/>
-    <div className="Wishlist">
+      <NavigationBar />
       <Wishlist />
-    </div>
-    <Footer/>
+      <Footer />
     </>
   );
 };
