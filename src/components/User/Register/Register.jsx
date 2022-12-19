@@ -72,18 +72,16 @@ function Register() {
         <div>
           <Form onSubmit={handleSubmit}>
             <Container>
-              <Row>
-                <div>
-                  <h3 className="me-3">Registrasi</h3>
-                  {
-                    error &&
-                    <Alert variant="danger">
-                      {errorMessage}
-                    </Alert>
-                  }
-                </div>
-                <br />
-                <br />
+              <div>
+                <h3 className="mb-3">Registrasi</h3>
+                {
+                  error &&
+                  <Alert variant="danger" className="p-2">
+                    {errorMessage}
+                  </Alert>
+                }
+              </div>
+              <Row className="row-cols-1 row-cols-md-2">
                 <Col>
                   <Form.Group className="mb-3" controlId="validationCustom01">
                     <Form.Label>Username</Form.Label>
@@ -94,7 +92,6 @@ function Register() {
                       onChange={handleUsername}
                       value={username}
                     />
-                    {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="validationCustom02">
                     <Form.Label>Nama Lengkap</Form.Label>
@@ -105,7 +102,6 @@ function Register() {
                       onChange={handleFullName}
                       value={fullName}
                     />
-                    {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
                   </Form.Group>
                 </Col>
                 <Col>
