@@ -10,8 +10,8 @@ import { getAirplane, deleteAirplane, updateAirplane } from "../../../store/acti
 import Select from "react-select";
 // import EditAirplane from "./EditAirplane"
 const classAirplane = [
-  { value: "Bisnis", label: "Bisnis" },
-  { value: "Ekonomi", label: "Ekonomi" },
+  { value: "Business", label: "Business" },
+  { value: "Ekonomy", label: "Ekonomy" },
 ];
 const DataAirplane = () => {
   const [show, setShow] = useState(false);
@@ -65,11 +65,9 @@ const DataAirplane = () => {
     setCode(airplane.airplaneCode);
     setName(airplane.airplaneName);
     setklass(airplane.class);
+    setLabel({ value: airplane.class, label: airplane.class });
   }
-  const handleKlass = (e)=>{
-    setklass(e)
-    setLabel({value:e, label:e})
-  }
+  
   console.log(label)
   return (
     <div className="data-airplane">
@@ -139,7 +137,7 @@ const DataAirplane = () => {
                     </Form.Group>
                     <Form.Group className="form mb-3" controlId="validationCustom01">
                       <Form.Label>Kelas</Form.Label>
-                      <Select options={classAirplane} onChange={(e) => handleKlass(e.value)} defaultValue={label} />
+                      <Select options={classAirplane} onChange={(e) => setklass(e.value)} defaultValue={label} />
                     </Form.Group>
                     <br />
                     <div className="add-airplane">
