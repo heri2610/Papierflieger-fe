@@ -4,11 +4,14 @@ import SearchTiket from "../../components/User/SearchTicket/SearchTicket";
 import Slider from "../../components/User/Slider/Slider";
 import Testimonial from "../../components/User/Testimonial/Testimonial";
 import AboutUs from "../../components/User/AboutUs/AboutUs";
+import Footer from "../../components/Footer/Footer";
+import NavigationBar from "../../components/Navbar/NavigationBar";
 import "./LandingPage.scss";
 
 function LandingPage() {
   return (
     <>
+      <NavigationBar />
       <div className="banner">
         <Banner />
       </div>
@@ -24,6 +27,7 @@ function LandingPage() {
       <div className="about-us">
         <AboutUs />
       </div>
+      <Footer />
     </>
   );
 }
