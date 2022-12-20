@@ -1,28 +1,25 @@
 import React from "react";
-import DataPayment from "../../../components/Admin/Payment/DataPayment";
+import AddTicket from "../../../components/Admin/Ticket/AddTicket";
 import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
-import "./Payment.scss"
 
-function Payment() {
+function Ticket() {
   return (
-    <div className="payment">
-      <div className="dashboard">
-        <NavigationBar/>
+    <div className="ticket">
+        <NavigationBar />
         <div className="dashboard-container">
           <div className="sidebar">
-            <Sidebar/>
+            <Sidebar />
           </div>
           <div className="home">
-            <div className="title-payment">
-              <h3>Pembayaran</h3>
+            <div className="title-ticket">
+              <h3>Menambahkan Data Ticket</h3>
             </div>
-            <DataPayment/>
+            <AddTicket />
           </div>
         </div>
-      </div>
     </div>
   )
 }
 
-export default Payment
+export default Ticket

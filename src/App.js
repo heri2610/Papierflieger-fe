@@ -12,6 +12,7 @@ import EditProfile from "./pages/user/EditProfile";
 import Profile from "./pages/user/Profile";
 import Airplane from "./pages/admin/Airplane/Airplane";
 import NewAirplane from "./pages/admin/Airplane/NewAirplane";
+import EditAirplane from "./components/Admin/Airplane/EditAirplane";
 import Airport from "./pages/admin/Airport/Airport";
 import NewAirport from "./pages/admin/Airport/NewAirport";
 import Destination from "./pages/admin/Destination/Destination";
@@ -20,8 +21,12 @@ import Payment from "./pages/admin/Payment/Payment";
 import NewPayment from "./pages/admin/Payment/NewPayment";
 import Order from "./pages/admin/Order/Order";
 import ProtectedRouteAdmin from "./pages/admin/ProtectedRoute";
-import EditAirplane from "./components/Admin/Airplane/EditAirplane";
 import NotFoundPage from "./pages/user/NotFoundPage";
+import Ticket from "./pages/admin/Ticket/Ticket";
+import NewTicket from "./pages/admin/Ticket/NewTicket";
+import DetailTicket from "./components/User/Ticket/DetailTicket";
+import Identitas from "./components/User/Identitas/Identitas";
+import Transaction from "./pages/admin/Transaction/Transaction";
 
 function App() {
   return (
@@ -32,6 +37,9 @@ function App() {
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/profile/edit" element={<EditProfile />} />
             <Route path="/user/wishlist" element={<WishlistPage />} />
+            <Route path="/detail" element={<DetailTicket />} />
+            <Route path="/identitas" element={<Identitas />} />
+            <Route path="/payment" element={<Payment />} />
             <Route element={<ProtectedRouteAdmin />}>
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/airplane" element={<Airplane />} />
@@ -46,8 +54,11 @@ function App() {
               />
               <Route path="/admin/order" element={<Order />} />
               <Route path="/admin/payment" element={<Payment />} />
-              <Route path="/admin/payment/edit" element={<EditAirplane />} />
+              {/* <Route path="/admin/payment/edit" element={<EditAirplane />} /> */}
               <Route path="/admin/payment/new" element={<NewPayment />} />
+              <Route path="/admin/ticket" element={<Ticket />} />
+              <Route path="/admin/ticket/new" element={<NewTicket />} />
+              <Route path="/admin/transaction" element={<Transaction />} />
             </Route>
           </Route>
           {/* klo mau nambahin router d sini yak */}

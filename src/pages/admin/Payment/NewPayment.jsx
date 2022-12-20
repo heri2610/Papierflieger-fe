@@ -1,11 +1,11 @@
-import React from 'react';
-import AddPayment from '../../../components/Admin/Payment/AddPayment';
-import NavigationBar from '../../../components/Admin/Navbar/NavigationBar';
-import Sidebar from '../../../components/Admin/Sidebar/Sidebar';
+import React from "react";
+import AddPayment from "../../../components/Admin/Payment/AddPayment";
+import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
+import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
 
 function Airport() {
   return (
-    <div className='dashboard'>
+    <div className="dashboard">
     <NavigationBar />
     <div className="dashboard-container">
       <div className="sidebar">
