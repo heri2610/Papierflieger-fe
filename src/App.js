@@ -26,6 +26,7 @@ import NewTicket from "./pages/admin/Ticket/NewTicket";
 import DetailTicket from "./components/User/Ticket/DetailTicket";
 import Identitas from './components/User/Identitas/Identitas';
 import Transaction from "./pages/admin/Transaction/Transaction";
+import Users from "./pages/admin/User/User";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
               <Route path="/admin/ticket" element={<Ticket />} />
               <Route path="/admin/ticket/new" element={<NewTicket />} />
               <Route path="/admin/transaction" element={<Transaction />} />
+              <Route path="/admin/transaction" element={<Users />} />
             </Route>
           </Route>
           {/* klo mau nambahin router d sini yak */}

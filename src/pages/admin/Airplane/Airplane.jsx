@@ -9,7 +9,7 @@ const Airplane = () => {
     <div className="airplane">
     <NavigationBar />
     <div className="airplane-container">
-      <div className="sidebar">
+      <div className="aairplane-sidebar">
         <Sidebar />
       </div>
       <div className="home">
