@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Container, Table, Alert } from "react-bootstrap";
+import { Button, Container, Table, Alert, Form, Modal } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "./DataAirport.scss";
@@ -10,12 +10,12 @@ import { getAirport, deleteAirport } from "../../../store/actions/airport";
 import Loading from "../../UIComponents/Loading";
 
 const DataAirport = () => {
-  const { Loading, data, errorMessage, message } = useSelector(
+  const { loading, data, errorMessage, message } = useSelector(
     (state) => state.airportReducer
   );
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
-  const [edit, setEdit] = useState({});
+  // const [edit, setEdit] = useState({});
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirport());
@@ -37,6 +37,28 @@ const DataAirport = () => {
   const handleDelete = (id) => {
     dispatch(deleteAirport(id));
   };
+console.log(data)
+    const [show, setShow] = useState(false);
+    const [airportName, setAirportName] = useState("");
+    const [city, setCity] = useState("");
+    const [code, setCityCode] = useState("");
+    const datas = {
+      airportName: airportName,
+      city: city,
+      cityCode: code,
+    };
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log(datas);
+      // dispatch(updateAirplane(datas, edit.id));
+    };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleDataEdit = (Airport) => {
+    setAirportName(Airport.airportName);
+    setCity(Airport.city);
+    setCityCode(Airport.cityCode);
+  }
   return (
     <div className="data-airport">
       <Container>
@@ -75,10 +97,9 @@ const DataAirport = () => {
                   <td>{Airport.cityCode}</td>
                   <td>
                     <Link
-                      to="/admin/airport/new"
-                      style={{ textDecoration: "none" }}
+                      onClick={() => handleDataEdit(Airport)}
                     >
-                      <Button>
+                      <Button variant="primary" onClick={handleShow}>
                         <FiEdit />
                       </Button>
                     </Link>
@@ -95,6 +116,44 @@ const DataAirport = () => {
               ))}
           </tbody>
         </Table>
+        {loading && (
+          <div className="loading-center">
+            <Loading />
+          </div>
+        )}
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Mengubah Data Bandara</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {/* <EditAirplane /> */}
+            <div className="add-airplane">
+              <div className="container-airplane">
+                <Form onSubmit={handleSubmit}>
+                  <Container>
+                    <Form.Group className="form" controlId="validationCustom01">
+                      <Form.Label>Nama Bandara</Form.Label>
+                      <Form.Control required type="text" placeholder="Ngurah Rai International Airport" onChange={(e) => setAirportName(e.target.value)} value={airportName} />
+                    </Form.Group>
+                    <Form.Group className="form" controlId="validationCustom01">
+                      <Form.Label>Wilayah</Form.Label>
+                      <Form.Control required type="text" placeholder="Denpasar, Bali, Indonesia" onChange={(e) => setCity(e.target.value)} value={city} />
+                    </Form.Group>
+                    <Form.Group className="form" controlId="validationCustom01">
+                      <Form.Label>Kode Bandara</Form.Label>
+                      <Form.Control required type="text" placeholder="DPS" onChange={(e) => setCityCode(e.target.value)} value={code} />
+                    </Form.Group>
+                  </Container>
+                </Form>
+              </div>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleClose}>
+              Simpan Perubahan
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </div>
   );

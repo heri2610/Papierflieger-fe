@@ -12,7 +12,6 @@ import EditProfile from "./pages/user/EditProfile";
 import Profile from "./pages/user/Profile";
 import Airplane from "./pages/admin/Airplane/Airplane";
 import NewAirplane from "./pages/admin/Airplane/NewAirplane";
-import EditAirplane from "./components/Admin/Airplane/EditAirplane";
 import Airport from "./pages/admin/Airport/Airport";
 import NewAirport from "./pages/admin/Airport/NewAirport";
 import Destination from "./pages/admin/Destination/Destination";
@@ -44,15 +43,11 @@ function App() {
             <Route element={<ProtectedRouteAdmin />}>
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/airplane" element={<Airplane />} />
-              <Route path="/admin/airplane/edit" element={<EditAirplane />} />
               <Route path="/admin/airplane/new" element={<NewAirplane />} />
               <Route path="/admin/airport" element={<Airport />} />
               <Route path="/admin/airport/new" element={<NewAirport />} />
               <Route path="/admin/destination" element={<Destination />} />
-              <Route
-                path="/admin/destination/new"
-                element={<NewDestination />}
-              />
+              <Route path="/admin/destination/new" element={<NewDestination />} />
               <Route path="/admin/order" element={<Order />} />
               <Route path="/admin/payment" element={<Payment />} />
               {/* <Route path="/admin/payment/edit" element={<EditAirplane />} /> */}
@@ -60,7 +55,7 @@ function App() {
               <Route path="/admin/ticket" element={<Ticket />} />
               <Route path="/admin/ticket/new" element={<NewTicket />} />
               <Route path="/admin/transaction" element={<Transaction />} />
-              <Route path="/admin/transaction" element={<Users />} />
+              <Route path="/admin/users" element={<Users />} />
             </Route>
           </Route>
           {/* klo mau nambahin router d sini yak */}

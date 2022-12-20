@@ -132,7 +132,7 @@ const DataAirplane = () => {
         )}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Menambahkan Data Pesawat</Modal.Title>
+            <Modal.Title>Mengubah Data Pesawat</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {/* <EditAirplane /> */}
@@ -177,23 +177,14 @@ const DataAirplane = () => {
                         defaultValue={label}
                       />
                     </Form.Group>
-                    <br />
-                    <div className="add-airplane">
-                      <Button variant="primary" type="submit">
-                        Tambahkan
-                      </Button>
-                    </div>
                   </Container>
                 </Form>
               </div>
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
             <Button variant="primary" onClick={handleClose}>
-              Save Changes
+              Simpan Perubahan
             </Button>
           </Modal.Footer>
         </Modal>
