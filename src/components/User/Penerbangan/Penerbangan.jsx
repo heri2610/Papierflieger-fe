@@ -15,7 +15,7 @@ function Penerbangan() {
           <FormSearch />
         </div>
       </Container>
-      <Container fluid className='section--body pt-4 pb-4'>
+      <Container fluid className='section--body pt-4 pb-4 penerbangan'>
         <Row>
           <Col md='12'>
             <h3>Pilihan Penerbangan</h3>
