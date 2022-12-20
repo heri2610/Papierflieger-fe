@@ -16,7 +16,7 @@ const airplane = [
 
 const typeTicket = [
     {value: "Domestik", label: "Domestik"},
-    {label: "Internasional", label: "Internasional"}
+    {value: "Internasional", label: "Internasional"}
 ]
 
 const AddAirport = () => {

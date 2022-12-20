@@ -21,15 +21,10 @@ import Payment from "./pages/admin/Payment/Payment";
 import NewPayment from "./pages/admin/Payment/NewPayment";
 import Order from "./pages/admin/Order/Order";
 import ProtectedRouteAdmin from "./pages/admin/ProtectedRoute";
-<<<<<<< HEAD
 import Ticket from "./pages/admin/Ticket/Ticket";
 import NewTicket from "./pages/admin/Ticket/NewTicket";
-
-=======
-import EditAirplane from "./components/Admin/Airplane/EditAirplane";
 import DetailTicket from "./components/User/Ticket/DetailTicket";
 import Identitas from './components/User/Identitas/Identitas';
->>>>>>> 8fbd9e01fed4fef2fc9979e561800a34cd1b5ae1
 
 function App() {
   return (
