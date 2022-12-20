@@ -21,10 +21,11 @@ import Payment from "./pages/admin/Payment/Payment";
 import NewPayment from "./pages/admin/Payment/NewPayment";
 import Order from "./pages/admin/Order/Order";
 import ProtectedRouteAdmin from "./pages/admin/ProtectedRoute";
+import NotFoundPage from "./pages/user/NotFoundPage";
 import Ticket from "./pages/admin/Ticket/Ticket";
 import NewTicket from "./pages/admin/Ticket/NewTicket";
 import DetailTicket from "./components/User/Ticket/DetailTicket";
-import Identitas from './components/User/Identitas/Identitas';
+import Identitas from "./components/User/Identitas/Identitas";
 import Transaction from "./pages/admin/Transaction/Transaction";
 import Users from "./pages/admin/User/User";
 
@@ -48,7 +49,10 @@ function App() {
               <Route path="/admin/airport" element={<Airport />} />
               <Route path="/admin/airport/new" element={<NewAirport />} />
               <Route path="/admin/destination" element={<Destination />} />
-              <Route path="/admin/destination/new" element={<NewDestination />} />
+              <Route
+                path="/admin/destination/new"
+                element={<NewDestination />}
+              />
               <Route path="/admin/order" element={<Order />} />
               <Route path="/admin/payment" element={<Payment />} />
               {/* <Route path="/admin/payment/edit" element={<EditAirplane />} /> */}
@@ -64,6 +68,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/penerbangan" element={<Penerbangan />} />
           <Route path="/destinasi" element={<DestinationPage />} />
+          <Route path="/notfound" element={<NotFoundPage />} />
         </Routes>
       </Router>
     </div>
