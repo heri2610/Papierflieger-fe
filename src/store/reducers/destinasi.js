@@ -15,14 +15,14 @@ const DESTINASIReducer = (state = initialState, action) => {
     case GET_DESTINASI:
       return {
         ...state,
-        data: payload.data.dataDESTINASI,
+        data: payload.data.destinations,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
       };
     case GET_DESTINASIBYID:
       return {
         ...state,
-        data: payload.data.dataDESTINASI,
+        data: payload.data.destinations,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
       };
@@ -30,7 +30,6 @@ const DESTINASIReducer = (state = initialState, action) => {
       return {
         ...state,
         message: "Data berhasil ditambahkan",
-        data: payload.airports,
       };
     case PUT_DESTINASI:
       return {
@@ -40,7 +39,7 @@ const DESTINASIReducer = (state = initialState, action) => {
     case DELETE_DESTINASI:
       return {
         ...state,
-        data: payload.data.dataDESTINASI,
+        data: payload.data.destinations,
         message: payload.message,
       };
     default: {

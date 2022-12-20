@@ -6,7 +6,7 @@ import ProtectedRoute from "./pages/user/ProtectedRoute";
 import RegisterPage from "./pages/user/Register";
 import Penerbangan from "./components/User/Penerbangan/Penerbangan";
 import DestinationPage from "./pages/user/DestinationPage";
-import Wishlist from "./components/User/Wishlist/Wishlist";
+import WishlistPage from "./pages/user/WishlistPage";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
 import EditProfile from "./pages/user/EditProfile";
 import Profile from "./pages/user/Profile";
@@ -21,9 +21,15 @@ import Payment from "./pages/admin/Payment/Payment";
 import NewPayment from "./pages/admin/Payment/NewPayment";
 import Order from "./pages/admin/Order/Order";
 import ProtectedRouteAdmin from "./pages/admin/ProtectedRoute";
+<<<<<<< HEAD
 import Ticket from "./pages/admin/Ticket/Ticket";
 import NewTicket from "./pages/admin/Ticket/NewTicket";
 
+=======
+import EditAirplane from "./components/Admin/Airplane/EditAirplane";
+import DetailTicket from "./components/User/Ticket/DetailTicket";
+import Identitas from './components/User/Identitas/Identitas';
+>>>>>>> 8fbd9e01fed4fef2fc9979e561800a34cd1b5ae1
 
 function App() {
   return (
@@ -33,7 +39,10 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/profile/edit" element={<EditProfile />} />
-            <Route path="/user/wishlist" element={<Wishlist />} />
+            <Route path="/user/wishlist" element={<WishlistPage />} />
+            <Route path="/detail" element={<DetailTicket />} />
+            <Route path="/identitas" element={<Identitas />} />
+            <Route path="/payment" element={<Payment />} />
             <Route element={<ProtectedRouteAdmin />}>
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/airplane" element={<Airplane />} />

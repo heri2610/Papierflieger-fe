@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getAirport } from "../../../store/actions/airport";
-import {SelectOptions} from "../../UIComponents/Seclect"
+import {SelectOptions} from "../../UIComponents/Seclect";
 
 import "./searchTicket.scss";
 
