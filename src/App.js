@@ -25,7 +25,9 @@ import Ticket from "./pages/admin/Ticket/Ticket";
 import NewTicket from "./pages/admin/Ticket/NewTicket";
 import DetailTicket from "./components/User/Ticket/DetailTicket";
 import Identitas from "./components/User/Identitas/Identitas";
+import UserPayment from "./components/User/Payment/Payment";
 import Transaction from "./pages/admin/Transaction/Transaction";
+import TransactionHistory from "./pages/user/TransactionHistory";
 import Users from "./pages/admin/User/User";
 
 function App() {
@@ -40,6 +42,11 @@ function App() {
             <Route path="/detail" element={<DetailTicket />} />
             <Route path="/identitas" element={<Identitas />} />
             <Route path="/payment" element={<Payment />} />
+            <Route
+              path="/user/transaction/history"
+              element={<TransactionHistory />}
+            />
+            <Route path="/payment" element={<UserPayment />} />
             <Route element={<ProtectedRouteAdmin />}>
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/airplane" element={<Airplane />} />
