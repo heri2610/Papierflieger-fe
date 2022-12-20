@@ -7,33 +7,36 @@ import { FiEdit } from "react-icons/fi";
 import "./DataAirport.scss";
 import { Link } from "react-router-dom";
 import { getAirport, deleteAirport } from "../../../store/actions/airport";
+import Loading from "../../UIComponents/Loading";
 
 const DataAirport = () => {
-  const { data, errorMessage, message } = useSelector((state) => state.airportReducer);
+  const { Loading, data, errorMessage, message } = useSelector(
+    (state) => state.airportReducer
+  );
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
   const [edit, setEdit] = useState({});
-    const dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(getAirport());
-    }, [dispatch]);
-    useEffect(() => {
-      if (errorMessage) {
-        setEror(errorMessage);
-        window.setTimeout(() => {
-          setMessages("");
-        }, 3000);
-      }
-      if (message) {
-        setMessages(message);
-        window.setTimeout(() => {
-          setMessages("");
-        }, 3000);
-      }
-    }, [data]);
-    const handleDelete= (id)=>{
-      dispatch(deleteAirport(id))
-    };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAirport());
+  }, [dispatch]);
+  useEffect(() => {
+    if (errorMessage) {
+      setEror(errorMessage);
+      window.setTimeout(() => {
+        setMessages("");
+      }, 3000);
+    }
+    if (message) {
+      setMessages(message);
+      window.setTimeout(() => {
+        setMessages("");
+      }, 3000);
+    }
+  }, [data]);
+  const handleDelete = (id) => {
+    dispatch(deleteAirport(id));
+  };
   return (
     <div className="data-airport">
       <Container>
@@ -71,7 +74,10 @@ const DataAirport = () => {
                   <td>{Airport.city}</td>
                   <td>{Airport.cityCode}</td>
                   <td>
-                    <Link to="/admin/airport/new" style={{ textDecoration: "none" }}>
+                    <Link
+                      to="/admin/airport/new"
+                      style={{ textDecoration: "none" }}
+                    >
                       <Button>
                         <FiEdit />
                       </Button>

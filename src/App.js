@@ -21,6 +21,7 @@ import NewPayment from "./pages/admin/Payment/NewPayment";
 import Order from "./pages/admin/Order/Order";
 import ProtectedRouteAdmin from "./pages/admin/ProtectedRoute";
 import EditAirplane from "./components/Admin/Airplane/EditAirplane";
+import NotFoundPage from "./pages/user/NotFoundPage";
 
 function App() {
   return (
@@ -39,7 +40,10 @@ function App() {
               <Route path="/admin/airport" element={<Airport />} />
               <Route path="/admin/airport/new" element={<NewAirport />} />
               <Route path="/admin/destination" element={<Destination />} />
-              <Route path="/admin/destination/new" element={<NewDestination />} />
+              <Route
+                path="/admin/destination/new"
+                element={<NewDestination />}
+              />
               <Route path="/admin/order" element={<Order />} />
               <Route path="/admin/payment" element={<Payment />} />
               <Route path="/admin/payment/edit" element={<EditAirplane />} />
@@ -51,6 +55,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/penerbangan" element={<Penerbangan />} />
           <Route path="/destinasi" element={<DestinationPage />} />
+          <Route path="/notfound" element={<NotFoundPage />} />
         </Routes>
       </Router>
     </div>
