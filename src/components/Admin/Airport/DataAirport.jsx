@@ -10,7 +10,7 @@ import { getAirport, deleteAirport } from "../../../store/actions/airport";
 import Loading from "../../UIComponents/Loading";
 
 const DataAirport = () => {
-  const { Loading, data, errorMessage, message } = useSelector(
+  const { loading, data, errorMessage, message } = useSelector(
     (state) => state.airportReducer
   );
   const [messages, setMessages] = useState("");
@@ -95,6 +95,12 @@ const DataAirport = () => {
               ))}
           </tbody>
         </Table>
+        {loading && (
+          <div className="loading-center">
+            {" "}
+            <Loading />{" "}
+          </div>
+        )}
       </Container>
     </div>
   );
