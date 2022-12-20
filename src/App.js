@@ -21,6 +21,8 @@ import NewPayment from "./pages/admin/Payment/NewPayment";
 import Order from "./pages/admin/Order/Order";
 import ProtectedRouteAdmin from "./pages/admin/ProtectedRoute";
 import EditAirplane from "./components/Admin/Airplane/EditAirplane";
+import DetailTicket from "./components/User/Ticket/DetailTicket";
+import Identitas from './components/User/Identitas/Identitas';
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function App() {
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/profile/edit" element={<EditProfile />} />
             <Route path="/user/wishlist" element={<WishlistPage />} />
+            <Route path="/detail" element={<DetailTicket />} />
+            <Route path="/identitas" element={<Identitas />} />
+            <Route path="/payment" element={<Payment />} />
             <Route element={<ProtectedRouteAdmin />}>
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/airplane" element={<Airplane />} />
