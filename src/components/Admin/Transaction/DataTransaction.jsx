@@ -1,26 +1,56 @@
 import React from 'react';
-import DataTransaction from '../../components/Transaction/DataTransaction';
-import NavigationBar from '../../components/Navbar/NavigationBar'
-import Sidebar from '../../components/Sidebar/Sidebar';
-import './Transaction.scss'
+// import './DataTransaction.scss';
+import {Table , Container } from 'react-bootstrap';
 
-const Transaction = () => {
+const DataTransaction = () => {
   return (
-    <div className='dashboard'>
-        <NavigationBar/>
-        <div className="dashboard-container">
-          <div className="sidebar">
-            <Sidebar/>
-          </div>
-          <div className="home">
-            <div className="title-transaction">
-              <h3>Transaksi</h3>
-            </div>
-            <DataTransaction />
-          </div>
-        </div>
+    <div className='data-transaction'>
+      <Container>
+        <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama Pengguna</th>
+            <th>Metode Pembayaran</th>
+            <th>Nomor Rekening</th>
+            <th>Id Pemesanan</th>
+            <th>Jenis Perjalanan</th>
+            <th>Harga</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Desi</td>
+            <td>BCA</td>
+            <td>91938247</td>
+            <td>2, 4</td>
+            <td>One-Way</td>
+            <td>600000</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Wina</td>
+            <td>BRI</td>
+            <td>91938247</td>
+            <td>3, 5</td>
+            <td>One-Way</td>
+            <td>600000</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Uti</td>
+            <td>Mandiri</td>
+            <td>91938247</td>
+            <td>6, 9</td>
+            <td>One-Way</td>
+            <td>600000</td>
+          </tr>
+        </tbody>
+      </Table>
+    </Container>
     </div>
   )
 }
 
-export default Transaction
+export default DataTransaction

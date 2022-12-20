@@ -1,12 +1,12 @@
-import React from 'react'
-import DataAirport from '../../../components/Admin/Airport/DataAirport'
-import NavigationBar from '../../../components/Admin/Navbar/NavigationBar'
-import Sidebar from '../../../components/Admin/Sidebar/Sidebar'
-import './Airport.scss'
+import React from "react"
+import DataAirport from "../../../components/Admin/Airport/DataAirport"
+import NavigationBar from "../../../components/Admin/Navbar/NavigationBar"
+import Sidebar from "../../../components/Admin/Sidebar/Sidebar"
+import "./Airport.scss"
 
 function Airport() {
   return (
-    <div className='dashboard'>
+    <div className="dashboard">
     <NavigationBar />
     <div className="dashboard-container">
       <div className="sidebar">

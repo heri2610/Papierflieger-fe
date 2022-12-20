@@ -1,11 +1,11 @@
-import React from 'react'
-import AddTicket from '../../../components/Admin/Ticket/AddTicket'
-import NavigationBar from '../../../components/Admin/Navbar/NavigationBar'
-import Sidebar from '../../../components/Admin/Sidebar/Sidebar'
+import React from "react";
+import AddTicket from "../../../components/Admin/Ticket/AddTicket";
+import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
+import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
 
 function Ticket() {
   return (
-    <div className='ticket'>
+    <div className="ticket">
         <NavigationBar />
         <div className="dashboard-container">
           <div className="sidebar">

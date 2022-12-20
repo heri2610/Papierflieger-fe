@@ -1,13 +1,13 @@
-import React from 'react';
-import DataPayment from '../../../components/Admin/Payment/DataPayment';
-import NavigationBar from '../../../components/Admin/Navbar/NavigationBar';
-import Sidebar from '../../../components/Admin/Sidebar/Sidebar';
-import './Payment.scss'
+import React from "react";
+import DataPayment from "../../../components/Admin/Payment/DataPayment";
+import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
+import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
+import "./Payment.scss"
 
 function Payment() {
   return (
     <div className="payment">
-      <div className='dashboard'>
+      <div className="dashboard">
         <NavigationBar/>
         <div className="dashboard-container">
           <div className="sidebar">
