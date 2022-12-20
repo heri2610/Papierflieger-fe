@@ -44,12 +44,12 @@ const AddAirplane = () => {
               <Form.Label>Kelas</Form.Label>
               <Select options={classAirplane} onChange={(e) => setklass(e.target.value)} />
             </Form.Group>
-            <br />
+            {/* <br />
             <div className="add-airplane">
               <Button variant="primary" type="submit">
                 Tambahkan
               </Button>
-            </div>
+            </div> */}
           </Container>
         </Form>
       </div>

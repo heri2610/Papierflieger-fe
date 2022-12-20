@@ -79,7 +79,6 @@ const DataAirplane = () => {
                 <td>{airplane.airplaneCode}</td>
                 <td>{airplane.class}</td>
                 <td>
-                  <Link>
                     <Button variant="primary" onClick={handleShow}>
                       <FiEdit />
                     </Button>
@@ -89,15 +88,11 @@ const DataAirplane = () => {
                     </Modal.Header>
                     <Modal.Body><EditAirplane/></Modal.Body>
                     <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Close
-                      </Button>
                       <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                        Simpan Perubahan
                       </Button>
                     </Modal.Footer>
                   </Modal>
-                  </Link>
                   <Button className="delete" onClick={() => handleDelete(airplane.id)}>
                     <MdDelete />
                   </Button>
