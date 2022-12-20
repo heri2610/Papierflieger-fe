@@ -7,20 +7,20 @@ import "./Airplane.scss";
 const Airplane = () => {
   return (
     <div className="airplane">
-    <NavigationBar />
-    <div className="airplane-container">
-      <div className="sidebar">
-        <Sidebar />
-      </div>
-      <div className="home">
-        <div className="airplane-title">
-          <h3>Pesawat</h3>
+      <NavigationBar />
+      <div className="dashboard-container">
+        <div className="sidebar">
+          <Sidebar />
         </div>
-        <DataAirplane />
+        <div className="home">
+          <div className="airplane-title">
+            <h3>Pesawat</h3>
+          </div>
+          <DataAirplane />
+        </div>
       </div>
     </div>
-</div>
-  )
+  );
 }
 
 export default Airplane
