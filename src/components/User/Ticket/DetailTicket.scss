@@ -10,6 +10,18 @@
   background-color: #c2d9f1 !important;
 }
 
-.bg__bluish{
-    background-color: #249FDA;
+.bg__bluish {
+  background-color: #249FDA;
+}
+
+@media (max-width: 568px) {
+  .section--body {
+    .logo-card {
+      width: 30%;
+    }
+
+    .event h4 {
+      font-size: 16px;
+    }
+  }
 }

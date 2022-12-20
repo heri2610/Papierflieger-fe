@@ -59,17 +59,17 @@ export default function DetailPenerbangan({ kelas, kode, harga, keberangkatan, p
                 <div id="timeline-content" className="border-bottom">
                   <ul className="timeline">
                     <li className="event" data-date="08.00" data-day="16 Desember">
-                      <h1>Jakarta</h1>
+                      <h2>Jakarta</h2>
                       <p>Soekarno Hatta International Airport (CGK)</p>
                       <p>Armada : PapierFlieger, Boeing 737<br />Durasi Tebang : 3 jam 40 menit</p>
                     </li>
                     <li className="event" data-date="08.00" data-day="16 Desember">
-                      <h1>Jakarta</h1>
+                      <h2>Jakarta</h2>
                       <p>Soekarno Hatta International Airport (CGK)</p>
                       <p>Armada : PapierFlieger, Boeing 737<br />Durasi Tebang : 3 jam 40 menit</p>
                     </li>
                     <li className="event" data-date="08.00" data-day="16 Desember">
-                      <h1>Jakarta</h1>
+                      <h2>Jakarta</h2>
                       <p>Soekarno Hatta International Airport (CGK)</p>
                       <p>Armada : PapierFlieger, Boeing 737<br />Durasi Tebang : 3 jam 40 menit</p>
                     </li>
