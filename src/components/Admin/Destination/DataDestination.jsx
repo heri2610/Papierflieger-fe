@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Table, Container, Alert } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
-// import './DataDestination.scss';
+import '../Admin.scss';
 import { Link } from "react-router-dom";
 import { getDestinasi, deleteDestinasi } from "../../../store/actions/destinasi";
 
 const DataDestination = () => {
-  const { data, errorMessage, message } = useSelector((state) => state.airportReducer);
+  const { data, errorMessage, message } = useSelector((state) => state.destinasiReducer);
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
   const [edit, setEdit] = useState({});
@@ -33,6 +33,7 @@ const DataDestination = () => {
   const handleDelete = (id) => {
     dispatch(deleteDestinasi(id));
   };
+  console.log(data)
   return (
     <div className="data-destination">
       <Container>
@@ -54,34 +55,38 @@ const DataDestination = () => {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>No</th>
               <th>Nama Destinasi</th>
               <th>Gambar</th>
               <th>Lokasi</th>
-              <th>Id Bandara</th>
+              <th>Bandara</th>
               <th>Deskripsi</th>
               <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Putra Ulun Danu Beratan</td>
-              <td>PT Papierflieger</td>
-              <td>Bali</td>
-              <td>1</td>
-              <td>Pura Ulun Danu Beratan / Pura Penataran Agung Ulun Danu Beratan adalah salah satu dari sembilan Pura Khayangan Jagat yang mengelilingi Pulau Bali</td>
-              <td>
-                <Link to="/Admin/Destination/new" style={{ textDecoration: "none" }}>
-                  <Button>
-                    <FiEdit />
-                  </Button>
-                </Link>
-                <Button className="delete">
-                  <MdDelete />
-                </Button>
-              </td>
-            </tr>
+            {data?.map((destinasi) => (
+              <tr key={destinasi.id}>
+                <td>{destinasi.name}</td>
+                <td>
+                  <img src={destinasi.image[0]} alt={`gambar${destinasi.name}`} width="30px" />
+                </td>
+                <td>{destinasi.location}</td>
+                <td>{destinasi.Airport.airportName}</td>
+                <td>{destinasi.description}</td>
+                <td>
+                  <div className="edit-delete">
+                    <Link to="/Admin/Destination/new" style={{ textDecoration: "none" }}>
+                      <Button>
+                        <FiEdit />
+                      </Button>
+                    </Link>
+                    <Button className="delete" onClick={() => handleDelete(destinasi.id)}>
+                      <MdDelete />
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </Container>

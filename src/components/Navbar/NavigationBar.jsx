@@ -39,13 +39,13 @@ const NavigationBar = () => {
                   <Nav.Link className="me-4" href="/penerbangan">
                     Penerbangan
                   </Nav.Link>
-                  <Nav.Link className="me-4" href="#destinasi">
+                  <Nav.Link className="me-4" href="/#destinasi">
                     Destinasi
                   </Nav.Link>
-                  <Nav.Link className="me-4" href="#testimonial">
+                  <Nav.Link className="me-4" href="/#testimonial">
                     Testimonial
                   </Nav.Link>
-                  <Nav.Link className="me-4" href="#aboutus">
+                  <Nav.Link className="me-4" href="/#aboutus">
                     Tentang Kami
                   </Nav.Link>
                 </div>

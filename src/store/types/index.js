@@ -18,6 +18,7 @@ export const ADD_DESTINASI = "ADD_DESTINASI";
 export const PUT_DESTINASI = "PUT_DESTINASI";
 export const DELETE_DESTINASI = "DELETE_DESTINASI";
 export const GET_DESTINASIBYID = "GET_DESTINASIBYID";
+export const ABOUT_US = "ABOUT_US";
 export const GET_TICKET = "GET_TICKET";
 export const FILTER_TICKET = "FILTER_TICKET";
 export const ADD_TICKET = "ADD_TICKET";
