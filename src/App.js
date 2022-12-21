@@ -75,7 +75,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/penerbangan" element={<Penerbangan />} />
           <Route path="/destinasi" element={<DestinationPage />} />
-          <Route path="/notfound" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
           
         </Routes>
       </Router>

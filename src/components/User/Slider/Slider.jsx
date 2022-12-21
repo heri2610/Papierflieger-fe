@@ -1,10 +1,8 @@
-import React from "react";
-import Korea from "./destinasi/Korea.png";
-import Dubai from "./destinasi/Dubai.png";
-import Bali from "./destinasi/Bali.png";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Link } from "react-router-dom";
-
+import { getDestinasi } from "../../../store/actions/destinasi";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -16,10 +14,18 @@ import "./Slider.scss";
 import { Pagination, Navigation } from "swiper";
 
 const Slider = () => {
+    const { data } = useSelector((state) => state.destinasiReducer);
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(getDestinasi());
+    }, [dispatch]);
+    console.log(data)
   return (
     <div className="container">
       <div className="slider">
-        <h2 className="font-title mt-0" id="destinasi">DESTINASI</h2>
+        <h2 className="font-title mt-0" id="destinasi">
+          DESTINASI
+        </h2>
         <Swiper
           slidesPerView={1}
           loop={true}
@@ -40,60 +46,27 @@ const Slider = () => {
           }}
           className="mySwiper"
         >
-          <SwiperSlide>
-            <Link to={"/destinasi"}>
-              <div className="template">
-                <div className="box">
-                  <div className="box-image">
-                    <img src={Korea} alt="" />
+          {data &&
+            data?.map((destinasi) => (
+              <SwiperSlide>
+                <Link>
+                  <div className="template">
+                    <div className="box">
+                      <div className="box-image">
+                        <img src={destinasi.image[0]} alt="" />
+                      </div>
+                      <ul className="title">
+                        <li>
+                          <button>
+                            <p>{destinasi.location}</p>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <ul className="title">
-                    <li>
-                      <button>
-                        <p>Seoul, Korea</p>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link to={"/destinasi"}>
-              <div className="template">
-                <div className="box">
-                  <div className="box-image">
-                    <img src={Bali} alt="" />
-                  </div>
-                  <ul className="title">
-                    <li>
-                      <button>
-                        <p>Bali, Indonesia</p>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link to={"/destinasi"}>
-              <div className="template">
-                <div className="box">
-                  <div className="box-image">
-                    <img src={Dubai} alt="" />
-                  </div>
-                  <ul className="title">
-                    <li>
-                      <button>
-                        <p>Dubai, Uni Emirat Arab</p>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </Link>
-          </SwiperSlide>
+                </Link>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>

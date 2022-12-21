@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Heri from "../../../assets/images/Heri.svg";
 import { getAboutUs } from "../../../store/actions/additionals";
 
 import "swiper/css";
@@ -10,7 +9,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 const AboutUs = () => {
-  const { loading, data, errorMessage } = useSelector((state) => state.aboutUsReducer); 
+  const { data  } = useSelector((state) => state.aboutUsReducer); 
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(getAboutUs());

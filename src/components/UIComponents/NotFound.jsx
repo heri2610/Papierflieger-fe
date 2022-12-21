@@ -11,7 +11,7 @@ const NotFound = () => {
         </div>
         <div className="col-md-4 text-center mt-5">
           <h1 className="font-404">404</h1>
-          <h3 className="font-Notfound">File Not Found!</h3>
+          <h3 className="font-Notfound">Page Not Found!</h3>
         </div>
       </div>
     </div>

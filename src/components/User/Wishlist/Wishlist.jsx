@@ -1,7 +1,6 @@
 import React from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { BsFillBookmarkXFill } from "react-icons/bs";
-import Balii from "../../../assets/images/bali1.svg";
 import Slider from "../Slider/Slider";
 import "./Wishlist.scss";
 
@@ -15,7 +14,7 @@ const Wishlist = () => {
             <div className="card-body d-flex align-items-start align-items-md-center justify-content-between">
               <div className="d-flex align-items-center flex-wrap">
                 <div className="col-md-6 me-4 p-lg-3">
-                  <img className="img-fluid" variant="top" src={Balii} alt="" />
+                  <img className="img-fluid" variant="top" src="" alt="" />
                 </div>
                 <div className="mt-3 mt-md-0">
                   <p className="card-title fw-bold fs-5">Pura Ulun Danu Beratan</p>
@@ -41,7 +40,7 @@ const Wishlist = () => {
             <div className="card-body d-flex align-items-start align-items-md-center justify-content-between">
               <div className="d-flex align-items-center flex-wrap">
                 <div className="col-md-6 me-4 p-lg-3">
-                  <img className="img-fluid" variant="top" src={Balii} alt="" />
+                  <img className="img-fluid" variant="top" src="" alt="" />
                 </div>
                 <div className="mt-3 mt-md-0">
                   <p className="card-title fw-bold fs-5">Pura Ulun Danu Beratan</p>
