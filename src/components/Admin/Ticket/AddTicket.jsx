@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import {
-  Form, Container, Button, Col, Row } from 'react-bootstrap';
-import Select from 'react-select';
-import './DataTicket.scss'
+  Form, Container, Button, Col, Row } from "react-bootstrap";
+import Select from "react-select";
+import "../Admin.scss"
 
 const airport = [
     {value: "Ngurah Rai", label: "Ngurah Rai"},

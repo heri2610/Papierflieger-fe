@@ -30,9 +30,6 @@ const DataUser = () => {
               <td>0813000000</td>
               <td>20002-09-11</td>
               <td>Indonesia</td>
-              <td>
-                <Button><MdRemoveRedEye/></Button>
-              </td>
             </tr>
           </tbody>
         </Table>

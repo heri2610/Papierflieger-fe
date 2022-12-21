@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button, Container, Table, Alert, Form } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
-import "./DataAirplane.scss";
+import "../Admin.scss";
 import { Link } from "react-router-dom";
 import {
   getAirplane,
@@ -108,17 +108,16 @@ const DataAirplane = () => {
                 <td>{airplane.airplaneCode}</td>
                 <td>{airplane.class}</td>
                 <td>
+                  <div className="edit-delete">
                   <Link onClick={() => handleDataEdit(airplane)}>
                     <Button variant="primary" onClick={handleShow}>
                       <FiEdit />
                     </Button>
                   </Link>
-                  <Button
-                    className="delete"
-                    onClick={() => handleDelete(airplane.id)}
-                  >
+                  <Button className="delete" onClick={() => handleDelete(airplane.id)} >
                     <MdDelete />
                   </Button>
+                  </div>
                 </td>
               </tr>
             ))}

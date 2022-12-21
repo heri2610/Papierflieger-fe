@@ -1,23 +1,23 @@
-import React from 'react';
+import React from "react";
 import {
   Button,
   Table,
   Container
-} from 'react-bootstrap';
+} from "react-bootstrap";
 import {
   MdDelete,
   MdRemoveRedEye
-} from 'react-icons/md';
-import { FiEdit } from 'react-icons/fi';
-// import './DataTicket.scss';
-import { Link } from 'react-router-dom'
+} from "react-icons/md";
+import { FiEdit } from "react-icons/fi";
+import "../Admin.scss";
+import { Link } from "react-router-dom"
 
 const DataTicket = () => {
   return (
-    <div className='data-ticket'>
+    <div className="data-ticket">
       <Container>
         <Link to="/admin/ticket/new" style={{textDecoration:"none"}}>
-          <Button className='btn-primary mb-3' type="submit" value="Submit">Tambahkan Tiket Perjalanan</Button>
+          <Button className="btn-primary mb-3" type="submit" value="Submit">Tambahkan Tiket Perjalanan</Button>
         </Link>
         <Table striped bordered hover>
           <thead>
@@ -40,11 +40,13 @@ const DataTicket = () => {
               <td>Jakarta</td>
               <td>Aceh</td>
               <td>
+                <div className="edit-delete">
                 <Button className="right"><MdRemoveRedEye/></Button>
                 <Link to="/admin/ticket/new" style={{textDecoration:"none"}}>
                   <Button className="delete"><FiEdit/></Button>
                 </Link>
                 <Button className="delete"><MdDelete/></Button>
+                </div>
               </td>
             </tr>
           </tbody>

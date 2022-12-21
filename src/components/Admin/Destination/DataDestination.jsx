@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Table, Container, Alert } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
-// import './DataDestination.scss';
+import '../Admin.scss';
 import { Link } from "react-router-dom";
 import { getDestinasi, deleteDestinasi } from "../../../store/actions/destinasi";
 
@@ -74,14 +74,16 @@ const DataDestination = () => {
                 <td>{destinasi.Airport.airportName}</td>
                 <td>{destinasi.description}</td>
                 <td>
-                  <Link to="/Admin/Destination/new" style={{ textDecoration: "none" }}>
-                    <Button>
-                      <FiEdit />
+                  <div className="edit-delete">
+                    <Link to="/Admin/Destination/new" style={{ textDecoration: "none" }}>
+                      <Button>
+                        <FiEdit />
+                      </Button>
+                    </Link>
+                    <Button className="delete" onClick={() => handleDelete(destinasi.id)}>
+                      <MdDelete />
                     </Button>
-                  </Link>
-                  <Button className="delete" onClick={() => handleDelete(destinasi.id)}>
-                    <MdDelete />
-                  </Button>
+                  </div>
                 </td>
               </tr>
             ))}
