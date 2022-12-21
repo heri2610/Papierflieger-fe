@@ -4,9 +4,12 @@ import Footer from "../../Footer/Footer";
 import NavigationBar from "../../Navbar/NavigationBar";
 import FormSearch from "../SearchTicket/FormSearch";
 import DetailPenerbangan from "./DetailPenerbangan";
+import { useSelector } from "react-redux";
 import "./Penerbangan.scss";
 
 function Penerbangan() {
+  const {filteredticket} = useSelector((state) => state.ticketReducer);
+  //console.log(filteredticket);
   return (
     <>
       <NavigationBar />
@@ -19,12 +22,10 @@ function Penerbangan() {
         <Row>
           <Col md='12'>
             <h3>Pilihan Penerbangan</h3>
+            {filteredticket&&filteredticket?.map(item=>
             <div className='bg-white p-3 mb-3 rounded'>
-              <DetailPenerbangan />
-            </div>
-            <div className='bg-white p-3 mb-3 rounded'>
-              <DetailPenerbangan />
-            </div>
+              <DetailPenerbangan detail={item} />
+            </div>)}
           </Col>
         </Row>
       </Container>

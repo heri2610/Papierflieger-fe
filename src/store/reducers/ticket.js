@@ -2,7 +2,8 @@ import { GET_TICKET, FILTER_TICKET, ADD_TICKET, PUT_TICKET, DELETE_TICKET, GET_T
 
 const initialState = {
   message: false,
-  dataById: false,
+  tickets: [],
+  ticket: {},
   data: [],
   loading: false,
   errorMessage: false,
@@ -18,6 +19,12 @@ const tiketsReducer = (state = initialState, action) => {
         data: payload.data.dataTicket,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
+      };
+    case FILTER_TICKET:
+      return {
+        ...state,
+        filteredticket: payload.data,
+        loading: false,
       };
     case GET_TICKETBYID:
       return {

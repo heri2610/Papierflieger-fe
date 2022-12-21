@@ -1,9 +1,16 @@
 import API from "./api";
 
-const TicketService = {
+export const TicketService = {
   filterTickets: async function (payload) {
     try {
+<<<<<<< HEAD
       const response = await API.get(`/search-tickets?flightFrom=${payload.flightFrom}&flightTo=${payload.flightTo}&departureDate=${payload.departureDate}&returnDate=${payload.returnDate}`, payload);
+=======
+      const response = await API.get(`/search-tickets`, {
+        params: { ...payload },
+      });
+      console.log(response);
+>>>>>>> 99ca72baa337fb21cf7e69b0023aa98dee77a575
       return response;
     } catch (err) {
       return Error(err);
