@@ -1,4 +1,4 @@
-import TicketService from "../../services/ticketService";
+import { TicketService } from "../../services/ticketService";
 import {
   GET_TICKET,
   FILTER_TICKET,
@@ -8,10 +8,10 @@ import {
   GET_TICKETBYID,
 } from "../types/index";
 
-export const filterTickets = () =>
+export const filterTickets = (tujuan, history) =>
   async function (dispatch) {
     dispatch({
-      type: GET_TICKET,
+      type: FILTER_TICKET,
       payload: {
         loading: true,
         data: false,
@@ -19,18 +19,19 @@ export const filterTickets = () =>
       },
     });
     try {
-      const response = await TicketService.filterTickets();
+      const response = await TicketService.filterTickets(tujuan);
       dispatch({
-        type: GET_TICKET,
+        type: FILTER_TICKET,
         payload: {
           loading: false,
           data: response.data,
           errorMessage: false,
         },
       });
+      history("/penerbangan");
     } catch (error) {
       dispatch({
-        type: GET_TICKET,
+        type: FILTER_TICKET,
         payload: {
           loading: false,
           data: false,
