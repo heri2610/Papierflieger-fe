@@ -3,6 +3,7 @@ import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getAirport } from "../../../store/actions/airport";
 import { SelectOptions } from "../../UIComponents/Select";
+import { useNavigate } from "react-router-dom";
 
 import "./searchTicket.scss";
 
@@ -11,6 +12,7 @@ export default function FormSearch() {
   const [type, setType] = useState("");
   const [berangkat, setBerangkat] = useState("");
   console.log(berangkat);
+  const history = useNavigate();
   const handleType = (event) => {
     setType(event.target.value);
   };
@@ -22,6 +24,7 @@ export default function FormSearch() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    history('/penerbangan', { state: { type, berangkat } });
   };
 
   const handleBerangkat = (e) => {
