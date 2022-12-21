@@ -29,6 +29,7 @@ import UserPayment from "./components/User/Payment/Payment";
 import Transaction from "./pages/admin/Transaction/Transaction";
 import TransactionHistory from "./pages/user/TransactionHistory";
 import Users from "./pages/admin/User/User";
+import CheckIn from "./pages/user/Checkin";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
               element={<TransactionHistory />}
             />
             <Route path="/payment" element={<UserPayment />} />
+            <Route path="/checkin" element={<CheckIn />} />
             <Route element={<ProtectedRouteAdmin />}>
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/airplane" element={<Airplane />} />
@@ -54,7 +56,10 @@ function App() {
               <Route path="/admin/airport" element={<Airport />} />
               <Route path="/admin/airport/new" element={<NewAirport />} />
               <Route path="/admin/destination" element={<Destination />} />
-              <Route path="/admin/destination/new" element={<NewDestination />} />
+              <Route
+                path="/admin/destination/new"
+                element={<NewDestination />}
+              />
               <Route path="/admin/order" element={<Order />} />
               <Route path="/admin/payment" element={<Payment />} />
               {/* <Route path="/admin/payment/edit" element={<EditAirplane />} /> */}
@@ -71,6 +76,7 @@ function App() {
           <Route path="/penerbangan" element={<Penerbangan />} />
           <Route path="/destinasi" element={<DestinationPage />} />
           <Route path="/notfound" element={<NotFoundPage />} />
+          
         </Routes>
       </Router>
     </div>
