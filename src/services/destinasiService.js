@@ -3,7 +3,7 @@ import API from "./api";
 const destinasiService = {
   getDestinasi: async function () {
     try {
-      const response = await API.get("/airplanes");
+      const response = await API.get("/destinations");
       return response;
     } catch (err) {
       throw err;
@@ -11,7 +11,7 @@ const destinasiService = {
   },
   getDestinasiById: async function (id) {
     try {
-      const response = await API.get(`/airplanes/${id}`);
+      const response = await API.get(`/destinations/${id}`);
       return response;
     } catch (err) {
       throw err;
@@ -19,7 +19,7 @@ const destinasiService = {
   },
   addDestinasi: async function (data) {
     try {
-      const response = await API.post("/airplanes", data);
+      const response = await API.post("/destinations", data);
       return response;
     } catch (err) {
       throw err;
@@ -27,7 +27,7 @@ const destinasiService = {
   },
   deleteDestinasi: async function (id) {
     try {
-      const response = await API.delete(`/airplanes/${id}`);
+      const response = await API.delete(`/destinations/${id}`);
       return response;
     } catch (err) {
       throw err;
@@ -35,7 +35,7 @@ const destinasiService = {
   },
   updateDestinasi: async function (data, id) {
     try {
-      const response = await API.put(`/airplanes/${id}`, data);
+      const response = await API.put(`/destinations/${id}`, data);
       return response;
     } catch (err) {
       throw err;

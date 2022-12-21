@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Heri from "../../../assets/images/Heri.svg";
+import { getAboutUs } from "../../../store/actions/additionals";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 const AboutUs = () => {
+  const { loading, data, errorMessage } = useSelector((state) => state.aboutUsReducer); 
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(getAboutUs());
+    }, [dispatch]); 
+    console.log(data)
   return (
     <div className="container-fluid mt-5 pb-5 bg-babyblue" id="aboutus">
       <div className="container">
@@ -30,15 +38,18 @@ const AboutUs = () => {
           }}
           className="mySwiper"
         >
-          <SwiperSlide>
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
+          {data?.map((dataTim) => (
+            <SwiperSlide>
+              <div className="card">
+                <div className="card-body d-flex align-items-center flex-column">
+                  <img className="img-circle w-75" src={dataTim.avatar} alt="Heri" />
+                  <h6 className="mt-3">{dataTim.name}</h6>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
+            </SwiperSlide>
+          ))}
+
+          {/* <SwiperSlide>
             <div className="card">
               <div className="card-body d-flex align-items-center flex-column">
                 <img className="img-circle w-75" src={Heri} alt="Heri" />
@@ -101,7 +112,7 @@ const AboutUs = () => {
                 <h6 className="mt-3">Azra</h6>
               </div>
             </div>
-          </SwiperSlide>
+          </SwiperSlide>*/}
         </Swiper>
         {/* <div className="row row-cols-3 row-cols-lg-5 justify-content-center text-center g-4 mt-2">
           <div className="col">
