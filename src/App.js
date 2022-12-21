@@ -56,7 +56,10 @@ function App() {
               <Route path="/admin/airport" element={<Airport />} />
               <Route path="/admin/airport/new" element={<NewAirport />} />
               <Route path="/admin/destination" element={<Destination />} />
-              <Route path="/admin/destination/new" element={<NewDestination />} />
+              <Route
+                path="/admin/destination/new"
+                element={<NewDestination />}
+              />
               <Route path="/admin/order" element={<Order />} />
               <Route path="/admin/payment" element={<Payment />} />
               {/* <Route path="/admin/payment/edit" element={<EditAirplane />} /> */}
