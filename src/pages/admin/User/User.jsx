@@ -2,7 +2,7 @@ import React from "react";
 import DataUser from "../../../components/Admin/User/DataUser";
 import NavigationBar from "../../../components/Admin/Navbar/NavigationBar"
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
-// import "./User.scss"
+import "../Admin.scss"
 
 const Users = () => {
   return (
@@ -13,7 +13,7 @@ const Users = () => {
             <Sidebar/>
           </div>
           <div className="home">
-            <div className="title">
+            <div className="tittle">
               <h3>Pengguna</h3>
             </div>
             <DataUser />

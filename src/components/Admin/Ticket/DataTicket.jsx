@@ -1,20 +1,7 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Table, Container, Alert } from "react-bootstrap";
-import { MdDelete, MdRemoveRedEye } from "react-icons/md";
-import { FiEdit } from "react-icons/fi";
-// import './DataTicket.scss';
-import { Link } from "react-router-dom";
-import { getTicket, deleteTicket } from "../../../store/actions/ticket";
 import Loading from "../../UIComponents/Loading";
-=======
-import React from "react";
-import {
-  Button,
-  Table,
-  Container
-} from "react-bootstrap";
+import { Button, Container, Table, Alert } from "react-bootstrap";
 import {
   MdDelete,
   MdRemoveRedEye
@@ -22,7 +9,6 @@ import {
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom"
->>>>>>> 99ca72baa337fb21cf7e69b0023aa98dee77a575
 
 const DataTicket = () => {
     const { loading, data, errorMessage, message } = useSelector((state) => state.tiketsReducer);
@@ -76,15 +62,8 @@ const DataTicket = () => {
   return (
     <div className="data-ticket">
       <Container>
-<<<<<<< HEAD
-        <Link to="/admin/ticket/new" style={{ textDecoration: "none" }}>
-          <Button className="btn-primary mb-3" type="submit" value="Submit">
-            Tambahkan Tiket Perjalanan
-          </Button>
-=======
         <Link to="/admin/ticket/new" style={{textDecoration:"none"}}>
           <Button className="btn-primary mb-3" type="submit" value="Submit">Tambahkan Tiket Perjalanan</Button>
->>>>>>> 99ca72baa337fb21cf7e69b0023aa98dee77a575
         </Link>
         {messages && (
           <Alert key="primary" variant="primary">
@@ -109,7 +88,6 @@ const DataTicket = () => {
             </tr>
           </thead>
           <tbody>
-<<<<<<< HEAD
             {data &&
               data?.map((tiket) => (
                 <tr key={tiket.id}>
@@ -134,25 +112,6 @@ const DataTicket = () => {
                   </td>
                 </tr>
               ))}
-=======
-            <tr>
-              <td>1</td>
-              <td>67428601</td>
-              <td>2022-12-14</td>
-              <td>2022-12-14</td>
-              <td>Jakarta</td>
-              <td>Aceh</td>
-              <td>
-                <div className="edit-delete">
-                <Button className="right"><MdRemoveRedEye/></Button>
-                <Link to="/admin/ticket/new" style={{textDecoration:"none"}}>
-                  <Button className="delete"><FiEdit/></Button>
-                </Link>
-                <Button className="delete"><MdDelete/></Button>
-                </div>
-              </td>
-            </tr>
->>>>>>> 99ca72baa337fb21cf7e69b0023aa98dee77a575
           </tbody>
         </Table>
         {loading && (

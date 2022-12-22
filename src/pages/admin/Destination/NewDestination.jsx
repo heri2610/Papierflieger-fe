@@ -2,7 +2,7 @@ import React from "react"
 import AddDestination from "../../../components/Admin/Destination/AddDestination"
 import NavigationBar from "../../../components/Admin/Navbar/NavigationBar"
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar"
-import "./Destination.scss"
+import "../Admin.scss"
 
 function Airport() {
   return (

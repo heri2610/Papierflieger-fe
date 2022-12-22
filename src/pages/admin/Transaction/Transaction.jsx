@@ -2,7 +2,7 @@ import React from "react";
 import DataTransaction from "../../../components/Admin/Transaction/DataTransaction";
 import NavigationBar from "../../../components/Admin/Navbar/NavigationBar"
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
-// import './Transaction.scss'
+import "../Admin.scss"
 
 const Transaction = () => {
   return (
@@ -13,7 +13,7 @@ const Transaction = () => {
             <Sidebar/>
           </div>
           <div className="home">
-            <div className="title-transaction">
+            <div className="tittle">
               <h3>Transaksi</h3>
             </div>
             <DataTransaction />
