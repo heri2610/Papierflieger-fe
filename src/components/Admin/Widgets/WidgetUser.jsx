@@ -1,10 +1,10 @@
-import React from 'react';
-import './Widget.scss';
+import React from "react";
+import "./Widget.scss";
 import { BsPersonPlusFill } from "react-icons/bs";
 
 const Widget = () => {
   return (
-    <div className='widget'>
+    <div className="widget">
         <div className="left">
             <div className="desc">
                 <BsPersonPlusFill/>
