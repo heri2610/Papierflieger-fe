@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import brand from "../../../assets/images/brand.svg";
+import brand from "./img/brand.svg";
 import "./banner.scss";
 
 const Banner = () => {
@@ -12,7 +12,7 @@ const Banner = () => {
   useEffect(() => {
     window
       .matchMedia("(min-width: 768px)")
-      .addEventListener('change', e => setMatches(e.matches));
+      .addEventListener("change", (e) => setMatches(e.matches));
   }, []);
 
   return (
@@ -48,10 +48,14 @@ const Banner = () => {
           <div className="pt-3 pb-5 mx-2 d-flex justify-content-between">
             <div className="me-3">
               <p className="fs-5 mb-0">Welcome!</p>
-              <p className="fs-4 text-capitalize">{window.localStorage.getItem("user")}</p>
+              <p className="fs-4 text-capitalize">
+                {window.localStorage.getItem("user")}
+              </p>
             </div>
-            <div className="avatar" style={{ backgroundImage: `url(${avatar})` }}>
-            </div>
+            <div
+              className="avatar"
+              style={{ backgroundImage: `url(${avatar})` }}
+            ></div>
           </div>
         )}
         {!matches && !token && (
@@ -67,7 +71,7 @@ const Banner = () => {
           </div>
         )}
       </div>
-    </div >
+    </div>
   );
 };
 

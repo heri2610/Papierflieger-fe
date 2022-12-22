@@ -14,12 +14,12 @@ import "./Slider.scss";
 import { Pagination, Navigation } from "swiper";
 
 const Slider = () => {
-    const { data } = useSelector((state) => state.destinasiReducer);
-    const dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(getDestinasi());
-    }, [dispatch]);
-    console.log(data)
+  const { data } = useSelector((state) => state.destinasiReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getDestinasi());
+  }, [dispatch]);
+  console.log(data);
   return (
     <div className="container">
       <div className="slider">
