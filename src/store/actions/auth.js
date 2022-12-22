@@ -36,20 +36,37 @@ export const logout = (params, history) =>
     }
   };
 
-export const getProfile = (params) =>
+export const getProfile = () =>
   async function (dispatch) {
+  dispatch({
+    type: DETAIL_PROFILE,
+    payload: {
+      loading: true,
+      data: false,
+      errorMessage: false,
+    },
+  });
     try {
       const response = await AuthService.getProfile();
-      console.log(response);
+      console.log(response.data.profile);
       dispatch({
         type: DETAIL_PROFILE,
         payload: {
           profile: response.data.profile,
-        }
+          loading: false,
+          errorMessage: false,
+        },
       });
+      
     } catch (error) {
-      console.log(error);
-      throw error;
+        dispatch({
+    type: DETAIL_PROFILE,
+    payload: {
+      loading: false,
+      data: false,
+      errorMessage: error.message,
+    },
+  });
     }
   };
 

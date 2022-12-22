@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import LandingPage from "./pages/user/LandingPage";
@@ -29,6 +29,9 @@ import Users from "./pages/admin/User/User";
 import CheckIn from "./pages/user/Checkin";
 
 function App() {
+   window.onunload = () => {
+   window.MyStorage.clear()
+}
   return (
     <div className="App">
       <Router>

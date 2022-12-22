@@ -22,7 +22,7 @@ function Penerbangan() {
         <Row>
           <Col md='12'>
             <h3>Pilihan Penerbangan</h3>
-            {filteredticket&&filteredticket?.map(item=>
+            {filteredticket && filteredticket?.map(item=>
             <div className='bg-white p-3 mb-3 rounded'>
               <DetailPenerbangan detail={item} />
             </div>)}
