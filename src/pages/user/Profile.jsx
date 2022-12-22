@@ -27,21 +27,21 @@ const Profile = () => {
   const [province, setProvince] = useState("");
   const [regency, setRegency] = useState("");
   const [title, setTitle] = useState("");
-  const data = {
-    username: username || profile.username,
-    fullName: fullName || profile.fullName,
-    birthdate: birthdate || profile.birthdate,
-    avatar: avatar || profile.avatar,
-    country: country || profile.country,
-    nationality: nationality || profile.nationality,
-    phone: phone || profile.phone,
-    province: province || profile.province,
-    regency: regency || profile.regency,
-    title: title || profile.title,
-  };
 
   const handleUpdate = (event) => {
     event.preventDefault();
+      const data = {
+        username: username || profile.username,
+        fullName: fullName || profile.fullName,
+        birthdate: birthdate || profile.birthdate,
+        avatar: avatar || profile.avatar,
+        country: country || profile.country,
+        nationality: nationality || profile.nationality,
+        phone: phone || profile.phone,
+        province: province || profile.province,
+        regency: regency || profile.regency,
+        title: title || profile.title,
+      };
     const formData = new FormData();
 
     for (const key in data) {
