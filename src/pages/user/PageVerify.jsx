@@ -2,7 +2,7 @@ import React from "react";
 import NavigationBar from "../../components/Navbar/NavigationBar";
 import Footer from "../../components/Footer/Footer";
 import {Button} from "react-bootstrap";
-import "./Page.scss"
+import "./PageVerify.scss"
 
 const Page = () => {
   return (
