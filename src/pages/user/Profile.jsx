@@ -4,7 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import NavigationBar from "../../components/Navbar/NavigationBar";
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 import { getProfile, updateProfile } from "../../store/actions/auth";
-import Loading from "../../components/UIComponents/Loading"
+import Loading from "../../components/UIComponents/Loading";
 const Profile = () => {
   const { profile, loading } = useSelector((state) => state.authReducer);
   console.log(profile);
@@ -27,21 +27,22 @@ const Profile = () => {
   const [province, setProvince] = useState("");
   const [regency, setRegency] = useState("");
   const [title, setTitle] = useState("");
+  // const [preview, setPreview] = useState("");
 
   const handleUpdate = (event) => {
     event.preventDefault();
-      const data = {
-        username: username || profile.username,
-        fullName: fullName || profile.fullName,
-        birthdate: birthdate || profile.birthdate,
-        avatar: avatar || profile.avatar,
-        country: country || profile.country,
-        nationality: nationality || profile.nationality,
-        phone: phone || profile.phone,
-        province: province || profile.province,
-        regency: regency || profile.regency,
-        title: title || profile.title,
-      };
+    const data = {
+      username: username || profile.username,
+      fullName: fullName || profile.fullName,
+      birthdate: birthdate || profile.birthdate,
+      image: avatar || profile.avatar,
+      country: country || profile.country,
+      nationality: nationality || profile.nationality,
+      phone: phone || profile.phone,
+      province: province || profile.province,
+      regency: regency || profile.regency,
+      title: title || profile.title,
+    };
     const formData = new FormData();
 
     for (const key in data) {
@@ -57,20 +58,26 @@ const Profile = () => {
       <div className="form-edit pt-5">
         <Container className="mt-5">
           {isDisabled ? <h3 className="mb-3">Halaman Profil</h3> : <h3 className="mb-3">Ubah Profil</h3>}
-          {loading && <Loading />}
+          {loading && (
+            <div className="loading-center">
+              {" "}
+              <Loading />{" "}
+            </div>
+          )}
           {profile && (
             <Form>
               <fieldset disabled={isDisabled}>
                 <div className="d-flex flex-wrap">
                   <div className="position-relative">
-                    <div className="avatar mb-3 me-5 flex-shrink-0" style={{ backgroundImage: `url(${avatar})` }}></div>
+                    <div className="avatar mb-3 me-5 flex-shrink-0"
+                      style={{ backgroundImage: `url(${avatar ? avatar : profile.avatar})` }}></div>
                     {!isDisabled && (
                       <Form.Group controlId="formFile" className="mb-3 upload-pp">
                         <Form.Label>Ubah Foto</Form.Label>
                         <Form.Control
                           type="file"
                           onChange={(event) => {
-                            setAvatar(event.target.value);
+                            setAvatar(event.target.files[0]);
                           }}
                         />
                       </Form.Group>
@@ -132,7 +139,7 @@ const Profile = () => {
                             required
                             type="text"
                             placeholder="Nomor HP"
-                            value={phone}
+                            value={phone ? phone : profile.phone}
                             onChange={(event) => {
                               setPhone(event.target.value);
                             }}
