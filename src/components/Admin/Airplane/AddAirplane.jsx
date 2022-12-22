@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import "./DataAirplane.scss";
+import "../Admin.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addAirplane } from "../../../store/actions/airplane";

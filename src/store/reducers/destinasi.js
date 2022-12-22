@@ -8,7 +8,7 @@ const initialState = {
   errorMessage: false,
 };
 
-const DESTINASIReducer = (state = initialState, action) => {
+const destinasiReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -48,4 +48,4 @@ const DESTINASIReducer = (state = initialState, action) => {
   }
 };
 
-export default DESTINASIReducer;
+export default destinasiReducer;

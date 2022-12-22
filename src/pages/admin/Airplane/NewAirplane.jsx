@@ -2,7 +2,7 @@ import React from "react";
 import AddAirplane from "../../../components/Admin/Airplane/AddAirplane";
 import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
-import "./Airplane.scss"
+import "../Admin.scss"
 
 const Airplane = () => {
   return (
@@ -13,7 +13,7 @@ const Airplane = () => {
         <Sidebar />
       </div>
       <div className="home">
-        <div className="airplane-title">
+        <div className="tittle">
           <h5>Menambahkan data Pesawat</h5>
         </div>
         <AddAirplane />

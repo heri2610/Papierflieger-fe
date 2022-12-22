@@ -1,6 +1,6 @@
 import React from "react";
-import {Button, Container, Table} from "react-bootstrap";
-import { MdRemoveRedEye } from "react-icons/md";
+import { Container, Table} from "react-bootstrap";
+// import { MdRemoveRedEye } from "react-icons/md";
 // import "./DataUsers.scss";
 
 const DataUser = () => {
@@ -16,7 +16,7 @@ const DataUser = () => {
               <th>Email</th>
               <th>Password</th>
               <th>Nomor Telepon</th>
-              <th>Ulang Tahun</th>
+              <th>Tanggal Lahir</th>
               <th>Kewarganegaraan</th>
             </tr>
           </thead>
@@ -30,9 +30,6 @@ const DataUser = () => {
               <td>0813000000</td>
               <td>20002-09-11</td>
               <td>Indonesia</td>
-              <td>
-                <Button><MdRemoveRedEye/></Button>
-              </td>
             </tr>
           </tbody>
         </Table>

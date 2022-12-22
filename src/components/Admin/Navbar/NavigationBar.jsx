@@ -16,19 +16,19 @@ const NavigationBar = () => {
     <Navbar className="bg-white">
       <Container>
         <div className="nav-top">
-          <Link to="/" style={{textDecoration:"none"}}></Link>
-          <Navbar.Brand  href="/">PAPIERFLIEGER</Navbar.Brand>
+          <Link to="/" style={{ textDecoration: "none" }}></Link>
+          <Navbar.Brand href="/">PAPIERFLIEGER</Navbar.Brand>
         </div>
-          <Nav>
-            <Nav.Link className="nav-profile">
-              <div className="nav-admin">
-                <FaUserCircle className="icon-admin"/>
-                {/* <div className="admin"> */}
-                  <h6 className="admin">Admin 1</h6>
-                {/* </div> */}
-              </div>
-            </Nav.Link>
-          </Nav>
+        <Nav>
+          <Nav.Link className="nav-profile">
+            <div className="nav-admin">
+              <FaUserCircle className="icon-admin" />
+              {/* <div className="admin"> */}
+              <h6 className="admin">Admin 1</h6>
+              {/* </div> */}
+            </div>
+          </Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
   );

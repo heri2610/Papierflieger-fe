@@ -1,7 +1,8 @@
-import React from "react"
-import DataTicket from "../../../components/Admin/Ticket/DataTicket"
-import NavigationBar from "../../../components/Admin/Navbar/NavigationBar"
-import Sidebar from "../../../components/Admin/Sidebar/Sidebar"
+import React from "react";
+import DataTicket from "../../../components/Admin/Ticket/DataTicket";
+import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
+import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
+import "../Admin.scss"
 
 function Ticket() {
   return (
@@ -12,7 +13,7 @@ function Ticket() {
             <Sidebar />
           </div>
           <div className="home">
-            <div className="title-ticket">
+            <div className="tittle">
               <h3>Tiket Perjalanan</h3>
             </div>
             <DataTicket />

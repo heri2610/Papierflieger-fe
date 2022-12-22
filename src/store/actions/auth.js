@@ -6,7 +6,7 @@ export const login = (params, history) =>
     try {
       const response = await AuthService.login(params);
       const admin = response.data.role === "Admin" ? true : false;
-      dispatch({ type: LOGIN, payload: {data :response.data, isAdmin : admin} });
+      dispatch({ type: LOGIN, payload: { data: response.data, isAdmin: admin } });
       history("/");
     } catch (error) {
       // console.log(error);
@@ -36,13 +36,16 @@ export const logout = (params, history) =>
     }
   };
 
-export const detailProfile = (params) =>
+export const getProfile = (params) =>
   async function (dispatch) {
     try {
-      const response = await AuthService.detailProfile();
+      const response = await AuthService.getProfile();
+      console.log(response);
       dispatch({
         type: DETAIL_PROFILE,
-        data: response.data
+        payload: {
+          profile: response.data.profile,
+        }
       });
     } catch (error) {
       console.log(error);
@@ -54,6 +57,7 @@ export const updateProfile = (params) =>
   async function (dispatch) {
     try {
       const response = await AuthService.updateProfile(params);
+      console.log(response);
       dispatch({ type: UPDATE_PROFILE, payload: response.data });
     } catch (error) {
       console.log(error);

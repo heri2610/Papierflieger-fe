@@ -37,7 +37,8 @@ const AuthService = {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       };
       const response = await API.put('/auth/update-profile', data, headers);
-      localStorage.setItem('user', JSON.stringify(data));
+      console.log(response);
+      // localStorage.setItem('user', JSON.stringify(data));
       return response;
     } catch (err) {
       console.log('Auth service error', err);
@@ -45,9 +46,10 @@ const AuthService = {
     }
   },
 
-  detailProfile: async function () {
+  getProfile: async function () {
     try {
       const response = await API.get('/auth/profile');
+      console.log(response);
       return response;
     } catch (err) {
       console.log(err);
@@ -61,9 +63,9 @@ const setHeadersAndStorage = ({ username, token, avatar, role }) => {
   localStorage.setItem("user", username);
   localStorage.setItem("token", token);
   localStorage.setItem("avatar", avatar);
-  if(role === "Admin"){
+  if (role === "Admin") {
     localStorage.setItem("accessToken", "A-*dmin?&&%mlm-plgsnwngbuay-$563iedjnjdxgdj");
-  }else{
+  } else {
     localStorage.setItem("accessToken", "C-jaijsswem;iia*$-ustum-%4231999kkksjiwi-er");
   }
 };

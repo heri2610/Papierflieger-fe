@@ -1,10 +1,10 @@
-import React from 'react';
-// import './DataTransaction.scss';
-import {Table , Container } from 'react-bootstrap';
+import React from "react";
+// import "./DataTransaction.scss";
+import {Table , Container } from "react-bootstrap";
 
 const DataTransaction = () => {
   return (
-    <div className='data-transaction'>
+    <div className="data-transaction">
       <Container>
         <Table striped bordered hover>
         <thead>

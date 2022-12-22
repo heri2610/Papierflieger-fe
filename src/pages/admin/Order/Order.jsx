@@ -2,7 +2,7 @@ import React from "react";
 import DataOrder from "../../../components/Admin/Order/DataOrder";
 import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
-// import "./Order.scss"
+import "../Admin.scss"
 
 function Order() {
   return (
@@ -14,7 +14,7 @@ function Order() {
             <Sidebar/>
           </div>
           <div className="home">
-            <div className="title-order">
+            <div className="tittle">
               <h3>Pesanan</h3>
             </div>
             <DataOrder/>

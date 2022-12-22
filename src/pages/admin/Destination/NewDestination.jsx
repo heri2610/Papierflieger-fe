@@ -2,7 +2,7 @@ import React from "react"
 import AddDestination from "../../../components/Admin/Destination/AddDestination"
 import NavigationBar from "../../../components/Admin/Navbar/NavigationBar"
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar"
-import "./Destination.scss"
+import "../Admin.scss"
 
 function Airport() {
   return (
@@ -13,7 +13,7 @@ function Airport() {
         <Sidebar />
       </div>
       <div className="home">
-        <div className="title-destination">
+        <div className="tittle">
           <h3>Menambahkan Data Destinasi</h3>
         </div>
         <AddDestination />

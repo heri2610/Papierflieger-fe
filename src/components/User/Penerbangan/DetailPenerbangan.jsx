@@ -4,30 +4,31 @@ import { Link } from "react-router-dom";
 import Arrow from "./Vector.svg";
 import "./DetailPenerbangan.scss";
 
-export default function DetailPenerbangan({ kelas, kode, harga, keberangkatan, pendaratan, durasi, istransit, transit }) {
+export default function DetailPenerbangan({ detail }) {
+const {ticketNumber, departureDate, departureTime, arrivalDate,arrivalTime, flightFrom,flightTo, airplaneId, price, totalTransit, transitPoint, transitDuration,ticketType,flightDuration,arrivalTimeAtTransit,departureTimeFromTransit } = detail;
   return <>
     <div className="detail-penerbangan">
       <Row className="row-cols-1 row-cols-md-3">
         <Col md="2">
           <h3>
-            <Badge className="bg-info text-primary w-100">Ekonomi</Badge>
+            {/* <Badge className="bg-info text-primary w-100">Ekonomi</Badge> */}
           </h3>
         </Col>
         <Col>
           <h3>
-            <Badge bg="info" className="text-primary w-100">Kode Pemesanan:APR22L</Badge>
+            <Badge bg="info" className="text-primary w-100">{ticketNumber}</Badge>
           </h3>
         </Col>
         <Col>
           <h3 className="text-end m-0">
-            Rp. 2.678.000
+            {price}
           </h3><span className="text-end d-block">/orang</span>
         </Col>
       </Row>
       <Row className="my-4 border-bottom border-dark pb-3">
         <Col className="position-relative col mb-3 mb-lg-0">
           <h4 className="text-muted">Keberangkatan</h4>
-          <h1>07.00</h1>
+          <h1>{departureTime}</h1>
           <h4>CGK</h4>
           <img src={Arrow} alt="arrow" className="position-absolute top-50 end-15" />
         </Col>

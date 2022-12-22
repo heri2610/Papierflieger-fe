@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Container, Table, Alert, Form, Modal } from "react-bootstrap";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
-import "./DataAirport.scss";
+import "../Admin.scss";
 import { Link } from "react-router-dom";
 import { getAirport, deleteAirport } from "../../../store/actions/airport";
 import Loading from "../../UIComponents/Loading";

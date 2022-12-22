@@ -2,8 +2,6 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { BsFillBookmarkStarFill } from 'react-icons/bs';
-import Balii from "../../../assets/images/bali1.svg";
-import Bali from "../../../assets/images/Bali.svg";
 
 import "./destination.scss";
 import "swiper/css";
@@ -15,7 +13,7 @@ const Destination = () => {
   return (
     <div>
       <div className="container-fluid p-0 img-banner">
-        <img className="img-fluid mb-3" src={Bali} alt="" />
+        <img className="img-fluid mb-3" src="" alt="" />
       </div>
       <div className="container">
         <Swiper
@@ -37,17 +35,17 @@ const Destination = () => {
         >
           <SwiperSlide>
             <div className="destination-img d-flex justify-content-center">
-              <img src={Balii} alt="" />
+              <img src="" alt="" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="destination-img d-flex justify-content-center">
-              <img src={Balii} alt="" />
+              <img src="" alt="" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="destination-img d-flex justify-content-center">
-              <img src={Balii} alt="" />
+              <img src="" alt="" />
             </div>
           </SwiperSlide>
         </Swiper>

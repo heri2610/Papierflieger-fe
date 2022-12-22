@@ -1,13 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   Container, 
   Table
-} from 'react-bootstrap';
-// import './DataOrder.scss'
+} from "react-bootstrap";
 
 const DataOrder = () => {
   return (
-    <div className='data-order'>
+    <div className="data-order">
       <Container>
         <Table striped bordered hover>
           <thead>
