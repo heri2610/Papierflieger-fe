@@ -27,6 +27,7 @@ import Transaction from "./pages/admin/Transaction/Transaction";
 import TransactionHistory from "./pages/user/TransactionHistory";
 import Users from "./pages/admin/User/User";
 import CheckIn from "./pages/user/Checkin";
+import PageVerify from "./pages/user/PageVerify";
 
 function App() {
    window.onunload = () => {
@@ -71,7 +72,7 @@ function App() {
           <Route path="/penerbangan" element={<Penerbangan />} />
           <Route path="/destinasi" element={<DestinationPage />} />
           <Route path="*" element={<NotFoundPage />} />
-          
+          <Route path="/verify" element={<PageVerify />} />
         </Routes>
       </Router>
     </div>

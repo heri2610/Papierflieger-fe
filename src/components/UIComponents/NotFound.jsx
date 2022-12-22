@@ -1,5 +1,5 @@
 import React from "react";
-import Airplane404 from "../../assets/images/Airplane404.svg";
+import Airplane404 from "./img/Airplane404.svg";
 import "./NotFound.scss";
 
 const NotFound = () => {

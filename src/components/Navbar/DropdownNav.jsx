@@ -13,6 +13,7 @@ function DropdownNav() {
       <Dropdown.Item href="/user/profile">Profil</Dropdown.Item>
       {isAdmin && <Dropdown.Item href="/admin">Dashboard Admin</Dropdown.Item>}
       <Dropdown.Item href="/user/wishlist">Wishlist</Dropdown.Item>
+      <Dropdown.Item href="/user/riwayat">Riwayat</Dropdown.Item>
       <Dropdown.Item
         onClick={() => {
           dispatch(logout());

@@ -1,9 +1,9 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import GoKyungPyo from "../../../assets/images/go_kyung_pyo.svg";
-import RantiRastanti from "../../../assets/images/feby_rastanti.svg";
-import VerrelBramasta from "../../../assets/images/verrel_bramasta.svg";
-import Rate from "../../../assets/images/rate.svg";
+import GoKyungPyo from "./img/go_kyung_pyo.svg";
+import RantiRastanti from "./img/feby_rastanti.svg";
+import VerrelBramasta from "./img/verrel_bramasta.svg";
+import Rate from "./img/rate.svg";
 import "./Testimonial.scss";
 
 // Import Swiper styles
@@ -17,7 +17,9 @@ import { Navigation } from "swiper";
 const Testimonial = () => {
   return (
     <div className="testimoni container">
-      <h2 className="font-title" id="testimonial">TESTIMONIAL</h2>
+      <h2 className="font-title" id="testimonial">
+        TESTIMONIAL
+      </h2>
       <Swiper
         slidesPerView={1}
         loop={false}

@@ -23,26 +23,25 @@ body {
       align-items: center;
 
       img {
-        width: 100%;
-        height: 100%;
+        width: 340px;
+        height: 280px;
+        border-radius: 10px;
       }
 
       &:hover {
         img {
           color: #000;
           border-radius: 20px;
-          opacity: .4;
-          transition: .5s;
+          opacity: 0.4;
+          transition: 0.5s;
         }
 
         .box-image {
-          transition: all .9s;
+          transition: all 0.9s;
         }
       }
     }
   }
-
-
 
   .swiper-slide:hover {
     .title li button {
@@ -73,7 +72,7 @@ body {
       border: none;
       font-weight: bold;
       margin: 0 6px;
-      transition: .4s;
+      transition: 0.4s;
       opacity: 0;
     }
   }
