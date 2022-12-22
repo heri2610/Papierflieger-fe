@@ -13,7 +13,7 @@ function Airport() {
         <Sidebar />
       </div>
       <div className="home">
-        <div className="title-destination">
+        <div className="tittle">
           <h3>Menambahkan Data Destinasi</h3>
         </div>
         <AddDestination />
