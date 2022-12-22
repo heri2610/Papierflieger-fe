@@ -7,7 +7,7 @@ function DropdownNav() {
   const a = localStorage.getItem("accessToken") === "A-*dmin?&&%mlm-plgsnwngbuay-$563iedjnjdxgdj" ? true : false;
   const { isAdmin } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
-  console.log(isAdmin);
+  // console.log(isAdmin);
   return (
     <DropdownButton title={window.localStorage.getItem("user")} align="end" id="dropdown-menu-align-end">
       <Dropdown.Item href="/user/profile">Profil</Dropdown.Item>

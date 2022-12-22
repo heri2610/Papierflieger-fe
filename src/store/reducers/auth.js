@@ -6,7 +6,7 @@ const initialState = {
   isLoggedIn: localStorage.getItem("user") ? true : false,
   message: false,
   isAdmin: localStorage.getItem("accessToken") === "A-*dmin?&&%mlm-plgsnwngbuay-$563iedjnjdxgdj" ? true : false,
-  profile: false
+  profile: {},
 };
 
 const authReducer = (state = initialState, action) => {

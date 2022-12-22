@@ -44,7 +44,7 @@ export const getProfile = (params) =>
       dispatch({
         type: DETAIL_PROFILE,
         payload: {
-          profile: response.profile,
+          profile: response.data.profile,
         }
       });
     } catch (error) {
@@ -57,6 +57,7 @@ export const updateProfile = (params) =>
   async function (dispatch) {
     try {
       const response = await AuthService.updateProfile(params);
+      console.log(response);
       dispatch({ type: UPDATE_PROFILE, payload: response.data });
     } catch (error) {
       console.log(error);

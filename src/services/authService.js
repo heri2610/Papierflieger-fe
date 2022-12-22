@@ -37,7 +37,8 @@ const AuthService = {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       };
       const response = await API.put('/auth/update-profile', data, headers);
-      localStorage.setItem('user', JSON.stringify(data));
+      console.log(response);
+      // localStorage.setItem('user', JSON.stringify(data));
       return response;
     } catch (err) {
       console.log('Auth service error', err);

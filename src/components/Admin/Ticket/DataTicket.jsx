@@ -8,61 +8,62 @@ import {
 } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { getTicket, deleteTicket } from "../../../store/actions/ticket.js";
 
 const DataTicket = () => {
-    const { loading, data, errorMessage, message } = useSelector((state) => state.tiketsReducer);
-    const [messages, setMessages] = useState("");
-    const [eror, setEror] = useState("");
-    // const [edit, setEdit] = useState({});
-    const dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(getTicket());
-    }, [dispatch]);
-    useEffect(() => {
-      if (errorMessage) {
-        setEror(errorMessage);
-        window.setTimeout(() => {
-          setMessages("");
-        }, 3000);
-      }
-      if (message) {
-        setMessages(message);
-        window.setTimeout(() => {
-          setMessages("");
-        }, 3000);
-      }
-    }, [data]);
-    const handleDelete = (id) => {
-      dispatch(deleteTicket(id));
-    };
-    console.log(data);
-    const [show, setShow] = useState(false);
-    const [airportName, setAirportName] = useState("");
-    const [city, setCity] = useState("");
-    const [code, setCityCode] = useState("");
-    const datas = {
-      airportName: airportName,
-      city: city,
-      cityCode: code,
-    };
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      console.log(datas);
-      // dispatch(updateAirplane(datas, edit.id));
-    };
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const handleDataEdit = (Airport) => {
-      setAirportName(Airport.airportName);
-      setCity(Airport.city);
-      setCityCode(Airport.cityCode);
-    };
-    let i = 1 
+  const { loading, data, errorMessage, message } = useSelector((state) => state.tiketsReducer);
+  const [messages, setMessages] = useState("");
+  const [eror, setEror] = useState("");
+  // const [edit, setEdit] = useState({});
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTicket());
+  }, [dispatch]);
+  useEffect(() => {
+    if (errorMessage) {
+      setEror(errorMessage);
+      window.setTimeout(() => {
+        setMessages("");
+      }, 3000);
+    }
+    if (message) {
+      setMessages(message);
+      window.setTimeout(() => {
+        setMessages("");
+      }, 3000);
+    }
+  }, [data]);
+  const handleDelete = (id) => {
+    dispatch(deleteTicket(id));
+  };
+  console.log(data);
+  const [show, setShow] = useState(false);
+  const [airportName, setAirportName] = useState("");
+  const [city, setCity] = useState("");
+  const [code, setCityCode] = useState("");
+  const datas = {
+    airportName: airportName,
+    city: city,
+    cityCode: code,
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(datas);
+    // dispatch(updateAirplane(datas, edit.id));
+  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleDataEdit = (Airport) => {
+    setAirportName(Airport.airportName);
+    setCity(Airport.city);
+    setCityCode(Airport.cityCode);
+  };
+  let i = 1;
   return (
     <div className="data-ticket">
       <Container>
-        <Link to="/admin/ticket/new" style={{textDecoration:"none"}}>
+        <Link to="/admin/ticket/new" style={{ textDecoration: "none" }}>
           <Button className="btn-primary mb-3" type="submit" value="Submit">Tambahkan Tiket Perjalanan</Button>
         </Link>
         {messages && (
