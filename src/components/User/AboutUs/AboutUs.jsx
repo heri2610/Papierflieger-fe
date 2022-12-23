@@ -9,12 +9,12 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 const AboutUs = () => {
-  const { data  } = useSelector((state) => state.aboutUsReducer); 
-    const dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(getAboutUs());
-    }, [dispatch]); 
-    console.log(data)
+  const { data } = useSelector((state) => state.aboutUsReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAboutUs());
+  }, [dispatch]);
+  // console.log(data);
   return (
     <div className="container-fluid mt-5 pb-5 bg-babyblue" id="aboutus">
       <div className="container">
@@ -39,154 +39,18 @@ const AboutUs = () => {
         >
           {data?.map((dataTim) => (
             <SwiperSlide>
-              <div className="card">
+              <div className="card h-100">
                 <div className="card-body d-flex align-items-center flex-column">
-                  <img className="img-circle w-75" src={dataTim.avatar} alt="Heri" />
-                  <h6 className="mt-3">{dataTim.name}</h6>
+                  <img className="img-circle w-75" src={dataTim.avatar} alt={dataTim.name} />
+                  <h6 className="mt-3 text-center">{dataTim.name}</h6>
+                </div>
+                <div class="card-footer text-center">
+                  <small class="">{dataTim.bidang}</small>
                 </div>
               </div>
             </SwiperSlide>
           ))}
-
-          {/* <SwiperSlide>
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Muel</h6>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Bregi</h6>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Sri</h6>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Ican</h6>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Izzu</h6>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Nawfal</h6>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Gevin</h6>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Azra</h6>
-              </div>
-            </div>
-          </SwiperSlide>*/}
         </Swiper>
-        {/* <div className="row row-cols-3 row-cols-lg-5 justify-content-center text-center g-4 mt-2">
-          <div className="col">
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card">
-              <div className="card-body d-flex align-items-center flex-column">
-                <img className="img-circle w-75" src={Heri} alt="Heri" />
-                <h6 className="mt-3">Suhaeri</h6>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

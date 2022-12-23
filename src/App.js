@@ -28,6 +28,7 @@ import TransactionHistory from "./pages/user/TransactionHistory";
 import Users from "./pages/admin/User/User";
 import CheckIn from "./pages/user/Checkin";
 import PageVerify from "./pages/user/PageVerify";
+import NewNotification from "./pages/user/NewNotification";
 
 function App() {
    window.onunload = () => {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/profile/edit" element={<EditProfile />} />
             <Route path="/user/wishlist" element={<WishlistPage />} />
+            <Route path="/user/notification" element={<NewNotification />} />
             <Route path="/detail" element={<DetailTicket />} />
             <Route path="/identitas" element={<Identitas />} />
             <Route

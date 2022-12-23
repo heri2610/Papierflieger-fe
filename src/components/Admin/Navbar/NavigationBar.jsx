@@ -23,9 +23,7 @@ const NavigationBar = () => {
           <Nav.Link className="nav-profile">
             <div className="nav-admin">
               <FaUserCircle className="icon-admin" />
-              {/* <div className="admin"> */}
               <h6 className="admin">Admin 1</h6>
-              {/* </div> */}
             </div>
           </Nav.Link>
         </Nav>
