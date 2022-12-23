@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Accordion } from "react-bootstrap";
+import { Container, Row, Col, Accordion, Badge } from "react-bootstrap";
 import Arrow from "../../../assets/images/Vector.svg";
 import logocard from "../../../assets/images/Logo-card.svg";
 import "./ListBooking.scss";
@@ -9,11 +9,11 @@ const ListBooking = () => {
     <div className="img-banner">
       <div className="container">
         <h4 className="my-2 mx-3 mb-3 fw-bold">Daftar Pemesanan</h4>
-        <Container fluid className="pb-4 penerbangan mb-2">
+        <Container fluid className="pb-4 list-booking mb-2">
           <Row>
             <Col md="12">
               <div className="bg-white p-3 rounded">
-                <Row>
+                <Row className="position-relative">
                   <Col>
                     <Accordion>
                       <Accordion.Item eventKey="0" className="border border-0">
@@ -38,7 +38,7 @@ const ListBooking = () => {
                             </div>
                             <h5>Selasa, 10 Januari 2022</h5>
                           </Col>
-                          <h5 className="d-inline ms-auto me-3 mb-0">
+                          <h5 className="d-inline mt-3 mt-md-0 ms-auto me-3 mb-0">
                             Pratinjau Rincian
                           </h5>
                         </Accordion.Header>
@@ -118,11 +118,11 @@ const ListBooking = () => {
             </Col>
           </Row>
         </Container>
-        <Container fluid className="pb-4 penerbangan mb-2">
+        <Container fluid className="pb-4 list-booking mb-2">
           <Row>
             <Col md="12">
               <div className="bg-white p-3 rounded">
-                <Row>
+                <Row className="position-relative">
                   <Col>
                     <Accordion>
                       <Accordion.Item eventKey="0" className="border border-0">
@@ -147,7 +147,7 @@ const ListBooking = () => {
                             </div>
                             <h5>Selasa, 3 Januari 2022</h5>
                           </Col>
-                          <h5 className="d-inline ms-auto me-3 mb-0">
+                          <h5 className="d-inline mt-3 mt-md-0 ms-auto me-3 mb-0">
                             Pratinjau Rincian
                           </h5>
                         </Accordion.Header>
@@ -174,22 +174,7 @@ const ListBooking = () => {
                                 data-date="08.00"
                                 data-day="16 Desember"
                               >
-                                <h2>Jakarta</h2>
-                                <p>
-                                  Soekarno Hatta International Airport (CGK)
-                                </p>
-                                <p>
-                                  Armada : PapierFlieger, Boeing 737
-                                  <br />
-                                  Durasi Tebang : 3 jam 40 menit
-                                </p>
-                              </li>
-                              <li
-                                className="event"
-                                data-date="08.00"
-                                data-day="16 Desember"
-                              >
-                                <h2>Jakarta</h2>
+                                <h2>Aceh</h2>
                                 <p>
                                   Soekarno Hatta International Airport (CGK)
                                 </p>
@@ -222,6 +207,12 @@ const ListBooking = () => {
                       </Accordion.Item>
                     </Accordion>
                   </Col>
+                  <h3
+                    className="position-absolute w-auto"
+                    style={{ right: 0, "zIndex": 10 }}
+                  >
+                    <Badge bg="info text-primary">Selesai</Badge>
+                  </h3>
                 </Row>
               </div>
             </Col>

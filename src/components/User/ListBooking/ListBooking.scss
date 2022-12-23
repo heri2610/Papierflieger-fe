@@ -1,3 +1,16 @@
 .vector-right {
   margin-left: -60px;
 }
+
+.list-booking {
+  .accordion-header button {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .logo-card {
+      width: 80%;
+    }
+  }
+}
