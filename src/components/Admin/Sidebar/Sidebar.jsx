@@ -2,7 +2,6 @@ import React from 'react';
 import {
     BsFillHouseFill,
     BsPersonPlusFill,
-    BsFillCreditCard2FrontFill,
     BsPaypal,
     BsCartPlusFill
 } from "react-icons/bs";
@@ -36,11 +35,6 @@ const Sidebar = () => {
                 <Link to="/admin/destination" style={{textDecoration:"none"}}>
                     <li>
                         <MdAttractions className='icon'/><span>Destinasi</span>
-                    </li>
-                </Link>
-                <Link to="/admin/payment" style={{textDecoration:"none"}}>
-                    <li>
-                        <BsFillCreditCard2FrontFill className='icon'/><span>Pembayaran</span>
                     </li>
                 </Link>
                 <Link to="/admin/users" style={{textDecoration:"none"}}>

@@ -1,7 +1,11 @@
 .sidebar{
+    margin-top: 40px;
+    position: fixed;
+    max-height: 100vh;
     flex: 1.5;
-    min-height: 100vh;
+    // min-height: 100vh;
     background-color: #538AB1;
+
     .center{
         ul{
             list-style: none;
