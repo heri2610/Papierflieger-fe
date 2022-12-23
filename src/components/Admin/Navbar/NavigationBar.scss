@@ -5,11 +5,12 @@ Navbar{
         display: flex;
         
         .icon-admin{
+            display: flex;
             height: 20px;
             width: 20px;
         }
-        .admin{
-            margin-left: 10px;
-        }
+        // .admin{
+        //     margin-left: 10px;
+        // }
     }
 }
