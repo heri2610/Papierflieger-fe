@@ -6,11 +6,16 @@ import { FiEdit } from "react-icons/fi";
 import '../Admin.scss';
 import { Link } from "react-router-dom";
 import { getDestinasi, deleteDestinasi } from "../../../store/actions/destinasi";
+import { getAirport } from "../../../store/actions/airport";
 
 const DataDestination = () => {
   const { data, errorMessage, message } = useSelector((state) => state.destinasiReducer);
+  const  dataAirport  = useSelector((state) => state.airportReducer.data);
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
+  const [location, setLocation] = useState("")
+  const [description, setDescription] = useState("")
+  const [options, setOptions] = useState({})
   const [edit, setEdit] = useState({});
   const dispatch = useDispatch();
   useEffect(() => {
@@ -30,6 +35,9 @@ const DataDestination = () => {
       }, 3000);
     }
   }, [data]);
+  const handledataEdit = (destinasi)=>{
+
+  }
   const handleDelete = (id) => {
     dispatch(deleteDestinasi(id));
   };
@@ -75,7 +83,7 @@ const DataDestination = () => {
                 <td>{destinasi.description}</td>
                 <td>
                   <div className="edit-delete">
-                    <Link to="/Admin/Destination/new" style={{ textDecoration: "none" }}>
+                    <Link onClick={()=>handledataEdit(destinasi)} style={{ textDecoration: "none" }}>
                       <Button>
                         <FiEdit />
                       </Button>
