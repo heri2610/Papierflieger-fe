@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import brand from "./img/brand.svg";
 import "./banner.scss";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const token = window.localStorage.getItem("token");
@@ -52,10 +53,12 @@ const Banner = () => {
                 {window.localStorage.getItem("user")}
               </p>
             </div>
-            <div
-              className="avatar"
-              style={{ backgroundImage: `url(${avatar})` }}
-            ></div>
+            <Link to={'/user/profile'}>
+              <div
+                className="avatar"
+                style={{ backgroundImage: `url(${avatar})` }}
+              ></div>
+            </Link>
           </div>
         )}
         {!matches && !token && (

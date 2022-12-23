@@ -13,7 +13,7 @@ import "./navbar.scss";
 import DropdownNav from "./DropdownNav.jsx";
 
 const NavigationBar = () => {
-  const regis = window.location.pathname === "/register"
+  const regis = window.location.pathname === "/register";
   const token = window.localStorage.getItem("token");
   const [show, setShow] = useState(false);
 
@@ -52,7 +52,7 @@ const NavigationBar = () => {
                   <Nav.Link href="/" className="me-3">
                     <i className="bi bi-bell-fill"></i>
                   </Nav.Link>
-                  <Nav.Link href="/" className="me-3">
+                  <Nav.Link href="/user/profile" className="me-3">
                     <img src={window.localStorage.getItem("avatar")} alt="foto profil" width={"40px"} height={"40px"} className="rounded-circle" />
                   </Nav.Link>
                   <DropdownNav />
