@@ -138,14 +138,14 @@ const ListBooking = () => {
                             <h5>Penerbangan</h5>
                             <div className="hstack">
                               <h3>
-                                <strong>Banda Aceh</strong>
+                                <strong>Jakarta</strong>
                               </h3>
                               <img src={Arrow} alt="arrow" className="mx-3" />
                               <h3>
-                                <strong>Jakarta</strong>
+                                <strong>Banda Aceh</strong>
                               </h3>
                             </div>
-                            <h5>Selasa, 10 Januari 2022</h5>
+                            <h5>Selasa, 3 Januari 2022</h5>
                           </Col>
                           <h5 className="d-inline ms-auto me-3 mb-0">
                             Pratinjau Rincian

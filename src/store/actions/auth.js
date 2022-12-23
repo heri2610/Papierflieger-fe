@@ -38,14 +38,14 @@ export const logout = (params, history) =>
 
 export const getProfile = () =>
   async function (dispatch) {
-  dispatch({
-    type: DETAIL_PROFILE,
-    payload: {
-      loading: true,
-      data: false,
-      errorMessage: false,
-    },
-  });
+    dispatch({
+      type: DETAIL_PROFILE,
+      payload: {
+        loading: true,
+        data: false,
+        errorMessage: false,
+      },
+    });
     try {
       const response = await AuthService.getProfile();
       console.log(response.data.profile);
@@ -57,36 +57,40 @@ export const getProfile = () =>
           errorMessage: false,
         },
       });
-      
+
     } catch (error) {
-        dispatch({
-    type: DETAIL_PROFILE,
-    payload: {
-      loading: false,
-      data: false,
-      errorMessage: error.message,
-    },
-  });
+      dispatch({
+        type: DETAIL_PROFILE,
+        payload: {
+          loading: false,
+          data: false,
+          errorMessage: error.message,
+        },
+      });
     }
   };
 
 export const updateProfile = (params) =>
   async function (dispatch) {
     dispatch({
-    type: UPDATE_PROFILE,
-    payload: {
-      loading: true,
-      data: false,
-      errorMessage: false,
-      message:false
-    },
-  });
+      type: UPDATE_PROFILE,
+      payload: {
+        loading: true,
+        data: false,
+        errorMessage: false,
+        message: false
+      },
+    });
     try {
       const response = await AuthService.updateProfile(params);
       const response2 = await AuthService.getProfile();
       console.log(response);
-      dispatch({ type: UPDATE_PROFILE, payload: {message:response.data.message, profile: response2.data.profile, 
-        loading: false, errorMessage: false} });
+      dispatch({
+        type: UPDATE_PROFILE, payload: {
+          message: response.data.message, profile: response2.data.profile,
+          loading: false, errorMessage: false
+        }
+      });
     } catch (error) {
       dispatch({
         type: UPDATE_PROFILE,
@@ -94,8 +98,8 @@ export const updateProfile = (params) =>
           loading: false,
           data: false,
           errorMessage: false,
-          message:error.message
+          message: error.message
         },
-      })
+      });
     }
   };
