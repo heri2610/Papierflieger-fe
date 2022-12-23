@@ -13,6 +13,7 @@ import {
 } from "../../../store/actions/airplane";
 import Select from "react-select";
 import Loading from "../../UIComponents/Loading";
+import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
 const classAirplane = [
   { value: "Business", label: "Business" },
   { value: "Ekonomy", label: "Ekonomy" },
@@ -110,14 +111,18 @@ const DataAirplane = () => {
                 <td>{airplane.class}</td>
                 <td>
                   <div className="edit-delete">
-                  <Link onClick={() => handleDataEdit(airplane)}>
-                    <Button variant="primary" onClick={handleShow}>
-                      <FiEdit />
-                    </Button>
-                  </Link>
-                  <Button className="delete" onClick={() => handleDelete(airplane.id)} >
-                    <MdDelete />
-                  </Button>
+                    <Link onClick={() => handleDataEdit(airplane)}>
+                      <Button variant="primary" onClick={handleShow}>
+                        <FiEdit />
+                      </Button>
+                    </Link>
+                    {/* <Button
+                      className="delete"
+                      onClick={() => handleDelete(airplane.id)}
+                    >
+                      <MdDelete />
+                    </Button> */}
+                    <DeleteConfirmation />
                   </div>
                 </td>
               </tr>
@@ -126,8 +131,7 @@ const DataAirplane = () => {
         </Table>
         {loading && (
           <div className="loading-center">
-            {" "}
-            <Loading />{" "}
+            <Loading />
           </div>
         )}
         <Modal show={show} onHide={handleClose}>
