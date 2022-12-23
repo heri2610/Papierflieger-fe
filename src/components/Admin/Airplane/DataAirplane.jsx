@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button, Container, Table, Alert, Form } from "react-bootstrap";
-import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom";
@@ -62,9 +61,7 @@ const DataAirplane = () => {
   console.log(message);
   console.log(data);
   const handleDelete = (id) => {
-    if (window.confirm("yakin mau dihapus?")) {
-      dispatch(deleteAirplane(id));
-    }
+    dispatch(deleteAirplane(id));
   };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -118,11 +115,13 @@ const DataAirplane = () => {
                     </Link>
                     {/* <Button
                       className="delete"
-                      onClick={() => handleDelete(airplane.id)}
+                      
                     >
                       <MdDelete />
                     </Button> */}
-                    <DeleteConfirmation />
+                    <DeleteConfirmation
+                      onClick={() => handleDelete(airplane.id)}
+                    />
                   </div>
                 </td>
               </tr>

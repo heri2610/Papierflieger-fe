@@ -32,11 +32,9 @@ function DeleteConfirmation(props) {
               <br /> Yakin ingin menghapus?
             </div>
             <div className="mt-3 mx-5">
-              <div onClick={props.onClick}>
-                <Button variant="danger" onClick={handleClose}>
-                  Hapus
-                </Button>
-              </div>
+              <Button variant="danger" onClick={props.onClick}>
+                <span onClick={handleClose}>Hapus</span>
+              </Button>
               <Button variant="primary" onClick={handleClose}>
                 Batal
               </Button>

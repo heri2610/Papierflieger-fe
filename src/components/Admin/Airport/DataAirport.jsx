@@ -8,6 +8,7 @@ import "../Admin.scss";
 import { Link } from "react-router-dom";
 import { getAirport, deleteAirport } from "../../../store/actions/airport";
 import Loading from "../../UIComponents/Loading";
+import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
 
 const DataAirport = () => {
   const { loading, data, errorMessage, message } = useSelector(
@@ -37,28 +38,28 @@ const DataAirport = () => {
   const handleDelete = (id) => {
     dispatch(deleteAirport(id));
   };
-console.log(data)
-    const [show, setShow] = useState(false);
-    const [airportName, setAirportName] = useState("");
-    const [city, setCity] = useState("");
-    const [code, setCityCode] = useState("");
-    const datas = {
-      airportName: airportName,
-      city: city,
-      cityCode: code,
-    };
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      console.log(datas);
-      // dispatch(updateAirplane(datas, edit.id));
-    };
+  console.log(data);
+  const [show, setShow] = useState(false);
+  const [airportName, setAirportName] = useState("");
+  const [city, setCity] = useState("");
+  const [code, setCityCode] = useState("");
+  const datas = {
+    airportName: airportName,
+    city: city,
+    cityCode: code,
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(datas);
+    // dispatch(updateAirplane(datas, edit.id));
+  };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDataEdit = (Airport) => {
     setAirportName(Airport.airportName);
     setCity(Airport.city);
     setCityCode(Airport.cityCode);
-  }
+  };
   return (
     <div className="data-airport">
       <Container>
@@ -102,9 +103,9 @@ console.log(data)
                           <FiEdit />
                         </Button>
                       </Link>
-                      <Button className="delete" onClick={() => { handleDelete(Airport.id); }} >
-                        <MdDelete />
-                      </Button>
+                      <DeleteConfirmation
+                        onClick={() => handleDelete(Airport.id)}
+                      />
                     </div>
                   </td>
                 </tr>
@@ -128,15 +129,33 @@ console.log(data)
                   <Container>
                     <Form.Group className="form" controlId="validationCustom01">
                       <Form.Label>Nama Bandara</Form.Label>
-                      <Form.Control required type="text" placeholder="Ngurah Rai International Airport" onChange={(e) => setAirportName(e.target.value)} value={airportName} />
+                      <Form.Control
+                        required
+                        type="text"
+                        placeholder="Ngurah Rai International Airport"
+                        onChange={(e) => setAirportName(e.target.value)}
+                        value={airportName}
+                      />
                     </Form.Group>
                     <Form.Group className="form" controlId="validationCustom01">
                       <Form.Label>Wilayah</Form.Label>
-                      <Form.Control required type="text" placeholder="Denpasar, Bali, Indonesia" onChange={(e) => setCity(e.target.value)} value={city} />
+                      <Form.Control
+                        required
+                        type="text"
+                        placeholder="Denpasar, Bali, Indonesia"
+                        onChange={(e) => setCity(e.target.value)}
+                        value={city}
+                      />
                     </Form.Group>
                     <Form.Group className="form" controlId="validationCustom01">
                       <Form.Label>Kode Bandara</Form.Label>
-                      <Form.Control required type="text" placeholder="DPS" onChange={(e) => setCityCode(e.target.value)} value={code} />
+                      <Form.Control
+                        required
+                        type="text"
+                        placeholder="DPS"
+                        onChange={(e) => setCityCode(e.target.value)}
+                        value={code}
+                      />
                     </Form.Group>
                   </Container>
                 </Form>

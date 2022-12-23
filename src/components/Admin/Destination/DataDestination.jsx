@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Table, Container, Alert, Modal, Form } from "react-bootstrap";
-import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
-import '../Admin.scss';
+import "../Admin.scss";
 import Select from "react-select";
 import { Link } from "react-router-dom";
 import Loading from "../../UIComponents/Loading";
-import { getDestinasi, deleteDestinasi } from "../../../store/actions/destinasi";
-
+import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
+import {
+  getDestinasi,
+  deleteDestinasi,
+} from "../../../store/actions/destinasi";
 
 const DataDestination = () => {
-  const { loading, data, errorMessage, message, dataAirport } = useSelector((state) => state.destinasiReducer);
+  const { loading, data, errorMessage, message, dataAirport } = useSelector(
+    (state) => state.destinasiReducer
+  );
   const [messages, setMessages] = useState("");
   const [show, setShow] = useState(false);
   const [names, setName] = useState("");
@@ -21,11 +25,11 @@ const DataDestination = () => {
   const [eror, setEror] = useState("");
   const [devaultValue, setDevaultValue] = useState({});
   const datas = {
-    name : names,
-    location : locations,
-    airportName : airportNames,
-    description : desc,
-  }
+    name: names,
+    location: locations,
+    airportName: airportNames,
+    description: desc,
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(datas);
@@ -49,7 +53,6 @@ const DataDestination = () => {
         setMessages("");
       }, 3000);
     }
-
   }, [data]);
   const handleDelete = (id) => {
     dispatch(deleteDestinasi(id));
@@ -62,7 +65,10 @@ const DataDestination = () => {
     setLocation(destinasi.location);
     setAirportNames(destinasi.Airport.airportName);
     setDescription(destinasi.description);
-    setDevaultValue({value:destinasi.Airport.id, label:destinasi.Airport.city})
+    setDevaultValue({
+      value: destinasi.Airport.id,
+      label: destinasi.Airport.city,
+    });
   };
   return (
     <div className="data-destination">
@@ -94,29 +100,37 @@ const DataDestination = () => {
             </tr>
           </thead>
           <tbody>
-            {data && data?.map((destinasi) => (
-              <tr key={destinasi.id}>
-                <td>{destinasi.name}</td>
-                <td>
-                  <img src={destinasi.image[0]} alt={`gambar${destinasi.name}`} width="30px" />
-                </td>
-                <td>{destinasi.location}</td>
-                <td>{destinasi.Airport.airportName}</td>
-                <td>{destinasi.description}</td>
-                <td>
-                  <div className="edit-delete">
-                  <Link onClick={() => handleDataEdit(destinasi)}>
-                      <Button variant="primary" onClick={handleShow}>
-                        <FiEdit />
-                      </Button>
-                    </Link>
-                    <Button className="delete" onClick={() => handleDelete(destinasi.id)}>
+            {data &&
+              data?.map((destinasi) => (
+                <tr key={destinasi.id}>
+                  <td>{destinasi.name}</td>
+                  <td>
+                    <img
+                      src={destinasi.image[0]}
+                      alt={`gambar${destinasi.name}`}
+                      width="30px"
+                    />
+                  </td>
+                  <td>{destinasi.location}</td>
+                  <td>{destinasi.Airport.airportName}</td>
+                  <td>{destinasi.description}</td>
+                  <td>
+                    <div className="edit-delete">
+                      <Link onClick={() => handleDataEdit(destinasi)}>
+                        <Button variant="primary" onClick={handleShow}>
+                          <FiEdit />
+                        </Button>
+                      </Link>
+                      {/* <Button className="delete" >
                       <MdDelete />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+                    </Button> */}
+                      <DeleteConfirmation
+                        onClick={() => handleDelete(destinasi.id)}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </Table>
         {loading && (
@@ -130,38 +144,44 @@ const DataDestination = () => {
             <Modal.Title>Mengubah Data Destinasi</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <div className="add-destination">
-            <Form onSubmit={handleSubmit}>
-              <Container>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Nama Destinasi</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder="Pura Ulun Danu Beratan"
-                    onChange={(e) => setName(e.target.value)}
-                    value={names}
-                  />
-                </Form.Group>
-                <Form.Group className="form mt-2" controlId="validationCustom01">
-                  <Form.Label>Lokasi</Form.Label>
-                  <Select
-                    options={dataAirport}
-                    onChange={(e) => setLocation(e.value)}
-                    defaultValue={devaultValue}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <div className="add-destination">
+              <Form onSubmit={handleSubmit}>
+                <Container>
+                  <Form.Group className="form" controlId="validationCustom01">
+                    <Form.Label>Nama Destinasi</Form.Label>
+                    <Form.Control
+                      required
+                      type="text"
+                      placeholder="Pura Ulun Danu Beratan"
+                      onChange={(e) => setName(e.target.value)}
+                      value={names}
+                    />
+                  </Form.Group>
+                  <Form.Group
+                    className="form mt-2"
+                    controlId="validationCustom01"
+                  >
+                    <Form.Label>Lokasi</Form.Label>
+                    <Select
+                      options={dataAirport}
+                      onChange={(e) => setLocation(e.value)}
+                      defaultValue={devaultValue}
+                    />
+                  </Form.Group>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlTextarea1"
+                  >
                     <Form.Label>Deskripsi</Form.Label>
                     <Form.Control
-                    required
-                    onChange={(e) => setDescription(e.target.value)}
-                    value={desc}
-                  />
-                </Form.Group>
-              </Container>
-            </Form>
-          </div>
+                      required
+                      onChange={(e) => setDescription(e.target.value)}
+                      value={desc}
+                    />
+                  </Form.Group>
+                </Container>
+              </Form>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleClose}>
