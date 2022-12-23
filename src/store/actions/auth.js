@@ -72,12 +72,30 @@ export const getProfile = () =>
 
 export const updateProfile = (params) =>
   async function (dispatch) {
+    dispatch({
+    type: UPDATE_PROFILE,
+    payload: {
+      loading: true,
+      data: false,
+      errorMessage: false,
+      message:false
+    },
+  });
     try {
       const response = await AuthService.updateProfile(params);
+      const response2 = await AuthService.getProfile();
       console.log(response);
-      dispatch({ type: UPDATE_PROFILE, payload: response.data });
+      dispatch({ type: UPDATE_PROFILE, payload: {message:response.data.message, profile: response2.data.profile, 
+        loading: false, errorMessage: false} });
     } catch (error) {
-      console.log(error);
-      throw error;
+      dispatch({
+        type: UPDATE_PROFILE,
+        payload: {
+          loading: false,
+          data: false,
+          errorMessage: false,
+          message:error.message
+        },
+      })
     }
   };

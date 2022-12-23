@@ -27,7 +27,7 @@ const Profile = () => {
   const [province, setProvince] = useState("");
   const [regency, setRegency] = useState("");
   const [title, setTitle] = useState("");
-  // const [preview, setPreview] = useState("");
+  const [preview, setPreview] = useState("");
 
   const handleUpdate = (event) => {
     event.preventDefault();
@@ -65,12 +65,13 @@ const Profile = () => {
             </div>
           )}
           {profile && (
+            <>
             <Form>
               <fieldset disabled={isDisabled}>
                 <div className="d-flex flex-wrap">
                   <div className="position-relative">
                     <div className="avatar mb-3 me-5 flex-shrink-0"
-                      style={{ backgroundImage: `url(${avatar ? avatar : profile.avatar})` }}></div>
+                      style={{ backgroundImage: `url(${preview ? preview : profile.avatar})` }}></div>
                     {!isDisabled && (
                       <Form.Group controlId="formFile" className="mb-3 upload-pp">
                         <Form.Label>Ubah Foto</Form.Label>
@@ -78,6 +79,7 @@ const Profile = () => {
                           type="file"
                           onChange={(event) => {
                             setAvatar(event.target.files[0]);
+                            setPreview(URL.createObjectURL(event.target.files[0]))
                           }}
                         />
                       </Form.Group>
@@ -206,7 +208,6 @@ const Profile = () => {
                 </div>
               </fieldset>
             </Form>
-          )}
           <div className="d-flex justify-content-end">
             {isDisabled === true ? (
               <Button className="btn-primary my-5" onClick={() => setIsDisabled(false)}>
@@ -218,6 +219,8 @@ const Profile = () => {
               </Button>
             )}
           </div>
+          </>
+          )}
         </Container>
       </div>
       <Footer />

@@ -7,7 +7,7 @@ const initialState = {
   message: false,
   isAdmin: localStorage.getItem("accessToken") === "A-*dmin?&&%mlm-plgsnwngbuay-$563iedjnjdxgdj" ? true : false,
   profile: {},
-  loading:false
+  loading:false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -44,7 +44,9 @@ const authReducer = (state = initialState, action) => {
     case UPDATE_PROFILE:
       return {
         ...state,
-        user: payload,
+        profile: payload.profile,
+        loading : payload.loading,
+        message:payload.message
       };
     default: {
       return state;
