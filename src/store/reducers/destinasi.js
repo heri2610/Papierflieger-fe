@@ -6,6 +6,7 @@ const initialState = {
   data: [],
   loading: false,
   errorMessage: false,
+  dataAirport: false,
 };
 
 const destinasiReducer = (state = initialState, action) => {

@@ -7,6 +7,7 @@ const initialState = {
   data: [],
   loading: false,
   errorMessage: false,
+  datAirport: false,
 };
 
 const tiketsReducer = (state = initialState, action) => {
@@ -19,6 +20,7 @@ const tiketsReducer = (state = initialState, action) => {
         data: payload.data.dataTicket,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
+        datAirport: payload.datAirport,
       };
     case FILTER_TICKET:
       return {
