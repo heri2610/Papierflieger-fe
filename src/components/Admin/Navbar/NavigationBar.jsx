@@ -13,7 +13,7 @@ import {Link} from 'react-router-dom'
 
 const NavigationBar = () => {
   return (
-    <Navbar className="bg-white">
+    <Navbar className="bg-white fixed-top">
       <Container>
         <div className="nav-top">
           <Link to="/" style={{ textDecoration: "none" }}></Link>

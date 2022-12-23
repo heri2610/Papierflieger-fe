@@ -1,9 +1,13 @@
 .dashboard-container{
     display: flex;
+    position: absolute;
 
     .home{
         background-color: #F4F4F4;
         flex: 8.5;
+        margin-top: 90px;
+        margin-left: 150px;
+
         .title-dashboard{
             margin-left: 10px;
         }

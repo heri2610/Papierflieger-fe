@@ -96,21 +96,16 @@ console.log(data)
                   <td>{Airport.city}</td>
                   <td>{Airport.cityCode}</td>
                   <td>
-                    <Link
-                      onClick={() => handleDataEdit(Airport)}
-                    >
-                      <Button variant="primary" onClick={handleShow}>
-                        <FiEdit />
+                    <div className="edit-delete">
+                      <Link onClick={() => handleDataEdit(Airport)}>
+                        <Button variant="primary" onClick={handleShow}>
+                          <FiEdit />
+                        </Button>
+                      </Link>
+                      <Button className="delete" onClick={() => { handleDelete(Airport.id); }} >
+                        <MdDelete />
                       </Button>
-                    </Link>
-                    <Button
-                      className="delete"
-                      onClick={() => {
-                        handleDelete(Airport.id);
-                      }}
-                    >
-                      <MdDelete />
-                    </Button>
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -17,6 +17,7 @@ const classAirplane = [
   { value: "Business", label: "Business" },
   { value: "Ekonomy", label: "Ekonomy" },
 ];
+
 const DataAirplane = () => {
   const [show, setShow] = useState(false);
   const [code, setCode] = useState("");
