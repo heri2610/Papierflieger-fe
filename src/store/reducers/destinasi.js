@@ -18,6 +18,7 @@ const destinasiReducer = (state = initialState, action) => {
         data: payload.data.destinations,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
+        dataAirport: payload.dataAirport
       };
     case GET_DESTINASIBYID:
       return {

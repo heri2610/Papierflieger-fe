@@ -8,27 +8,18 @@ import Select from "react-select";
 import { Link } from "react-router-dom";
 import Loading from "../../UIComponents/Loading";
 import { getDestinasi, deleteDestinasi } from "../../../store/actions/destinasi";
-import { getAirport } from "../../../store/actions/airport";
 
-const lokasi = [
-  {value: "Aceh", label: "Aceh"},
-  {value: "Bali", label: "Bali"}
-]
 
-const idBandara = [
-  {value: "1", label: "1"},
-  {value: "2", label: "2"},
-  {value: "3", label: "3"},
-]
 const DataDestination = () => {
-  const { data, errorMessage, message } = useSelector((state) => state.destinasiReducer);
-    const  dataAirport  = useSelector((state) => state.airportReducer.data);
+  const { loading, data, errorMessage, message, dataAirport } = useSelector((state) => state.destinasiReducer);
   const [messages, setMessages] = useState("");
   const [show, setShow] = useState(false);
   const [names, setName] = useState("");
   const [locations, setLocation] = useState("");
   const [airportNames, setAirportNames] = useState("");
   const [desc, setDescription] = useState("");
+  const [eror, setEror] = useState("");
+  const [devaultValue, setDevaultValue] = useState({});
   const datas = {
     name : names,
     location : locations,
@@ -40,10 +31,7 @@ const DataDestination = () => {
     console.log(datas);
     // dispatch(updateAirplane(datas, edit.id));
   };
-  const { loading, data, errorMessage, message } = useSelector(
-    (state) => state.destinasiReducer
-  );
-  console.log(data)
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDestinasi());
@@ -61,10 +49,8 @@ const DataDestination = () => {
         setMessages("");
       }, 3000);
     }
-  }, [data]);
-  const handledataEdit = (destinasi)=>{
 
-  }
+  }, [data]);
   const handleDelete = (id) => {
     dispatch(deleteDestinasi(id));
   };
@@ -76,7 +62,7 @@ const DataDestination = () => {
     setLocation(destinasi.location);
     setAirportNames(destinasi.Airport.airportName);
     setDescription(destinasi.description);
-    
+    setDevaultValue({value:destinasi.Airport.id, label:destinasi.Airport.city})
   };
   return (
     <div className="data-destination">
@@ -108,7 +94,7 @@ const DataDestination = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((destinasi) => (
+            {data && data?.map((destinasi) => (
               <tr key={destinasi.id}>
                 <td>{destinasi.name}</td>
                 <td>
@@ -160,17 +146,9 @@ const DataDestination = () => {
                 <Form.Group className="form mt-2" controlId="validationCustom01">
                   <Form.Label>Lokasi</Form.Label>
                   <Select
-                    options={lokasi}
-                    onChange={(e) => setLocation(e.target.value)}
-                    value={locations}
-                  />
-                </Form.Group>
-                <Form.Group className="form mt-2" controlId="validationCustom01">
-                <Form.Label>Id Bandara</Form.Label>
-                  <Select
-                    options={idBandara}
-                    onChange={(e) => setAirportNames(e.target.value)}
-                    value={airportNames}
+                    options={dataAirport}
+                    onChange={(e) => setLocation(e.value)}
+                    defaultValue={devaultValue}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

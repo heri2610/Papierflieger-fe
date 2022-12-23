@@ -1,4 +1,5 @@
 import destinasiService from "../../services/destinasiService";
+import airportService from "../../services/airportService";
 import { GET_DESTINASI, ADD_DESTINASI, PUT_DESTINASI, DELETE_DESTINASI, GET_DESTINASIBYID } from "../types/index";
 
 export const getDestinasi = () =>
@@ -8,16 +9,24 @@ export const getDestinasi = () =>
       payload: {
         loading: true,
         data: false,
+        dataAirport: false,
         errorMessage: false,
       },
     });
     try {
+      const datAirport = []
       const response = await destinasiService.getDestinasi();
+      const response2 = await airportService.getAirport();
+      const airport = response2.data.airports
+      airport?.forEach((bandara)=>{
+        datAirport.push({label:bandara.city, value:bandara.id})
+      })
       dispatch({
         type: GET_DESTINASI,
         payload: {
           loading: false,
           data: response.data,
+          dataAirport: datAirport,
           errorMessage: false,
         },
       });
@@ -27,6 +36,7 @@ export const getDestinasi = () =>
         payload: {
           loading: false,
           data: false,
+          dataAirport: false,
           errorMessage: error.message,
         },
       });
