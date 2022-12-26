@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE } from "../types/index";
+import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE, VERIFY_EMAIL } from "../types/index";
 
 const initialState = {
   user: localStorage.getItem("user") || {},
@@ -7,7 +7,7 @@ const initialState = {
   message: false,
   isAdmin: localStorage.getItem("accessToken") === "A-*dmin?&&%mlm-plgsnwngbuay-$563iedjnjdxgdj" ? true : false,
   profile: {},
-  loading:false,
+  loading: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -39,14 +39,20 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: payload.profile,
-        loading : payload.loading
+        loading: payload.loading
       };
     case UPDATE_PROFILE:
       return {
         ...state,
         profile: payload.profile,
-        loading : payload.loading,
-        message:payload.message
+        loading: payload.loading,
+        message: payload.message
+      };
+    case VERIFY_EMAIL:
+      return {
+        ...state,
+        loading: payload.loading,
+        message: payload.message
       };
     default: {
       return state;
