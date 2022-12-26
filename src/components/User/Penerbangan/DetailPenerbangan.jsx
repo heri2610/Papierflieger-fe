@@ -1,38 +1,52 @@
-import React from "react";
-import { Row, Col, Badge, Accordion } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React,{useState} from "react";
+import { Row, Col, Badge, Accordion, Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import {useDispatch,useSelector} from "react-redux";
+import {getTicketDetail} from "../../../store/actions/ticket"
 import Arrow from "./Vector.svg";
 import "./DetailPenerbangan.scss";
 
-export default function DetailPenerbangan({ detail }) {
-const {ticketNumber, departureDate, departureTime, arrivalDate,arrivalTime, flightFrom,flightTo, airplaneId, price, totalTransit, transitPoint, transitDuration,ticketType,flightDuration,arrivalTimeAtTransit,departureTimeFromTransit } = detail;
+export default function DetailPenerbangan({ detail,state }) {
+  //console.log(detail)
+  const[choosen,setChoosen]=useState({})
+  const dispatch = useDispatch();
+const {ticketNumber, departureDate, departureTime, arrivalDate,arrivalTime, flightFrom,flightTo, airplaneId, price, totalTransit, transitPoint, transitDuration,ticketType,flightDuration,arrivalTimeAtTransit,departureTimeFromTransit,from,to,transit,Airplane } = detail;
+const formatter = new Intl.NumberFormat('id-ID', {
+  style: 'currency',
+  currency: 'IDR'
+});
+
+const history = useNavigate();
+
+const handleNavigate = async()=>{
+  dispatch(getTicketDetail(detail,state,history))
+}
   return (
     <>
       <div className="detail-penerbangan">
-        <Row className="row-cols-1 row-cols-md-3">
-          <Col md="2">
-            <h3>{/* <Badge className="bg-info text-primary w-100">Ekonomi</Badge> */}</h3>
-          </Col>
+        <Row className="row-cols-1 row-cols-md-2">
           <Col>
             <h3>
-              <Badge bg="info" className="text-primary w-100">
+              <Badge bg="info" className="text-primary w-50">
                 {ticketNumber}
               </Badge>
             </h3>
           </Col>
           <Col>
-            <h3 className="text-end m-0">{`${price}/orang`}</h3>
+            <h3 className="text-end m-0">{`${formatter.format(price)}/orang`}</h3>
           </Col>
         </Row>
-        <Row className="my-4 border-bottom border-dark pb-3">
+        <Row className="row-cols-2 row-cols-md-4 my-4 border-bottom border-dark pb-3">
           <Col className="position-relative col mb-3 mb-lg-0">
             <h4 className="text-muted">Keberangkatan</h4>
-            <h3>{departureTime}</h3>
+            <h3>{`${departureTime.split(":")[0]}:${departureTime.split(":")[1]}`}</h3>
+            <h3>{from.cityCode}</h3>
             <img src={Arrow} alt="arrow" className="position-absolute top-50 end-15" />
           </Col>
           <Col>
             <h4 className="text-muted">Pendaratan</h4>
-            <h3>{arrivalTime}</h3>
+            <h3>{`${arrivalTime.split(':')[0]}:${arrivalTime.split(':')[1]}`}</h3>
+            <h3>{to.cityCode}</h3>
           </Col>
           <Col>
             <h4 className="text-muted">Durasi Perjalanan</h4>
@@ -48,39 +62,34 @@ const {ticketNumber, departureDate, departureTime, arrivalDate,arrivalTime, flig
             <Accordion>
               <Accordion.Item eventKey="0" className="border border-0">
                 <Accordion.Header>
-                  <Link to="/detail" className="btn btn-primary">
+                  <Button variant="primary" className="btn btn-primary" onClick={handleNavigate}>
                     <h4 className="m-0">Pesan</h4>
-                  </Link>
+                  </Button>
                   <h4 className="d-inline ms-auto me-3 mb-0">Pratinjau Rincian</h4>
                 </Accordion.Header>
                 <Accordion.Body>
                   <div id="timeline-content" className="border-bottom">
                     <ul className="timeline">
-                      <li className="event" data-date="08.00" data-day="16 Desember">
-                        <h2>Jakarta</h2>
-                        <p>Soekarno Hatta International Airport (CGK)</p>
+                      <li className="event" data-date={`${departureTime.split(':')[0]}:${departureTime.split(':')[1]}`} data-day="16 Desember">
+                        <h2>{from.city.split(',')[0]}</h2>
+                        <p>{from.airportName}{`(${from.cityCode})`}</p>
                         <p>
-                          Armada : PapierFlieger, Boeing 737
-                          <br />
-                          Durasi Tebang : 3 jam 40 menit
+                          Armada : {Airplane.airplaneName}
                         </p>
                       </li>
-                      <li className="event" data-date="08.00" data-day="16 Desember">
-                        <h2>Jakarta</h2>
-                        <p>Soekarno Hatta International Airport (CGK)</p>
+                     {totalTransit >= 1 && <li className="event" data-date={`${arrivalTimeAtTransit.split(":")[0]}:${arrivalTimeAtTransit.split(":")[1]}`} data-day="16 Desember">
+                        <h2>{transit.city.split(',')[0]}</h2>
+                        <p>{transit.airportName} {`(${transit.cityCode})`}</p>
                         <p>
-                          Armada : PapierFlieger, Boeing 737
-                          <br />
-                          Durasi Tebang : 3 jam 40 menit
+                          Armada : {Airplane.airplaneName}
                         </p>
-                      </li>
-                      <li className="event" data-date="08.00" data-day="16 Desember">
-                        <h2>Jakarta</h2>
-                        <p>Soekarno Hatta International Airport (CGK)</p>
+                      </li>}
+                      <li className="event" data-date={`${arrivalTime.split(':')[0]}:${arrivalTime.split(':')[1]}`} data-day="16 Desember">
+                        <h2>{to.city.split(',')[0]}</h2>
+                        <p>{to.airportName} {`(${to.cityCode})`}</p>
                         <p>
-                          Armada : PapierFlieger, Boeing 737
-                          <br />
-                          Durasi Tebang : 3 jam 40 menit
+                          Armada : {Airplane.airplaneName}
+                        
                         </p>
                       </li>
                     </ul>

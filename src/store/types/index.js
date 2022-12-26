@@ -25,6 +25,7 @@ export const ADD_TICKET = "ADD_TICKET";
 export const PUT_TICKET = "PUT_TICKET";
 export const DELETE_TICKET = "DELETE_TICKET";
 export const GET_TICKETBYID = "GET_TICKET_ID";
+export const GET_TICKETDETAIL = "GET_TICKETDETAIL";
 export const GET_USERS = "GET_USERS";
 export const ADD_ADMIN = "ADD_ADMIN";
 export const GET_NOTIF = "GET_NOTIF";

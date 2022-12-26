@@ -1,21 +1,23 @@
-import React from "react";
+import React,{useReducer} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Footer from "../../Footer/Footer";
 import NavigationBar from "../../Navbar/NavigationBar";
 import FormSearch from "../SearchTicket/FormSearch";
 import DetailPenerbangan from "./DetailPenerbangan";
 import { useSelector } from "react-redux";
+import { initialState, penumpangReducer } from "../../../store/reducers/penumpang";
 import "./Penerbangan.scss";
 
 function Penerbangan() {
   const {tiketBerangkat, tiketPulang} = useSelector((state) => state.ticketReducer);
-  console.log(tiketBerangkat, tiketPulang);
+  const[state,dispatch] = useReducer(penumpangReducer,initialState)
+  console.log(tiketBerangkat, tiketPulang,state);
   return (
     <>
       <NavigationBar />
       <Container fluid className="section--form pt-5">
         <div className="pt-5 pb-3">
-          <FormSearch />
+          <FormSearch dispatchs={dispatch}/>
         </div>
       </Container>
       <Container fluid className="section--body pt-4 pb-4 penerbangan">
@@ -25,7 +27,7 @@ function Penerbangan() {
             {tiketBerangkat &&
               tiketBerangkat?.map((item) => (
                 <div className="bg-white p-3 mb-3 rounded">
-                  <DetailPenerbangan detail={item} />
+                  <DetailPenerbangan detail={item} state={state}/>
                 </div>
               ))}
           </Col>

@@ -17,7 +17,7 @@ console.log(options)
   });
   return (
     <>
-      <Select className="basic-single" classNamePrefix="select form-select" defaultValue={data[0]} isClearable={true} isSearchable={true} name="color" options={data} onChange={onChange} id={id} />
+      <Select className="basic-single" classNamePrefix="select form-select" defaultValue={data[0]} isClearable={false} isSearchable={true} name="color" options={data} onChange={onChange} id={id} />
       <div
         style={{
           color: "hsl(0, 0%, 40%)",

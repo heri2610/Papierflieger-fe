@@ -7,6 +7,7 @@ import {
   PUT_TICKET,
   DELETE_TICKET,
   GET_TICKETBYID,
+  GET_TICKETDETAIL,
 } from "../types/index";
 
 export const filterTickets = (tujuan, history) =>
@@ -37,7 +38,6 @@ export const filterTickets = (tujuan, history) =>
           loading: false,
           data: false,
           errorMessage: error.message,
-          
         },
       });
     }
@@ -113,6 +113,38 @@ export const getTicketById = (id) =>
       });
     }
   };
+export const getTicketDetail = (state, penumpang, history) =>
+  async function (dispatch) {
+    dispatch({
+      type: GET_TICKETDETAIL,
+      payload: {
+        loading: true,
+        data: false,
+        errorMessage: false,
+      },
+    });
+    try {
+      dispatch({
+        type: GET_TICKETDETAIL,
+        payload: {
+          loading: false,
+          ticket: state,
+          penumpang: penumpang,
+          errorMessage: false,
+        },
+      });
+      history("/detail");
+    } catch (error) {
+      dispatch({
+        type: GET_TICKETBYID,
+        payload: {
+          loading: true,
+          ticket: false,
+          errorMessage: false,
+        },
+      });
+    }
+  };
 export const addTicket = (data, history) =>
   async function (dispatch) {
     try {
@@ -131,7 +163,10 @@ export const deleteTicket = (id) =>
     try {
       const response = await TicketService.deleteTicket(id);
       const response2 = await TicketService.getTicket();
-      dispatch({ type: DELETE_TICKET, payload: { message: response.data.message, data: response2.data } });
+      dispatch({
+        type: DELETE_TICKET,
+        payload: { message: response.data.message, data: response2.data },
+      });
     } catch (error) {
       console.log(error);
       throw error;

@@ -8,9 +8,10 @@ import { useNavigate } from "react-router-dom";
 
 import "./searchTicket.scss";
 
-export default function FormSearch() {
+export default function FormSearch(props) {
   const { data } = useSelector((state) => state.airportReducer);
   const [type, setType] = useState("");
+  const{dispatchs} = props;
   // const [berangkat, setBerangkat] = useState("");
   const [tujuan, setTujuan] = useState({});
   // console.log(berangkat);
@@ -45,6 +46,7 @@ export default function FormSearch() {
             <SelectOptions options={data}
               onChange={(e) => setTujuan(current => ({ ...current, flightFrom: e.value }))}
               className="form-select" id="floatingSelectFrom"
+    
             />
           </div>
           <div className="col">
@@ -52,13 +54,14 @@ export default function FormSearch() {
               <small className="ms-12 text-muted">Ke</small>
             </p>
             <SelectOptions options={data}
-              onChange={(e) => setTujuan(current => ({ ...current, flightTo: e.value }))}
+              onChange={(e) => setTujuan(current => ({ ...current, flightTo: e.value}))}
               className="form-select" id="floatingSelectFrom2"
+           
             />
           </div>
           <div className="col">
             <div className="form-floating">
-              <input type="number" min="1" max="10" className="form-control" id="inputPenumpang" />
+              <input type="number" min="1" max="10" className="form-control" id="inputPenumpang" onChange={(e)=>dispatchs({type:'tampung',penumpang:e.target.value})} />
               <label htmlFor="inputPenumpang">Penumpang</label>
             </div>
           </div>

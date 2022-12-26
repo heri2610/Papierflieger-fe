@@ -1,4 +1,12 @@
-import { GET_TICKET, FILTER_TICKET, ADD_TICKET, PUT_TICKET, DELETE_TICKET, GET_TICKETBYID } from "../types/index";
+import {
+  GET_TICKET,
+  FILTER_TICKET,
+  ADD_TICKET,
+  PUT_TICKET,
+  DELETE_TICKET,
+  GET_TICKETBYID,
+  GET_TICKETDETAIL,
+} from "../types/index";
 
 const initialState = {
   message: false,
@@ -51,6 +59,8 @@ const tiketsReducer = (state = initialState, action) => {
         ...state,
         message: payload.message,
       };
+    case GET_TICKETDETAIL:
+      return { ticket: payload.ticket, penumpang: payload.penumpang };
     default: {
       return state;
     }
