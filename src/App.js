@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import LandingPage from "./pages/user/LandingPage";
@@ -8,7 +8,6 @@ import Penerbangan from "./components/User/Penerbangan/Penerbangan";
 import DestinationPage from "./pages/user/DestinationPage";
 import WishlistPage from "./pages/user/WishlistPage";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
-import EditProfile from "./pages/user/EditProfile";
 import Profile from "./pages/user/Profile";
 import Airplane from "./pages/admin/Airplane/Airplane";
 import NewAirplane from "./pages/admin/Airplane/NewAirplane";
@@ -31,16 +30,15 @@ import PageVerify from "./pages/user/PageVerify";
 import NewNotification from "./pages/user/NewNotification";
 
 function App() {
-   window.onunload = () => {
-   window.MyStorage.clear()
-}
+  window.onunload = () => {
+    window.MyStorage.clear();
+  };
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route element={<ProtectedRoute />}>
             <Route path="/user/profile" element={<Profile />} />
-            <Route path="/user/profile/edit" element={<EditProfile />} />
             <Route path="/user/wishlist" element={<WishlistPage />} />
             <Route path="/user/notification" element={<NewNotification />} />
             <Route path="/detail" element={<DetailTicket />} />

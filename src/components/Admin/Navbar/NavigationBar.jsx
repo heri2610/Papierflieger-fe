@@ -20,7 +20,7 @@ const NavigationBar = () => {
           <Navbar.Brand href="/">PAPIERFLIEGER</Navbar.Brand>
         </div>
         <Nav>
-          <Nav.Link className="nav-profile">
+          <Nav.Link href="/user/profile" className="nav-profile">
             <div className="nav-admin">
               <FaUserCircle className="icon-admin" />
               <h6 className="admin">Admin 1</h6>

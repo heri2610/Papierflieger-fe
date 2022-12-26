@@ -11,13 +11,13 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const Destination = () => {
   const { state } = useLocation();
-  const destinasi = state.destinasi
-  console.log(destinasi)
+  const destinasi = state.destinasi;
+  console.log(destinasi);
   return (
     <div>
       {destinasi.image[0] && (
         <div className="container-fluid p-0 img-banner">
-          <img className="img-fluid mb-3 w-100" src={destinasi.image[0]} alt=""/>
+          <img className="img-fluid mb-3 w-100" src={destinasi.image[0]} alt="" />
         </div>
       )}
       <div className="container">
@@ -39,12 +39,12 @@ const Destination = () => {
           className="mySwiper"
         >
           {destinasi.image[1] &&
-            destinasi.image.map((img) => 
-                <SwiperSlide>
-                  <div className="destination-img d-flex justify-content-center h-100">
-                    <img src={img} alt="" />
-                  </div>
-                </SwiperSlide>
+            destinasi.image.map((img) =>
+              <SwiperSlide>
+                <div className="destination-img d-flex justify-content-center">
+                  <img src={img} alt="" />
+                </div>
+              </SwiperSlide>
             )}
         </Swiper>
       </div>
