@@ -57,7 +57,7 @@ const DataDestination = () => {
   const handleDelete = (id) => {
     dispatch(deleteDestinasi(id));
   };
-
+  console.log(data)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDataEdit = (destinasi) => {
@@ -72,7 +72,7 @@ const DataDestination = () => {
   };
   return (
     <div className="data-destination">
-      <Container>
+      <Container className="form-add">
         <Link to="/admin/destination/new" style={{ textDecoration: "none" }}>
           <Button className="btn-primary mb-3" type="submit" value="Submit">
             Tambahkan data destinasi

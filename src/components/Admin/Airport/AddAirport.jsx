@@ -24,7 +24,7 @@ const AddAirport = () => {
   return (
     <div className="add-airport">
       <div className="container-airport">
-        <Form onSubmit={handleSubmit}>
+        <Form className="add" onSubmit={handleSubmit}>
           <Container>
             <Form.Group className="form" controlId="validationCustom01">
               <Form.Label>Nama Bandara</Form.Label>
@@ -39,7 +39,7 @@ const AddAirport = () => {
               <Form.Control required type="text" placeholder="DPS" onChange={(e) => setCityCode(e.target.value)} />
             </Form.Group>
             <br />
-            <div className="button">
+            <div className="edit-delete">
               <Button variant="primary" type="submit">
                 Tambahkan
               </Button>
