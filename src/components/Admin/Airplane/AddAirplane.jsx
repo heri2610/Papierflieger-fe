@@ -6,11 +6,10 @@ import { useDispatch } from "react-redux";
 import { addAirplane } from "../../../store/actions/airplane";
 import Select from "react-select"
 
-const classAirplane = [
-  {value: "Bisnis", label: "Bisnis"},
-  {value: "Ekonomi", label: "Ekonomi"}
-]
-
+  const clasAirplane = [
+    { value: "Bisnis", label: "Bisnis" },
+    { value: "Ekonomi", label: "Ekonomi" },
+  ];
 const AddAirplane = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
@@ -42,9 +41,9 @@ const AddAirplane = () => {
             </Form.Group>
             <Form.Group className="form mb-3" controlId="validationCustom01">
               <Form.Label>Kelas</Form.Label>
-              <Form.Select aria-label="Default select example" onChange={(e) => setklass(e.target.value)}>
-                <Select options={classAirplane} onChange={(e) => setklass(e.target.value)} />
-              </Form.Select>
+              {/* <Form.Select aria-label="Default select example"> */}
+                <Select options={clasAirplane} onChange={(e) => setklass(e.value)} defaultValue={clasAirplane[0]} />
+              {/* </Form.Select> */}
             </Form.Group>
             <br />
             <div className="add-airplane">

@@ -16,7 +16,11 @@ const DataAirport = () => {
   );
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
-  // const [edit, setEdit] = useState({});
+  const [idEdit, setIdEdit] = useState();
+  const [show, setShow] = useState(false);
+  const [airportName, setAirportName] = useState("");
+  const [city, setCity] = useState("");
+  const [code, setCityCode] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirport());
@@ -39,10 +43,6 @@ const DataAirport = () => {
     dispatch(deleteAirport(id));
   };
   console.log(data);
-  const [show, setShow] = useState(false);
-  const [airportName, setAirportName] = useState("");
-  const [city, setCity] = useState("");
-  const [code, setCityCode] = useState("");
   const datas = {
     airportName: airportName,
     city: city,

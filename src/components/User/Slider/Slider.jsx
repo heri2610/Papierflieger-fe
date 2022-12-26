@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getDestinasi } from "../../../store/actions/destinasi";
 // Import Swiper styles
 import "swiper/css";
@@ -14,12 +14,15 @@ import "./Slider.scss";
 import { Pagination, Navigation } from "swiper";
 
 const Slider = () => {
+  const history = useNavigate();
   const { data } = useSelector((state) => state.destinasiReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDestinasi());
   }, [dispatch]);
-  console.log(data);
+  const handleClick = (destinasi)=>{
+    history("/destinasi", {state:{destinasi}})
+  }
   return (
     <div className="container">
       <div className="slider">
@@ -48,8 +51,7 @@ const Slider = () => {
         >
           {data &&
             data?.map((destinasi) => (
-              <SwiperSlide>
-                <Link>
+              <SwiperSlide onClick={()=>handleClick(destinasi)}>
                   <div className="template">
                     <div className="box">
                       <div className="box-image">
@@ -64,7 +66,6 @@ const Slider = () => {
                       </ul>
                     </div>
                   </div>
-                </Link>
               </SwiperSlide>
             ))}
         </Swiper>
