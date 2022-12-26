@@ -51,7 +51,7 @@ const Slider = () => {
         >
           {data &&
             data?.map((destinasi) => (
-              <SwiperSlide onClick={()=>handleClick(destinasi)}>
+              <SwiperSlide onClick={()=>handleClick(destinasi)} key={destinasi.id}>
                   <div className="template">
                     <div className="box">
                       <div className="box-image">

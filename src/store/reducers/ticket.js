@@ -17,7 +17,7 @@ const tiketsReducer = (state = initialState, action) => {
     case GET_TICKET:
       return {
         ...state,
-        data: payload.data.dataTicket,
+        data: payload.data,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
         datAirport: payload.datAirport,
@@ -25,7 +25,8 @@ const tiketsReducer = (state = initialState, action) => {
     case FILTER_TICKET:
       return {
         ...state,
-        filteredticket: payload.data,
+        tiketBerangkat: payload.data.tiketBerangkat,
+        tiketPulang: payload.data.tiketPulang,
         loading: false,
       };
     case GET_TICKETBYID:
@@ -39,7 +40,6 @@ const tiketsReducer = (state = initialState, action) => {
       return {
         ...state,
         message: "Data berhasil ditambahkan",
-        data: payload.airports,
       };
     case PUT_TICKET:
       return {
@@ -49,7 +49,6 @@ const tiketsReducer = (state = initialState, action) => {
     case DELETE_TICKET:
       return {
         ...state,
-        data: payload.data.dataAirplane,
         message: payload.message,
       };
     default: {

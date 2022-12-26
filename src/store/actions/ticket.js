@@ -17,24 +17,16 @@ export const filterTickets = (tujuan, history) =>
         loading: true,
         data: false,
         errorMessage: false,
-        datAirport: false,
       },
     });
     try {
-      const datAirport = []
       const response = await TicketService.filterTickets(tujuan);
-      const response2 = await airportService.getAirport();
-      const airport = response2.data.airports
-      airport?.forEach((bandara)=>{
-        datAirport.push({label:bandara.city, value:bandara.id})
-      })
       dispatch({
         type: FILTER_TICKET,
         payload: {
           loading: false,
           data: response.data,
           errorMessage: false,
-          datAirport: datAirport,
         },
       });
       history("/penerbangan");
@@ -45,7 +37,7 @@ export const filterTickets = (tujuan, history) =>
           loading: false,
           data: false,
           errorMessage: error.message,
-          datAirport: false,
+          
         },
       });
     }
@@ -58,16 +50,24 @@ export const getTicket = () =>
         loading: true,
         data: false,
         errorMessage: false,
+        datAirport: false,
       },
     });
     try {
+      const datAirport = [];
       const response = await TicketService.getTicket();
+      const response2 = await airportService.getAirport();
+      const airport = response2.data.airports;
+      airport?.forEach((bandara) => {
+        datAirport.push({ label: bandara.city, value: bandara.id });
+      });
       dispatch({
         type: GET_TICKET,
         payload: {
           loading: false,
           data: response.data,
           errorMessage: false,
+          datAirport: datAirport,
         },
       });
     } catch (error) {
@@ -77,6 +77,7 @@ export const getTicket = () =>
           loading: false,
           data: false,
           errorMessage: error.message,
+          datAirport: false,
         },
       });
     }
