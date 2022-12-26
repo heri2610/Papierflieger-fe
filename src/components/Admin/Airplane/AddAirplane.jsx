@@ -29,24 +29,21 @@ const AddAirplane = () => {
   return (
     <div className="add-airplane">
       <div className="container-airplane">
-        <Form onSubmit={handleSubmit}>
-          <Container>
+        <Form className="add" onSubmit={handleSubmit}>
+          <Container >
             <Form.Group className="form mb-3" controlId="validationCustom01">
               <Form.Label>Nama Pesawat</Form.Label>
               <Form.Control required type="text" placeholder="Boeing 737-800" onChange={(e) => setName(e.target.value)} />
             </Form.Group>
             <Form.Group className="form mb-3" controlId="validationCustom01">
+              <Form.Label>Kelas</Form.Label>
+                <Select options={clasAirplane} onChange={(e) => setklass(e.value)} defaultValue={clasAirplane[0]} />
+            </Form.Group>
+            <Form.Group className="form mb-3" controlId="validationCustom01">
               <Form.Label>Kode Pesawat</Form.Label>
               <Form.Control required type="text" placeholder="AF12345" onChange={(e) => setCode(e.target.value)} />
             </Form.Group>
-            <Form.Group className="form mb-3" controlId="validationCustom01">
-              <Form.Label>Kelas</Form.Label>
-              {/* <Form.Select aria-label="Default select example"> */}
-                <Select options={clasAirplane} onChange={(e) => setklass(e.value)} defaultValue={clasAirplane[0]} />
-              {/* </Form.Select> */}
-            </Form.Group>
-            <br />
-            <div className="add-airplane">
+            <div className="add-airplane-button">
               <Button variant="primary" type="submit">
                 Tambahkan
               </Button>

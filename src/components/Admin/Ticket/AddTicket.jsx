@@ -23,7 +23,7 @@ const AddAirport = () => {
   return (
       <div className="add-ticket">
       <div className="container-ticket">
-        <Form>
+        <Form className="add">
           <Container>
             <Row>
             <Col>

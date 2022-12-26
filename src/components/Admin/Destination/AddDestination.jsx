@@ -16,7 +16,7 @@ const idBandara = [
 const AddDestination = () => {
   return (
     <div className="add-destination">
-        <Form>
+        <Form className="add">
           <Container>
             <Form.Group className="form" controlId="validationCustom01">
               <Form.Label>Nama Destinasi</Form.Label>
