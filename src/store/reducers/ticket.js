@@ -36,6 +36,7 @@ const tiketsReducer = (state = initialState, action) => {
         tiketBerangkat: payload.data.tiketBerangkat,
         tiketPulang: payload.data.tiketPulang,
         loading: false,
+        penumpang: payload,
       };
     case GET_TICKETBYID:
       return {

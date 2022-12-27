@@ -1,12 +1,40 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { Row, Col, Button, Badge, Container, Form, Accordion, } from "react-bootstrap";
 import logocard from "../../../assets/images/Logo-card.svg";
 import Arrow from "../../../assets/images/Vector.svg";
 import Footer from "../../Footer/Footer";
 import NavigationBar from "../../Navbar/NavigationBar";
 import "./Identitas.scss";
+import { useSelector } from "react-redux";
 
 function Identitas() {
+  const { ticket,penumpang } = useSelector((state) => state.ticketReducer);
+  console.log(ticket,penumpang.penumpang)
+  const [penumpangs,setPenumpang] = useState([])
+
+  useEffect(()=>{
+    const passenger = []
+    for(let i=0;i<Number(penumpang.penumpang);i++){
+      passenger.push({id:i+1,sapaan:'',namadepan:'',namabelakang:'',nopassport:'',masaberlakupassport:'',kebangsaan:'',email:'',tanggallahir:''})
+    }
+    setPenumpang(passenger)
+  },[ticket])
+  const handleChange = (index) => (e) => {
+    const newValues = [...penumpangs];
+    console.log(newValues)
+    newValues[index][e.target.name] = e.target.value;
+    setPenumpang(newValues);
+  };
+
+console.log(penumpangs)
+  const dateString = ticket.departureDate
+const date = new Date(dateString)
+const options = { year: 'numeric', month: 'long', day: 'numeric',weekday:'long' }
+const humanReadableDate = date.toLocaleDateString('id-ID', options)
+const formatter = new Intl.NumberFormat('id-ID', {
+  style: 'currency',
+  currency: 'IDR'
+});
   return (
     <>
       <NavigationBar />
@@ -34,61 +62,65 @@ function Identitas() {
                     <Col className=" mt-3 mt-md-0">
                       <h5>Penerbangan</h5>
                       <div className="hstack">
-                        <h5><strong>Tokyo</strong></h5>
+                        <h5><strong>{ticket.from.city.split(',')[0]}</strong></h5>
                         <img src={Arrow} alt="arrow" className="mx-3" />
-                        <h5><strong>Jakarta</strong></h5></div>
-                      <h5>Selasa, 10 Januari 2022</h5>
+                        <h5><strong>{ticket.to.city.split(',')[0]}</strong></h5></div>
+                      <h5>{humanReadableDate}</h5>
                     </Col>
                   </Row>
                   {/* Badges  */}
-                  <Row className="py-3">
-                    <Col>
-                      <h4>
-                        <Badge className="bg-info text-primary ">Ekonomi</Badge>
-                      </h4>
-                    </Col>
-                    <Col>
-                      <h4>
-                        <Badge className="bg-info text-primary ">Kode Pemesanan: NOV15R</Badge>
-                      </h4>
-                    </Col>
-                  </Row>
-                  <Row className="mb-4 border-bottom pb-3">
-                    <Col className="position-relative col mb-3 mb-lg-0">
-                      <h5 className="text-muted">Keberangkatan</h5>
-                      <h2>11.00</h2>
-                      <h5>NRT</h5>
-                      <img src={Arrow} alt="arrow" className="position-absolute top-50 end-15" />
-                    </Col>
-                    <Col>
-                      <h5 className="text-muted">Pendaratan</h5>
-                      <h2>19.00</h2>
-                      <h5>CGK</h5>
-                    </Col>
-                    <Col>
-                      <h5 className="text-muted">Durasi Perjalanan</h5>
-                      <h2>8 Jam</h2>
-                    </Col>
-                    <Col>
-                      <h5 className="text-muted">Lama Perhentian</h5>
-                      <h2>-</h2>
-                    </Col>
-                  </Row>
-                  <Row className="">
-                    <div id="timeline-content" className="border-bottom ps-3">
-                      <ul className="timeline">
-                        <li className="event" data-date="11:00" data-day="16 Desember">
-                          <h3>Tokyo</h3>
-                          <p>Narita International Airport (NRT)</p>
-                          <p>Armada: PapierFlieger, Boeing 737<br />Durasi Terbang: 8 jam</p>
-                        </li>
-                        <li className="event" data-date="19:00" data-day="16 Desember">
-                          <h3>Jakarta</h3>
-                          <p>Soekarno Hatta International Airport (CGK)</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </Row>
+      <Row className="py-3">
+        <Col md={2}><h3>
+          <Badge className="bg-info text-primary ">{ticket.ticketNumber}</Badge>
+        </h3></Col>
+        <Col md={10}><h3>
+          <Badge className="bg-info text-primary float-end">{formatter.format(ticket.price)}/orang</Badge>
+        </h3></Col>
+      </Row>
+      <Row className="mb-4 border-bottom pb-3">
+        <Col className="position-relative col mb-3 mb-lg-0">
+          <h5 className="text-muted">Keberangkatan</h5>
+          <h2>{`${ticket.departureTime.split(":")[0]}:${ticket.departureTime.split(":")[1]}`}</h2>
+          <h5>{ticket.from.cityCode}</h5>
+          <img src={Arrow} alt="arrow" className="position-absolute top-50 end-15" />
+        </Col>
+        <Col>
+          <h5 className="text-muted">Pendaratan</h5>
+          <h2>{`${ticket.arrivalTime.split(':')[0]}:${ticket.arrivalTime.split(':')[1]}`}</h2>
+          <h5>{ticket.to.cityCode}</h5>
+        </Col>
+        <Col>
+          <h5 className="text-muted">Durasi Perjalanan</h5>
+          <h2>{ticket.flightDuration}</h2>
+        </Col>
+        <Col>
+          <h5 className="text-muted">Lama Perhentian</h5>
+          <h2>{ticket.transitDuration}</h2>
+        </Col>
+      </Row>
+      <Row className="">
+        <div id="timeline-content" className="border-bottom ps-3">
+          <ul className="timeline">
+            <li className="event" data-date={`${ticket.departureTime.split(':')[0]}:${ticket.departureTime.split(':')[1]}`} data-day="16 Desember">
+              <h3>{ticket.from.city.split(',')[0]}</h3>
+              <p>{ticket.from.airportName}{`(${ticket.from.cityCode})`}</p>
+              <p>Armada : {ticket.Airplane.airplaneName}</p>
+            </li>
+            {ticket.totalTransit >= 1 && <li className="event" data-date={`${ticket.arrivalTimeAtTransit.split(":")[0]}:${ticket.arrivalTimeAtTransit.split(":")[1]}`} data-day="16 Desember">
+                        <h3>{ticket.transit.city.split(',')[0]}</h3>
+                        <p>{ticket.transit.airportName} {`(${ticket.transit.cityCode})`}</p>
+                        <p>
+                          Armada : {ticket.Airplane.airplaneName}
+                        </p>
+                      </li>}
+            <li className="event" data-date={`${ticket.arrivalTime.split(':')[0]}:${ticket.arrivalTime.split(':')[1]}`} data-day="16 Desember">
+              <h3>{ticket.to.city.split(',')[0]}</h3>
+              <p>{ticket.to.airportName} {`(${ticket.to.cityCode})`}</p>
+              <p>Armada : {ticket.Airplane.airplaneName}</p>
+            </li>
+          </ul>
+        </div>
+      </Row>
                   <Row className="">
                     <Col>
                       <h5 className="p-0">Komplementer Bagasi</h5>
@@ -104,196 +136,44 @@ function Identitas() {
                 <h2 className="mb-3 fw-bold">Pengisian Identitas Penumpang</h2>
                 <Form>
                   <Accordion>
-                    <Accordion.Item eventKey="1">
-                      <Accordion.Header>Penumpang 1</Accordion.Header>
+                    {penumpangs.map((item,index)=> <Accordion.Item eventKey={item.id}>
+                      <Accordion.Header>Penumpang {item.id}</Accordion.Header>
                       <Accordion.Body>
                         <Row>
                           <Col md={12} className="mb-3">
                             <Form.Label className="m-0">Sapaan</Form.Label>
-                            <Form.Select aria-label="Default select example">
+                            <Form.Select aria-label="Default select example" onChange={handleChange(index)} name='sapaan'>
                               <option value="1">Bapak</option>
                               <option value="2">Ibu</option>
                             </Form.Select>
                           </Col>
                           <Col md={12} className="mb-3">
                             <Form.Label className="m-0">Nama Depan</Form.Label>
-                            <Form.Control placeholder="First name" />
+                            <Form.Control placeholder="First name" onChange={handleChange(index)} name='namadepan'/>
                           </Col>
                           <Col md={12} className="mb-3">
                             <Form.Label className="m-0">Nama Belakang</Form.Label>
-                            <Form.Control placeholder="Last name" />
+                            <Form.Control placeholder="Last name" onChange={handleChange(index)} name='namabelakang' />
                           </Col>
                           <Col md={12} className="mb-3">
                             <Form.Label className="m-0">Tanggal Lahir</Form.Label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control" onChange={handleChange(index)} name='tanggallahir' />
                           </Col>
                           <Col md={12} className="mb-3">
                             <Form.Label className="m-0">Nomor Identitas Passport</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
+                            <Form.Control placeholder="Nomor Identitas Passport" onChange={handleChange(index)} name='nopassport'/>
                           </Col>
                           <Col md={12} className="mb-3">
                             <Form.Label className="m-0">Kebangsaan</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
+                            <Form.Control placeholder="Nomor Identitas Passport" onChange={handleChange(index)} name='kebangsaan' />
                           </Col>
                           <Col md={12} className="mb-3">
                             <Form.Label className="m-0">Masa Berlaku Passport</Form.Label>
-                            <input type="date" className="form-control" />
+                            <input type="date" className="form-control" onChange={handleChange(index)} name='masaberlakupassport' />
                           </Col>
                         </Row>
                       </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="2">
-                      <Accordion.Header>Penumpang 2</Accordion.Header>
-                      <Accordion.Body>
-                        <Row>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Sapaan</Form.Label>
-                            <Form.Select aria-label="Default select example">
-                              <option value="1">Bapak</option>
-                              <option value="2">Ibu</option>
-                            </Form.Select>
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nama Depan</Form.Label>
-                            <Form.Control placeholder="First name" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nama Belakang</Form.Label>
-                            <Form.Control placeholder="Last name" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Tanggal Lahir</Form.Label>
-                            <input type="date" className="form-control" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nomor Identitas Passport</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Kebangsaan</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Masa Berlaku Passport</Form.Label>
-                            <input type="date" className="form-control" />
-                          </Col>
-                        </Row>
-                      </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="3">
-                      <Accordion.Header>Penumpang 3</Accordion.Header>
-                      <Accordion.Body>
-                        <Row>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Sapaan</Form.Label>
-                            <Form.Select aria-label="Default select example">
-                              <option value="1">Bapak</option>
-                              <option value="2">Ibu</option>
-                            </Form.Select>
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nama Depan</Form.Label>
-                            <Form.Control placeholder="First name" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nama Belakang</Form.Label>
-                            <Form.Control placeholder="Last name" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Tanggal Lahir</Form.Label>
-                            <input type="date" className="form-control" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nomor Identitas Passport</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Kebangsaan</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Masa Berlaku Passport</Form.Label>
-                            <input type="date" className="form-control" />
-                          </Col>
-                        </Row>
-                      </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="4">
-                      <Accordion.Header>Penumpang 4</Accordion.Header>
-                      <Accordion.Body>
-                        <Row>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Sapaan</Form.Label>
-                            <Form.Select aria-label="Default select example">
-                              <option value="1">Bapak</option>
-                              <option value="2">Ibu</option>
-                            </Form.Select>
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nama Depan</Form.Label>
-                            <Form.Control placeholder="First name" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nama Belakang</Form.Label>
-                            <Form.Control placeholder="Last name" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Tanggal Lahir</Form.Label>
-                            <input type="date" className="form-control" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nomor Identitas Passport</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Kebangsaan</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Masa Berlaku Passport</Form.Label>
-                            <input type="date" className="form-control" />
-                          </Col>
-                        </Row>
-                      </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="5">
-                      <Accordion.Header>Penumpang 5</Accordion.Header>
-                      <Accordion.Body>
-                        <Row>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Sapaan</Form.Label>
-                            <Form.Select aria-label="Default select example">
-                              <option value="1">Bapak</option>
-                              <option value="2">Ibu</option>
-                            </Form.Select>
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nama Depan</Form.Label>
-                            <Form.Control placeholder="First name" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nama Belakang</Form.Label>
-                            <Form.Control placeholder="Last name" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Tanggal Lahir</Form.Label>
-                            <input type="date" className="form-control" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Nomor Identitas Passport</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Kebangsaan</Form.Label>
-                            <Form.Control placeholder="Nomor Identitas Passport" />
-                          </Col>
-                          <Col md={12} className="mb-3">
-                            <Form.Label className="m-0">Masa Berlaku Passport</Form.Label>
-                            <input type="date" className="form-control" />
-                          </Col>
-                        </Row>
-                      </Accordion.Body>
-                    </Accordion.Item>
+                    </Accordion.Item>)}
                   </Accordion>
                   <Button className="float-end mt-3" type="submit">
                     <p className="mb-0 fs-5">Submit</p>
