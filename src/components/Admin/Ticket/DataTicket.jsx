@@ -79,11 +79,12 @@ const DataTicket = () => {
   };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleDataEdit = (Airport) => {
-    setAirportName(Airport.airportName);
-    setCity(Airport.city);
-    setCityCode(Airport.cityCode);
-  };
+  // const handleDataEdit = (tiket) => {
+  //   setTicketNumber(tiket.ticketNumber);
+  //   setDepartureDate(tiket.DepartureDate);
+  //   setArrivalDate(tiket.ArrivalDate);
+  //   setCity(tiket.city);
+  // };
   let i = 1;
   return (
     <div className="data-ticket">
@@ -132,18 +133,15 @@ const DataTicket = () => {
                   <td>{tiket.from.city}</td>
                   <td>{tiket.to.city}</td>
                   <td>
-                    <Button className="right">
-                      <MdRemoveRedEye />
-                    </Button>
-                    <Link style={{ textDecoration: "none" }}>
-                      <Button className="delete">
+                    <div className="edit-delete">
+                      <Button>
+                        <MdRemoveRedEye />
+                      </Button>
+                      <Button>
                         <FiEdit />
                       </Button>
-                    </Link>
-                    {/* <Button className="delete">
-                      <MdDelete />
-                    </Button> */}
-                    <DeleteConfirmation />
+                      <DeleteConfirmation />
+                    </div>
                   </td>
                 </tr>
               ))}
