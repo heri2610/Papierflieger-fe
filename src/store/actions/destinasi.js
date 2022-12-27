@@ -15,11 +15,15 @@ export const getDestinasi = () =>
     });
     try {
       const datAirport = []
+      const AirportName = []
       const response = await destinasiService.getDestinasi();
       const response2 = await airportService.getAirport();
       const airport = response2.data.airports
       airport?.forEach((bandara)=>{
-        datAirport.push({label:bandara.city, value:bandara.id})
+        datAirport.push({label:bandara.city, value:bandara.city})
+      })
+      airport?.forEach((bandara)=>{
+        AirportName.push({label:bandara.airportName, value:bandara.id})
       })
       dispatch({
         type: GET_DESTINASI,
@@ -27,6 +31,7 @@ export const getDestinasi = () =>
           loading: false,
           data: response.data,
           dataAirport: datAirport,
+          AirportName,
           errorMessage: false,
         },
       });

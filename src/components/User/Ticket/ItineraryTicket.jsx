@@ -1,11 +1,12 @@
 import React from "react";
 import { Row, Col, Badge } from "react-bootstrap";
 import logocard from "../../../assets/images/Logo-card.svg";
+import {initialState} from "../../../store/reducers/penumpang";
 import Arrow from "../../../assets/images/Vector.svg";
 import "./DetailTicket.scss";
 
 function ItineraryTicket(props) {
-  const {ticket} = props
+  const {ticket,penumpang} = props
   const dateString = ticket.departureDate
 const date = new Date(dateString)
 const options = { year: 'numeric', month: 'long', day: 'numeric',weekday:'long' }
@@ -14,6 +15,7 @@ const formatter = new Intl.NumberFormat('id-ID', {
   style: 'currency',
   currency: 'IDR'
 });
+console.log(penumpang)
   return <>
     <div className='bg-white p-4 rounded mx-md-5 my-md-2'>
       <Row className="border-bottom py-3">
@@ -27,6 +29,12 @@ const formatter = new Intl.NumberFormat('id-ID', {
             <img src={Arrow} alt="arrow" className="mx-3" />
             <h3><strong>{ticket.to.city.split(',')[0]}</strong></h3></div>
           <h3>{humanReadableDate}</h3>
+        </Col>
+        <Col className=" mt-3 mt-md-0">
+          <h3>Jumlah Penumpang</h3>
+        
+            <h3><strong>{penumpang} Orang</strong></h3>
+           
         </Col>
       </Row>
       {/* Badges  */}

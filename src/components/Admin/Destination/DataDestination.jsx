@@ -13,7 +13,7 @@ import {
 } from "../../../store/actions/destinasi";
 
 const DataDestination = () => {
-  const { loading, data, errorMessage, message, dataAirport } = useSelector(
+  const { loading, data, errorMessage, message, dataAirport,AirportName } = useSelector(
     (state) => state.destinasiReducer
   );
   const [messages, setMessages] = useState("");
@@ -23,7 +23,7 @@ const DataDestination = () => {
   const [airportNames, setAirportNames] = useState("");
   const [desc, setDescription] = useState("");
   const [eror, setEror] = useState("");
-  const [devaultValue, setDevaultValue] = useState({});
+  const [defaultValue, setdefaultValue] = useState({});
   const datas = {
     name: names,
     location: locations,
@@ -63,9 +63,12 @@ const DataDestination = () => {
   const handleDataEdit = (destinasi) => {
     setName(destinasi.name);
     setLocation(destinasi.location);
-    setAirportNames(destinasi.Airport.airportName);
+    setAirportNames({
+      value: destinasi.Airport.id,
+      label: destinasi.Airport.airportName,
+    });
     setDescription(destinasi.description);
-    setDevaultValue({
+    setdefaultValue({
       value: destinasi.Airport.id,
       label: destinasi.Airport.city,
     });
@@ -165,7 +168,18 @@ const DataDestination = () => {
                     <Select
                       options={dataAirport}
                       onChange={(e) => setLocation(e.value)}
-                      defaultValue={devaultValue}
+                      defaultValue={defaultValue}
+                    />
+                  </Form.Group>
+                  <Form.Group
+                    className="form mt-2"
+                    controlId="validationCustom01"
+                  >
+                    <Form.Label>Bandara</Form.Label>
+                    <Select
+                      options={AirportName}
+                      onChange={(e) => setAirportNames(e.value)}
+                      defaultValue={airportNames}
                     />
                   </Form.Group>
                   <Form.Group

@@ -18,6 +18,10 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 import { getTicket, deleteTicket } from "../../../store/actions/ticket.js";
 import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
+// import {
+//   getTicket,
+//   deleteTicket,
+// } from "../../../store/actions/ticket";
 
 const airport = [
   { value: "Ngurah Rai", label: "Ngurah Rai" },
@@ -63,6 +67,7 @@ const DataTicket = () => {
     dispatch(deleteTicket(id));
   };
   console.log(data);
+  // const handleClose = () => setShow(false);
   const [show, setShow] = useState(false);
   const [airportName, setAirportName] = useState("");
   const [city, setCity] = useState("");
@@ -77,13 +82,24 @@ const DataTicket = () => {
     console.log(datas);
     // dispatch(updateAirplane(datas, edit.id));
   };
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleDataEdit = (Airport) => {
-    setAirportName(Airport.airportName);
-    setCity(Airport.city);
-    setCityCode(Airport.cityCode);
-  };
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+  // const handleDataEdit = (tiket) => {
+  //   setTicketNumber(tiket.ticketNumber);
+  //   setDepartureDate(tiket.DepartureDate);
+  //   setArrivalDate(tiket.ArrivalDate);
+  //   setFromCity(tiket.from.city);
+  //   setToCity(tiket.to.city);
+  //   setAirplaneName(tiket.AirplaneName);
+  //   setPrice(tiket.Price);
+  //   setTotalTransit(tiket.TotalTransit);
+  //   setTransitPoint(tiket.TransitPoint);
+  //   setTransitDuration(tiket.TransitDuration);
+  //   setTicketType(tiket.TicketType);
+  //   setFlightDuration(tiket.FlightDuration);
+  //   setArrivalTimeTransit(tiket.ArrivalTimeTransit);
+  //   setDepartureTimeFromTransit(tiket.DepartureTimeFromTransit);
+  // };
   let i = 1;
   return (
     <div className="data-ticket">
@@ -132,18 +148,15 @@ const DataTicket = () => {
                   <td>{tiket.from.city}</td>
                   <td>{tiket.to.city}</td>
                   <td>
-                    <Button className="right">
-                      <MdRemoveRedEye />
-                    </Button>
-                    <Link style={{ textDecoration: "none" }}>
-                      <Button className="delete">
+                    <div className="edit-delete">
+                      <Button>
+                        <MdRemoveRedEye />
+                      </Button>
+                      <Button>
                         <FiEdit />
                       </Button>
-                    </Link>
-                    {/* <Button className="delete">
-                      <MdDelete />
-                    </Button> */}
-                    <DeleteConfirmation />
+                      <DeleteConfirmation />
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -28,6 +28,7 @@ export const filterTickets = (tujuan, history) =>
           loading: false,
           data: response.data,
           errorMessage: false,
+          penumpang: tujuan,
         },
       });
       history("/penerbangan");
