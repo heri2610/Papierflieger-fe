@@ -27,7 +27,7 @@ const AddDestination = () => {
     console.log(datas);
     dispatch(addDestinasi(datas, history));
   };
-
+  console.log(dataAirport)
   return (
     <div className="add-destination">
         <Form className="add" onSubmit={handleSubmit}>
