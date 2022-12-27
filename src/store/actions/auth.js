@@ -1,5 +1,5 @@
 import AuthService from "../../services/authService";
-import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE, VERIFY_EMAIL } from "../types/index";
+import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE, } from "../types/index";
 
 export const login = (params, history) =>
   async function (dispatch) {
@@ -98,34 +98,6 @@ export const updateProfile = (params) =>
           loading: false,
           data: false,
           errorMessage: false,
-          message: error.message
-        },
-      });
-    }
-  };
-
-export const verifyEmail = (token) =>
-  async function (dispatch) {
-    dispatch({
-      type: VERIFY_EMAIL,
-      payload: {
-        loading: true,
-        message: false
-      },
-    });
-    try {
-      const response = await AuthService.verifyEmail(token);
-      dispatch({
-        type: VERIFY_EMAIL, payload: {
-          message: response.data.message,
-          loading: false
-        }
-      });
-    } catch (error) {
-      dispatch({
-        type: VERIFY_EMAIL,
-        payload: {
-          loading: false,
           message: error.message
         },
       });

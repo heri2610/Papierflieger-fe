@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE, VERIFY_EMAIL } from "../types/index";
+import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE, } from "../types/index";
 
 const initialState = {
   user: localStorage.getItem("user") || {},
@@ -45,12 +45,6 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: payload.profile,
-        loading: payload.loading,
-        message: payload.message
-      };
-    case VERIFY_EMAIL:
-      return {
-        ...state,
         loading: payload.loading,
         message: payload.message
       };

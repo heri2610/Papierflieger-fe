@@ -55,20 +55,6 @@ const AuthService = {
       throw err;
     }
   },
-
-  verifyEmail: async function (payload) {
-    console.log(payload);
-    try {
-      const response = await API.get('/auth/send-email', {
-        params: { ...payload },
-      });
-      console.log(response);
-      return response;
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
-  },
 };
 
 const setHeadersAndStorage = ({ username, token, avatar, role }) => {
