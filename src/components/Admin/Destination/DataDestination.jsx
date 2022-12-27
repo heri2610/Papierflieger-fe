@@ -13,7 +13,7 @@ import {
 } from "../../../store/actions/destinasi";
 
 const DataDestination = () => {
-  const { loading, data, errorMessage, message, dataAirport } = useSelector(
+  const { loading, data, errorMessage, message, dataAirport,AirportName } = useSelector(
     (state) => state.destinasiReducer
   );
   const [messages, setMessages] = useState("");
@@ -177,7 +177,7 @@ const DataDestination = () => {
                   >
                     <Form.Label>Bandara</Form.Label>
                     <Select
-                      options={dataAirport}
+                      options={AirportName}
                       onChange={(e) => setAirportNames(e.value)}
                       defaultValue={airportNames}
                     />

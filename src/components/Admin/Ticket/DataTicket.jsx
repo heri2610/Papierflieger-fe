@@ -18,10 +18,10 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 import { getTicket, deleteTicket } from "../../../store/actions/ticket.js";
 import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
-import {
-  getTicket,
-  deleteTicket,
-} from "../../../store/actions/ticket";
+// import {
+//   getTicket,
+//   deleteTicket,
+// } from "../../../store/actions/ticket";
 
 const airport = [
   { value: "Ngurah Rai", label: "Ngurah Rai" },
@@ -83,23 +83,23 @@ const DataTicket = () => {
     // dispatch(updateAirplane(datas, edit.id));
   };
   // const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleDataEdit = (tiket) => {
-    setTicketNumber(tiket.ticketNumber);
-    setDepartureDate(tiket.DepartureDate);
-    setArrivalDate(tiket.ArrivalDate);
-    setFromCity(tiket.from.city);
-    setToCity(tiket.to.city);
-    setAirplaneName(tiket.AirplaneName);
-    setPrice(tiket.Price);
-    setTotalTransit(tiket.TotalTransit);
-    setTransitPoint(tiket.TransitPoint);
-    setTransitDuration(tiket.TransitDuration);
-    setTicketType(tiket.TicketType);
-    setFlightDuration(tiket.FlightDuration);
-    setArrivalTimeTransit(tiket.ArrivalTimeTransit);
-    setDepartureTimeFromTransit(tiket.DepartureTimeFromTransit);
-  };
+  // const handleShow = () => setShow(true);
+  // const handleDataEdit = (tiket) => {
+  //   setTicketNumber(tiket.ticketNumber);
+  //   setDepartureDate(tiket.DepartureDate);
+  //   setArrivalDate(tiket.ArrivalDate);
+  //   setFromCity(tiket.from.city);
+  //   setToCity(tiket.to.city);
+  //   setAirplaneName(tiket.AirplaneName);
+  //   setPrice(tiket.Price);
+  //   setTotalTransit(tiket.TotalTransit);
+  //   setTransitPoint(tiket.TransitPoint);
+  //   setTransitDuration(tiket.TransitDuration);
+  //   setTicketType(tiket.TicketType);
+  //   setFlightDuration(tiket.FlightDuration);
+  //   setArrivalTimeTransit(tiket.ArrivalTimeTransit);
+  //   setDepartureTimeFromTransit(tiket.DepartureTimeFromTransit);
+  // };
   let i = 1;
   return (
     <div className="data-ticket">

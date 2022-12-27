@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { addDestinasi } from "../../../store/actions/destinasi";
 
 const AddDestination = () => {
-  const { dataAirport } = useSelector(
+  const { dataAirport, AirportName } = useSelector(
     (state) => state.destinasiReducer
   );
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const AddDestination = () => {
             </Form.Group>
             <Form.Group className="form mt-2" controlId="validationCustom01">
             <Form.Label>Bandara</Form.Label>
-              <Select options={dataAirport} onChange={(e) => setAirportNames(e.target.value)}/>
+              <Select options={AirportName} onChange={(e) => setAirportNames(e.target.value)}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Deskripsi</Form.Label>

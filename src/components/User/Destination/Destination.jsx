@@ -66,7 +66,6 @@ const Destination = () => {
                     </OverlayTrigger>
                   </div>
                 </div>
-
                 <div className="card-text">{destinasi.description}</div>
               </div>
             </div>

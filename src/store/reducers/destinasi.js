@@ -7,6 +7,7 @@ const initialState = {
   loading: false,
   errorMessage: false,
   dataAirport: false,
+  AirportName: false,
 };
 
 const destinasiReducer = (state = initialState, action) => {
@@ -19,7 +20,8 @@ const destinasiReducer = (state = initialState, action) => {
         data: payload.data.destinations,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
-        dataAirport: payload.dataAirport
+        dataAirport: payload.dataAirport,
+        AirportName: payload.AirportName
       };
     case GET_DESTINASIBYID:
       return {
