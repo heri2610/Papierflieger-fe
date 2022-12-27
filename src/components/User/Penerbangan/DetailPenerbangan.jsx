@@ -7,7 +7,7 @@ import Arrow from "./Vector.svg";
 import "./DetailPenerbangan.scss";
 
 export default function DetailPenerbangan({ detail,state }) {
-  //console.log(detail)
+  console.log(state)
   const[choosen,setChoosen]=useState({})
   const dispatch = useDispatch();
 const {ticketNumber, departureDate, departureTime, arrivalDate,arrivalTime, flightFrom,flightTo, airplaneId, price, totalTransit, transitPoint, transitDuration,ticketType,flightDuration,arrivalTimeAtTransit,departureTimeFromTransit,from,to,transit,Airplane } = detail;

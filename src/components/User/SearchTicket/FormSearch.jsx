@@ -12,9 +12,10 @@ export default function FormSearch(props) {
   const { data } = useSelector((state) => state.airportReducer);
   const [type, setType] = useState("");
   const{dispatchs} = props;
+  // console.log(props.dispatchs)
   // const [berangkat, setBerangkat] = useState("");
   const [tujuan, setTujuan] = useState({});
-  // console.log(berangkat);
+  console.log(tujuan);
   const history = useNavigate();
   const handleType = (event) => {
     setType(event.target.value);
@@ -61,7 +62,7 @@ export default function FormSearch(props) {
           </div>
           <div className="col">
             <div className="form-floating">
-              <input type="number" min="1" max="10" className="form-control" id="inputPenumpang" onChange={(e)=>dispatchs({type:'tampung',penumpang:e.target.value})} />
+              <input type="number" min="1" max="10" className="form-control" id="inputPenumpang" onChange={(e) => setTujuan(current => ({ ...current, penumpang: e.target.value}))} />
               <label htmlFor="inputPenumpang">Penumpang</label>
             </div>
           </div>
