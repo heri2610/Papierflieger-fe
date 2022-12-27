@@ -1,8 +1,10 @@
 .sidebar{
-    flex: 1.5;
+    margin-top: 40px;
+    position: fixed;
     min-height: 100vh;
+    flex: 1.5;
     background-color: #538AB1;
-    
+
     .center{
         ul{
             list-style: none;

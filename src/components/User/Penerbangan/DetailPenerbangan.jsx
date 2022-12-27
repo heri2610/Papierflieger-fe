@@ -1,65 +1,117 @@
-import React from "react";
-import {Row,Col,Badge,Accordion,Button} from "react-bootstrap";
-import Arrow from './Vector.svg';
-import "./Penerbangan.scss";
+import React,{useState} from "react";
+import { Row, Col, Badge, Accordion, Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import {useDispatch,useSelector} from "react-redux";
+import {getTicketDetail} from "../../../store/actions/ticket"
+import Arrow from "./Vector.svg";
+import "./DetailPenerbangan.scss";
 
-export default function DetailPenerbangan({kelas, kode,harga,keberangkatan,pendaratan,durasi,istransit,transit}){
-return <>
-<Row>
-    <Col md='2'>
-    <h3>
-    <Badge className='bg-info text-primary w-100'>Ekonomi</Badge>
-      </h3>
-    </Col>
-    <Col>
-    <h3>
-    <Badge bg="info" className='text-primary'>Kode Pemesanan:APR22L</Badge>
-      </h3>
-    </Col>
-    <Col>
-    <h3 className='text-end m-0'>
-    Rp. 2.678.000
-      </h3><span className='text-end d-block'>/orang</span>
-    </Col>
-</Row>
-<Row className="my-4 border-bottom border-dark pb-3">
-    <Col className='position-relative'>
-    <h4 className='m-0'>Keberangkatan</h4>
-    <h1 className='m-0 p-0'>07.00</h1>
-    <h4 className='m-0'>CGK</h4>
-    <img src={Arrow} alt='arrow' className='position-absolute top-0 end-0 pt-1 pe-4' />
-    </Col>
-    <Col>
-    <h4 className='m-0'>Pendaratan</h4>
-    <h1 className='m-0 p-0'>15.00</h1>
-    <h4 className='m-0'>SIN</h4>
-    </Col>
-    <Col>
-    <h4 className='m-0'>Durasi Perjalanan</h4>
-    <h1 className='m-0 p-0'>7 Jam</h1>
-    </Col>
-    <Col>
-    <h4 className='m-0'>Lama Perhentian</h4>
-    <h1 className='m-0 p-0'>1 Jam</h1>
-    </Col>
-</Row>
-<Row>
-    <Col>
-    <Accordion>
-        <Accordion.Item eventKey='0' className='border border-0'>
-            <Accordion.Header><Button variant='primary' className="w-25"><h4 className='m-0'>Pesan</h4></Button><h4 className='d-inline ms-auto me-3 mb-0'>Pratinjau Rincian</h4></Accordion.Header>
-            <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-        </Accordion.Item>
-    </Accordion>
-    </Col>
-</Row>
-</>
+export default function DetailPenerbangan({ detail,state }) {
+  //console.log(detail)
+  const[choosen,setChoosen]=useState({})
+  const dispatch = useDispatch();
+const {ticketNumber, departureDate, departureTime, arrivalDate,arrivalTime, flightFrom,flightTo, airplaneId, price, totalTransit, transitPoint, transitDuration,ticketType,flightDuration,arrivalTimeAtTransit,departureTimeFromTransit,from,to,transit,Airplane } = detail;
+const formatter = new Intl.NumberFormat('id-ID', {
+  style: 'currency',
+  currency: 'IDR'
+});
+
+const history = useNavigate();
+
+const handleNavigate = async()=>{
+  dispatch(getTicketDetail(detail,state,history))
+}
+  return (
+    <>
+      <div className="detail-penerbangan">
+        <Row className="row-cols-1 row-cols-md-2">
+          <Col>
+            <h3>
+              <Badge bg="info" className="text-primary w-50">
+                {ticketNumber}
+              </Badge>
+            </h3>
+          </Col>
+          <Col>
+            <h3 className="text-end m-0">{`${formatter.format(price)}/orang`}</h3>
+          </Col>
+        </Row>
+        <Row className="row-cols-2 row-cols-md-4 my-4 border-bottom border-dark pb-3">
+          <Col className="position-relative col mb-3 mb-lg-0">
+            <h4 className="text-muted">Keberangkatan</h4>
+            <h3>{`${departureTime.split(":")[0]}:${departureTime.split(":")[1]}`}</h3>
+            <h3>{from.cityCode}</h3>
+            <img src={Arrow} alt="arrow" className="position-absolute top-50 end-15" />
+          </Col>
+          <Col>
+            <h4 className="text-muted">Pendaratan</h4>
+            <h3>{`${arrivalTime.split(':')[0]}:${arrivalTime.split(':')[1]}`}</h3>
+            <h3>{to.cityCode}</h3>
+          </Col>
+          <Col>
+            <h4 className="text-muted">Durasi Perjalanan</h4>
+            <h3>{flightDuration}</h3>
+          </Col>
+          <Col>
+            <h4 className="text-muted">Lama Perhentian</h4>
+            <h3>{transitDuration}</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Accordion>
+              <Accordion.Item eventKey="0" className="border border-0">
+                <Accordion.Header>
+                  <Button variant="primary" className="btn btn-primary" onClick={handleNavigate}>
+                    <h4 className="m-0">Pesan</h4>
+                  </Button>
+                  <h4 className="d-inline ms-auto me-3 mb-0">Pratinjau Rincian</h4>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <div id="timeline-content" className="border-bottom">
+                    <ul className="timeline">
+                      <li className="event" data-date={`${departureTime.split(':')[0]}:${departureTime.split(':')[1]}`} data-day="16 Desember">
+                        <h2>{from.city.split(',')[0]}</h2>
+                        <p>{from.airportName}{`(${from.cityCode})`}</p>
+                        <p>
+                          Armada : {Airplane.airplaneName}
+                        </p>
+                      </li>
+                     {totalTransit >= 1 && <li className="event" data-date={`${arrivalTimeAtTransit.split(":")[0]}:${arrivalTimeAtTransit.split(":")[1]}`} data-day="16 Desember">
+                        <h2>{transit.city.split(',')[0]}</h2>
+                        <p>{transit.airportName} {`(${transit.cityCode})`}</p>
+                        <p>
+                          Armada : {Airplane.airplaneName}
+                        </p>
+                      </li>}
+                      <li className="event" data-date={`${arrivalTime.split(':')[0]}:${arrivalTime.split(':')[1]}`} data-day="16 Desember">
+                        <h2>{to.city.split(',')[0]}</h2>
+                        <p>{to.airportName} {`(${to.cityCode})`}</p>
+                        <p>
+                          Armada : {Airplane.airplaneName}
+                        
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                  <Row>
+                    <Col>
+                      <h5>Komplementer Bagasi</h5>
+                      <p>Harga tiket sudah termasuk beban bagasi per-orang dengan rincian beban sebagasi berikut :</p>
+                      <h5 style={{ paddingTop: 0 }}>
+                        <i className="bi bi-file-zip-fill"></i> Tas/Koper 7 kg x 1
+                      </h5>
+                      <p className="text-primary">
+                        <strong>Tas/Koper yang diperiksa</strong>
+                      </p>
+                    </Col>
+                  </Row>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </Col>
+        </Row>
+      </div>
+    </>
+  );
 }

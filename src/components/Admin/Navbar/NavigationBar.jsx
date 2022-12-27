@@ -13,22 +13,20 @@ import {Link} from 'react-router-dom'
 
 const NavigationBar = () => {
   return (
-    <Navbar className="bg-white">
+    <Navbar className="bg-white fixed-top">
       <Container>
         <div className="nav-top">
-          <Link to="/" style={{textDecoration:"none"}}></Link>
-          <Navbar.Brand  href="/">PAPIERFLIEGER</Navbar.Brand>
+          <Link to="/" style={{ textDecoration: "none" }}></Link>
+          <Navbar.Brand href="/">PAPIERFLIEGER</Navbar.Brand>
         </div>
-          <Nav>
-            <Nav.Link className="nav-profile">
-              <div className="nav-admin">
-                <FaUserCircle className="icon-admin"/>
-                {/* <div className="admin"> */}
-                  <h6 className="admin">Admin 1</h6>
-                {/* </div> */}
-              </div>
-            </Nav.Link>
-          </Nav>
+        <Nav>
+          <Nav.Link href="/user/profile" className="nav-profile">
+            <div className="nav-admin">
+              <FaUserCircle className="icon-admin" />
+              <h6 className="admin">Admin 1</h6>
+            </div>
+          </Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
   );

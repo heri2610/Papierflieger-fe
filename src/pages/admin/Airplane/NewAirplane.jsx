@@ -1,19 +1,19 @@
-import React from 'react';
-import AddAirplane from '../../../components/Admin/Airplane/AddAirplane';
-import NavigationBar from '../../../components/Admin/Navbar/NavigationBar';
-import Sidebar from '../../../components/Admin/Sidebar/Sidebar';
-import './Airplane.scss'
+import React from "react";
+import AddAirplane from "../../../components/Admin/Airplane/AddAirplane";
+import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
+import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
+import "../Admin.scss"
 
 const Airplane = () => {
   return (
-    <div className='dashboard'>
+    <div className="dashboard">
     <NavigationBar />
     <div className="dashboard-container">
       <div className="sidebar">
         <Sidebar />
       </div>
       <div className="home">
-        <div className="airplane-title">
+        <div className="tittle">
           <h5>Menambahkan data Pesawat</h5>
         </div>
         <AddAirplane />

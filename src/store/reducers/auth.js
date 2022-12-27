@@ -1,10 +1,13 @@
-import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE } from "../types/index";
+import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE, } from "../types/index";
 
 const initialState = {
   user: localStorage.getItem("user") || {},
   token: localStorage.getItem("token"),
   isLoggedIn: localStorage.getItem("user") ? true : false,
-  message: false
+  message: false,
+  isAdmin: localStorage.getItem("accessToken") === "A-*dmin?&&%mlm-plgsnwngbuay-$563iedjnjdxgdj" ? true : false,
+  profile: {},
+  loading: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -14,10 +17,11 @@ const authReducer = (state = initialState, action) => {
     case LOGIN:
       return {
         ...state,
-        user: payload.username,
-        token: payload.token,
+        user: payload.data.username,
+        token: payload.data.token,
         isLoggedIn: true,
-        message: payload.message
+        message: payload.data.message,
+        isAdmin: payload.isAdmin,
       };
     case REGISTER:
       return {
@@ -31,10 +35,18 @@ const authReducer = (state = initialState, action) => {
         token: "",
         isLoggedIn: false,
       };
+    case DETAIL_PROFILE:
+      return {
+        ...state,
+        profile: payload.profile,
+        loading: payload.loading
+      };
     case UPDATE_PROFILE:
       return {
         ...state,
-        user: payload,
+        profile: payload.profile,
+        loading: payload.loading,
+        message: payload.message
       };
     default: {
       return state;

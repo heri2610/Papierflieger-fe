@@ -1,8 +1,11 @@
-import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT } from "../types/index";
+import { GET_AIRPORT, ADD_AIRPORT, PUT_AIRPORT, DELETE_AIRPORT, GET_AIRPORTBYID } from "../types/index";
 
 const initialState = {
   message: false,
-  data: false
+  dataById: false,
+  data: [],
+  loading: false,
+  errorMessage: false,
 };
 
 const airportReducer = (state = initialState, action) => {
@@ -10,6 +13,13 @@ const airportReducer = (state = initialState, action) => {
 
   switch (type) {
     case GET_AIRPORT:
+      return {
+        ...state,
+        data: payload.data.airports,
+        loading: payload.loading,
+        errorMessage: payload.errorMessage,
+      };
+    case GET_AIRPORTBYID:
       return {
         ...state,
         message: payload.message,
@@ -29,7 +39,8 @@ const airportReducer = (state = initialState, action) => {
     case DELETE_AIRPORT:
       return {
         ...state,
-        message: "Data berhasil dihapus",
+        data: payload.data.airports,
+        message: payload.message,
       };
     default: {
       return state;

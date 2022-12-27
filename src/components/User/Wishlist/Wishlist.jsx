@@ -1,49 +1,73 @@
 import React from "react";
-import Balii from "../../../assets/images/bali1.svg";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { BsFillBookmarkXFill } from "react-icons/bs";
 import Slider from "../Slider/Slider";
 import "./Wishlist.scss";
 
 const Wishlist = () => {
   return (
-    <div>
+    <>
       <div className="img-banner">
-        <h4 className="font-wishlist mt-3">Daftar Keinginan</h4>
-        <br />
-        <div className="container card mb-3 w-100">
-          <div className="row g-0">
-            <div className="col-md-4">
-              <img className="m-4 w-75" variant="top" src={Balii} alt="" />
-            </div>
-            <div className="col-md-8">
-              <div className="card-body mt-3">
-                <h5 className="card-title">Bali</h5>
-                <p className="card-text">
-                  <small className="text-muted">Destinasi</small>
-                </p>
+        <div className="container">
+          <h4 className="my-3 fw-bold">Daftar Keinginan</h4>
+          <div className="container card mb-3 w-100">
+            <div className="card-body d-flex align-items-start align-items-md-center justify-content-between">
+              <div className="d-flex align-items-center flex-wrap">
+                <div className="col-md-6 me-4 p-lg-3">
+                  <img className="img-fluid" variant="top" src="" alt="" />
+                </div>
+                <div className="mt-3 mt-md-0">
+                  <p className="card-title fw-bold fs-5">Pura Ulun Danu Beratan</p>
+                  <p className="card-text text-muted">Bali</p>
+                </div>
+              </div>
+              <div>
+                <OverlayTrigger
+                  key="bottom"
+                  placement="bottom"
+                  overlay={
+                    <Tooltip id={`tooltip-bottom`}>
+                      Hapus dari wishlist
+                    </Tooltip>
+                  }
+                >
+                  <div className="icon-wishlist"><BsFillBookmarkXFill size="30px" /></div>
+                </OverlayTrigger>
               </div>
             </div>
           </div>
-        </div>
-        <div className="container card mb-3 w-100">
-          <div className="row g-0">
-            <div className="col-md-4">
-              <img className="m-4 w-75" variant="top" src={Balii} alt="" />
-            </div>
-            <div className="col-md-8">
-              <div className="card-body mt-3">
-                <h5 className="card-title">Bali</h5>
-                <p className="card-text">
-                  <small className="text-muted">Destinasi</small>
-                </p>
+          <div className="container card mb-3 w-100">
+            <div className="card-body d-flex align-items-start align-items-md-center justify-content-between">
+              <div className="d-flex align-items-center flex-wrap">
+                <div className="col-md-6 me-4 p-lg-3">
+                  <img className="img-fluid" variant="top" src="" alt="" />
+                </div>
+                <div className="mt-3 mt-md-0">
+                  <p className="card-title fw-bold fs-5">Pura Ulun Danu Beratan</p>
+                  <p className="card-text text-muted">Bali</p>
+                </div>
+              </div>
+              <div>
+                <OverlayTrigger
+                  key="bottom"
+                  placement="bottom"
+                  overlay={
+                    <Tooltip id={`tooltip-bottom`}>
+                      Hapus dari wishlist
+                    </Tooltip>
+                  }
+                >
+                  <div className="icon-wishlist"><BsFillBookmarkXFill size="30px" /></div>
+                </OverlayTrigger>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div>
+      <div className="mb-5">
         <Slider />
       </div>
-    </div>
+    </>
   );
 };
 export default Wishlist;

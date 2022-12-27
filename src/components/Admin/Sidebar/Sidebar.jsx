@@ -2,8 +2,8 @@ import React from 'react';
 import {
     BsFillHouseFill,
     BsPersonPlusFill,
-    BsFillCreditCard2FrontFill,
-    BsPaypal
+    BsPaypal,
+    BsCartPlusFill
 } from "react-icons/bs";
 import { 
     BiPaperPlane,
@@ -22,49 +22,49 @@ const Sidebar = () => {
     <div className="sidebar">
         <div className="center">
             <ul>
-                <Link to="/" style={{textDecoration:"none"}}>
+                <Link to="/admin" style={{textDecoration:"none"}}>
                     <li>
                         <BsFillHouseFill className='icon'/><span>Dashboard</span>
                     </li>
                 </Link>
-                <Link to="/users" style={{textDecoration:"none"}}>
-                    <li>
-                        <BsPersonPlusFill className='icon'/><span>Pengguna</span>
-                    </li>
-                </Link>
-                <Link to="/airplane" style={{textDecoration:"none"}}>
-                    <li>
-                        <FaPlane className='icon'/><span>Pesawat</span>
-                    </li>
-                </Link>
-                <Link to="/airport" style={{textDecoration:"none"}}>
+                <Link to="/admin/airport" style={{textDecoration:"none"}}>
                     <li>
                         <BiPaperPlane className='icon'/><span>Bandara</span>
                     </li>
                 </Link>
-                <Link to="/payment" style={{textDecoration:"none"}}>
-                    <li>
-                        <BsFillCreditCard2FrontFill className='icon'/><span>Pembayaran</span>
-                    </li>
-                </Link>
-                <Link to="/destination" style={{textDecoration:"none"}}>
+                <Link to="/admin/destination" style={{textDecoration:"none"}}>
                     <li>
                         <MdAttractions className='icon'/><span>Destinasi</span>
                     </li>
                 </Link>
-                <Link to="/ticket" style={{textDecoration:"none"}}>
+                <Link to="/admin/users" style={{textDecoration:"none"}}>
+                    <li>
+                        <BsPersonPlusFill className='icon'/><span>Pengguna</span>
+                    </li>
+                </Link>
+                <Link to="/admin/order" style={{textDecoration:"none"}}>
+                    <li>
+                        <BsCartPlusFill className='icon'/><span>Pesanan</span>
+                    </li>
+                </Link>
+                <Link to="/admin/airplane" style={{textDecoration:"none"}}>
+                    <li>
+                        <FaPlane className='icon'/><span>Pesawat</span>
+                    </li>
+                </Link>
+                <Link to="/admin/ticket" style={{textDecoration:"none"}}>
                     <li>
                         <FaTicketAlt className='icon'/><span>Tiket</span>
                     </li>
                 </Link>
-                <Link to="/transaction" style={{textDecoration:"none"}}>
+                <Link to="/admin/transaction" style={{textDecoration:"none"}}>
                     <li>
                         <BsPaypal className='icon'/><span>Transaksi</span>
                     </li>
                 </Link>
-                <Link to="/logout" style={{textDecoration:"none"}}>
+                <Link to="/" style={{textDecoration:"none"}}>
                     <li>
-                        <BiLogOut className='icon'/><span>Keluar</span>
+                        <BiLogOut className='icon'/><span>Kembali</span>
                     </li>
                 </Link>
             </ul>

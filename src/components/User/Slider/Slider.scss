@@ -3,43 +3,50 @@ body {
   height: 100%;
 }
 
-.swiper {
-  width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+.slider {
+  .swiper {
+    width: 100%;
+    padding-bottom: 50px;
 
-  .swiper-slide {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
+    .swiper-slide {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
 
-    img {
-      //   display: block;
-      width: 100%;
-      height: 100%;
-      //   object-fit: cover;
-    }
-
-    &:hover {
       img {
-        color: #000;
-        border-radius: 20px;
-        opacity: .4;
-        transition: .5s;
+        width: 340px;
+        height: 280px;
+        border-radius: 10px;
       }
 
-      .box-image {
-        transition: all .9s;
+      &:hover {
+        img {
+          color: #000;
+          border-radius: 20px;
+          opacity: 0.4;
+          transition: 0.5s;
+        }
+
+        .box-image {
+          transition: all 0.9s;
+        }
       }
+    }
+  }
+
+  .swiper-slide:hover {
+    .title li button {
+      transform: translateY(0px);
+      opacity: 1;
     }
   }
 }
@@ -65,15 +72,8 @@ body {
       border: none;
       font-weight: bold;
       margin: 0 6px;
-      transition: .4s;
+      transition: 0.4s;
       opacity: 0;
     }
-  }
-}
-
-.swiper-slide:hover {
-  .title li button {
-    transform: translateY(0px);
-    opacity: 1;
   }
 }

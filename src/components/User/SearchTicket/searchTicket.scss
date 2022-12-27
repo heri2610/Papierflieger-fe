@@ -1,0 +1,62 @@
+.search-ticket-real {
+  position: relative;
+  bottom: 6rem;
+}
+
+.form-search {
+  .card {
+    box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.25);
+
+    .row {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .btn {
+    height: 100%;
+  }
+
+  .label-form {
+    border-style: solid solid none solid;
+    border-color: #ced4da;
+    border-width: 1px;
+    border-radius: 0.375rem 0.375rem 0 0;
+    margin-bottom: -7px;
+    background-color: #fff;
+  }
+
+  .css-13cymwt-control {
+    border-top-style: none;
+    border-radius: 0 0 0.375rem 0.375rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search-ticket-real {
+    bottom: 4rem;
+  }
+
+  .form-search {
+    .card-body {
+      max-height: 450px;
+      overflow: auto;
+
+      .row {
+        margin-bottom: 0;
+      }
+    }
+
+    .form-floating {
+      margin-bottom: 0.7rem;
+    }
+
+    .css-13cymwt-control {
+      margin-bottom: -1rem;
+    }
+  }
+}
+
+.ms-12 {
+  margin-left: 10px;
+  opacity: 65%;
+}
