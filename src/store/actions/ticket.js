@@ -62,6 +62,7 @@ export const getTicket = () =>
       airport?.forEach((bandara) => {
         datAirport.push({ label: bandara.city, value: bandara.id });
       });
+   
       dispatch({
         type: GET_TICKET,
         payload: {
