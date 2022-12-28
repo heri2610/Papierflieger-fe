@@ -15,3 +15,14 @@
     }
   }
 }
+
+.first-img-destination {
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.destination-img img {
+  height: 180px;
+  width: 85%;
+}
