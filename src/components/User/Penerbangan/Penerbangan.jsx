@@ -25,9 +25,9 @@ function Penerbangan() {
           <Col md="12">
             <h3>Pilihan Penerbangan</h3>
             {tiketBerangkat &&
-              tiketBerangkat?.map((item) => (
+              tiketBerangkat?.map((item,i) => (
                 <div className="bg-white p-3 mb-3 rounded">
-                  <DetailPenerbangan detail={item} state={penumpang.penumpang}/>
+                  <DetailPenerbangan detail={item} state={penumpang.penumpang} tiketPulang={tiketPulang[i]}/>
                 </div>
               ))}
           </Col>

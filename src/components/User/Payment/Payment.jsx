@@ -13,6 +13,9 @@ function Payment() {
   const [opens, setOpens] = useState(false);
   const [opena, setOpena] = useState(false);
   const {data} = useSelector((state) => state.orderReducer);
+  const datez = new Date(data.tiketBerangkat[0].departureDate)
+const options = { year: 'numeric', month: 'long', day: 'numeric',weekday:'long' }
+const humanReadableDate = datez.toLocaleDateString('id-ID', options)
   console.log(data)
   const formatter = new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -33,25 +36,42 @@ function Payment() {
                 <div className="ms-3 ms-md-0 tiket-bayar">
                   <h4>Penerbangan</h4>
                   <div className="hstack">
-                    <h4><strong>Banda Aceh</strong></h4>
+                    <h4><strong>{data.tiketBerangkat[0].from.city.split(',')[0]}</strong></h4>
                     <img src={Arrow} alt="arrow" className="mx-3" />
-                    <h4><strong>Jakarta</strong></h4>
+                    <h4><strong>{data.tiketBerangkat[0].to.city.split(',')[0]}</strong></h4>
                   </div>
-                  <h4>Selasa 10 Januari 2022</h4>
+                  <h4>{humanReadableDate}</h4>
                 </div>
               </div>
             </Col>
+            {data.tiketPulang&&
+            <Col className="bg-white p-3 mt-2 mb-4 rounded-4">
+              <div className="d-flex align-items-center">
+                <div className="w-25 me-2 d-flex justify-content-center">
+                  <img src={logocard} className="img-fluid" alt="logo-card" />
+                </div>
+                <div className="ms-3 ms-md-0 tiket-bayar">
+                  <h4>Pulang</h4>
+                  <div className="hstack">
+                    <h4><strong>{data.tiketPulang[0].from.city.split(',')[0]}</strong></h4>
+                    <img src={Arrow} alt="arrow" className="mx-3" />
+                    <h4><strong>{data.tiketPulang[0].to.city.split(',')[0]}</strong></h4>
+                  </div>
+                  <h4>{humanReadableDate}</h4>
+                </div>
+              </div>
+            </Col>}
           </Row>
           <Row className="mt-2">
             <h3 className="fw-bold">Detail Pembayaran</h3>
             <Col className="bg-white p-3 px-5 mt-2 mb-4 rounded-4">
               <div className="d-flex justify-content-between bayar">
                 <div>
-                  <p className="mb-2">Harga Tiket x5</p>
+                  <p className="mb-2">Harga Tiket x{data.passengers}</p>
                   <p className="fw-semibold mb-0">Total Harga</p>
                 </div>
                 <div>
-                  <p className="mb-2">IDR 1.000.000</p>
+                  <p className="mb-2">{formatter.format(data.price)}</p>
                   <p className="fw-semibold mb-0">{formatter.format(data.totalPrice)}</p>
                 </div>
               </div>

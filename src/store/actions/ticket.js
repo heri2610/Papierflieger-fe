@@ -22,6 +22,7 @@ export const filterTickets = (tujuan, history) =>
     });
     try {
       const response = await TicketService.filterTickets(tujuan);
+      console.log(response);
       dispatch({
         type: FILTER_TICKET,
         payload: {
@@ -62,7 +63,7 @@ export const getTicket = () =>
       airport?.forEach((bandara) => {
         datAirport.push({ label: bandara.city, value: bandara.id });
       });
-   
+
       dispatch({
         type: GET_TICKET,
         payload: {

@@ -8,9 +8,9 @@ import ItineraryTicket from "./ItineraryTicket";
 import { useSelector } from "react-redux";
 
 function DetailTicket() {
-  const { ticket,penumpang,ticketpulang } = useSelector((state) => state.ticketReducer);
+  const { ticket,penumpang,tiketPulang } = useSelector((state) => state.ticketReducer);
   const navigate = useNavigate();
-  // console.log(ticket,penumpang)
+  console.log(ticket,penumpang,tiketPulang)
   return (
     <>
       <NavigationBar />
@@ -18,11 +18,11 @@ function DetailTicket() {
         <div className="pt-5 pb-5">
           <h3 className="mt-5 mb-3 ms-md-5"><strong>Rincian Tiket</strong></h3>
           <div>
-            <ItineraryTicket ticket={ticket} penumpang={penumpang.penumpang} ticketpulang={ticketpulang} />
+            <ItineraryTicket ticket={ticket} penumpang={penumpang} ticketpulang={tiketPulang} />
           </div>
-          <div className="px-md-5 mt-4 d-flex flex-column align-items-end">
-            <p className="mb-4 fs-4">Anda harus mengisi dokumen perjalanan terlebih dahulu sebelum melakukan transaksi</p>
-              <Button onClick={()=>navigate(-1)}>Kembali</Button> 
+          <div className="px-md-5 mt-4 d-flex align-items-end">
+            <p className="mb-4 fs-4 flex-fill">Anda harus mengisi dokumen perjalanan terlebih dahulu sebelum melakukan transaksi</p>
+              <Button className='me-3' onClick={()=>navigate(-1)}>Kembali</Button> 
             <Link to="/identitas">
               <Button >Selanjutnya</Button>
             </Link>

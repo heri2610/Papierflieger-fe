@@ -20,22 +20,31 @@ export default function FormSearch(props) {
   const handleType = (event) => {
     setType(event.target.value);
   };
-
+  console.log(tujuan);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirport());
-  }, [dispatch]);
+  }, []);
+  useEffect(()=>{
+    setTujuan(current => {
+      // 👇️ remove salary key from object
+      const {returnDate, ...rest} = current;
+
+      return rest;
+    });
+  },[type])
 
   const handleSubmit = async (event) => {
+    console.log(tujuan)
     event.preventDefault();
     dispatch(filterTickets(tujuan, history));
   };
-
+  console.log(tujuan);
   // const handleBerangkat = (e) => {
   //   console.log(e);
   //   setBerangkat(current=>{...current,[e.target.]})
   // };
-  console.log(tujuan);
+  
   return (
     <div className="form-search">
       <Form onSubmit={handleSubmit}>
