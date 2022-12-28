@@ -80,7 +80,7 @@ const Wishlist = () => {
                         </Tooltip>
                       }
                     >
-                      <div className="icon-wishlist"
+                      <div className="icon-wishlist text-primary"
                         onClick={() => handleDelete(wishlist.destinationId)}
                       ><BsFillBookmarkXFill size="30px" /></div>
                     </OverlayTrigger>
