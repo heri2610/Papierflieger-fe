@@ -14,9 +14,14 @@ function Identitas() {
 
   useEffect(()=>{
     const passenger = []
+    if(ticket.ticketType === 'Internasional'){
     for(let i=0;i<Number(penumpang.penumpang);i++){
       passenger.push({id:i+1,sapaan:'',namadepan:'',namabelakang:'',nopassport:'',masaberlakupassport:'',kebangsaan:'',email:'',tanggallahir:''})
+    }}else{
+      for(let i=0;i<Number(penumpang.penumpang);i++){
+        passenger.push({id:i+1,sapaan:'',namadepan:'',namabelakang:'',nik:'',kebangsaan:'',email:'',tanggallahir:''})
     }
+  }
     setPenumpang(passenger)
   },[ticket])
   const handleChange = (index) => (e) => {
@@ -136,7 +141,7 @@ const formatter = new Intl.NumberFormat('id-ID', {
                 <h2 className="mb-3 fw-bold">Pengisian Identitas Penumpang</h2>
                 <Form>
                   <Accordion>
-                    {penumpangs.map((item,index)=> <Accordion.Item eventKey={item.id}>
+                    {ticket.ticketType === 'Internasional' ? penumpangs.map((item,index)=> <Accordion.Item eventKey={item.id}>
                       <Accordion.Header>Penumpang {item.id}</Accordion.Header>
                       <Accordion.Body>
                         <Row>
@@ -170,6 +175,39 @@ const formatter = new Intl.NumberFormat('id-ID', {
                           <Col md={12} className="mb-3">
                             <Form.Label className="m-0">Masa Berlaku Passport</Form.Label>
                             <input type="date" className="form-control" onChange={handleChange(index)} name='masaberlakupassport' />
+                          </Col>
+                        </Row>
+                      </Accordion.Body>
+                    </Accordion.Item>):penumpangs.map((item,index)=> <Accordion.Item eventKey={item.id}>
+                      <Accordion.Header>Penumpang {item.id}</Accordion.Header>
+                      <Accordion.Body>
+                        <Row>
+                          <Col md={12} className="mb-3">
+                            <Form.Label className="m-0">Sapaan</Form.Label>
+                            <Form.Select aria-label="Default select example" onChange={handleChange(index)} name='sapaan'>
+                              <option value="1">Bapak</option>
+                              <option value="2">Ibu</option>
+                            </Form.Select>
+                          </Col>
+                          <Col md={12} className="mb-3">
+                            <Form.Label className="m-0">Nama Depan</Form.Label>
+                            <Form.Control placeholder="First name" onChange={handleChange(index)} name='namadepan'/>
+                          </Col>
+                          <Col md={12} className="mb-3">
+                            <Form.Label className="m-0">Nama Belakang</Form.Label>
+                            <Form.Control placeholder="Last name" onChange={handleChange(index)} name='namabelakang' />
+                          </Col>
+                          <Col md={12} className="mb-3">
+                            <Form.Label className="m-0">Tanggal Lahir</Form.Label>
+                            <input type="date" className="form-control" onChange={handleChange(index)} name='tanggallahir' />
+                          </Col>
+                          <Col md={12} className="mb-3">
+                            <Form.Label className="m-0">Nomor Induk Kependudukan</Form.Label>
+                            <Form.Control placeholder="Nomor Induk Kependudukan" onChange={handleChange(index)} name='nik'/>
+                          </Col>
+                          <Col md={12} className="mb-3">
+                            <Form.Label className="m-0">Kebangsaan</Form.Label>
+                            <Form.Control placeholder="Nomor Identitas Passport" onChange={handleChange(index)} name='kebangsaan' />
                           </Col>
                         </Row>
                       </Accordion.Body>
