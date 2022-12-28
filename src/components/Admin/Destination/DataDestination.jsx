@@ -13,7 +13,7 @@ import {
 } from "../../../store/actions/destinasi";
 
 const DataDestination = () => {
-  const { loading, data, errorMessage, message, dataAirport,AirportName } = useSelector(
+  const { loading, data, errorMessage, message, dataAirport, AirportName } = useSelector(
     (state) => state.destinasiReducer
   );
   const [messages, setMessages] = useState("");
