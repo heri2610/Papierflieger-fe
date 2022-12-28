@@ -21,6 +21,7 @@ const wishlistReducer = (state = initialState, action) => {
     case ADD_WISHLIST:
       return {
         ...state,
+        data: payload.data.wishlist,
         message: payload.message,
         errorMessage: payload.errorMessage,
       };

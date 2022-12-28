@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import { BsFillBookmarkStarFill } from 'react-icons/bs';
-import { useLocation } from 'react-router-dom';
+import { BsFillBookmarkStarFill } from "react-icons/bs";
+import { useLocation } from "react-router-dom";
 import "./destination.scss";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Alert, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addWishlist,getWishlist, deleteWishlist } from "../../../store/actions/wishlist";
+import {
+  addWishlist,
+  getWishlist,
+  deleteWishlist,
+} from "../../../store/actions/wishlist";
 
 const Destination = () => {
-  const { message, errorMessage, data } = useSelector((state) => state.wishlistReducer);
+  const { message, errorMessage, data } = useSelector(
+    (state) => state.wishlistReducer
+  );
   const { state } = useLocation();
   const destinasi = state.destinasi;
   const dispatch = useDispatch();
@@ -27,13 +33,13 @@ const Destination = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if(data){
-      data.map((wislist)=>{
-        if(wislist.Destination.id ===  destinasi.id){
-          return setReomve(true)
+    if (data) {
+      data.map((wislist) => {
+        if (wislist.Destination.id === destinasi.id) {
+          return setReomve(true);
         }
-        return false
-      })
+        return false;
+      });
     }
   }, []);
   useEffect(() => {
@@ -69,7 +75,11 @@ const Destination = () => {
     <div>
       {destinasi.image[0] && (
         <div className="container-fluid p-0 img-banner">
-          <img className="img-fluid mb-3 w-100" src={destinasi.image[0]} alt="" />
+          <img
+            className="first-img-destination mb-3 w-100 mb-3 w-100"
+            src={destinasi.image[0]}
+            alt=""
+          />
         </div>
       )}
       <div className="container">
@@ -91,13 +101,13 @@ const Destination = () => {
           className="mySwiper"
         >
           {destinasi.image[1] &&
-            destinasi.image.map((img) =>
+            destinasi.image.map((img) => (
               <SwiperSlide key={keyImg++}>
                 <div className="destination-img d-flex justify-content-center">
-                  <img src={img} alt="" />
+                  <img className="rounded-2" src={img} alt="" />
                 </div>
               </SwiperSlide>
-            )}
+            ))}
         </Swiper>
       </div>
       <div className="container pt-4 mb-5">
@@ -111,13 +121,30 @@ const Destination = () => {
                     <p>{destinasi.location}</p>
                   </div>
                   <div>
-                    <OverlayTrigger key="bottom" placement="bottom" overlay={<Tooltip id={`tooltip-bottom`}>Tambah ke wishlist</Tooltip>}>
-                      {remove ? <div className="icon-wishlist text-primary" onClick={() => handleDelete()}>
-                        <BsFillBookmarkStarFill size="25px" />
-                      </div>  : <div className="icon-wishlist" onClick={() => addToWishlist()}>
-                        <BsFillBookmarkStarFill size="25px" />
-                      </div>
+                    <OverlayTrigger
+                      key="bottom"
+                      placement="bottom"
+                      overlay={
+                        <Tooltip id={`tooltip-bottom`}>
+                          Tambah ke wishlist
+                        </Tooltip>
                       }
+                    >
+                      {remove ? (
+                        <div
+                          className="icon-wishlist text-primary"
+                          onClick={() => handleDelete()}
+                        >
+                          <BsFillBookmarkStarFill size="25px" />
+                        </div>
+                      ) : (
+                        <div
+                          className="icon-wishlist"
+                          onClick={() => addToWishlist()}
+                        >
+                          <BsFillBookmarkStarFill size="25px" />
+                        </div>
+                      )}
                       {/* {!data &&  <div className="icon-wishlist" onClick={() => addToWishlist()}>
                         <BsFillBookmarkStarFill size="25px" />
                       </div>} */}
@@ -127,12 +154,22 @@ const Destination = () => {
                 <div className="card-text">{destinasi.description}</div>
               </div>
               {show && messages && (
-                <Alert key="primary" variant="primary" className="position-absolute mt-4" style={{ left: "45%" }}>
+                <Alert
+                  key="primary"
+                  variant="primary"
+                  className="position-absolute mt-4"
+                  style={{ left: "45%" }}
+                >
                   <>{messages}</>
                 </Alert>
               )}
               {show && error && (
-                <Alert key="danger" variant="danger" className="position-absolute mt-4" style={{ left: "45%" }}>
+                <Alert
+                  key="danger"
+                  variant="danger"
+                  className="position-absolute mt-4"
+                  style={{ left: "45%" }}
+                >
                   <>{error}</>
                 </Alert>
               )}
