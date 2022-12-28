@@ -3,6 +3,10 @@
     width: 85%;
     height: auto;
   }
+  .first-img-destination {
+    height: 200px;
+    width: 100%;
+  }
 }
 
 .icon-wishlist {
@@ -16,10 +20,12 @@
   }
 }
 
-.first-img-destination {
-  height: 500px;
-  object-fit: cover;
-  object-position: center;
+@media (min-width: 1025px) {
+  .first-img-destination {
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 .destination-img img {
