@@ -31,7 +31,7 @@ import NewNotification from "./pages/user/NewNotification";
 
 function App() {
   window.onunload = () => {
-    window.MyStorage.clear();
+    window.Storage.clear();
   };
   return (
     <div className="App">
