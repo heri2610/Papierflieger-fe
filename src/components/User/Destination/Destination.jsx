@@ -9,21 +9,39 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Alert, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addWishlist } from "../../../store/actions/wishlist";
+import {
+  addWishlist,
+  getWishlist,
+  deleteWishlist,
+} from "../../../store/actions/wishlist";
 
 const Destination = () => {
-  const { message, errorMessage } = useSelector(
+  const { message, errorMessage, data } = useSelector(
     (state) => state.wishlistReducer
   );
   const { state } = useLocation();
   const destinasi = state.destinasi;
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const [remove, setReomve] = useState(false);
   let keyImg = 1;
 
   const [messages, setMessages] = useState(false);
   const [error, setError] = useState(false);
+  useEffect(() => {
+    dispatch(getWishlist());
+  }, [dispatch]);
 
+  useEffect(() => {
+    if (data) {
+      data.map((wislist) => {
+        if (wislist.Destination.id === destinasi.id) {
+          return setReomve(true);
+        }
+        return false;
+      });
+    }
+  }, []);
   useEffect(() => {
     if (errorMessage) {
       setError(errorMessage);
@@ -43,14 +61,16 @@ const Destination = () => {
     }
   }, [message, errorMessage]);
 
-  const data = {
+  const datas = {
     destinationId: destinasi.id,
   };
 
   const addToWishlist = () => {
-    dispatch(addWishlist(data));
+    dispatch(addWishlist(datas));
   };
-
+  const handleDelete = (id) => {
+    dispatch(deleteWishlist(id));
+  };
   return (
     <div>
       {destinasi.image[0] && (
@@ -110,12 +130,24 @@ const Destination = () => {
                         </Tooltip>
                       }
                     >
-                      <div
-                        className="icon-wishlist"
-                        onClick={() => addToWishlist()}
-                      >
+                      {remove ? (
+                        <div
+                          className="icon-wishlist text-primary"
+                          onClick={() => handleDelete()}
+                        >
+                          <BsFillBookmarkStarFill size="25px" />
+                        </div>
+                      ) : (
+                        <div
+                          className="icon-wishlist"
+                          onClick={() => addToWishlist()}
+                        >
+                          <BsFillBookmarkStarFill size="25px" />
+                        </div>
+                      )}
+                      {/* {!data &&  <div className="icon-wishlist" onClick={() => addToWishlist()}>
                         <BsFillBookmarkStarFill size="25px" />
-                      </div>
+                      </div>} */}
                     </OverlayTrigger>
                   </div>
                 </div>
