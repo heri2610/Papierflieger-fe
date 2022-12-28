@@ -8,7 +8,6 @@ const AuthService = {
       setHeadersAndStorage(response.data);
       return response;
     } catch (err) {
-      // console.log('Auth service error', err);
       throw err;
     }
   },
@@ -18,7 +17,6 @@ const AuthService = {
       const response = await API.post('/auth/register', data);
       return response;
     } catch (err) {
-      console.log('Auth service error', err);
       throw err;
     }
   },
@@ -37,10 +35,8 @@ const AuthService = {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       };
       const response = await API.put('/auth/update-profile', data, headers);
-      console.log(response);
       return response;
     } catch (err) {
-      console.log('Auth service error', err);
       throw err;
     }
   },
@@ -48,10 +44,8 @@ const AuthService = {
   getProfile: async function () {
     try {
       const response = await API.get('/auth/profile');
-      console.log(response);
       return response;
     } catch (err) {
-      console.log(err);
       throw err;
     }
   },

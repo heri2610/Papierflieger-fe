@@ -5,10 +5,11 @@ import NavigationBar from "../../components/Navbar/NavigationBar";
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 import { getProfile, updateProfile } from "../../store/actions/auth";
 import Loading from "../../components/UIComponents/Loading";
+
+import "./Profile.scss";
+
 const Profile = () => {
   const { profile, loading } = useSelector((state) => state.authReducer);
-  console.log(profile);
-  console.log(loading);
 
   const dispatch = useDispatch();
   useEffect(() => {
