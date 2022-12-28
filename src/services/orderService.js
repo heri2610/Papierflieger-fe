@@ -9,4 +9,12 @@ export const OrderService = {
       return err;
     }
   },
+  proceedTransaction: async function (payload) {
+    try {
+      const response = await API.put("/transactions", payload);
+      return response;
+    } catch (err) {
+      return err;
+    }
+  },
 };

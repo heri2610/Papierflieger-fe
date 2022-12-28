@@ -12,17 +12,17 @@ import {proceedPayment} from '../../../store/actions/order'
 function Identitas() {
   const { ticket,penumpang,tiketPulang } = useSelector((state) => state.ticketReducer);
   const navigate = useNavigate();
-  console.log(ticket,penumpang,tiketPulang[0])
+  console.log(ticket,penumpang,tiketPulang)
   const [penumpangs,setPenumpang] = useState([])
 
   useEffect(()=>{
     const passenger = []
     if(ticket.ticketType === 'Internasional'){
     for(let i=0;i<Number(penumpang.penumpang);i++){
-      passenger.push({passengerName:'',passportNumber:'',expired:'',nationality:'',birthDate:'',issuingCountry:'',email:'',ticketId:tiketPulang[0].id !== undefined ?[ticket.id,tiketPulang[0].id]:[ticket.id]})
+      passenger.push({passengerName:'',passportNumber:'',expired:'',nationality:'',birthDate:'',issuingCountry:'',email:'',ticketId:typeof tiketPulang !== typeof undefined ?[ticket.id,tiketPulang[0].id]:[ticket.id]})
     }}else{
       for(let i=0;i<Number(penumpang.penumpang);i++){
-        passenger.push({passengerName:'',birthDate:'',NIK:'',nationality:'',email:'',ticketId:tiketPulang[0].id !== undefined ?[ticket.id,tiketPulang[0].id]:[ticket.id]})
+        passenger.push({passengerName:'',birthDate:'',NIK:'',nationality:'',email:'',ticketId:typeof tiketPulang !== typeof undefined ?[ticket.id,tiketPulang[0].id]:[ticket.id]})
     }
   }
     setPenumpang(passenger)
@@ -47,10 +47,10 @@ function Identitas() {
 console.log(penumpangs)
   const dateString = ticket.departureDate
 const date = new Date(dateString)
-const datez = new Date(tiketPulang[0].departureDate)
+const datez = tiketPulang?new Date(tiketPulang[0].departureDate):null
 const options = { year: 'numeric', month: 'long', day: 'numeric',weekday:'long' }
 const humanReadableDate = date.toLocaleDateString('id-ID', options)
-const humanReadableDatez = datez.toLocaleDateString('id-ID', options)
+const humanReadableDatez = tiketPulang?datez.toLocaleDateString('id-ID', options):null
 const formatter = new Intl.NumberFormat('id-ID', {
   style: 'currency',
   currency: 'IDR'
@@ -74,7 +74,7 @@ const formatter = new Intl.NumberFormat('id-ID', {
         <Row className="px-3">
           <Col className="bg__bluish p-3 mb-5 rounded">
             <Row >
-            {tiketPulang[0] !== undefined ? <Col md={7}>
+            {typeof tiketPulang !== typeof undefined ? <Col md={7}>
                 <div className="bg-white p-4 rounded mx-md-5 my-md-2">
                   <Row className="border-bottom py-3">
                     <Col md={3} lg={2} >
@@ -221,14 +221,14 @@ const formatter = new Intl.NumberFormat('id-ID', {
                         <h5><strong>{ticket.to.city.split(',')[0]}</strong></h5></div>
                       <h5>{humanReadableDate}</h5>
                     </Col>
-                    <Col className=" mt-3 mt-md-0">
+                    {typeof tiketPulang !== typeof undefined&&<Col className=" mt-3 mt-md-0">
                       <h5>Pulang</h5>
                       <div className="hstack">
-                        <h5><strong>{ticket.from.city.split(',')[0]}</strong></h5>
+                        <h5><strong>{tiketPulang[0].from.city.split(',')[0]}</strong></h5>
                         <img src={Arrow} alt="arrow" className="mx-3" />
-                        <h5><strong>{ticket.to.city.split(',')[0]}</strong></h5></div>
+                        <h5><strong>{tiketPulang[0].to.city.split(',')[0]}</strong></h5></div>
                       <h5>{humanReadableDatez}</h5>
-                    </Col>
+                    </Col>}
                   </Row>
                   {/* Badges  */}
       <Row className="py-3">

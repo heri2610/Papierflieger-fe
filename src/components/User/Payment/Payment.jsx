@@ -4,7 +4,8 @@ import logocard from "../../../assets/images/Logo-card.svg";
 import Arrow from "../../../assets/images/Vector.svg";
 import Footer from "../../Footer/Footer";
 import NavigationBar from "../../Navbar/NavigationBar";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { proceedTransaction } from "../../../store/actions/order";
 import "./payment.scss";
 
 function Payment() {
@@ -12,7 +13,12 @@ function Payment() {
   const [openz, setOpenz] = useState(false);
   const [opens, setOpens] = useState(false);
   const [opena, setOpena] = useState(false);
+  const [banka,setBanka] = useState({bankName:'Bank Supir'})
+  const [bankb,setBankb] = useState({bankName:'Bank Bank Tut'})
+  const [bankc,setBankc] = useState({bankName:'Bank Cilok'})
+  const [bankd,setBankd] = useState({bankName:'Bank Ojek'})
   const {data} = useSelector((state) => state.orderReducer);
+  const dispatch = useDispatch()
   const datez = new Date(data.tiketBerangkat[0].departureDate)
 const options = { year: 'numeric', month: 'long', day: 'numeric',weekday:'long' }
 const humanReadableDate = datez.toLocaleDateString('id-ID', options)
@@ -21,6 +27,12 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
     style: 'currency',
     currency: 'IDR'
   });
+
+  const submit = (payload)=>{
+    console.log(payload)
+    dispatch(proceedTransaction({ ...payload, tokenTransaction:data.tokenTransaction}
+      ))
+  }
   return (
     <>
       <NavigationBar />
@@ -92,7 +104,10 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <h5>Nama</h5>
                       </Form.Label>
                       <Col sm={10}>
-                        <Form.Control type="text" placeholder="Masukkan nama pemilik rekening" />
+                        <Form.Control type="text" placeholder="Masukkan nama pemilik rekening" name='accountName' onChange={(e)=>setBanka(current=>{
+                          const nampung = {...current,[e.target.name]:e.target.value}
+                          return nampung
+                          })} />
                       </Col>
                     </Form.Group>
 
@@ -101,7 +116,10 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <h5>No. Rekening</h5>
                       </Form.Label>
                       <Col sm={10}>
-                        <Form.Control type="text" placeholder="Masukkan nomor rekening" />
+                        <Form.Control type="text" placeholder="Masukkan nomor rekening" name='accountNumber' onChange={(e)=>setBanka(current=>{
+                          const nampung = {...current,[e.target.name]:e.target.value}
+                          return nampung
+                          })}/>
                       </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-2" controlId="formHorizontalEmail">
@@ -112,7 +130,7 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <Form.Control type="text" value={formatter.format(data.totalPrice)} disabled />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={()=>submit(banka)}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -132,7 +150,10 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <h5>Nama</h5>
                       </Form.Label>
                       <Col sm={10}>
-                        <Form.Control type="text" placeholder="Masukkan nama pemilik rekening" />
+                        <Form.Control type="text" placeholder="Masukkan nama pemilik rekening" name='accountName' onChange={(e)=>setBankb(current=>{
+                          const nampung = {...current,[e.target.name]:e.target.value}
+                          return nampung
+                          })} />
                       </Col>
                     </Form.Group>
 
@@ -141,7 +162,10 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <h5>No. Rekening</h5>
                       </Form.Label>
                       <Col sm={10}>
-                        <Form.Control type="text" placeholder="Masukkan nomor rekening" />
+                        <Form.Control type="text" placeholder="Masukkan nomor rekening" name='accountNumber' onChange={(e)=>setBankb(current=>{
+                          const nampung = {...current,[e.target.name]:e.target.value}
+                          return nampung
+                          })} />
                       </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-2" controlId="formHorizontalEmail">
@@ -152,7 +176,7 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <Form.Control type="text" placeholder="Masukkan nominal" value={formatter.format(data.totalPrice)} disabled />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={()=>submit(bankb)}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -172,7 +196,10 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <h5>Nama</h5>
                       </Form.Label>
                       <Col sm={10}>
-                        <Form.Control type="text" placeholder="Masukkan nama pemilik rekening" />
+                        <Form.Control type="text" placeholder="Masukkan nama pemilik rekening" name='accountName' onChange={(e)=>setBankc(current=>{
+                          const nampung = {...current,[e.target.name]:e.target.value}
+                          return nampung
+                          })} />
                       </Col>
                     </Form.Group>
 
@@ -181,7 +208,10 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <h5>No. Rekening</h5>
                       </Form.Label>
                       <Col sm={10}>
-                        <Form.Control type="text" placeholder="Masukkan nomor rekening" />
+                        <Form.Control type="text" placeholder="Masukkan nomor rekening" name='accountNumber' onChange={(e)=>setBankc(current=>{
+                          const nampung = {...current,[e.target.name]:e.target.value}
+                          return nampung
+                          })}/>
                       </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-2" controlId="formHorizontalEmail">
@@ -192,7 +222,7 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <Form.Control type="text" placeholder="Masukkan nominal" disabled value={formatter.format(data.totalPrice)} />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={()=>submit(bankc)}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -212,7 +242,10 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <h5>Nama</h5>
                       </Form.Label>
                       <Col sm={10}>
-                        <Form.Control type="text" placeholder="Masukkan nama pemilik rekening" />
+                        <Form.Control type="text" placeholder="Masukkan nama pemilik rekening" name='accountName' onChange={(e)=>setBankd(current=>{
+                          const nampung = {...current,[e.target.name]:e.target.value}
+                          return nampung
+                          })} />
                       </Col>
                     </Form.Group>
 
@@ -221,7 +254,10 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <h5>No. Rekening</h5>
                       </Form.Label>
                       <Col sm={10}>
-                        <Form.Control type="text" placeholder="Masukkan nomor rekening" />
+                        <Form.Control type="text" placeholder="Masukkan nomor rekening" name='accountNumber' onChange={(e)=>setBankd(current=>{
+                          const nampung = {...current,[e.target.name]:e.target.value}
+                          return nampung
+                          })}/>
                       </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-2" controlId="formHorizontalEmail">
@@ -232,7 +268,7 @@ const humanReadableDate = datez.toLocaleDateString('id-ID', options)
                         <Form.Control type="text" placeholder="Masukkan nominal" disabled value={formatter.format(data.totalPrice)} />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={()=>submit(bankd)}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>

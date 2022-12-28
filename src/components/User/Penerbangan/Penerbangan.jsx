@@ -27,7 +27,7 @@ function Penerbangan() {
             {tiketBerangkat &&
               tiketBerangkat?.map((item,i) => (
                 <div className="bg-white p-3 mb-3 rounded">
-                  <DetailPenerbangan detail={item} state={penumpang.penumpang} tiketPulang={tiketPulang[i]}/>
+                  <DetailPenerbangan detail={item} state={penumpang.penumpang} tiketPulang={tiketPulang?tiketPulang[i]:null}/>
                 </div>
               ))}
           </Col>

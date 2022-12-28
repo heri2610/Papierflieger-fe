@@ -9,10 +9,10 @@ function ItineraryTicket(props) {
   const {ticket,penumpang,ticketpulang} = props
   const dateString = ticket.departureDate
 const date = new Date(dateString)
-const datez = new Date(ticketpulang.departureDate)
+const datez = ticketpulang?new Date(ticketpulang.departureDate):null
 const options = { year: 'numeric', month: 'long', day: 'numeric',weekday:'long' }
 const humanReadableDate = date.toLocaleDateString('id-ID', options)
-const humanReadableDatez = datez.toLocaleDateString('id-ID', options)
+const humanReadableDatez = ticketpulang?datez.toLocaleDateString('id-ID', options):null
 const formatter = new Intl.NumberFormat('id-ID', {
   style: 'currency',
   currency: 'IDR'
