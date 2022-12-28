@@ -30,3 +30,6 @@ export const GET_USERS = "GET_USERS";
 export const ADD_ADMIN = "ADD_ADMIN";
 export const GET_NOTIF = "GET_NOTIF";
 export const UPDATE_NOTIF = "UPDATE_NOTIF";
+export const GET_WISHLIST = "GET_WIHSLIST";
+export const ADD_WISHLIST = "ADD_WISHLIST";
+export const DELETE_WISHLIST = "DELETE_WISHLIST";

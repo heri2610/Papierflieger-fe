@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { BsFillBookmarkStarFill } from 'react-icons/bs';
@@ -7,12 +7,48 @@ import "./destination.scss";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Alert, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addWishlist } from "../../../store/actions/wishlist";
 
 const Destination = () => {
+  const { message, errorMessage } = useSelector((state) => state.wishlistReducer);
   const { state } = useLocation();
   const destinasi = state.destinasi;
-  console.log(destinasi);
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  let keyImg = 1;
+
+  const [messages, setMessages] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (errorMessage) {
+      setError(errorMessage);
+      setShow(true);
+      window.setTimeout(() => {
+        setShow(false);
+        setMessages(false);
+      }, 3000);
+    }
+    if (message) {
+      setMessages(message);
+      setShow(true);
+      window.setTimeout(() => {
+        setShow(false);
+        setMessages(false);
+      }, 3000);
+    }
+  }, [message, errorMessage]);
+
+  const data = {
+    destinationId: destinasi.id,
+  };
+
+  const addToWishlist = () => {
+    dispatch(addWishlist(data));
+  };
+
   return (
     <div>
       {destinasi.image[0] && (
@@ -40,7 +76,7 @@ const Destination = () => {
         >
           {destinasi.image[1] &&
             destinasi.image.map((img) =>
-              <SwiperSlide>
+              <SwiperSlide key={keyImg++}>
                 <div className="destination-img d-flex justify-content-center">
                   <img src={img} alt="" />
                 </div>
@@ -60,7 +96,7 @@ const Destination = () => {
                   </div>
                   <div>
                     <OverlayTrigger key="bottom" placement="bottom" overlay={<Tooltip id={`tooltip-bottom`}>Tambah ke wishlist</Tooltip>}>
-                      <div className="icon-wishlist">
+                      <div className="icon-wishlist" onClick={() => addToWishlist()}>
                         <BsFillBookmarkStarFill size="25px" />
                       </div>
                     </OverlayTrigger>
@@ -68,6 +104,16 @@ const Destination = () => {
                 </div>
                 <div className="card-text">{destinasi.description}</div>
               </div>
+              {show && messages && (
+                <Alert key="primary" variant="primary" className="position-absolute mt-4" style={{ left: "45%" }}>
+                  <>{messages}</>
+                </Alert>
+              )}
+              {show && error && (
+                <Alert key="danger" variant="danger" className="position-absolute mt-4" style={{ left: "45%" }}>
+                  <>{error}</>
+                </Alert>
+              )}
             </div>
           </div>
         </div>
