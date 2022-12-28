@@ -21,7 +21,6 @@ export const getAboutUs = () =>
           errorMessage: false,
         },
       });
-      console.log(response.data);
     } catch (error) {
       dispatch({
         type: ABOUT_US,
