@@ -6,6 +6,7 @@ import ProtectedRoute from "./pages/user/ProtectedRoute";
 import RegisterPage from "./pages/user/Register";
 import Penerbangan from "./components/User/Penerbangan/Penerbangan";
 import DestinationPage from "./pages/user/DestinationPage";
+import Payment from "./components/User/Payment/Payment";
 import WishlistPage from "./pages/user/WishlistPage";
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
 import Profile from "./pages/user/Profile";
@@ -41,6 +42,7 @@ function App() {
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/wishlist" element={<WishlistPage />} />
             <Route path="/user/notification" element={<NewNotification />} />
+            <Route path="/payment" element={<Payment />} />
             <Route path="/detail" element={<DetailTicket />} />
             <Route path="/identitas" element={<Identitas />} />
             <Route

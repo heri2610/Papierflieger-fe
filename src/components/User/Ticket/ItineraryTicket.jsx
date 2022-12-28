@@ -6,11 +6,13 @@ import Arrow from "../../../assets/images/Vector.svg";
 import "./DetailTicket.scss";
 
 function ItineraryTicket(props) {
-  const {ticket,penumpang} = props
+  const {ticket,penumpang,ticketpulang} = props
   const dateString = ticket.departureDate
 const date = new Date(dateString)
+const datez = new Date(ticketpulang)
 const options = { year: 'numeric', month: 'long', day: 'numeric',weekday:'long' }
 const humanReadableDate = date.toLocaleDateString('id-ID', options)
+const humanReadableDatez = datez.toLocaleDateString('id-ID', options)
 const formatter = new Intl.NumberFormat('id-ID', {
   style: 'currency',
   currency: 'IDR'
@@ -29,6 +31,12 @@ console.log(penumpang)
             <img src={Arrow} alt="arrow" className="mx-3" />
             <h3><strong>{ticket.to.city.split(',')[0]}</strong></h3></div>
           <h3>{humanReadableDate}</h3>
+          {ticketpulang && <><h3>Pulang</h3>
+          <div className="hstack">
+            <h3><strong>{ticketpulang.from.city.split(',')[0]}</strong></h3>
+            <img src={Arrow} alt="arrow" className="mx-3" />
+            <h3><strong>{ticketpulang.to.city.split(',')[0]}</strong></h3></div>
+          <h3>{humanReadableDatez}</h3></>}
         </Col>
         <Col className=" mt-3 mt-md-0">
           <h3>Jumlah Penumpang</h3>

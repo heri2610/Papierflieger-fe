@@ -8,6 +8,7 @@ import destinasiReducer from "./destinasi";
 import tiketsReducer from "./ticket";
 import usersReducer from "./users";
 import wishlistReducer from "./wishlist";
+import orderReducer from "./order";
 
 export default combineReducers({
   aboutUsReducer,
@@ -19,4 +20,5 @@ export default combineReducers({
   usersReducer,
   ticketReducer,
   wishlistReducer,
+  orderReducer,
 });

@@ -95,7 +95,7 @@ export default function FormSearch(props) {
           <div className="col">
             {type === "round-trip" &&
               <div className="form-floating">
-                <input type="date" className="form-control" id="inputPulang" onChange={(e) => setTujuan(current => ({ ...current, departureDate: e.target.value }))} required />
+                <input type="date" className="form-control" id="inputPulang" onChange={(e) => setTujuan(current => ({ ...current, returnDate: e.target.value }))} required />
                 <label htmlFor="inputPulang">Pulang</label>
               </div>
             }
