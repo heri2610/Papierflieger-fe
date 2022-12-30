@@ -16,7 +16,6 @@ const NavigationBar = () => {
   const regis = window.location.pathname === "/register";
   const token = window.localStorage.getItem("token");
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
@@ -49,7 +48,7 @@ const NavigationBar = () => {
               </Nav>
               {token ? (
                 <div className="d-flex align-items-center">
-                  <Nav.Link href="/" className="me-3">
+                  <Nav.Link href="/user/notification" className="me-3">
                     <i className="bi bi-bell-fill"></i>
                   </Nav.Link>
                   <Nav.Link href="/user/profile" className="me-3">
