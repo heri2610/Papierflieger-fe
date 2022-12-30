@@ -5,10 +5,9 @@ import { getTransactions } from "../../../store/actions/transactions";
 import Loading from "../../UIComponents/Loading";
 
 const DataTransaction = () => {
-  const { loading, data, errorMessage, message } = useSelector(
+  const { loading, data, errorMessage, message, } = useSelector(
     (state) => state.transactionsReducer
   );
-  console.log(data);
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
   const dispatch = useDispatch();
@@ -61,7 +60,7 @@ const DataTransaction = () => {
               data?.map((transaction) => (
                 <tr key={transaction.id}>
                   <td>{i++}</td>
-                  <td>Desi</td>
+                  <td>{transaction.User.username}</td>
                   <td>BCA</td>
                   <td>91938247</td>
                   <td>{transaction.orderId.map((order) => (
