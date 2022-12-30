@@ -23,7 +23,7 @@ const Destination = () => {
   const destinasi = state.destinasi;
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [remove, setReomve] = useState(false);
+  const [remove, setRemove] = useState(false);
   let keyImg = 1;
 
   const [messages, setMessages] = useState(false);
@@ -36,12 +36,12 @@ const Destination = () => {
     if (data) {
       data.map((wislist) => {
         if (wislist.Destination.id === destinasi.id) {
-          return setReomve(true);
+          return setRemove(true);
         }
         return false;
       });
     }
-  }, []);
+  }, [data, destinasi.id]);
   useEffect(() => {
     if (errorMessage) {
       setError(errorMessage);

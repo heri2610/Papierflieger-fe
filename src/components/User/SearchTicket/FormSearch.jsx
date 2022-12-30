@@ -11,9 +11,6 @@ import "./searchTicket.scss";
 export default function FormSearch(props) {
   const { data } = useSelector((state) => state.airportReducer);
   const [type, setType] = useState("");
-  const{dispatchs} = props;
-  // console.log(props.dispatchs)
-  // const [berangkat, setBerangkat] = useState("");
   const [tujuan, setTujuan] = useState({});
   console.log(tujuan);
   const history = useNavigate();
@@ -24,18 +21,19 @@ export default function FormSearch(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirport());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(()=>{
+  useEffect(() => {
     setTujuan(current => {
       // 👇️ remove salary key from object
-      const {returnDate, ...rest} = current;
+      const { returnDate, ...rest } = current;
 
       return rest;
     });
-  },[type])
+  }, [type]);
 
   const handleSubmit = async (event) => {
-    console.log(tujuan)
+    console.log(tujuan);
     event.preventDefault();
     dispatch(filterTickets(tujuan, history));
   };
@@ -44,7 +42,7 @@ export default function FormSearch(props) {
   //   console.log(e);
   //   setBerangkat(current=>{...current,[e.target.]})
   // };
-  
+
   return (
     <div className="form-search">
       <Form onSubmit={handleSubmit}>
@@ -56,7 +54,6 @@ export default function FormSearch(props) {
             <SelectOptions options={data}
               onChange={(e) => setTujuan(current => ({ ...current, flightFrom: e.value }))}
               className="form-select" id="floatingSelectFrom"
-    
             />
           </div>
           <div className="col">
@@ -64,14 +61,13 @@ export default function FormSearch(props) {
               <small className="ms-12 text-muted">Ke</small>
             </p>
             <SelectOptions options={data}
-              onChange={(e) => setTujuan(current => ({ ...current, flightTo: e.value}))}
+              onChange={(e) => setTujuan(current => ({ ...current, flightTo: e.value }))}
               className="form-select" id="floatingSelectFrom2"
-           
             />
           </div>
           <div className="col">
             <div className="form-floating">
-              <input type="number" min="1" max="10" className="form-control" id="inputPenumpang" onChange={(e) => setTujuan(current => ({ ...current, penumpang: e.target.value}))} />
+              <input type="number" min="1" max="10" className="form-control" id="inputPenumpang" onChange={(e) => setTujuan(current => ({ ...current, penumpang: e.target.value }))} />
               <label htmlFor="inputPenumpang">Penumpang</label>
             </div>
           </div>
