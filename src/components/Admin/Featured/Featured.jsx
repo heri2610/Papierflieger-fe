@@ -16,13 +16,13 @@ const Featured = () => {
           <CircularProgressbar value={70} text={"70%"} strokeWidth={5} />
         </div>
         <p className="sales-title">Total penjualan hari ini</p>
-        <p className="sales-amount">Rp. 34.000.000</p>
+        <p className="sales-amount">Rp. 3.400.000</p>
         <p className="desc">Pembayaran terakhir masih berlangsung</p>
         <div className="summary">
           <div className="item">
             <div className="item-title">Target</div>
               <div className="item-result">
-                <div className="result-amount">Rp. 1.500.000.000</div>
+                <div className="result-amount">Rp. 5.500.000</div>
               </div>
           </div>
         </div>

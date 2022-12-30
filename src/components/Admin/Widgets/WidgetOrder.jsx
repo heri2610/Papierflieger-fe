@@ -10,8 +10,8 @@ const Widget = () => {
                 <BsCartPlusFill/>
                 <span className="title-user">Pesanan</span>
             </div>
-            <h3><span className="counter">500</span></h3>
-            <h6><span className="more">20 pesanan</span></h6>
+            <h3><span className="counter">5</span></h3>
+            <h6><span className="more">1 pesanan</span></h6>
             <div className="button">
                 <span className="other">Selengkapnya</span>
             </div>

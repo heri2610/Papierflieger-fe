@@ -50,7 +50,7 @@ const DataTransaction = () => {
             <th>Nama Pengguna</th>
             <th>Metode Pembayaran</th>
             <th>Nomor Rekening</th>
-            <th>Id Pemesanan</th>
+            <th>Jumlah Penumpang</th>
             <th>Jenis Perjalanan</th>
             <th>Harga</th>
           </tr>
