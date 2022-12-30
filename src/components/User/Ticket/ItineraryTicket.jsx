@@ -9,7 +9,7 @@ function ItineraryTicket(props) {
   const {ticket,penumpang,ticketpulang} = props
   const dateString = ticket.departureDate
 const date = new Date(dateString)
-const datez = ticketpulang?new Date(ticketpulang.departureDate):null
+const datez = ticketpulang?new Date(ticketpulang[0].departureDate):null
 const options = { year: 'numeric', month: 'long', day: 'numeric',weekday:'long' }
 const humanReadableDate = date.toLocaleDateString('id-ID', options)
 const humanReadableDatez = ticketpulang?datez.toLocaleDateString('id-ID', options):null
@@ -96,11 +96,11 @@ console.log(penumpang,ticketpulang,ticket)
         </Col>
         <Col>
           <h4 className="text-muted">Durasi Perjalanan</h4>
-          <h1>{ticketpulang.flightDuration}</h1>
+          <h1>{ticketpulang[0].flightDuration}</h1>
         </Col>
         <Col>
           <h4 className="text-muted">Lama Perhentian</h4>
-          <h1>{ticketpulang.transitDuration}</h1>
+          <h1>{ticketpulang[0].transitDuration}</h1>
         </Col>
       </Row></>}
       <Row className="">

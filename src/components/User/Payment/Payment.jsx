@@ -7,7 +7,7 @@ import NavigationBar from "../../Navbar/NavigationBar";
 import { useSelector, useDispatch } from "react-redux";
 import { proceedTransaction } from "../../../store/actions/order";
 import "./payment.scss";
-import Airplaneimg from "./img/Airplane404.svg";
+import Airplane404 from "../../UIComponents/img/Airplane404.svg";
 
 function Payment() {
   const [open, setOpen] = useState(false);
@@ -136,7 +136,10 @@ function Payment() {
                         <Form.Control type="text" value={formatter.format(data.totalPrice)} disabled />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => submit(banka)}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {
+                      submit(banka)
+                      handleShow()
+                      }}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -182,7 +185,8 @@ function Payment() {
                         <Form.Control type="text" placeholder="Masukkan nominal" value={formatter.format(data.totalPrice)} disabled />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => submit(bankb)}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {submit(bankb)
+                      handleShow()}}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -228,7 +232,9 @@ function Payment() {
                         <Form.Control type="text" placeholder="Masukkan nominal" disabled value={formatter.format(data.totalPrice)} />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => submit(bankc)}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {submit(bankc)
+                      handleShow()
+                    }}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -275,7 +281,9 @@ function Payment() {
                       </Col>
                     </Form.Group>
                     <div className="payment-button">
-                      <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => submit(bankd)}>
+                      <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {submit(bankd)
+                      handleShow()
+                      }}>
                         <h5 className="m-0">Bayar</h5>
                       </Button>
                     </div>
@@ -285,15 +293,15 @@ function Payment() {
             </Col>
           </Row>
           <Modal show={show} onHide={handleClose}>
-          <img className="img-delete-confirm" src={Airplaneimg} alt="" />
+          <img className="img-delete-confirm" src={Airplane404} alt="" />
           <Modal.Body>
             <div className="fw-bolder">Transaksi berhasil</div>
               <div className="fw-light">
-                Pembelian tiket berhasil
+                {data.message}
               </div>
               <div className="mt-3 mx-5">
-              <Button variant="success" onClick={props.onClick}>
-                <span onClick={handleClose}>Hapus</span>
+              <Button variant="success" onClick={handleClose}>
+                <span onClick={handleClose}>Ok</span>
               </Button>
             </div>
           </Modal.Body>
