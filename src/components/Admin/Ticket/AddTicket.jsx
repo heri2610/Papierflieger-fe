@@ -62,7 +62,7 @@ const AddAirport = () => {
                 <Select options={airplane} />
               </Form.Group>
               <Form.Group className="form" controlId="validationCustom01">
-                <Form.Label>Waktu Kepulangan dari Titik Transit</Form.Label>
+                <Form.Label>Waktu Kedatangan di Titik Transit</Form.Label>
                 <Form.Control
                   required
                   type="time"
