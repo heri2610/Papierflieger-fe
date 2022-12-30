@@ -114,7 +114,7 @@ const Profile = () => {
                             <Form.Control
                               required
                               type="date"
-                              value={birthdate ? birthdate?.split("T")[0] : profile.birthdate?.split("T")[0]}
+                              value={birthdate ? birthdate?.split("T")[0] : profile.birthdate?.split("T")[0] || ""}
                               onChange={(event) => {
                                 setBirthdate(event.target.value);
                               }}
@@ -126,7 +126,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Kebangsaan"
-                              value={nationality ? nationality : profile.nationality}
+                              value={nationality ? nationality : profile.nationality || ""}
                               onChange={(event) => {
                                 setNationality(event.target.value);
                               }}
@@ -138,7 +138,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Provinsi"
-                              value={province || profile.province}
+                              value={province || profile.province || ""}
                               onChange={(event) => {
                                 setProvince(event.target.value);
                               }}
@@ -150,7 +150,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Nomor HP"
-                              value={phone ? phone : profile.phone}
+                              value={phone ? phone : profile.phone || ""}
                               onChange={(event) => {
                                 setPhone(event.target.value);
                               }}
@@ -180,7 +180,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Negara"
-                              value={country ? country : profile.country}
+                              value={country ? country : profile.country || ""}
                               onChange={(event) => {
                                 setCountry(event.target.value);
                               }}
@@ -192,7 +192,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Kabupaten/Kota"
-                              value={regency ? regency : profile.regency}
+                              value={regency ? regency : profile.regency || ""}
                               onChange={(event) => {
                                 setRegency(event.target.value);
                               }}
@@ -202,7 +202,7 @@ const Profile = () => {
                             <Form.Label>SAPAAN</Form.Label>
                             <Form.Select
                               aria-label="Default select example"
-                              value={title ? title : profile.title}
+                              value={title ? title : profile.title || ""}
                               onChange={(event) => {
                                 setTitle(event.target.value);
                               }}
