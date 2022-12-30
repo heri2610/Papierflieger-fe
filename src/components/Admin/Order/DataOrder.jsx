@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Container, 
+  Container,
   Table,
   Alert
 } from "react-bootstrap";
@@ -12,7 +12,7 @@ const DataOrder = () => {
   const { loading, data, errorMessage, message } = useSelector(
     (state) => state.orderReducer
   );
-  console.log(data)
+  console.log(data);
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
   const dispatch = useDispatch();
@@ -32,12 +32,13 @@ const DataOrder = () => {
         setMessages("");
       }, 3000);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
-  let i = 1
+  let i = 1;
   return (
     <div className="data-order">
       <Container>
-      {messages && (
+        {messages && (
           <Alert key="primary" variant="primary">
             <>{message}</>
           </Alert>
@@ -61,19 +62,19 @@ const DataOrder = () => {
             </tr>
           </thead>
           <tbody>
-          {data &&
+            {data &&
               data?.map((pesanan) => (
-            <tr key={pesanan.id}>
-              <td>{i++}</td>
-              <td>{pesanan.passengerName}</td>
-              <td>{pesanan.birthDate.split("T")[0]}</td>
-              <td>{pesanan.nationality}</td>
-              <td>{pesanan.passportNumber || pesanan.NIK}</td>
-              <td>{pesanan.issuingCountry || "-"}</td>
-              <td>{pesanan.expired ?pesanan.expired.split("T")[0] : "-"}</td>
-              <td>{pesanan.ticketId.length >= 1 ? pesanan.ticketId[0] :  `${pesanan.ticketId[0]}, ${pesanan.ticketId[1]}`}</td>
-            </tr>
-             ))}
+                <tr key={pesanan.id}>
+                  <td>{i++}</td>
+                  <td>{pesanan.passengerName}</td>
+                  <td>{pesanan.birthDate.split("T")[0]}</td>
+                  <td>{pesanan.nationality}</td>
+                  <td>{pesanan.passportNumber || pesanan.NIK}</td>
+                  <td>{pesanan.issuingCountry || "-"}</td>
+                  <td>{pesanan.expired ? pesanan.expired.split("T")[0] : "-"}</td>
+                  <td>{pesanan.ticketId.length >= 1 ? pesanan.ticketId[0] : `${pesanan.ticketId[0]}, ${pesanan.ticketId[1]}`}</td>
+                </tr>
+              ))}
           </tbody>
         </Table>
         {loading && (
@@ -83,7 +84,7 @@ const DataOrder = () => {
         )}
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default DataOrder
+export default DataOrder;

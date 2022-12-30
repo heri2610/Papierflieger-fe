@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Select from "react-select";
 
-// const Checkbox = ({ children, ...props }) => (
-//   <label style={{ marginRight: "1em" }}>
-//     <input type="checkbox" {...props} />
-//     {children}
-//   </label>
-// );
-
-export const SelectOptions =  ({options, onChange, id, className}) => {
-console.log(options)
-  const data = []
+export const SelectOptions = ({ options, onChange, id, className }) => {
+  console.log(options);
+  const data = [];
   options?.forEach(airport => {
-    data.push({label:airport.city, value: airport.id})
+    data.push({ label: airport.city, value: airport.id });
   });
   return (
     <>
