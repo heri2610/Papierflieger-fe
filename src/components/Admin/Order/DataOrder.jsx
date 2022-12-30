@@ -66,12 +66,12 @@ const DataOrder = () => {
             <tr key={pesanan.id}>
               <td>{i++}</td>
               <td>{pesanan.passengerName}</td>
-              <td>{pesanan.birthDate.split("T")[0]}</td>
+              <td>{pesanan.birthDate && pesanan.birthDate.split("T")[0]}</td>
               <td>{pesanan.nationality}</td>
               <td>{pesanan.passportNumber || pesanan.NIK}</td>
               <td>{pesanan.issuingCountry || "-"}</td>
-              <td>{pesanan.expired ?pesanan.expired.split("T")[0] : "-"}</td>
-              <td>{pesanan.ticketId.length >= 1 ? pesanan.ticketId[0] :  `${pesanan.ticketId[0]}, ${pesanan.ticketId[1]}`}</td>
+              <td>{pesanan.expired ? pesanan.expired.split("T")[0] : "-"}</td>
+              <td>{pesanan.ticketId.length === 1 ? pesanan.ticketId[0] :  `${pesanan.ticketId[0]}, ${pesanan.ticketId[1]}`}</td>
             </tr>
              ))}
           </tbody>

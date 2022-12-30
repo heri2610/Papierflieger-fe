@@ -126,7 +126,7 @@ const Destination = () => {
                       placement="bottom"
                       overlay={
                         <Tooltip id={`tooltip-bottom`}>
-                          Tambah ke wishlist
+                          {remove ? "Hapus dari wislist" : "Tambah ke wishlist"}
                         </Tooltip>
                       }
                     >
