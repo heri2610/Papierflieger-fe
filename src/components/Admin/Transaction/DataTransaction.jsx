@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import "./DataTransaction.scss";
-import {Table , Container,Alert } from "react-bootstrap";
+import { Table, Container, Alert } from "react-bootstrap";
 import { getTransactions } from "../../../store/actions/transactions";
 import Loading from "../../UIComponents/Loading";
 
 const DataTransaction = () => {
-    const { loading, data, errorMessage, message,  } = useSelector(
+  const { loading, data, errorMessage, message, } = useSelector(
     (state) => state.transactionsReducer
   );
   const [messages, setMessages] = useState("");
@@ -28,12 +27,13 @@ const DataTransaction = () => {
         setMessages("");
       }, 3000);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
-  let i = 1
+  let i = 1;
   return (
     <div className="data-transaction">
       <Container>
-             {messages && (
+        {messages && (
           <Alert key="primary" variant="primary">
             <>{message}</>
           </Alert>
@@ -58,28 +58,28 @@ const DataTransaction = () => {
         <tbody>
         {data &&
               data?.map((transaction) => (
-            <tr key={transaction.id}>
-            <td>{i++}</td>
-            <td>{transaction.User.username}</td>
-            <td>BCA</td>
-            <td>91938247</td>
-            <td>{transaction.orderId.map((order)=>(
-              `${order}   `
-            ))} </td>
-            <td>{transaction.trip}</td>
-            <td>{transaction.totalPrice}</td>
-          </tr>
-             ))}
-        </tbody>
-      </Table>
-      {loading && (
+                <tr key={transaction.id}>
+                  <td>{i++}</td>
+                  <td>{transaction.User.username}</td>
+                  <td>BCA</td>
+                  <td>91938247</td>
+                  <td>{transaction.orderId.map((order) => (
+                    `${order}   `
+                  ))} </td>
+                  <td>{transaction.trip}</td>
+                  <td>{transaction.totalPrice}</td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
+        {loading && (
           <div className="loading-center">
             <Loading />
           </div>
         )}
-    </Container>
+      </Container>
     </div>
-  )
-}
+  );
+};
 
-export default DataTransaction
+export default DataTransaction;
