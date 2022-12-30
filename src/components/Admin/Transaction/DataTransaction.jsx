@@ -1,11 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // import "./DataTransaction.scss";
-import {Table , Container } from "react-bootstrap";
+import {Table , Container,Alert } from "react-bootstrap";
+import { getTransactions } from "../../../store/actions/transactions";
+import Loading from "../../UIComponents/Loading";
 
 const DataTransaction = () => {
+    const { loading, data, errorMessage, message } = useSelector(
+    (state) => state.transactionsReducer
+  );
+  console.log(data)
+  const [messages, setMessages] = useState("");
+  const [eror, setEror] = useState("");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTransactions());
+  }, [dispatch]);
+  useEffect(() => {
+    if (errorMessage) {
+      setEror(errorMessage);
+      window.setTimeout(() => {
+        setMessages("");
+      }, 3000);
+    }
+    if (message) {
+      setMessages(message);
+      window.setTimeout(() => {
+        setMessages("");
+      }, 3000);
+    }
+  }, [data]);
+  let i = 1
   return (
     <div className="data-transaction">
       <Container>
+             {messages && (
+          <Alert key="primary" variant="primary">
+            <>{message}</>
+          </Alert>
+        )}
+        {eror && (
+          <Alert key="danger" variant="danger">
+            {eror}
+          </Alert>
+        )}
         <Table striped bordered hover>
         <thead>
           <tr>
@@ -19,35 +57,27 @@ const DataTransaction = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
+        {data &&
+              data?.map((transaction) => (
+            <tr key={transaction.id}>
+            <td>{i++}</td>
             <td>Desi</td>
             <td>BCA</td>
             <td>91938247</td>
-            <td>2, 4</td>
-            <td>One-Way</td>
-            <td>600000</td>
+            <td>{transaction.orderId.map((order)=>(
+              `${order}   `
+            ))} </td>
+            <td>{transaction.trip}</td>
+            <td>{transaction.totalPrice}</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Wina</td>
-            <td>BRI</td>
-            <td>91938247</td>
-            <td>3, 5</td>
-            <td>One-Way</td>
-            <td>600000</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Uti</td>
-            <td>Mandiri</td>
-            <td>91938247</td>
-            <td>6, 9</td>
-            <td>One-Way</td>
-            <td>600000</td>
-          </tr>
+             ))}
         </tbody>
       </Table>
+      {loading && (
+          <div className="loading-center">
+            <Loading />
+          </div>
+        )}
     </Container>
     </div>
   )

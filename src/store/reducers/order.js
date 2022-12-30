@@ -1,4 +1,4 @@
-import { PROCEED_PAYMENT, PROCEED_TRANSACTION } from "../types/index";
+import { PROCEED_PAYMENT, PROCEED_TRANSACTION, GET_ORDERS } from "../types/index";
 
 const initialState = {
   loading: false,
@@ -23,6 +23,13 @@ const orderReducer = (state = initialState, action) => {
         ...state,
         loading: payload.loading,
         message: payload.data,
+        errorMessage: payload.errorMessage,
+      };
+    case GET_ORDERS:
+      return {
+        ...state,
+        loading: payload.loading,
+        data: payload.data.orderList,
         errorMessage: payload.errorMessage,
       };
     default:
