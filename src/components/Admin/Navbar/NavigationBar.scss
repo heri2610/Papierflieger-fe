@@ -1,6 +1,11 @@
 Navbar{
     position: fixed;
 
+    Navbar.Brand{
+        height: auto;
+        width: auto;
+    }
+
     .nav-admin{
         display: flex;
         

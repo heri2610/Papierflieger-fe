@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Container, Table, Alert, Form, Modal } from "react-bootstrap";
-import { MdDelete } from "react-icons/md";
+// import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ const DataAirport = () => {
   );
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
-  const [idEdit, setIdEdit] = useState();
+  // const [idEdit, setIdEdit] = useState();
   const [show, setShow] = useState(false);
   const [airportName, setAirportName] = useState("");
   const [city, setCity] = useState("");

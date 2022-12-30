@@ -12,29 +12,39 @@ export default function FormSearch(props) {
   const { data } = useSelector((state) => state.airportReducer);
   const [type, setType] = useState("");
   const{dispatchs} = props;
+  // console.log(props.dispatchs)
   // const [berangkat, setBerangkat] = useState("");
   const [tujuan, setTujuan] = useState({});
-  // console.log(berangkat);
+  console.log(tujuan);
   const history = useNavigate();
   const handleType = (event) => {
     setType(event.target.value);
   };
-
+  console.log(tujuan);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirport());
-  }, [dispatch]);
+  }, []);
+  useEffect(()=>{
+    setTujuan(current => {
+      // 👇️ remove salary key from object
+      const {returnDate, ...rest} = current;
+
+      return rest;
+    });
+  },[type])
 
   const handleSubmit = async (event) => {
+    console.log(tujuan)
     event.preventDefault();
     dispatch(filterTickets(tujuan, history));
   };
-
+  console.log(tujuan);
   // const handleBerangkat = (e) => {
   //   console.log(e);
   //   setBerangkat(current=>{...current,[e.target.]})
   // };
-  console.log(tujuan);
+  
   return (
     <div className="form-search">
       <Form onSubmit={handleSubmit}>
@@ -61,7 +71,7 @@ export default function FormSearch(props) {
           </div>
           <div className="col">
             <div className="form-floating">
-              <input type="number" min="1" max="10" className="form-control" id="inputPenumpang" onChange={(e)=>dispatchs({type:'tampung',penumpang:e.target.value})} />
+              <input type="number" min="1" max="10" className="form-control" id="inputPenumpang" onChange={(e) => setTujuan(current => ({ ...current, penumpang: e.target.value}))} />
               <label htmlFor="inputPenumpang">Penumpang</label>
             </div>
           </div>
@@ -94,7 +104,7 @@ export default function FormSearch(props) {
           <div className="col">
             {type === "round-trip" &&
               <div className="form-floating">
-                <input type="date" className="form-control" id="inputPulang" onChange={(e) => setTujuan(current => ({ ...current, departureDate: e.target.value }))} required />
+                <input type="date" className="form-control" id="inputPulang" onChange={(e) => setTujuan(current => ({ ...current, returnDate: e.target.value }))} required />
                 <label htmlFor="inputPulang">Pulang</label>
               </div>
             }

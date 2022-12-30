@@ -1,10 +1,10 @@
-import additionasService from "../../services/additionalsService";
-import { ABOUT_US } from "../types/index";
+import historyService from "../../services/historyService";
+import { GET_HISTORY  } from "../types/index";
 
-export const getAboutUs = () =>
+export const getHistory = () =>
   async function (dispatch) {
     dispatch({
-      type: ABOUT_US,
+      type: GET_HISTORY,
       payload: {
         loading: true,
         data: false,
@@ -12,18 +12,19 @@ export const getAboutUs = () =>
       },
     });
     try {
-      const response = await additionasService.getAboutUs();
+      const response = await historyService.getHistory();
       dispatch({
-        type: ABOUT_US,
+        type: GET_HISTORY,
         payload: {
           loading: false,
           data: response.data,
           errorMessage: false,
         },
       });
+      console.log(response.data);
     } catch (error) {
       dispatch({
-        type: ABOUT_US,
+        type: GET_HISTORY,
         payload: {
           loading: false,
           data: false,

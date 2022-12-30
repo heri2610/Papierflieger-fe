@@ -9,9 +9,9 @@ import { initialState, penumpangReducer } from "../../../store/reducers/penumpan
 import "./Penerbangan.scss";
 
 function Penerbangan() {
-  const {tiketBerangkat, tiketPulang} = useSelector((state) => state.ticketReducer);
+  const {tiketBerangkat, tiketPulang,penumpang} = useSelector((state) => state.ticketReducer);
   const[state,dispatch] = useReducer(penumpangReducer,initialState)
-  console.log(tiketBerangkat, tiketPulang,state);
+  console.log(tiketBerangkat, tiketPulang,penumpang);
   return (
     <>
       <NavigationBar />
@@ -25,9 +25,9 @@ function Penerbangan() {
           <Col md="12">
             <h3>Pilihan Penerbangan</h3>
             {tiketBerangkat &&
-              tiketBerangkat?.map((item) => (
+              tiketBerangkat?.map((item,i) => (
                 <div className="bg-white p-3 mb-3 rounded">
-                  <DetailPenerbangan detail={item} state={state}/>
+                  <DetailPenerbangan detail={item} state={penumpang.penumpang} tiketPulang={tiketPulang?tiketPulang[i]:null}/>
                 </div>
               ))}
           </Col>

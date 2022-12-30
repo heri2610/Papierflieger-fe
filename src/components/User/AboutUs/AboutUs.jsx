@@ -38,14 +38,14 @@ const AboutUs = () => {
           className="mySwiper"
         >
           {data?.map((dataTim) => (
-            <SwiperSlide>
+            <SwiperSlide key={dataTim.id}>
               <div className="card h-100">
                 <div className="card-body d-flex align-items-center flex-column">
                   <img className="img-circle w-75" src={dataTim.avatar} alt={dataTim.name} />
                   <h6 className="mt-3 text-center">{dataTim.name}</h6>
                 </div>
-                <div class="card-footer text-center">
-                  <small class="">{dataTim.bidang}</small>
+                <div className="card-footer text-center">
+                  <small className="">{dataTim.bidang}</small>
                 </div>
               </div>
             </SwiperSlide>

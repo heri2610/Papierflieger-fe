@@ -16,6 +16,7 @@ const initialState = {
   loading: false,
   errorMessage: false,
   datAirport: false,
+  ticketpulang: false,
 };
 
 const tiketsReducer = (state = initialState, action) => {
@@ -36,6 +37,7 @@ const tiketsReducer = (state = initialState, action) => {
         tiketBerangkat: payload.data.tiketBerangkat,
         tiketPulang: payload.data.tiketPulang,
         loading: false,
+        penumpang: payload,
       };
     case GET_TICKETBYID:
       return {
@@ -60,7 +62,7 @@ const tiketsReducer = (state = initialState, action) => {
         message: payload.message,
       };
     case GET_TICKETDETAIL:
-      return { ticket: payload.ticket, penumpang: payload.penumpang };
+      return { ...state, ticket: payload.ticket, penumpang: payload.penumpang };
     default: {
       return state;
     }

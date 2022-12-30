@@ -1,10 +1,10 @@
-import additionasService from "../../services/additionalsService";
-import { ABOUT_US } from "../types/index";
+import { transactionsService } from "../../services/transaksiService";
+import { GET_TRANSACTIONS } from "../types/index";
 
-export const getAboutUs = () =>
+export const getTransactions = () =>
   async function (dispatch) {
     dispatch({
-      type: ABOUT_US,
+      type: GET_TRANSACTIONS,
       payload: {
         loading: true,
         data: false,
@@ -12,9 +12,9 @@ export const getAboutUs = () =>
       },
     });
     try {
-      const response = await additionasService.getAboutUs();
+      const response = await transactionsService.getTransactions();
       dispatch({
-        type: ABOUT_US,
+        type: GET_TRANSACTIONS,
         payload: {
           loading: false,
           data: response.data,
@@ -23,7 +23,7 @@ export const getAboutUs = () =>
       });
     } catch (error) {
       dispatch({
-        type: ABOUT_US,
+        type: GET_TRANSACTIONS,
         payload: {
           loading: false,
           data: false,

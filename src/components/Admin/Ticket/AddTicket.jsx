@@ -2,7 +2,9 @@ import React from "react";
 import {
   Form, Container, Button, Col, Row } from "react-bootstrap";
 import Select from "react-select";
-import "../Admin.scss"
+import "../Admin.scss";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const airport = [
     {value: "Ngurah Rai", label: "Ngurah Rai"},
@@ -60,7 +62,7 @@ const AddAirport = () => {
                 <Select options={airplane} />
               </Form.Group>
               <Form.Group className="form" controlId="validationCustom01">
-                <Form.Label>Waktu Kepulangan dari Titik Transit</Form.Label>
+                <Form.Label>Waktu Kedatangan di Titik Transit</Form.Label>
                 <Form.Control
                   required
                   type="time"

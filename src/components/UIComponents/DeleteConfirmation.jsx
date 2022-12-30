@@ -13,7 +13,7 @@ function DeleteConfirmation(props) {
 
   return (
     <>
-      <div className="container">
+      <div>
         <Button onClick={handleShow}>
           <MdDelete />
         </Button>

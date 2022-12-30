@@ -2,6 +2,7 @@ import API from "./api";
 
 export const TicketService = {
   filterTickets: async function (payload) {
+    console.log(payload);
     try {
       const response = await API.get(`/search-tickets`, {
         params: { ...payload },

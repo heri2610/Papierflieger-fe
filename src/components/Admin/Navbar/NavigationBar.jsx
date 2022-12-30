@@ -7,7 +7,7 @@ import {
 } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 // import Login from "../User/Login/Login";
-// import brand from "../../assets/images/logo.svg";
+import brand from "../../../assets/images/logo.svg";
 import "./NavigationBar.scss";
 import {Link} from 'react-router-dom'
 
@@ -17,7 +17,9 @@ const NavigationBar = () => {
       <Container>
         <div className="nav-top">
           <Link to="/" style={{ textDecoration: "none" }}></Link>
-          <Navbar.Brand href="/">PAPIERFLIEGER</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <img width={60} height={60} src={brand} alt="logo" />
+          </Navbar.Brand>
         </div>
         <Nav>
           <Nav.Link href="/user/profile" className="nav-profile">

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addAirport } from "../../../store/actions/airport";
 
 const AddAirport = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const history = useNavigate();
   const [cityCode, setCityCode] = useState("");
   const [airportName, setAirportName] = useState("");

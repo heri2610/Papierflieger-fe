@@ -1,4 +1,4 @@
-import { GET_NOTIF,  } from "../types/index";
+import { GET_HISTORY  } from "../types/index";
 
 const initialState = {
   message: false,
@@ -7,11 +7,11 @@ const initialState = {
   errorMessage: false,
 };
 
-const notifReducer = (state = initialState, action) => {
+const historyReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case GET_NOTIF:
+    case GET_HISTORY:
       return {
         ...state,
         data: payload.data.airports,
@@ -24,4 +24,4 @@ const notifReducer = (state = initialState, action) => {
   }
 };
 
-export default notifReducer;
+export default historyReducer;
