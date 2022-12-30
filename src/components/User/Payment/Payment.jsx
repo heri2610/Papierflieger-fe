@@ -13,10 +13,10 @@ function Payment() {
   const [openz, setOpenz] = useState(false);
   const [opens, setOpens] = useState(false);
   const [opena, setOpena] = useState(false);
-  const [banka,setBanka] = useState({bankName:'Bank Supir'})
-  const [bankb,setBankb] = useState({bankName:'Bank Bank Tut'})
-  const [bankc,setBankc] = useState({bankName:'Bank Cilok'})
-  const [bankd,setBankd] = useState({bankName:'Bank Ojek'})
+  const [banka,setBanka] = useState({bankName:'Bank BRI'})
+  const [bankb,setBankb] = useState({bankName:'Bank BCA'})
+  const [bankc,setBankc] = useState({bankName:'Bank Mandiri'})
+  const [bankd,setBankd] = useState({bankName:'Bank BNI'})
   const {data} = useSelector((state) => state.orderReducer);
   const dispatch = useDispatch()
   const datez = new Date(data.tiketBerangkat[0].departureDate)
