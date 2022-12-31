@@ -21,7 +21,6 @@ const NewNotification = () => {
                 <h3>Notifikasi</h3>
             </div>
             {data&&data.notifikasi.map(item=><Notification data={item}/>)}
-            
         </div>
         <Footer/>
     </div>

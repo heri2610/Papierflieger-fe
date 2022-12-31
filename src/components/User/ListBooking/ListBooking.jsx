@@ -12,11 +12,12 @@ const ListBooking = () => {
   useEffect(()=>{
     dispatch(getHistory())
   },[dispatch])
+  console.log(data)
   return (
     <div className="img-banner">
       <div className="container">
         <h4 className="my-2 mx-3 mb-3 fw-bold">Riwayat Transaksi</h4>
-        {data.length !== 0 && data.map(item=> <Container fluid className="pb-4 list-booking mb-2">
+        {data.orderList.length !== 0 && data.orderList.map(item=> <Container fluid className="pb-4 list-booking mb-2">
           <Row>
             <Col md="12">
               <div className="bg-white p-3 rounded">
