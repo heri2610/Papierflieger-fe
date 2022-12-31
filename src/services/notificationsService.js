@@ -9,7 +9,7 @@ const notifService = {
       throw err;
     }
   },
-  CountNotif: async function () {
+  countNotif: async function () {
     try {
       const response = await API.get("/count-notif");
       return response;
