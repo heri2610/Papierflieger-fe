@@ -1,14 +1,22 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Container, Row, Col, Accordion, Badge } from "react-bootstrap";
 import Arrow from "../../../assets/images/Vector.svg";
 import logocard from "../../../assets/images/Logo-card.svg";
+import {getHistory} from "../../../store/actions/history";
+import {useSelector,useDispatch} from "react-redux";
 import "./ListBooking.scss";
 
 const ListBooking = () => {
+  const {data} = useSelector(state=>state.historyReducer)
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(getHistory())
+  },[dispatch])
+  console.log(data)
   return (
     <div className="img-banner">
       <div className="container">
-        <h4 className="my-2 mx-3 mb-3 fw-bold">Daftar Pemesanan</h4>
+        <h4 className="my-2 mx-3 mb-3 fw-bold">Riwayat Transaksi</h4>
         <Container fluid className="pb-4 list-booking mb-2">
           <Row>
             <Col md="12">
