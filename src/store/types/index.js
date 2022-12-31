@@ -40,3 +40,4 @@ export const SEE_NOTIF = "SEE_NOTIF";
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 export const COUNT_NOTIF = "COUNT_NOTIF";
+export const DASHBOARD_ADMIN = "DASHBOARD_ADMIN";
