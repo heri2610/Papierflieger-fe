@@ -30,6 +30,7 @@ const DataTransaction = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   let i = 1;
+  console.log(data)
   return (
     <div className="data-transaction">
       <Container>
@@ -57,19 +58,17 @@ const DataTransaction = () => {
         </thead>
         <tbody>
         {data &&
-              data?.map((transaction) => (
-                <tr key={transaction.id}>
-                  <td>{i++}</td>
-                  <td>{transaction.User.username}</td>
-                  <td>BCA</td>
-                  <td>91938247</td>
-                  <td>{transaction.orderId.map((order) => (
-                    `${order}   `
-                  ))} </td>
-                  <td>{transaction.trip}</td>
-                  <td>{transaction.totalPrice}</td>
-                </tr>
-              ))}
+          data?.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{i++}</td>
+              <td>{transaction.User.username}</td>
+              <td>{transaction.paymentId ? transaction.Payment.bankName: "-"}</td>
+              <td>{transaction.paymentId ? transaction.Payment.accountNumber: "-"}</td>
+              <td>{transaction.orderId.length}</td>
+              <td>{transaction.trip}</td>
+              <td>{transaction.totalPrice}</td>
+            </tr>
+        ))}
           </tbody>
         </Table>
         {loading && (

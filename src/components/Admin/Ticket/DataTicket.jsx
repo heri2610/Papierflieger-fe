@@ -17,7 +17,7 @@ import Select from "react-select";
 import { getTicket, deleteTicket } from "../../../store/actions/ticket.js";
 import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
 
-const typeTicket = [
+const tipeTicket = [
   { value: "Domestik", label: "Domestik" },
   { value: "Internasional", label: "Internasional" },
 ];
@@ -29,41 +29,41 @@ const DataTicket = () => {
   const [messages, setMessages] = useState("");
   const [show, setShow] = useState(false);
   const [ticketno, setTicketNumber] = useState("");
-  const [departureDate, setDepartureDate] = useState("");
-  const [arrivalDate, setArrivalDate] = useState("");
+  const [depDate, setDepartureDate] = useState("");
+  const [arrDate, setArrivalDate] = useState("");
   const [deptime, setDepartureTime] = useState("");
   const [arrtime, setArrivalTime] = useState("");
-  const [frcity, setFromCity] = useState("");
-  const [tcity, setToCity] = useState("");
+  const [frcity, setFlightFrom] = useState("");
+  const [tcity, setFlightTo] = useState("");
   const [airpname, setAirplaneNames] = useState("");
   const [price, setPrice] = useState("");
   const [transittotal, setTotalTransit] = useState("");
   const [airportNames, setAirportNames] = useState("");
   const [PointTransit, setTransitPoint] = useState("");
   const [tranduration, setTransitDuration] = useState("");
-  const [TypeTicket, setTicketType] = useState("");
+  const [typeTicket, setTicketType] = useState("");
   const [flightduration, setFlightDuration] = useState("");
   const [arrtimetransit, setArrivalTimeTransit] = useState("");
   const [deptimetransit, setDepartureTimeFromTransit] = useState("");
   const [eror, setEror] = useState("");
   const datas = {
-    TicketNumber: ticketno,
-    DepartureDate: departureDate,
-    ArrivalDate: arrivalDate,
-    DepartureTime: deptime,
-    ArrivalTime: arrtime,
-    FromCity: frcity,
-    ToCity: tcity,
-    AirplaneNames: airpname,
-    Price: price,
-    TotalTransit: transittotal,
+    ticketNumber: ticketno,
+    departureDate: depDate,
+    arrivalDate: arrDate,
+    departureTime: deptime,
+    arrivalTime: arrtime,
+    flightFrom: frcity,
+    flightTo: tcity,
+    airplaneNames: airpname,
+    price: price,
+    totalTransit: transittotal,
     airportName: airportNames,
-    TransitPoint: PointTransit,
-    TransitDuration: tranduration,
-    TicketType: TypeTicket,
-    FlightDuration: flightduration,
-    ArrivelTimeTransit: arrtimetransit,
-    DepartureTimeFromTransit: deptimetransit,
+    transitPoint: PointTransit,
+    transitDuration: tranduration,
+    ticketType: typeTicket,
+    flightDuration: flightduration,
+    arrivelTimeTransit: arrtimetransit,
+    departureTimeFromTransit: deptimetransit,
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -95,48 +95,17 @@ const DataTicket = () => {
   };
   console.log(data);
 
-  // view ticket
-  const handleViewClose = () => setShow(false);
-  const handleViewShow = () => setShow(true);
-  const handleDataView = (ticket) => {
-    setTicketNumber(ticket.ticketNumber);
-    setDepartureDate(ticket.DepartureDate);
-    setArrivalDate(ticket.ArrivalDate);
-    setDepartureTime(ticket.DepartureTime);
-    setArrivalTime(ticket.ArrivalTime);
-    setFromCity(ticket.from.city);
-    setToCity(ticket.to.City);
-    setAirplaneNames({
-      value: ticket.Airplane.id,
-      label: ticket.Airplane.airplaneName
-    });
-    setPrice(ticket.Price);
-    setTotalTransit(ticket.TotalTransit); setAirportNames({
-      value: ticket.Airport.id,
-      label: ticket.Airport.airportName,
-    });
-    setTransitPoint({
-      value: ticket.Airport.id,
-      label: ticket.Airport.airportName
-    });
-    setTransitDuration(ticket.TransitDuration);
-    setTicketType(ticket.TicketType);
-    setFlightDuration(ticket.FlightDuration);
-    setArrivalTimeTransit(ticket.ArrivalTimeTransit);
-    setDepartureTimeFromTransit(ticket.DepartureTimeFromTransit);
-  };
-
   // update ticket
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDataEdit = (ticket) => {
     setTicketNumber(ticket.ticketNumber);
-    setDepartureDate(ticket.DepartureDate);
-    setArrivalDate(ticket.ArrivalDate);
-    setDepartureTime(ticket.DepartureTime);
-    setArrivalTime(ticket.ArrivalTime);
-    setFromCity(ticket.from.city);
-    setToCity(ticket.to.City);
+    setDepartureDate(ticket.departureDate);
+    setArrivalDate(ticket.arrivalDate);
+    setDepartureTime(ticket.departureTime);
+    setArrivalTime(ticket.arrivalTime);
+    setFlightFrom(ticket.from.city);
+    setFlightTo(ticket.to.city);
     setAirplaneNames({
       value: ticket.Airplane.id,
       label: ticket.Airplane.airplaneName
@@ -150,11 +119,11 @@ const DataTicket = () => {
       value: ticket.Airport.id,
       label: ticket.Airport.airportName
     });
-    setTransitDuration(ticket.TransitDuration);
-    setTicketType(ticket.TicketType);
-    setFlightDuration(ticket.FlightDuration);
-    setArrivalTimeTransit(ticket.ArrivalTimeTransit);
-    setDepartureTimeFromTransit(ticket.DepartureTimeFromTransit);
+    setTransitDuration(ticket.transitDuration);
+    setTicketType(ticket.ticketType);
+    setFlightDuration(ticket.flightDuration);
+    setArrivalTimeTransit(ticket.arrivalTimeTransit);
+    setDepartureTimeFromTransit(ticket.departureTimeFromTransit);
   };
   return (
     <div className="data-ticket">
@@ -202,8 +171,8 @@ const DataTicket = () => {
                   <td>{ticket.to.city}</td>
                   <td>
                     <div className="edit-delete">
-                      <div onClick={() => handleDataView(ticket)}>
-                        <Button variant="primary" onClick={handleViewShow}>
+                      <div >
+                        <Button variant="primary" >
                           <MdRemoveRedEye />
                         </Button>
                       </div>
@@ -227,160 +196,6 @@ const DataTicket = () => {
           </div>
         )}
 
-        <Modal show={show} onHide={handleViewClose} scrollable={true}>
-          <Modal.Header>
-            <Modal.Title>
-              Tiket Perjalanan
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Container>
-                <Form.Group>
-                  <Form.Label>Nomor Tiket</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    onChange={(e) => setTicketNumber(e.target.value)}
-                    value={ticketno}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Tipe Tiket</Form.Label>
-                  <Select
-                    options={typeTicket}
-                    onChange={(e) => setTicketType(e.target.value)}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Tanggal Kedatangan</Form.Label>
-                  <Form.Control
-                    required
-                    type="date"
-                    onChange={(e) => setArrivalDate(e.target.value)}
-                    value={arrivalDate}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Tanggal Kepulangan</Form.Label>
-                  <Form.Control
-                    required
-                    type="date"
-                    onChange={(e) => setDepartureDate(e.target.value)}
-                    value={departureDate}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Waktu Kedatangan</Form.Label>
-                  <Form.Control
-                    required
-                    type="time"
-                    onChange={(e) => setDepartureTime(e.target.value)}
-                    value={deptime}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Waktu Kepulangan</Form.Label>
-                  <Form.Control
-                    required
-                    type="time"
-                    onChange={(e) => setArrivalTime(e.target.value)}
-                    value={arrtime}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Terbang Dari</Form.Label>
-                  <Select
-                    option={dataAirport}
-                    onChange={(e) => setFromCity(e.target.value)}
-                    defaultValue={frcity}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Terbang Ke</Form.Label>
-                  <Select
-                    option={dataAirport}
-                    onChange={(e) => setToCity(e.target.value)}
-                    defaultValue={tcity}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Nama Pesawat</Form.Label>
-                  <Select
-                    required
-                    option={AirplaneName}
-                    onChange={(e) => setAirplaneNames(e.target.value)}
-                    value={airpname}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Total Transit</Form.Label>
-                  <Form.Control
-                    type="text"
-                    onChange={(e) => setTotalTransit(e.target.value)}
-                    value={transittotal}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Bandara Transit</Form.Label>
-                  <Select
-                    options={AirportName}
-                    onChange={(e) => setAirportNames(e.value)}
-                    defaultValue={airportNames}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Durasi Transit</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="8 jam 15 menit"
-                    onChange={(e) => setTransitDuration(e.value)}
-                    Value={tranduration}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Waktu Kedatangan di Titik Transit</Form.Label>
-                  <Form.Control
-                    type="time"
-                    placeholder="10:14"
-                    onChange={(e) => setArrivalTimeTransit(e.value)}
-                    value={arrtimetransit}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Waktu Kepergian dari Titik Transit</Form.Label>
-                  <Form.Control
-                    type="time"
-                    placeholder="10:14"
-                    onChange={(e) => setDepartureTimeFromTransit(e.value)}
-                    value={deptimetransit}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Durasi Penerbangan</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder="3 jam 5 menit"
-                    onChange={(e) => setFlightDuration(e.value)}
-                    value={flightduration}
-                  />
-                </Form.Group>
-                <Form.Group className="form" controlId="validationCustom01">
-                  <Form.Label>Harga</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder="8000000"
-                    onChange={(e) => setPrice(e.value)}
-                    value={price}
-                  />
-                </Form.Group>
-              </Container>
-            </Form>
-          </Modal.Body>
-        </Modal>
-
         {/* ============= Update Data Ticket ============= */}
         <Modal show={show} onHide={handleClose} scrollable={true}>
           <Modal.Header>
@@ -403,8 +218,9 @@ const DataTicket = () => {
                 <Form.Group className="form" controlId="validationCustom01">
                   <Form.Label>Tipe Tiket</Form.Label>
                   <Select
-                    options={typeTicket}
+                    options={tipeTicket}
                     onChange={(e) => setTicketType(e.target.value)}
+                    value={typeTicket}
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
@@ -413,7 +229,7 @@ const DataTicket = () => {
                     required
                     type="date"
                     onChange={(e) => setArrivalDate(e.target.value)}
-                    value={arrivalDate}
+                    value={arrDate}
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
@@ -422,7 +238,7 @@ const DataTicket = () => {
                     required
                     type="date"
                     onChange={(e) => setDepartureDate(e.target.value)}
-                    value={departureDate}
+                    value={depDate}
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
@@ -447,7 +263,7 @@ const DataTicket = () => {
                   <Form.Label>Terbang Dari</Form.Label>
                   <Select
                     option={dataAirport}
-                    onChange={(e) => setFromCity(e.target.value)}
+                    onChange={(e) => setFlightFrom(e.target.value)}
                     defaultValue={frcity}
                   />
                 </Form.Group>
@@ -455,7 +271,7 @@ const DataTicket = () => {
                   <Form.Label>Terbang Ke</Form.Label>
                   <Select
                     option={dataAirport}
-                    onChange={(e) => setToCity(e.target.value)}
+                    onChange={(e) => setFlightTo(e.target.value)}
                     defaultValue={tcity}
                   />
                 </Form.Group>
@@ -480,8 +296,8 @@ const DataTicket = () => {
                   <Form.Label>Bandara Transit</Form.Label>
                   <Select
                     options={AirportName}
-                    onChange={(e) => setAirportNames(e.value)}
-                    defaultValue={airportNames}
+                    onChange={(e) => setTransitPoint(e.value)}
+                    defaultValue={PointTransit}
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
@@ -516,7 +332,7 @@ const DataTicket = () => {
                   <Form.Control
                     required
                     type="text"
-                    placeholder="3 jam 5 menit"
+                    // placeholder="3 jam 5 menit"
                     onChange={(e) => setFlightDuration(e.value)}
                     value={flightduration}
                   />
