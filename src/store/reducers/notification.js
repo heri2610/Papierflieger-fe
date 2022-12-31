@@ -18,6 +18,7 @@ const notifReducer = (state = initialState, action) => {
         data: payload.data,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
+        count: payload.countNotif,
       };
     case COUNT_NOTIF:
       return {
