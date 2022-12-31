@@ -5,6 +5,7 @@ const initialState = {
   data: [],
   loading: false,
   errorMessage: false,
+  count:false,
 };
 
 const notifReducer = (state = initialState, action) => {
@@ -21,9 +22,7 @@ const notifReducer = (state = initialState, action) => {
     case COUNT_NOTIF:
       return {
         ...state,
-        data: payload.data,
-        loading: payload.loading,
-        errorMessage: payload.errorMessage,
+        count: payload.countNotif,
       };
     default: {
       return state;
