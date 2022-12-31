@@ -14,7 +14,7 @@ const historyReducer = (state = initialState, action) => {
     case GET_HISTORY:
       return {
         ...state,
-        data: payload.data.airports,
+        data: payload.data,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
       };

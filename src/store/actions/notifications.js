@@ -13,12 +13,15 @@ export const getNotif = () =>
     });
     try {
       const response = await notifService.getNotif();
+      const response2 = await notifService.seeNotif();
+      const response3 = await notifService.countNotif();
       dispatch({
         type: GET_NOTIF,
         payload: {
           loading: false,
           data: response.data,
           errorMessage: false,
+          count:response3.data
         },
       });
       console.log(response.data);
@@ -33,16 +36,6 @@ export const getNotif = () =>
       });
     }
   };
-export const seeNotif = (id) =>
-  async function (dispatch) {
-    try {
-      const response = await notifService.seeNotif(id);
-      dispatch({ type: SEE_NOTIF, payload: response.data });
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-}; 
 export const countNotif = () =>
   async function (dispatch) {
     try {
