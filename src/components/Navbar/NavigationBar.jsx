@@ -21,13 +21,13 @@ const NavigationBar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch()
-  const {data} = useSelector(state=>state.notifications)
+  const {count} = useSelector(state=>state.notifReducer)
   useEffect(()=>{
     if(token){
       dispatch(countNotif())
     }
   },[token,dispatch])
-  console.log(data)
+  console.log(count)
   return (
     <div className="container-fluid mb-3 fixed-top">
       <Navbar expand="lg" className="justify-content-center bg-white rounded shadow-sm">
@@ -59,7 +59,7 @@ const NavigationBar = () => {
               {token ? (
                 <div className="d-flex align-items-center">
                   <Nav.Link href="/user/notification" className="me-3">
-                    <i className="bi bi-bell-fill"></i>
+                    <i className="bi bi-bell-fill" style={{fontSize:'24px'}}></i>{count !== 0 &&<span class="position-absolute top-50 translate-middle badge rounded-pill bg-danger" >{count}</span>}
                   </Nav.Link>
                   <Nav.Link href="/user/profile" className="me-3">
                     <img src={window.localStorage.getItem("avatar")} alt="foto profil" width={"40px"} height={"40px"} className="rounded-circle" />

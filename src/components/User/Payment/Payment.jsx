@@ -6,6 +6,7 @@ import Footer from "../../Footer/Footer";
 import NavigationBar from "../../Navbar/NavigationBar";
 import { useSelector, useDispatch } from "react-redux";
 import { proceedTransaction } from "../../../store/actions/order";
+import { useNavigate } from "react-router-dom";
 import "./payment.scss";
 import Airplane404 from "../../UIComponents/img/Airplane404.svg";
 
@@ -28,7 +29,7 @@ function Payment() {
     style: 'currency',
     currency: 'IDR'
   });
-
+const navigate = useNavigate();
   const submit = (payload) => {
     console.log(payload);
     dispatch(proceedTransaction({ ...payload, tokenTransaction: data.tokenTransaction }
@@ -292,16 +293,16 @@ function Payment() {
               </Collapse>
             </Col>
           </Row>
-          <Modal show={show} onHide={handleClose}>
+          <Modal show={show} onHide={handleClose} className='modal-dialog-centered'>
           <img className="img-delete-confirm" src={Airplane404} alt="" />
           <Modal.Body>
-            <div className="fw-bolder">Transaksi berhasil</div>
-              <div className="fw-light">
+            <div className="fw-bolder text-center">Transaksi berhasil</div>
+              <div className="fw-light text-center">
                 {data.message}
               </div>
-              <div className="mt-3 mx-5">
-              <Button variant="success" onClick={handleClose}>
-                <span onClick={handleClose}>Ok</span>
+              <div className="mt-3 d-block mx-auto">
+              <Button variant="success" onClick={()=>{handleClose();navigate('/')}} className='d-block mx-auto'>
+                <h6 className='d-block'>Ok</h6>
               </Button>
             </div>
           </Modal.Body>
