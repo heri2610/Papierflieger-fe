@@ -1,5 +1,5 @@
 import historyService from "../../services/historyService";
-import { GET_HISTORY  } from "../types/index";
+import { GET_HISTORY } from "../types/index";
 
 export const getHistory = () =>
   async function (dispatch) {
@@ -21,7 +21,7 @@ export const getHistory = () =>
           errorMessage: false,
         },
       });
-      console.log(response.data);
+      console.log(response);
     } catch (error) {
       dispatch({
         type: GET_HISTORY,
