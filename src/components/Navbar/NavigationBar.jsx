@@ -59,7 +59,7 @@ const NavigationBar = () => {
               {token ? (
                 <div className="d-flex align-items-center">
                   <Nav.Link href="/user/notification" className="me-3">
-                    <i className="bi bi-bell-fill" style={{fontSize:'24px'}}></i>{count&&<span class="position-absolute top-50 translate-middle badge rounded-pill bg-danger" >{count}</span>}
+                    <i className="bi bi-bell-fill" style={{fontSize:'24px'}}></i>{count !== 0 &&<span class="position-absolute top-50 translate-middle badge rounded-pill bg-danger" >{count}</span>}
                   </Nav.Link>
                   <Nav.Link href="/user/profile" className="me-3">
                     <img src={window.localStorage.getItem("avatar")} alt="foto profil" width={"40px"} height={"40px"} className="rounded-circle" />
