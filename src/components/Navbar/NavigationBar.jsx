@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Navbar,
@@ -11,15 +11,23 @@ import Login from "../User/Login/Login";
 import brand from "../../assets/images/logo.svg";
 import "./navbar.scss";
 import DropdownNav from "./DropdownNav.jsx";
-import { useSelector } from "react-redux";
+import { countNotif } from "../../store/actions/notifications";
+import { useSelector,useDispatch } from "react-redux";
 
 const NavigationBar = () => {
   const regis = window.location.pathname === "/register";
   const token = window.localStorage.getItem("token");
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const dispatch = useDispatch()
+  const {data} = useSelector(state=>state.notifications)
+  useEffect(()=>{
+    if(token){
+      dispatch(countNotif())
+    }
+  },[token,dispatch])
+  console.log(data)
   return (
     <div className="container-fluid mb-3 fixed-top">
       <Navbar expand="lg" className="justify-content-center bg-white rounded shadow-sm">
