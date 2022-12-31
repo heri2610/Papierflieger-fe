@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Button, Container, Form, Collapse } from "react-bootstrap";
+import { Row, Col, Button, Container, Form, Collapse, Modal } from "react-bootstrap";
 import logocard from "../../../assets/images/Logo-card.svg";
 import Arrow from "../../../assets/images/Vector.svg";
 import Footer from "../../Footer/Footer";
@@ -7,6 +7,7 @@ import NavigationBar from "../../Navbar/NavigationBar";
 import { useSelector, useDispatch } from "react-redux";
 import { proceedTransaction } from "../../../store/actions/order";
 import "./payment.scss";
+import Airplane404 from "../../UIComponents/img/Airplane404.svg";
 
 function Payment() {
   const [open, setOpen] = useState(false);
@@ -33,6 +34,11 @@ function Payment() {
     dispatch(proceedTransaction({ ...payload, tokenTransaction: data.tokenTransaction }
     ));
   };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
       <NavigationBar />
@@ -130,7 +136,10 @@ function Payment() {
                         <Form.Control type="text" value={formatter.format(data.totalPrice)} disabled />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => submit(banka)}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {
+                      submit(banka)
+                      handleShow()
+                      }}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -176,7 +185,8 @@ function Payment() {
                         <Form.Control type="text" placeholder="Masukkan nominal" value={formatter.format(data.totalPrice)} disabled />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => submit(bankb)}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {submit(bankb)
+                      handleShow()}}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -222,7 +232,9 @@ function Payment() {
                         <Form.Control type="text" placeholder="Masukkan nominal" disabled value={formatter.format(data.totalPrice)} />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => submit(bankc)}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {submit(bankc)
+                      handleShow()
+                    }}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -268,14 +280,32 @@ function Payment() {
                         <Form.Control type="text" placeholder="Masukkan nominal" disabled value={formatter.format(data.totalPrice)} />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => submit(bankd)}>
-                      <h5 className="m-0">Bayar</h5>
-                    </Button>
+                    <div className="payment-button">
+                      <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {submit(bankd)
+                      handleShow()
+                      }}>
+                        <h5 className="m-0">Bayar</h5>
+                      </Button>
+                    </div>
                   </Form>
                 </div>
               </Collapse>
             </Col>
           </Row>
+          <Modal show={show} onHide={handleClose}>
+          <img className="img-delete-confirm" src={Airplane404} alt="" />
+          <Modal.Body>
+            <div className="fw-bolder">Transaksi berhasil</div>
+              <div className="fw-light">
+                {data.message}
+              </div>
+              <div className="mt-3 mx-5">
+              <Button variant="success" onClick={handleClose}>
+                <span onClick={handleClose}>Ok</span>
+              </Button>
+            </div>
+          </Modal.Body>
+        </Modal>
         </Container>
       </Container >
       <Footer />

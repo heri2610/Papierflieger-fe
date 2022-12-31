@@ -11,6 +11,7 @@ import Login from "../User/Login/Login";
 import brand from "../../assets/images/logo.svg";
 import "./navbar.scss";
 import DropdownNav from "./DropdownNav.jsx";
+import { useSelector } from "react-redux";
 
 const NavigationBar = () => {
   const regis = window.location.pathname === "/register";
@@ -49,7 +50,7 @@ const NavigationBar = () => {
               </Nav>
               {token ? (
                 <div className="d-flex align-items-center">
-                  <Nav.Link href="/" className="me-3">
+                  <Nav.Link href="/user/notification" className="me-3">
                     <i className="bi bi-bell-fill"></i>
                   </Nav.Link>
                   <Nav.Link href="/user/profile" className="me-3">

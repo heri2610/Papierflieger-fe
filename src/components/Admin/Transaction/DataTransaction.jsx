@@ -44,19 +44,19 @@ const DataTransaction = () => {
           </Alert>
         )}
         <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Nama Pengguna</th>
-              <th>Metode Pembayaran</th>
-              <th>Nomor Rekening</th>
-              <th>Id Pemesanan</th>
-              <th>Jenis Perjalanan</th>
-              <th>Harga</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data &&
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama Pengguna</th>
+            <th>Metode Pembayaran</th>
+            <th>Nomor Rekening</th>
+            <th>Jumlah Penumpang</th>
+            <th>Jenis Perjalanan</th>
+            <th>Harga</th>
+          </tr>
+        </thead>
+        <tbody>
+        {data &&
               data?.map((transaction) => (
                 <tr key={transaction.id}>
                   <td>{i++}</td>

@@ -53,12 +53,11 @@ const DataDestination = () => {
         setMessages("");
       }, 3000);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   const handleDelete = (id) => {
     dispatch(deleteDestinasi(id));
   };
-  console.log(data);
+  console.log(data)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDataEdit = (destinasi) => {

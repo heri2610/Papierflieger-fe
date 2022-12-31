@@ -10,8 +10,8 @@ const Widget = () => {
                 <BsPaypal/>
                 <span className="title-user">Transaksi</span>
             </div>
-            <h3><span className="counter">150</span></h3>
-            <h6><span className="more">5 transaksi</span></h6>
+            <h3><span className="counter">8</span></h3>
+            <h6><span className="more">2 transaksi</span></h6>
             <div className="button">
                 <span className="other">Selengkapnya</span>
             </div>

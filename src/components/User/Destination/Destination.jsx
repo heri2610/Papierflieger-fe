@@ -23,7 +23,7 @@ const Destination = () => {
   const destinasi = state.destinasi;
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [remove, setRemove] = useState(false);
+  const [remove, setReomve] = useState(false);
   let keyImg = 1;
 
   const [messages, setMessages] = useState(false);
@@ -36,12 +36,12 @@ const Destination = () => {
     if (data) {
       data.map((wislist) => {
         if (wislist.Destination.id === destinasi.id) {
-          return setRemove(true);
+          return setReomve(true);
         }
         return false;
       });
     }
-  }, [data, destinasi.id]);
+  }, []);
   useEffect(() => {
     if (errorMessage) {
       setError(errorMessage);
@@ -126,7 +126,7 @@ const Destination = () => {
                       placement="bottom"
                       overlay={
                         <Tooltip id={`tooltip-bottom`}>
-                          {remove ? "Hapus dari wislist" : "Tambah ke wishlist"}
+                          Tambah ke wishlist
                         </Tooltip>
                       }
                     >

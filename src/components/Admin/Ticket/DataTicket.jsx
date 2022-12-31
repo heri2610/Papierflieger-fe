@@ -45,8 +45,6 @@ const DataTicket = () => {
   const [flightduration, setFlightDuration] = useState("");
   const [arrtimetransit, setArrivalTimeTransit] = useState("");
   const [deptimetransit, setDepartureTimeFromTransit] = useState("");
-  // eslint-disable-next-line no-unused-vars
-  const [location, setLocation] = useState("{}");
   const [eror, setEror] = useState("");
   const datas = {
     TicketNumber: ticketno,
@@ -106,10 +104,6 @@ const DataTicket = () => {
     setArrivalDate(ticket.ArrivalDate);
     setDepartureTime(ticket.DepartureTime);
     setArrivalTime(ticket.ArrivalTime);
-    setLocation({
-      value: ticket.Airport.id,
-      label: ticket.Airport.city
-    });
     setFromCity(ticket.from.city);
     setToCity(ticket.to.City);
     setAirplaneNames({
@@ -141,10 +135,6 @@ const DataTicket = () => {
     setArrivalDate(ticket.ArrivalDate);
     setDepartureTime(ticket.DepartureTime);
     setArrivalTime(ticket.ArrivalTime);
-    setLocation({
-      value: ticket.Airport.id,
-      label: ticket.Airport.city
-    });
     setFromCity(ticket.from.city);
     setToCity(ticket.to.City);
     setAirplaneNames({
