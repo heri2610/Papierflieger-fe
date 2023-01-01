@@ -28,15 +28,26 @@ const AddAirport = () => {
           <Container>
             <Form.Group className="form" controlId="validationCustom01">
               <Form.Label>Nama Bandara</Form.Label>
-              <Form.Control required type="text" placeholder="Ngurah Rai International Airport" onChange={(e) => setAirportName(e.target.value)} />
+              <Form.Control 
+                required type="text" 
+                placeholder="Ngurah Rai International Airport" 
+                onChange={(e) => setAirportName(e.target.value)} 
+              />
             </Form.Group>
             <Form.Group className="form" controlId="validationCustom01">
               <Form.Label>Wilayah</Form.Label>
-              <Form.Control required type="text" placeholder="Denpasar, Bali, Indonesia" onChange={(e) => setCity(e.target.value)} />
+              <Form.Control 
+                required type="text" 
+                placeholder="Denpasar, Bali, Indonesia" 
+                onChange={(e) => setCity(e.target.value)} 
+              />
             </Form.Group>
             <Form.Group className="form" controlId="validationCustom01">
               <Form.Label>Kode Bandara</Form.Label>
-              <Form.Control required type="text" placeholder="DPS" onChange={(e) => setCityCode(e.target.value)} />
+              <Form.Control 
+                required type="text" 
+                placeholder="DPS" onChange={(e) => setCityCode(e.target.value)} 
+              />
             </Form.Group>
             <br />
             <div className="edit-delete">

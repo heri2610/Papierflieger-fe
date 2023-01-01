@@ -16,7 +16,7 @@ const AddDestination = () => {
   const [locations, setLocation] = useState("");
   const [airportNames, setAirportNames] = useState("");
   const [desc, setDescription] = useState("");
-  const datas = {
+  const data = {
     names,
     locations,
     airportNames,
@@ -24,8 +24,8 @@ const AddDestination = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(datas);
-    dispatch(addDestinasi(datas, history));
+    console.log(data);
+    dispatch(addDestinasi(data, history));
   };
   console.log(dataAirport)
   return (
@@ -42,20 +42,33 @@ const AddDestination = () => {
               />
             </Form.Group>
             <Form.Group controlId="formFileMultiple" className="mb-3">
-                <Form.Label>Gambar</Form.Label>
-                <Form.Control require type="file" multiple/>
+              <Form.Label>Gambar</Form.Label>
+              <Form.Control
+                require
+                type="file"
+                multiple
+              />
             </Form.Group>
             <Form.Group className="form mt-2" controlId="validationCustom01">
               <Form.Label>Lokasi</Form.Label>
-              <Select options={dataAirport}  onChange={(e) => setLocation(e.target.value)} />
+              <Select
+                options={dataAirport}
+                onChange={(e) => setLocation(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="form mt-2" controlId="validationCustom01">
             <Form.Label>Bandara</Form.Label>
-              <Select options={AirportName} onChange={(e) => setAirportNames(e.target.value)}/>
+              <Select 
+                options={AirportName} 
+                onChange={(e) => setAirportNames(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Deskripsi</Form.Label>
-                <Form.Control as="textarea" rows={3} onChange={(e) => setDescription(e.target.value)} />
+              <Form.Label>Deskripsi</Form.Label>
+              <Form.Control 
+                as="textarea" 
+                rows={3} onChange={(e) => setDescription(e.target.value)} 
+              />
             </Form.Group>
             <br/>
             <div className="edit-delete">
