@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useSelector } from "react";
 import {
   Form, Container, Button, Col, Row } from "react-bootstrap";
 import Select from "react-select";
 import "../Admin.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { addTicket } from "../../../store/actions/ticket";
 
 const airport = [
     {value: "Ngurah Rai", label: "Ngurah Rai"},
@@ -22,41 +23,64 @@ const typeTicket = [
 ]
 
 const AddAirport = () => {
+  const { dataAirport, AirportName, AirplaneName } = useSelector(
+    (state) => state.TicketReducer
+  );
+  const dispatch = useDispatch();
+  const history = useNavigate();
+  const [ticketNumber, setTicketNumber] = useState("");
+  const [arrivalDate, setArrivalDate] = useState("");
+  const [departureTime, setDepartureTime] = useState("");
+  const [flightFrom, setFlightFrom] = useState("");
+  const datas = {
+    ticketNumber,
+    arrivalDate,
+    departureTime,
+    flightFrom
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(datas);
+    dispatch(addTicket(datas, history));
+  };
   return (
       <div className="add-ticket">
       <div className="container-ticket">
-        <Form className="add">
+        <Form className="add" onSubmit={handleSubmit}>
           <Container>
             <Row>
-            <Col>
-              <Form.Group className="form" controlId="validationCustom01">
-                <Form.Label>Nomor Tiket</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="674286"
-                />
-              </Form.Group>
-              <Form.Group className="form" controlId="validationCustom01">
-                <Form.Label>Tanggal Kedatangan</Form.Label>
-                <Form.Control
-                  required
-                  type="date"
-                  placeholder="2022-12-15"
-                />
-              </Form.Group>
-              <Form.Group className="form" controlId="validationCustom01">
-                <Form.Label>Terbang Dari</Form.Label>
-                <Select options={airport} />
-              </Form.Group>
-              <Form.Group className="form" controlId="validationCustom01">
-                <Form.Label>Id Pesawat</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="2"
-                />
-              </Form.Group>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Nomor Tiket</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    onChange={(e) => setTicketNumber(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group className="form" controlId="validationCustom01">
+                  <Form.Label>Tanggal Kedatangan</Form.Label>
+                  <Form.Control
+                    required
+                    type="date"
+                    onChange={(e) => setArrivalDate(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group className="form" controlId="validationCustom01">
+                  <Form.Label>Waktu Kedatangan</Form.Label>
+                  <Form.Control
+                    required
+                    type="time"
+                    onChange={(e) => setDepartureTime(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group className="form" controlId="validationCustom01">
+                  <Form.Label>Terbang Dari</Form.Label>
+                  <Select
+                    option={dataAirport}
+                    onChange={(e) => setFlightFrom(e.target.value)}
+                  />
+                </Form.Group>
               <Form.Group className="form" controlId="validationCustom01">
               <Form.Label>Nama Pesawat</Form.Label>
                 <Select options={airplane} />
