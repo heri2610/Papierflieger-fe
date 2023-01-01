@@ -40,6 +40,7 @@ export const countNotif = () =>
   async function (dispatch) {
     try {
       const response = await notifService.countNotif();
+      console.log(response.data)
       dispatch({ type: COUNT_NOTIF, payload: response.data });
     } catch (error) {
       console.log(error);

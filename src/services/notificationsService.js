@@ -19,7 +19,7 @@ const notifService = {
   },
   seeNotif: async function (id) {
     try {
-      const response = await API.put(`/notifications/${id}`);
+      const response = await API.put(`/notifications`);
       return response;
     } catch (err) {
       throw err;
