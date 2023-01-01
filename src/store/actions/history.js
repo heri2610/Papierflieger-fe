@@ -13,6 +13,7 @@ export const getHistory = () =>
     });
     try {
       const response = await historyService.getHistory();
+      console.log(response)
       dispatch({
         type: GET_HISTORY,
         payload: {
