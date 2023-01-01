@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useEffect, useState} from "react";
 import { Container, Row, Col, Accordion, Badge } from "react-bootstrap";
 import Arrow from "../../../assets/images/Vector.svg";
 import logocard from "../../../assets/images/Logo-card.svg";
@@ -9,22 +9,23 @@ import "./ListBooking.scss";
 const ListBooking = () => {
   const {data} = useSelector(state=>state.historyReducer)
   const dispatch = useDispatch()
+  const [history,setHistory] = useState([])
   useEffect(()=>{
     dispatch(getHistory())
   },[dispatch])
-  console.log(data)
+ console.log(data)
   return (
     <div className="img-banner">
       <div className="container">
         <h4 className="my-2 mx-3 mb-3 fw-bold">Riwayat Transaksi</h4>
-        {data.orderList.length !== 0 && data.orderList.map(item=> <Container fluid className="pb-4 list-booking mb-2">
+        {data.ticket && data.ticket.map((item,index)=><Container fluid className="pb-4 list-booking mb-2">
           <Row>
             <Col md="12">
               <div className="bg-white p-3 rounded">
                 <Row className="position-relative">
                   <Col>
                     <Accordion>
-                      <Accordion.Item eventKey={item.id} className="border border-0">
+                      <Accordion.Item eventKey={index} className="border border-0">
                         <Accordion.Header>
                           <Col md={3} lg={2}>
                             <img
@@ -126,7 +127,6 @@ const ListBooking = () => {
             </Col>
           </Row>
         </Container>)}
-       
       </div>
     </div>
   );

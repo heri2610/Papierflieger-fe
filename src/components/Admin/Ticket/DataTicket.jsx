@@ -14,7 +14,7 @@ import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom";
 import Select from "react-select";
-import { getTicket, deleteTicket } from "../../../store/actions/ticket.js";
+import { getTicket, deleteTicket } from "../../../store/actions/ticket";
 import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
 
 const tipeTicket = [
@@ -23,7 +23,7 @@ const tipeTicket = [
 ];
 
 const DataTicket = () => {
-  const { loading, data, errorMessage, message, dataAirport, AirportName, AirplaneName } = useSelector(
+  const { loading, data, errorMessage, message, datAirport, AirportName, AirplaneName } = useSelector(
     (state) => state.ticketReducer
   );
   const [messages, setMessages] = useState("");
@@ -106,10 +106,7 @@ const DataTicket = () => {
     setArrivalTime(ticket.arrivalTime);
     setFlightFrom(ticket.from.city);
     setFlightTo(ticket.to.city);
-    setAirplaneNames({
-      value: ticket.Airplane.id,
-      label: ticket.Airplane.airplaneName
-    });
+    setAirplaneNames(ticket.airplaneName);
     setPrice(ticket.Price);
     setTotalTransit(ticket.TotalTransit); setAirportNames({
       value: ticket.Airport.id,
@@ -262,16 +259,16 @@ const DataTicket = () => {
                 <Form.Group className="form" controlId="validationCustom01">
                   <Form.Label>Terbang Dari</Form.Label>
                   <Select
-                    option={dataAirport}
-                    onChange={(e) => setFlightFrom(e.target.value)}
+                    option={datAirport}
+                    onChange={(e) => setFlightFrom(e.value)}
                     defaultValue={frcity}
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
                   <Form.Label>Terbang Ke</Form.Label>
                   <Select
-                    option={dataAirport}
-                    onChange={(e) => setFlightTo(e.target.value)}
+                    option={datAirport}
+                    onChange={(e) => setFlightTo(e.value)}
                     defaultValue={tcity}
                   />
                 </Form.Group>
@@ -280,7 +277,7 @@ const DataTicket = () => {
                   <Select
                     required
                     option={AirplaneName}
-                    onChange={(e) => setAirplaneNames(e.target.value)}
+                    onChange={(e) => setAirplaneNames(e.value)}
                     value={airpname}
                   />
                 </Form.Group>
