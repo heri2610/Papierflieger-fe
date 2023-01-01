@@ -24,7 +24,6 @@ export const filterTickets = (tujuan, history) =>
     });
     try {
       const response = await TicketService.filterTickets(tujuan);
-      console.log(response);
       dispatch({
         type: FILTER_TICKET,
         payload: {
@@ -41,7 +40,7 @@ export const filterTickets = (tujuan, history) =>
         payload: {
           loading: false,
           data: false,
-          errorMessage: error.message,
+          errorMessage: error.response.data.message,
         },
       });
     }
@@ -168,9 +167,7 @@ export const addTicket = (data, history) =>
       const response = await TicketService.addTicket(data);
       dispatch({ type: ADD_TICKET, payload: response.data });
       history("/admin/Ticket");
-      // , { state: { message: response.data.message } }
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -185,7 +182,6 @@ export const deleteTicket = (id) =>
         payload: { message: response.data.message, data: response2.data },
       });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -196,7 +192,6 @@ export const updateTicket = (data, id) =>
       const response = await TicketService.updateTicket(data, id);
       dispatch({ type: PUT_TICKET, payload: response.data });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
