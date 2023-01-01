@@ -14,7 +14,7 @@ import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom";
 import Select from "react-select";
-import { getTicket, deleteTicket } from "../../../store/actions/ticket";
+import { getTicket, deleteTicket, updateTicket } from "../../../store/actions/ticket";
 import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
 
 const tipeTicket = [
@@ -38,7 +38,6 @@ const DataTicket = () => {
   const [airpname, setAirplaneNames] = useState("");
   const [price, setPrice] = useState("");
   const [transittotal, setTotalTransit] = useState("");
-  const [airportNames, setAirportNames] = useState("");
   const [PointTransit, setTransitPoint] = useState("");
   const [tranduration, setTransitDuration] = useState("");
   const [typeTicket, setTicketType] = useState("");
@@ -46,29 +45,31 @@ const DataTicket = () => {
   const [arrtimetransit, setArrivalTimeTransit] = useState("");
   const [deptimetransit, setDepartureTimeFromTransit] = useState("");
   const [eror, setEror] = useState("");
-  const datas = {
-    ticketNumber: ticketno,
-    departureDate: depDate,
-    arrivalDate: arrDate,
-    departureTime: deptime,
-    arrivalTime: arrtime,
-    flightFrom: frcity,
-    flightTo: tcity,
-    airplaneNames: airpname,
-    price: price,
-    totalTransit: transittotal,
-    airportName: airportNames,
-    transitPoint: PointTransit,
-    transitDuration: tranduration,
-    ticketType: typeTicket,
-    flightDuration: flightduration,
-    arrivelTimeTransit: arrtimetransit,
-    departureTimeFromTransit: deptimetransit,
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [id, setId] = useState("");
+ 
+  const handleSubmit = () => {
+    const datas = {
+      ticketNumber: ticketno,
+      arrivalDate: arrDate,
+      departureTime: deptime,
+      flightFrom: frcity.value ? frcity.value : frcity,
+      airplaneId: airpname.value ?airpname.value:airpname,
+      transitPoint: PointTransit.value ?  PointTransit.value :PointTransit ? PointTransit : null,
+      arrivalTimeAtTransit: arrtimetransit ? arrtimetransit : null,
+      flightDuration: flightduration,
+      ticketType: typeTicket.value ? typeTicket.value : typeTicket,
+      departureDate: depDate,
+      arrivalTime: arrtime,
+      flightTo: tcity.value ? tcity.value: tcity,
+      totalTransit: transittotal ? transittotal : null,
+      transitDuration: tranduration ? tranduration : null ,
+      departureTimeFromTransit: deptimetransit ? deptimetransit : null,
+      price
+    };
+    
     console.log(datas);
-    // dispatch(updateAirplane(datas, edit.id));
+    dispatch(updateTicket(datas, id));
+    setShow(false)
   };
   // const [edit, setEdit] = useState({});
   const dispatch = useDispatch();
@@ -100,6 +101,7 @@ const DataTicket = () => {
   const handleShow = () => setShow(true);
   const handleDataEdit = (ticket) => {
     console.log(ticket)
+    setId(ticket.id)
     setTicketNumber(ticket.ticketNumber);
     setDepartureDate(ticket.departureDate.split("T")[0]);
     setArrivalDate(ticket.arrivalDate.split("T")[0]);
@@ -109,6 +111,7 @@ const DataTicket = () => {
       value: ticket.from.id,
       label: ticket.from.city,
     });
+    // setFlightF()
     setFlightTo({
       value: ticket.to.id,
       label: ticket.to.city,
@@ -118,7 +121,10 @@ const DataTicket = () => {
       label: ticket.Airplane.airplaneName,
     });
     setPrice(ticket.price);
-    setTicketType({ value: ticket.ticketType, label: ticket.ticketType });
+    setTicketType({ 
+      value: ticket.ticketType, 
+      label: ticket.ticketType 
+    });
     setTotalTransit(ticket.totalTransit); 
     setTransitDuration(ticket.transitDuration);
     setFlightDuration(ticket.flightDuration);
@@ -128,7 +134,6 @@ const DataTicket = () => {
       value: ticket.transitPoint,
       label: ticket.transit.airportName
     });
-    setAirportNames();
   };
   return (
     <div className="data-ticket">
@@ -209,7 +214,7 @@ const DataTicket = () => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onSubmit={handleSubmit}>
+            <Form>
               <Container>
                 <Form.Group>
                   <Form.Label>Nomor Tiket</Form.Label>
@@ -356,7 +361,7 @@ const DataTicket = () => {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
               Simpan Perubahan
             </Button>
           </Modal.Footer>

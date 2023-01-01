@@ -5,7 +5,6 @@ import "../Admin.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addTicket, getTicket } from "../../../store/actions/ticket";
-
 const typeTicket = [
     {value: "Domestik", label: "Domestik"},
     {value: "Internasional", label: "Internasional"}
@@ -24,7 +23,7 @@ const AddTicket = () => {
   const [flightFrom, setFlightFrom] = useState("");
   const [airplaneName, setAirplaneNames] = useState("");
   const [pointTransit, setTransitPoint] = useState("");
-  const [arrTimeTransit, setArrivalTimeTransit] = useState("");
+  const [arrivalTimeTransit, setArrivalTimeTransit] = useState("");
   const [flightDuration, setFlightDuration] = useState("");
   const [ticketType, setTicketType] = useState("");
   const [departureDate, setDepartureDate] = useState("");
@@ -39,17 +38,17 @@ const AddTicket = () => {
     arrivalDate,
     departureTime,
     flightFrom,
-    airplaneName,
-    pointTransit,
-    arrTimeTransit,
+    airplaneId: airplaneName,
+    transitPoint: pointTransit ?  pointTransit : null,
+    arrivalTimeAtTransit: arrivalTimeTransit ? arrivalTimeTransit : null,
     flightDuration,
     ticketType,
     departureDate,
     arrivalTime,
     flightTo,
-    totalTransit,
-    transitDuration,
-    departureTimeFromTransit,
+    totalTransit: totalTransit ? totalTransit : null,
+    transitDuration: transitDuration ? transitDuration : null ,
+    departureTimeFromTransit: departureTimeFromTransit ? departureTimeFromTransit : null,
     price
   };
   useEffect(() => {
@@ -59,7 +58,6 @@ const AddTicket = () => {
     if (errorMessage) {
       setEror(errorMessage);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -110,7 +108,7 @@ const AddTicket = () => {
                   <Select
                     options={datAirport}
                     placeholder="Bandung"
-                    onChange={(e) => setFlightFrom(e.value)}
+                    onChange={(e) => setFlightFrom(e.value)} 
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
@@ -119,7 +117,7 @@ const AddTicket = () => {
                     required
                     placeholder="Boeing AF-3865"
                     options={datAirPlane}
-                    onChange={(e) => setAirplaneNames(e.value)}
+                    onChange={(e) => setAirplaneNames(e.value)} 
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
@@ -127,7 +125,7 @@ const AddTicket = () => {
                   <Select
                     options={airportName}
                     placeholder="Soekarno Hatta International Airport"
-                    onChange={(e) => setTransitPoint(e.value)}
+                    onChange={(e) => setTransitPoint(e.value)} 
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
@@ -154,7 +152,7 @@ const AddTicket = () => {
                   <Select
                     options={typeTicket}
                     placeholder="Internasional"
-                    onChange={(e) => setTicketType(e.value)}
+                    onChange={(e) => setTicketType(e.value)} 
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
@@ -180,7 +178,7 @@ const AddTicket = () => {
                   <Select
                     options={datAirport}
                     placeholder="Brisbane, Australia"
-                    onChange={(e) => setFlightTo(e.value)}
+                    onChange={(e) => setFlightTo(e.value)} 
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
