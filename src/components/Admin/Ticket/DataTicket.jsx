@@ -23,17 +23,17 @@ const tipeTicket = [
 ];
 
 const DataTicket = () => {
-  const { loading, data, errorMessage, message, datAirport, AirportName, AirplaneName } = useSelector(
+  const { loading, data, errorMessage, message, datAirport, airportName, datAirPlane} = useSelector(
     (state) => state.ticketReducer
   );
   const [messages, setMessages] = useState("");
   const [show, setShow] = useState(false);
   const [ticketno, setTicketNumber] = useState("");
-  const [depDate, setDepartureDate] = useState("");
-  const [arrDate, setArrivalDate] = useState("");
-  const [deptime, setDepartureTime] = useState("");
+  const [depDate, setDepartureDate] = useState();
+  const [arrDate, setArrivalDate] = useState();
+  const [deptime, setDepartureTime] = useState();
   const [arrtime, setArrivalTime] = useState("");
-  const [frcity, setFlightFrom] = useState("");
+  const [frcity, setFlightFrom] = useState();
   const [tcity, setFlightTo] = useState("");
   const [airpname, setAirplaneNames] = useState("");
   const [price, setPrice] = useState("");
@@ -99,28 +99,36 @@ const DataTicket = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDataEdit = (ticket) => {
+    console.log(ticket)
     setTicketNumber(ticket.ticketNumber);
-    setDepartureDate(ticket.departureDate);
-    setArrivalDate(ticket.arrivalDate);
+    setDepartureDate(ticket.departureDate.split("T")[0]);
+    setArrivalDate(ticket.arrivalDate.split("T")[0]);
     setDepartureTime(ticket.departureTime);
     setArrivalTime(ticket.arrivalTime);
-    setFlightFrom(ticket.from.city);
-    setFlightTo(ticket.to.city);
-    setAirplaneNames(ticket.airplaneName);
-    setPrice(ticket.Price);
-    setTotalTransit(ticket.TotalTransit); setAirportNames({
-      value: ticket.Airport.id,
-      label: ticket.Airport.airportName,
+    setFlightFrom({
+      value: ticket.from.id,
+      label: ticket.from.city,
     });
-    setTransitPoint({
-      value: ticket.Airport.id,
-      label: ticket.Airport.airportName
+    setFlightTo({
+      value: ticket.to.id,
+      label: ticket.to.city,
     });
+    setAirplaneNames({
+      value: ticket.Airplane.id,
+      label: ticket.Airplane.airplaneName,
+    });
+    setPrice(ticket.price);
+    setTicketType({ value: ticket.ticketType, label: ticket.ticketType });
+    setTotalTransit(ticket.totalTransit); 
     setTransitDuration(ticket.transitDuration);
-    setTicketType(ticket.ticketType);
     setFlightDuration(ticket.flightDuration);
-    setArrivalTimeTransit(ticket.arrivalTimeTransit);
+    setArrivalTimeTransit(ticket.arrivalTimeAtTransit);
     setDepartureTimeFromTransit(ticket.departureTimeFromTransit);
+    setTransitPoint({
+      value: ticket.transitPoint,
+      label: ticket.transit.airportName
+    });
+    setAirportNames();
   };
   return (
     <div className="data-ticket">
@@ -216,7 +224,7 @@ const DataTicket = () => {
                   <Form.Label>Tipe Tiket</Form.Label>
                   <Select
                     options={tipeTicket}
-                    onChange={(e) => setTicketType(e.target.value)}
+                    onChange={(e) => setTicketType(e.value)}
                     value={typeTicket}
                   />
                 </Form.Group>
@@ -259,7 +267,7 @@ const DataTicket = () => {
                 <Form.Group className="form" controlId="validationCustom01">
                   <Form.Label>Terbang Dari</Form.Label>
                   <Select
-                    option={datAirport}
+                    options={datAirport}
                     onChange={(e) => setFlightFrom(e.value)}
                     defaultValue={frcity}
                   />
@@ -267,7 +275,7 @@ const DataTicket = () => {
                 <Form.Group className="form" controlId="validationCustom01">
                   <Form.Label>Terbang Ke</Form.Label>
                   <Select
-                    option={datAirport}
+                    options={datAirport}
                     onChange={(e) => setFlightTo(e.value)}
                     defaultValue={tcity}
                   />
@@ -276,7 +284,7 @@ const DataTicket = () => {
                   <Form.Label>Nama Pesawat</Form.Label>
                   <Select
                     required
-                    option={AirplaneName}
+                    options={datAirPlane}
                     onChange={(e) => setAirplaneNames(e.value)}
                     value={airpname}
                   />
@@ -292,7 +300,7 @@ const DataTicket = () => {
                 <Form.Group className="form" controlId="validationCustom01">
                   <Form.Label>Bandara Transit</Form.Label>
                   <Select
-                    options={AirportName}
+                    options={airportName}
                     onChange={(e) => setTransitPoint(e.value)}
                     defaultValue={PointTransit}
                   />
@@ -302,8 +310,8 @@ const DataTicket = () => {
                   <Form.Control
                     type="text"
                     placeholder="8 jam 15 menit"
-                    onChange={(e) => setTransitDuration(e.value)}
-                    Value={tranduration}
+                    onChange={(e) => setTransitDuration(e.target.value)}
+                    value={tranduration}
                   />
                 </Form.Group>
                 <Form.Group className="form" controlId="validationCustom01">
@@ -311,7 +319,7 @@ const DataTicket = () => {
                   <Form.Control
                     type="time"
                     placeholder="10:14"
-                    onChange={(e) => setArrivalTimeTransit(e.value)}
+                    onChange={(e) => setArrivalTimeTransit(e.target.value)}
                     value={arrtimetransit}
                   />
                 </Form.Group>
@@ -320,7 +328,7 @@ const DataTicket = () => {
                   <Form.Control
                     type="time"
                     placeholder="10:14"
-                    onChange={(e) => setDepartureTimeFromTransit(e.value)}
+                    onChange={(e) => setDepartureTimeFromTransit(e.target.value)}
                     value={deptimetransit}
                   />
                 </Form.Group>
@@ -330,7 +338,7 @@ const DataTicket = () => {
                     required
                     type="text"
                     // placeholder="3 jam 5 menit"
-                    onChange={(e) => setFlightDuration(e.value)}
+                    onChange={(e) => setFlightDuration(e.target.value)}
                     value={flightduration}
                   />
                 </Form.Group>
@@ -340,7 +348,7 @@ const DataTicket = () => {
                     required
                     type="text"
                     placeholder="8000000"
-                    onChange={(e) => setPrice(e.value)}
+                    onChange={(e) => setPrice(e.target.value)}
                     value={price}
                   />
                 </Form.Group>

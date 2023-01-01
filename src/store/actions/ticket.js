@@ -1,5 +1,7 @@
 import { TicketService } from "../../services/ticketService";
 import airportService from "../../services/airportService";
+import airplaneService from "../../services/airplaneService";
+
 import {
   GET_TICKET,
   FILTER_TICKET,
@@ -57,11 +59,21 @@ export const getTicket = () =>
     });
     try {
       const datAirport = [];
+      const datAirPlane = [];
+      const airportName = [];
       const response = await TicketService.getTicket();
       const response2 = await airportService.getAirport();
+      const response3 = await airplaneService.getAirplane();
       const airport = response2.data.airports;
+      const airplane = response3.data.dataAirplane;
       airport?.forEach((bandara) => {
         datAirport.push({ label: bandara.city, value: bandara.id });
+      });
+      airport?.forEach((bandara) => {
+        airportName.push({ label: bandara.airportName, value: bandara.id });
+      });
+      airplane?.forEach((pesawat) => {
+        datAirPlane.push({ label: pesawat.airplaneName, value: pesawat.id });
       });
 
       dispatch({
@@ -71,11 +83,13 @@ export const getTicket = () =>
           data: response.data,
           errorMessage: false,
           datAirport: datAirport,
+          datAirPlane,
+          airportName,
         },
       });
     } catch (error) {
       dispatch({
-        type: FILTER_TICKET,
+        type: GET_TICKET,
         payload: {
           loading: false,
           data: false,
