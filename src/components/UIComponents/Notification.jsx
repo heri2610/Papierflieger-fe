@@ -8,7 +8,7 @@ const Notification = ({ data }) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
   const dispatch = useDispatch();
   const humanReadableDate = date.toLocaleDateString('id-ID', options);
-  useEffect(()=>setTimeout(()=>dispatch(seeNotif()),700))
+  useEffect(()=>{setTimeout(()=>dispatch(seeNotif()),700)},[dispatch])
   return (
     <div className="notification mb-3">
         <div className="box-card">
