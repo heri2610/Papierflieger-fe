@@ -13,7 +13,6 @@ const NewNotification = () => {
   useEffect(() => {
     dispatch(getNotif());
   }, [dispatch]);
-  console.log(data);
   return (
     <div className="new-notification">
       <NavigationBar />

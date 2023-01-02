@@ -69,9 +69,7 @@ export const addAirplane = (data, history) =>
       const response = await airplaneService.addAirplane(data);
       dispatch({ type: ADD_AIRPLANE, payload: response.data });
       history("/admin/airplane");
-      // , { state: { message: response.data.message } }
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -83,7 +81,6 @@ export const deleteAirplane = (id) =>
       const response2 = await airplaneService.getAirplane();
       dispatch({ type: DELETE_AIRPLANE, payload: { message: response.data.message, data: response2.data } });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -94,7 +91,6 @@ export const updateAirplane = (data, id) =>
       const response = await airplaneService.updateAirplane(data, id);
       dispatch({ type: PUT_AIRPLANE, payload: response.data });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };

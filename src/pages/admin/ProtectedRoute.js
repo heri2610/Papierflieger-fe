@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 const ProtectedRouteAdmin = ({ component: Component, ...props }) => {
   const Admin = useSelector((state) => state.authReducer.isAdmin);
-console.log(Admin)
   return <>{Admin ? <Outlet /> : <Navigate to="/" />}</>;
 };
 

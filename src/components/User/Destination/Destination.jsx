@@ -41,6 +41,7 @@ const Destination = () => {
         return false;
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (errorMessage) {

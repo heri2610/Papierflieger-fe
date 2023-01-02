@@ -33,14 +33,13 @@ export const getAboutUs = () =>
     }
   };
 
-  export const dashboard = (data, history) =>
+export const dashboard = (data, history) =>
   async function (dispatch) {
     try {
       const response = await additionasService.dashboard(data);
       dispatch({ type: DASHBOARD_ADMIN, payload: response.data });
       history("/admin/airport");
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };

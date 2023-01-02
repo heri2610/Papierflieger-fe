@@ -27,12 +27,10 @@ export default function FormSearch(props) {
 
   const [type, setType] = useState("");
   const [tujuan, setTujuan] = useState({});
-  console.log(tujuan);
   const history = useNavigate();
   const handleType = (event) => {
     setType(event.target.value);
   };
-  console.log(tujuan);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirport());
@@ -48,11 +46,9 @@ export default function FormSearch(props) {
   }, [type]);
 
   const handleSubmit = async (event) => {
-    console.log(tujuan);
     event.preventDefault();
     dispatch(filterTickets(tujuan, history));
   };
-  console.log(tujuan);
 
   return (
     <>
@@ -85,11 +81,11 @@ export default function FormSearch(props) {
             </div>
             <div className="col">
               <div className="form-floating">
-                <select className="form-select" id="floatingSelect">
+                <select className="form-select" id="floatingSelectKelas">
                   <option defaultValue="ekonomi">Ekonomi</option>
                   <option value="bisnis">Bisnis</option>
                 </select>
-                <label htmlFor="floatingSelect">Kelas</label>
+                <label htmlFor="floatingSelectKelas">Kelas</label>
               </div>
             </div>
           </div>

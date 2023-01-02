@@ -22,7 +22,7 @@ const tipeTicket = [
 ];
 
 const DataTicket = () => {
-  const { loading, data, errorMessage, message, datAirport, airportName, datAirPlane} = useSelector(
+  const { loading, data, errorMessage, message, datAirport, airportName, datAirPlane } = useSelector(
     (state) => state.ticketReducer
   );
   const [messages, setMessages] = useState("");
@@ -45,30 +45,30 @@ const DataTicket = () => {
   const [deptimetransit, setDepartureTimeFromTransit] = useState("");
   const [eror, setEror] = useState("");
   const [id, setId] = useState("");
- 
+
   const handleSubmit = () => {
     const datas = {
       ticketNumber: ticketno,
       arrivalDate: arrDate,
       departureTime: deptime,
       flightFrom: frcity.value ? frcity.value : frcity,
-      airplaneId: airpname.value ?airpname.value:airpname,
-      transitPoint: PointTransit.value ?  PointTransit.value :PointTransit ? PointTransit : null,
+      airplaneId: airpname.value ? airpname.value : airpname,
+      transitPoint: PointTransit.value ? PointTransit.value : PointTransit ? PointTransit : null,
       arrivalTimeAtTransit: arrtimetransit ? arrtimetransit : null,
       flightDuration: flightduration,
       ticketType: typeTicket.value ? typeTicket.value : typeTicket,
       departureDate: depDate,
       arrivalTime: arrtime,
-      flightTo: tcity.value ? tcity.value: tcity,
+      flightTo: tcity.value ? tcity.value : tcity,
       totalTransit: transittotal ? transittotal : null,
-      transitDuration: tranduration ? tranduration : null ,
+      transitDuration: tranduration ? tranduration : null,
       departureTimeFromTransit: deptimetransit ? deptimetransit : null,
       price
     };
-    
-    console.log(datas);
+
+    // console.log(datas);
     dispatch(updateTicket(datas, id));
-    setShow(false)
+    setShow(false);
   };
   // const [edit, setEdit] = useState({});
   const dispatch = useDispatch();
@@ -93,14 +93,14 @@ const DataTicket = () => {
   const handleDelete = (id) => {
     dispatch(deleteTicket(id));
   };
-  console.log(data);
+  // console.log(data);
 
   // update ticket
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDataEdit = (ticket) => {
-    console.log(ticket)
-    setId(ticket.id)
+    // console.log(ticket);
+    setId(ticket.id);
     setTicketNumber(ticket.ticketNumber);
     setDepartureDate(ticket.departureDate.split("T")[0]);
     setArrivalDate(ticket.arrivalDate.split("T")[0]);
@@ -120,11 +120,11 @@ const DataTicket = () => {
       label: ticket.Airplane.airplaneName,
     });
     setPrice(ticket.price);
-    setTicketType({ 
-      value: ticket.ticketType, 
-      label: ticket.ticketType 
+    setTicketType({
+      value: ticket.ticketType,
+      label: ticket.ticketType
     });
-    setTotalTransit(ticket.totalTransit); 
+    setTotalTransit(ticket.totalTransit);
     setTransitDuration(ticket.transitDuration);
     setFlightDuration(ticket.flightDuration);
     setArrivalTimeTransit(ticket.arrivalTimeAtTransit);

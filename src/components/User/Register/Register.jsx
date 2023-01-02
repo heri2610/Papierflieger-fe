@@ -56,8 +56,6 @@ function Register() {
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
 
-    console.log(res);
-
     if (res.error) {
       setError(true);
       setErrorMessage(res.error.response.data.message);
