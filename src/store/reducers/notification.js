@@ -1,4 +1,4 @@
-import { GET_NOTIF, COUNT_NOTIF,  } from "../types/index";
+import { GET_NOTIF, COUNT_NOTIF,SEE_NOTIF,  } from "../types/index";
 
 const initialState = {
   message: false,
@@ -15,12 +15,17 @@ const notifReducer = (state = initialState, action) => {
     case GET_NOTIF:
       return {
         ...state,
-        data: payload.data,
+        data: payload.data.notifikasi,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
         count: payload.countNotif,
       };
     case COUNT_NOTIF:
+      return {
+        ...state,
+        count: payload.countNotif,
+      };
+    case SEE_NOTIF:
       return {
         ...state,
         count: payload.countNotif,

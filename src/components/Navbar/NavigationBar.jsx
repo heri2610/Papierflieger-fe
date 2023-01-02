@@ -27,7 +27,10 @@ const NavigationBar = () => {
       dispatch(countNotif())
     }
   },[token,dispatch])
-  console.log(count)
+  console.log(count) 
+  const handleKlik= ()=>{
+    dispatch(countNotif())
+  }
   return (
     <div className="container-fluid mb-3 fixed-top">
       <Navbar expand="lg" className="justify-content-center bg-white rounded shadow-sm">
@@ -58,7 +61,7 @@ const NavigationBar = () => {
               </Nav>
               {token ? (
                 <div className="d-flex align-items-center">
-                  <Nav.Link href="/user/notification" className="me-3">
+                  <Nav.Link href="/user/notification" className="me-3" onClick={handleKlik}>
                     <i className="bi bi-bell-fill" style={{fontSize:'24px'}}></i>{count !== 0 &&<span class="position-absolute top-50 translate-middle badge rounded-pill bg-danger" >{count}</span>}
                   </Nav.Link>
                   <Nav.Link href="/user/profile" className="me-3">

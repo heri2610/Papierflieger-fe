@@ -20,7 +20,7 @@ const NewNotification = () => {
             <div className="notif-title">
                 <h3>Notifikasi</h3>
             </div>
-            {data&&data.notifikasi.map(item=><Notification data={item}/>)}
+            {data && data.map(item=><Notification data={item}/>)}
         </div>
         <Footer/>
     </div>
