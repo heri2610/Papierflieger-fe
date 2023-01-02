@@ -9,7 +9,6 @@ import {
   Modal,
   Form,
 } from "react-bootstrap";
-import { MdRemoveRedEye } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom";
@@ -181,11 +180,6 @@ const DataTicket = () => {
                   <td>{ticket.to.city}</td>
                   <td>
                     <div className="edit-delete">
-                      <div >
-                        <Button variant="primary" >
-                          <MdRemoveRedEye />
-                        </Button>
-                      </div>
                       <div onClick={() => handleDataEdit(ticket)}>
                         <Button variant="primary" onClick={handleShow}>
                           <FiEdit />
