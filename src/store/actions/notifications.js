@@ -1,5 +1,5 @@
 import notifService from "../../services/notificationsService";
-import { GET_NOTIF, COUNT_NOTIF, } from "../types/index";
+import { GET_NOTIF, SEE_NOTIF, COUNT_NOTIF, } from "../types/index";
 
 export const getNotif = () =>
   async function (dispatch) {
@@ -13,14 +13,13 @@ export const getNotif = () =>
     });
     try {
       const response = await notifService.getNotif();
-      const response3 = await notifService.countNotif();
+
       dispatch({
         type: GET_NOTIF,
         payload: {
           loading: false,
           data: response.data,
           errorMessage: false,
-          count: response3.data
         },
       });
     } catch (error) {
@@ -40,6 +39,18 @@ export const countNotif = () =>
       const response = await notifService.countNotif();
       dispatch({ type: COUNT_NOTIF, payload: response.data });
     } catch (error) {
+      throw error;
+    }
+  };
+export const seeNotif = () =>
+  async function (dispatch) {
+    try {
+      // const response2 = await notifService.seeNotif();
+      const response = await notifService.countNotif();
+      console.log(response.data);
+      dispatch({ type: SEE_NOTIF, payload: response.data });
+    } catch (error) {
+      console.log(error);
       throw error;
     }
   };

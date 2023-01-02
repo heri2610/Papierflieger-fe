@@ -11,7 +11,7 @@ import Login from "../User/Login/Login";
 import brand from "../../assets/images/logo.svg";
 import "./navbar.scss";
 import DropdownNav from "./DropdownNav.jsx";
-import { countNotif } from "../../store/actions/notifications";
+import { countNotif, seeNotif, } from "../../store/actions/notifications";
 import { useSelector, useDispatch } from "react-redux";
 
 const NavigationBar = () => {
@@ -28,17 +28,17 @@ const NavigationBar = () => {
     }
   }, [token, dispatch]);
   // console.log(count);
-
+  const handleKlik = () => {
+    dispatch(seeNotif());
+  };
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 768px)").matches
   );
-
   useEffect(() => {
     window
       .matchMedia("(min-width: 768px)")
       .addEventListener("change", (e) => setMatches(e.matches));
   }, []);
-
   return (
     <div className="container-fluid mb-3 fixed-top">
       <Navbar expand="lg" className="justify-content-center bg-white rounded shadow-sm">
@@ -63,15 +63,15 @@ const NavigationBar = () => {
                     <Nav.Link className="me-4" href="/#testimonial">
                       Testimonial
                     </Nav.Link>
-                    <Nav.Link href="/#aboutus">
+                    <Nav.Link className="me-4" href="/#aboutus">
                       Tentang Kami
                     </Nav.Link>
                   </div>
                 </Nav>
                 {token ? (
                   <div className="d-flex align-items-center">
-                    <Nav.Link href="/user/notification" className="me-3">
-                      <i className="bi bi-bell-fill" style={{ fontSize: '24px' }}></i>{count !== 0 && <span className="position-absolute top-50 translate-middle badge rounded-pill bg-danger" >{count}</span>}
+                    <Nav.Link href="/user/notification" className="me-3" onClick={handleKlik}>
+                      <i className="bi bi-bell-fill" style={{ fontSize: '24px' }}></i>{count !== 0 && <span class="position-absolute top-50 translate-middle badge rounded-pill bg-danger" >{count}</span>}
                     </Nav.Link>
                     <Nav.Link href="/user/profile" className="me-3">
                       <img src={window.localStorage.getItem("avatar")} alt="foto profil" width={"40px"} height={"40px"} className="rounded-circle" />
