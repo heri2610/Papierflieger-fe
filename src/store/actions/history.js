@@ -13,7 +13,6 @@ export const getHistory = () =>
     });
     try {
       const response = await historyService.getHistory();
-      console.log(response)
       dispatch({
         type: GET_HISTORY,
         payload: {
@@ -22,7 +21,6 @@ export const getHistory = () =>
           errorMessage: false,
         },
       });
-      console.log(response);
     } catch (error) {
       dispatch({
         type: GET_HISTORY,

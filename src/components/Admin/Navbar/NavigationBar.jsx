@@ -1,15 +1,13 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import {
   Navbar,
   Nav,
   Container,
 } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
-// import Login from "../User/Login/Login";
 import brand from "../../../assets/images/logo.svg";
 import "./NavigationBar.scss";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
   return (

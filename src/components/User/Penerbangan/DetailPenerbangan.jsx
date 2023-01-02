@@ -7,7 +7,7 @@ import Arrow from "./Vector.svg";
 import "./DetailPenerbangan.scss";
 
 export default function DetailPenerbangan({ detail, state, tiketPulang }) {
-  console.log(state, tiketPulang);
+  // console.log(state, tiketPulang);
   const dispatch = useDispatch();
   const { ticketNumber, departureTime, arrivalTime, price, totalTransit, transitDuration, flightDuration, arrivalTimeAtTransit, from, to, transit, Airplane } = detail;
   const formatter = new Intl.NumberFormat('id-ID', {

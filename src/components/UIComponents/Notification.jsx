@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Card } from "react-bootstrap";
 
-const Notification = ({data}) => {
-  const date = new Date(data.updatedAt)
-const options = { year: 'numeric', month: 'long', day: 'numeric',weekday:'long' }
-const humanReadableDate = date.toLocaleDateString('id-ID', options)
+const Notification = ({ data }) => {
+  const date = new Date(data.updatedAt);
+  const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+  const humanReadableDate = date.toLocaleDateString('id-ID', options);
   return (
     <div className="notification mb-3">
         <div className="box-card">
@@ -15,7 +15,7 @@ const humanReadableDate = date.toLocaleDateString('id-ID', options)
             </Container>
         </div>
     </div>
-  )
-}
+  );
+};
 
-export default Notification
+export default Notification;

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import {
   getAirplane,
   deleteAirplane,
-  // updateAirplane,
+  updateAirplane
 } from "../../../store/actions/airplane";
 import Select from "react-select";
 import Loading from "../../UIComponents/Loading";
@@ -21,19 +21,11 @@ const classAirplane = [
 const DataAirplane = () => {
   const [show, setShow] = useState(false);
   const [code, setCode] = useState("");
+  const [editId, setEditId] = useState("");
   const [name, setName] = useState("");
   const [klass, setklass] = useState("");
   const [label, setLabel] = useState({ value: "Ekonomi", label: "Ekonomi" });
-  const datas = {
-    airplaneCode: code,
-    airplaneName: name,
-    class: klass,
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(datas);
-    // dispatch(updateAirplane(datas, edit.id));
-  };
+
   const { loading, data, errorMessage, message } = useSelector(
     (state) => state.airplaneReducer
   );
@@ -58,21 +50,31 @@ const DataAirplane = () => {
       }, 3000);
     }
   }, [data]);
-  console.log(message);
-  console.log(data);
   const handleDelete = (id) => {
     dispatch(deleteAirplane(id));
   };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDataEdit = (airplane) => {
+    setEditId(airplane.id);
     setCode(airplane.airplaneCode);
     setName(airplane.airplaneName);
     setklass(airplane.class);
     setLabel({ value: airplane.class, label: airplane.class });
   };
 
-  console.log(label);
+  const datas = {
+    airplaneCode: code,
+    airplaneName: name,
+    class: klass,
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log(datas);
+    dispatch(updateAirplane(datas, editId));
+    handleClose();
+  };
+
   return (
     <div className="data-airplane">
       <Container>
@@ -113,12 +115,6 @@ const DataAirplane = () => {
                         <FiEdit />
                       </Button>
                     </Link>
-                    {/* <Button
-                      className="delete"
-                      
-                    >
-                      <MdDelete />
-                    </Button> */}
                     <DeleteConfirmation
                       onClick={() => handleDelete(airplane.id)}
                     />
@@ -186,7 +182,7 @@ const DataAirplane = () => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={handleSubmit}>
               Simpan Perubahan
             </Button>
           </Modal.Footer>

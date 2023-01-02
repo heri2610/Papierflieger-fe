@@ -24,14 +24,14 @@ function Payment() {
   const datez = new Date(data.tiketBerangkat[0].departureDate);
   const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
   const humanReadableDate = datez.toLocaleDateString('id-ID', options);
-  console.log(data);
+  // console.log(data);
   const formatter = new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR'
   });
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const submit = (payload) => {
-    console.log(payload);
+    // console.log(payload);
     dispatch(proceedTransaction({ ...payload, tokenTransaction: data.tokenTransaction }
     ));
   };
@@ -138,9 +138,9 @@ const navigate = useNavigate();
                       </Col>
                     </Form.Group>
                     <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {
-                      submit(banka)
-                      handleShow()
-                      }}>
+                      submit(banka);
+                      handleShow();
+                    }}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -186,8 +186,10 @@ const navigate = useNavigate();
                         <Form.Control type="text" placeholder="Masukkan nominal" value={formatter.format(data.totalPrice)} disabled />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {submit(bankb)
-                      handleShow()}}>
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {
+                      submit(bankb);
+                      handleShow();
+                    }}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
                   </Form>
@@ -233,8 +235,9 @@ const navigate = useNavigate();
                         <Form.Control type="text" placeholder="Masukkan nominal" disabled value={formatter.format(data.totalPrice)} />
                       </Col>
                     </Form.Group>
-                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {submit(bankc)
-                      handleShow()
+                    <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {
+                      submit(bankc);
+                      handleShow();
                     }}>
                       <h5 className="m-0">Bayar</h5>
                     </Button>
@@ -282,8 +285,9 @@ const navigate = useNavigate();
                       </Col>
                     </Form.Group>
                     <div className="payment-button">
-                      <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {submit(bankd)
-                      handleShow()
+                      <Button className="float-end mt-3" style={{ width: "10rem" }} onClick={() => {
+                        submit(bankd);
+                        handleShow();
                       }}>
                         <h5 className="m-0">Bayar</h5>
                       </Button>
@@ -294,19 +298,19 @@ const navigate = useNavigate();
             </Col>
           </Row>
           <Modal show={show} onHide={handleClose} className='modal-dialog-centered'>
-          <img className="img-delete-confirm" src={Airplane404} alt="" />
-          <Modal.Body>
-            <div className="fw-bolder text-center">Transaksi berhasil</div>
+            <img className="img-delete-confirm" src={Airplane404} alt="" />
+            <Modal.Body>
+              <div className="fw-bolder text-center">Transaksi berhasil</div>
               <div className="fw-light text-center">
                 {data.message}
               </div>
               <div className="mt-3 d-block mx-auto">
-              <Button variant="success" onClick={()=>{handleClose();navigate('/')}} className='d-block mx-auto'>
-                <h6 className='d-block'>Ok</h6>
-              </Button>
-            </div>
-          </Modal.Body>
-        </Modal>
+                <Button variant="success" onClick={() => { handleClose(); navigate('/'); }} className='d-block mx-auto'>
+                  <h6 className='d-block'>Ok</h6>
+                </Button>
+              </div>
+            </Modal.Body>
+          </Modal>
         </Container>
       </Container >
       <Footer />
