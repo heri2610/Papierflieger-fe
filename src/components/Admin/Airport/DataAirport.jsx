@@ -1,12 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Container, Table, Alert, Form, Modal } from "react-bootstrap";
-// import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom";
-import { getAirport, deleteAirport } from "../../../store/actions/airport";
+import { getAirport, deleteAirport, updateAirport } from "../../../store/actions/airport";
 import Loading from "../../UIComponents/Loading";
 import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
 
@@ -16,7 +14,7 @@ const DataAirport = () => {
   );
   const [messages, setMessages] = useState("");
   const [eror, setEror] = useState("");
-  // const [idEdit, setIdEdit] = useState();
+  const [idEdit, setIdEdit] = useState("");
   const [show, setShow] = useState(false);
   const [airportName, setAirportName] = useState("");
   const [city, setCity] = useState("");
@@ -38,11 +36,19 @@ const DataAirport = () => {
         setMessages("");
       }, 3000);
     }
-  }, [data]);
+  }, [errorMessage, message]);
   const handleDelete = (id) => {
     dispatch(deleteAirport(id));
   };
-  console.log(data);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleDataEdit = (Airport) => {
+    setIdEdit(Airport.id);
+    setAirportName(Airport.airportName);
+    setCity(Airport.city);
+    setCityCode(Airport.cityCode);
+  };
   const datas = {
     airportName: airportName,
     city: city,
@@ -50,16 +56,10 @@ const DataAirport = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(datas);
-    // dispatch(updateAirplane(datas, edit.id));
+    dispatch(updateAirport(datas, idEdit));
+    handleClose();
   };
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleDataEdit = (Airport) => {
-    setAirportName(Airport.airportName);
-    setCity(Airport.city);
-    setCityCode(Airport.cityCode);
-  };
+
   return (
     <div className="data-airport">
       <Container>
@@ -163,7 +163,7 @@ const DataAirport = () => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={handleSubmit}>
               Simpan Perubahan
             </Button>
           </Modal.Footer>

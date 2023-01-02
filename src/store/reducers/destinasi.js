@@ -38,7 +38,8 @@ const destinasiReducer = (state = initialState, action) => {
     case PUT_DESTINASI:
       return {
         ...state,
-        message: "Data berhasil diubah",
+        data: payload.data.destinations,
+        message: payload.message,
       };
     case DELETE_DESTINASI:
       return {

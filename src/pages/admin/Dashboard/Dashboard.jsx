@@ -1,6 +1,4 @@
 import React from "react";
-import Chart from "../../../components/Admin/Chart/Chart";
-import Featured from "../../../components/Admin/Featured/Featured";
 import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
 import DataTransaction from "../../../components/Admin/Transaction/DataTransaction";
@@ -25,10 +23,6 @@ function Dashboard() {
               <WidgetUser type="user"/>
               <WidgetTransaction type="balance"/>
               <WidgetOrder type="order"/>
-            </div>
-            <div className="charts">
-              <Featured/>
-              <Chart/>
             </div>
             <div className="list-container">
               <div className="list-title">Transaksi terakhir</div>

@@ -3,40 +3,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Table, Container, Alert, Modal, Form } from "react-bootstrap";
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
-import Select from "react-select";
 import { Link } from "react-router-dom";
 import Loading from "../../UIComponents/Loading";
 import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
 import {
   getDestinasi,
   deleteDestinasi,
+  updateDestinasi,
 } from "../../../store/actions/destinasi";
+import { SelectBandara, SelectLokasi } from "../../UIComponents/Select";
+import { getAirport } from "../../../store/actions/airport";
 
 const DataDestination = () => {
-  const { loading, data, errorMessage, message, dataAirport, AirportName } = useSelector(
+  const { loading, data, errorMessage, message } = useSelector(
     (state) => state.destinasiReducer
   );
-  const [messages, setMessages] = useState("");
+  const bandara = useSelector((state) => state.airportReducer.data);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAirport());
+  }, [dispatch]);
+
+  const [messages, setMessages] = useState(false);
   const [show, setShow] = useState(false);
+  const [idEdit, setIdEdit] = useState("");
   const [names, setName] = useState("");
-  const [locations, setLocation] = useState("");
-  const [airportNames, setAirportNames] = useState("");
+  const [location, setLocation] = useState("");
+  const [airportId, setAirportId] = useState("");
   const [desc, setDescription] = useState("");
   const [eror, setEror] = useState("");
-  const [defaultValue, setdefaultValue] = useState({});
-  const datas = {
-    name: names,
-    location: locations,
-    airportName: airportNames,
-    description: desc,
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(datas);
-    // dispatch(updateAirplane(datas, edit.id));
-  };
 
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDestinasi());
   }, [dispatch]);
@@ -53,26 +49,35 @@ const DataDestination = () => {
         setMessages("");
       }, 3000);
     }
-  }, [data]);
+  }, [data, errorMessage, message]);
+
   const handleDelete = (id) => {
     dispatch(deleteDestinasi(id));
   };
-  console.log(data)
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const handleDataEdit = (destinasi) => {
+    setIdEdit(destinasi.id);
     setName(destinasi.name);
     setLocation(destinasi.location);
-    setAirportNames({
-      value: destinasi.Airport.id,
-      label: destinasi.Airport.airportName,
-    });
+    setAirportId(destinasi.airportId);
     setDescription(destinasi.description);
-    setdefaultValue({
-      value: destinasi.Airport.id,
-      label: destinasi.Airport.city,
-    });
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const datas = {
+      name: names,
+      location,
+      airportId,
+      description: desc,
+    };
+    dispatch(updateDestinasi(datas, idEdit));
+    handleClose();
+  };
+
   return (
     <div className="data-destination">
       <Container className="form-add">
@@ -124,9 +129,6 @@ const DataDestination = () => {
                           <FiEdit />
                         </Button>
                       </Link>
-                      {/* <Button className="delete" >
-                      <MdDelete />
-                    </Button> */}
                       <DeleteConfirmation
                         onClick={() => handleDelete(destinasi.id)}
                       />
@@ -165,10 +167,10 @@ const DataDestination = () => {
                     controlId="validationCustom01"
                   >
                     <Form.Label>Lokasi</Form.Label>
-                    <Select
-                      options={dataAirport}
+                    <SelectLokasi
+                      options={bandara}
                       onChange={(e) => setLocation(e.value)}
-                      defaultValue={defaultValue}
+                      defaultValue={location}
                     />
                   </Form.Group>
                   <Form.Group
@@ -176,14 +178,14 @@ const DataDestination = () => {
                     controlId="validationCustom01"
                   >
                     <Form.Label>Bandara</Form.Label>
-                    <Select
-                      options={AirportName}
-                      onChange={(e) => setAirportNames(e.value)}
-                      defaultValue={airportNames}
+                    <SelectBandara
+                      options={bandara}
+                      onChange={(e) => setAirportId(e.value)}
+                      defaultValue={airportId}
                     />
                   </Form.Group>
                   <Form.Group
-                    className="mb-3"
+                    className="mb-3 mt-2"
                     controlId="exampleForm.ControlTextarea1"
                   >
                     <Form.Label>Deskripsi</Form.Label>
@@ -198,7 +200,7 @@ const DataDestination = () => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={handleSubmit}>
               Simpan Perubahan
             </Button>
           </Modal.Footer>

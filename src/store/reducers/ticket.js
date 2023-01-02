@@ -41,6 +41,7 @@ const tiketsReducer = (state = initialState, action) => {
         tiketPulang: payload.data.tiketPulang,
         loading: false,
         penumpang: payload,
+        errorMessage: payload.errorMessage,
       };
     case GET_TICKETBYID:
       return {

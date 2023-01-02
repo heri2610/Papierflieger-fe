@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import {
   getAirplane,
   deleteAirplane,
-  updateAirplane,
+  // updateAirplane,
 } from "../../../store/actions/airplane";
 import Select from "react-select";
 import Loading from "../../UIComponents/Loading";
