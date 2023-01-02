@@ -26,7 +26,7 @@ const NavigationBar = () => {
     if (token) {
       dispatch(countNotif());
     }
-    setTimeout(()=>dispatch(seeNotif()),100)
+    setTimeout(()=>dispatch(seeNotif()),700)
   }, [token, dispatch]);
   // console.log(count);
   const handleKlik = () => {

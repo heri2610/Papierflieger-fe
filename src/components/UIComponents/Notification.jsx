@@ -9,7 +9,7 @@ const Notification = ({ data }) => {
     <div className="notification mb-3">
         <div className="box-card">
             <Container>
-                <Card body className='bg-info'>
+                <Card body className={data.read === false ? 'bg-info' : 'bg-white'}>
                   <h4>{data.name}</h4>
                   {data.message}<span className='float-end'>{humanReadableDate}</span></Card>
             </Container>
