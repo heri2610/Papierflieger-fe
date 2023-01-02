@@ -11,7 +11,7 @@ import "./Penerbangan.scss";
 function Penerbangan() {
   const { tiketBerangkat, tiketPulang, penumpang } = useSelector((state) => state.ticketReducer);
   const [dispatch] = useReducer(penumpangReducer, initialState);
-  console.log(tiketBerangkat, tiketPulang, penumpang);
+  // console.log(tiketBerangkat, tiketPulang, penumpang);
   return (
     <>
       <NavigationBar />
@@ -26,7 +26,7 @@ function Penerbangan() {
             <h3>Pilihan Penerbangan</h3>
             {tiketBerangkat &&
               tiketBerangkat?.map((item, i) => (
-                <div className="bg-white p-3 mb-3 rounded">
+                <div key={i} className="bg-white p-3 mb-3 rounded">
                   <DetailPenerbangan detail={item} state={penumpang.penumpang} tiketPulang={tiketPulang ? tiketPulang[i] : null} />
                 </div>
               ))}

@@ -27,7 +27,7 @@ const NavigationBar = () => {
       dispatch(countNotif());
     }
   }, [token, dispatch]);
-  console.log(count);
+  // console.log(count);
 
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 768px)").matches
