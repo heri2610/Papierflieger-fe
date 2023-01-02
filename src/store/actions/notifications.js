@@ -44,7 +44,7 @@ export const countNotif = () =>
 export const seeNotif = () =>
   async function (dispatch) {
     try {
-      // const response2 = await notifService.seeNotif();
+       await notifService.seeNotif();
       const response = await notifService.countNotif();
       console.log(response.data);
       dispatch({ type: SEE_NOTIF, payload: response.data });
