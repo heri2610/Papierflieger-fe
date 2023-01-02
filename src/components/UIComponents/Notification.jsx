@@ -9,7 +9,7 @@ const humanReadableDate = date.toLocaleDateString('id-ID', options)
     <div className="notification mb-3">
         <div className="box-card">
             <Container>
-                <Card body className={data.read === false ?'bg-info':'bg-light'}>
+                <Card body className='bg-info'>
                   <h4>{data.name}</h4>
                   {data.message}<span className='float-end'>{humanReadableDate}</span></Card>
             </Container>

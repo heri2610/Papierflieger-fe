@@ -13,7 +13,6 @@ export const getNotif = () =>
     });
     try {
       const response = await notifService.getNotif();
-      
       dispatch({
         type: GET_NOTIF,
         payload: {
@@ -22,7 +21,6 @@ export const getNotif = () =>
           errorMessage: false,
         },
       });
-      console.log(response.data);
     } catch (error) {
       dispatch({
         type: GET_NOTIF,
