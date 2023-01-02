@@ -34,7 +34,8 @@ const airportReducer = (state = initialState, action) => {
     case PUT_AIRPORT:
       return {
         ...state,
-        message: "Data berhasil diubah",
+        message: payload.message,
+        data: payload.data.airports,
       };
     case DELETE_AIRPORT:
       return {
