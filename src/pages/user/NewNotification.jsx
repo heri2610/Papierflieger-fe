@@ -21,8 +21,8 @@ const NewNotification = () => {
         <div className="notif-title">
           <h3>Notifikasi</h3>
         </div>
-        {data && data?.map(item => <Notification data={item} />)}
-        {(!data || data?.length === 0) && (
+        {data && data.notifikasi?.map(item => <Notification data={item} />)}
+        {(!data || data.notifikasi?.length === 0) && (
           <div className="d-flex flex-column align-items-center my-5">
             <img src={Airplane404} width={"180px"} alt="" />
             <h3 className="mt-4">Belum ada notifikasi</h3>
