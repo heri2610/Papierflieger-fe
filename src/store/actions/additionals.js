@@ -1,5 +1,5 @@
 import additionasService from "../../services/additionalsService";
-import { ABOUT_US } from "../types/index";
+import { ABOUT_US, DASHBOARD_ADMIN } from "../types/index";
 
 export const getAboutUs = () =>
   async function (dispatch) {
@@ -30,5 +30,16 @@ export const getAboutUs = () =>
           errorMessage: error.message,
         },
       });
+    }
+  };
+
+export const dashboard = (data, history) =>
+  async function (dispatch) {
+    try {
+      const response = await additionasService.dashboard(data);
+      dispatch({ type: DASHBOARD_ADMIN, payload: response.data });
+      history("/admin/airport");
+    } catch (error) {
+      throw error;
     }
   };

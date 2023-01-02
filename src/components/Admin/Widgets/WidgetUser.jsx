@@ -10,7 +10,7 @@ const Widget = () => {
                 <BsPersonPlusFill/>
                 <span className="title-user">Pengguna</span>
             </div>
-            <h3><span className="counter">12345</span></h3>
+            <h3><span className="counter">10</span></h3>
             <h6><span className="more">5 pengguna</span></h6>
             <div className="button">
                 <span className="other">Selengkapnya</span>

@@ -9,9 +9,17 @@ const notifService = {
       throw err;
     }
   },
+  countNotif: async function () {
+    try {
+      const response = await API.get("/notif-count");
+      return response;
+    } catch (err) {
+      throw err;
+    }
+  },
   seeNotif: async function (id) {
     try {
-      const response = await API.put(`/notifications/${id}`);
+      const response = await API.put(`/notifications`);
       return response;
     } catch (err) {
       throw err;

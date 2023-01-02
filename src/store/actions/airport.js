@@ -21,7 +21,6 @@ export const getAirport = () =>
           errorMessage: false,
         },
       });
-      console.log(response.data);
     } catch (error) {
       dispatch({
         type: GET_AIRPORT,
@@ -72,7 +71,6 @@ export const addAirport = (data, history) =>
       dispatch({ type: ADD_AIRPORT, payload: response.data });
       history("/admin/airport");
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -84,7 +82,6 @@ export const deleteAirport = (id) =>
       const response2 = await airportService.getAirport();
       dispatch({ type: DELETE_AIRPORT, payload: { message: response.data.message, data: response2.data } });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -93,9 +90,9 @@ export const updateAirport = (data, id) =>
   async function (dispatch) {
     try {
       const response = await airportService.updateAirport(data, id);
-      dispatch({ type: PUT_AIRPORT, payload: response.data });
+      const response2 = await airportService.getAirport();
+      dispatch({ type: PUT_AIRPORT, payload: { message: response.data.message, data: response2.data } });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };

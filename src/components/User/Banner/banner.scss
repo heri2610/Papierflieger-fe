@@ -49,17 +49,19 @@
   border-radius: 20px;
 }
 
-.navbar-nav .nav-link.active {
-  background-color: #0060c2;
-  border: 1px solid #0060c2;
-  border-radius: 15px;
-  color: #fff;
-}
+
 
 @media (min-width: 1024px) {
   .home {
     .banner {
       height: 430px;
     }
+  }
+
+  .navbar-nav .nav-link.active {
+    background-color: #0060c2;
+    border: 1px solid #0060c2;
+    border-radius: 15px;
+    color: #fff;
   }
 }

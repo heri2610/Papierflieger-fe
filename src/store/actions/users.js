@@ -21,7 +21,6 @@ export const getUsers = () =>
           errorMessage: false,
         },
       });
-      console.log(response.data);
     } catch (error) {
       dispatch({
         type: GET_USERS,
@@ -47,15 +46,15 @@ export const addAdmin = (data) =>
     try {
       const response = await usersService.addAdmin(data);
       const response2 = await usersService.getUsers();
-      dispatch({ 
-        type: ADD_ADMIN,      
+      dispatch({
+        type: ADD_ADMIN,
         payload: {
           loading: false,
-          message:response.data.message,
+          message: response.data.message,
           data: response2.data,
           errorMessage: false,
-      }, 
-    });
+        },
+      });
     } catch (error) {
       dispatch({
         type: ADD_ADMIN,
@@ -63,7 +62,7 @@ export const addAdmin = (data) =>
           loading: false,
           data: false,
           message: false,
-          errorMessage:error.message,
+          errorMessage: error.message,
         },
       });
     }

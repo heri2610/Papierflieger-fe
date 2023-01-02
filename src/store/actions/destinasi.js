@@ -14,17 +14,17 @@ export const getDestinasi = () =>
       },
     });
     try {
-      const datAirport = []
-      const AirportName = []
+      const datAirport = [];
+      const AirportName = [];
       const response = await destinasiService.getDestinasi();
       const response2 = await airportService.getAirport();
-      const airport = response2.data.airports
-      airport?.forEach((bandara)=>{
-        datAirport.push({label:bandara.city, value:bandara.city})
-      })
-      airport?.forEach((bandara)=>{
-        AirportName.push({label:bandara.airportName, value:bandara.id})
-      })
+      const airport = response2.data.airports;
+      airport?.forEach((bandara) => {
+        datAirport.push({ label: bandara.city, value: bandara.city });
+      });
+      airport?.forEach((bandara) => {
+        AirportName.push({ label: bandara.airportName, value: bandara.id });
+      });
       dispatch({
         type: GET_DESTINASI,
         payload: {
@@ -84,9 +84,7 @@ export const addDestinasi = (data, history) =>
       const response = await destinasiService.addDestinasi(data);
       dispatch({ type: ADD_DESTINASI, payload: response.data });
       history("/admin/destination");
-      // , { state: { message: response.data.message } }
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -98,7 +96,6 @@ export const deleteDestinasi = (id) =>
       const response2 = await destinasiService.getDestinasi();
       dispatch({ type: DELETE_DESTINASI, payload: { message: response.data.message, data: response2.data } });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -107,9 +104,9 @@ export const updateDestinasi = (data, id) =>
   async function (dispatch) {
     try {
       const response = await destinasiService.updateDestinasi(data, id);
-      dispatch({ type: PUT_DESTINASI, payload: response.data });
+      const response2 = await destinasiService.getDestinasi();
+      dispatch({ type: PUT_DESTINASI, payload: { message: response.data.message, data: response2.data } });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };

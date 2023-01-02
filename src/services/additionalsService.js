@@ -9,6 +9,14 @@ const additionasService = {
       throw err;
     }
   },
+  dashboard: async function () {
+    try {
+      const response = await API.get("/dashboard-admin");
+      return response;
+    } catch (err) {
+      throw err;
+    }
+  },
 }
 
 export default additionasService;

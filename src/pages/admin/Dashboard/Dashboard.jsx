@@ -1,9 +1,7 @@
 import React from "react";
-import Chart from "../../../components/Admin/Chart/Chart";
-import Featured from "../../../components/Admin/Featured/Featured";
 import NavigationBar from "../../../components/Admin/Navbar/NavigationBar";
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
-// import DataTransaction from "../../../components/Admin/Transaction/DataTransaction";
+import DataTransaction from "../../../components/Admin/Transaction/DataTransaction";
 import WidgetUser from "../../../components/Admin/Widgets/WidgetUser";
 import WidgetTransaction from "../../../components/Admin/Widgets/WidgetTransaction";
 import WidgetOrder from "../../../components/Admin/Widgets/WidgetOrder";
@@ -26,13 +24,9 @@ function Dashboard() {
               <WidgetTransaction type="balance"/>
               <WidgetOrder type="order"/>
             </div>
-            <div className="charts">
-              <Featured/>
-              <Chart/>
-            </div>
             <div className="list-container">
               <div className="list-title">Transaksi terakhir</div>
-              {/* <DataTransaction /> */}
+              <DataTransaction />
             </div>
           </div>
         </div>

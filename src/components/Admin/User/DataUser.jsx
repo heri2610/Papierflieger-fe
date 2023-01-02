@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Table, Alert} from "react-bootstrap";
+import { Container, Table, Alert } from "react-bootstrap";
 // import { MdRemoveRedEye } from "react-icons/md";
 // import "./DataUsers.scss";
 import { getUsers, addAdmin } from "../../../store/actions/users";
@@ -29,17 +29,17 @@ const DataUser = () => {
         setMessages("");
       }, 3000);
     }
-  }, [data]);
-  let i = 1
+  }, [data, errorMessage, message]);
+  let i = 1;
 
-  const handleAddAdmin = (id)=>{
+  const handleAddAdmin = (id) => {
     // console.log(id)
     dispatch(addAdmin(id));
-  }
+  };
   return (
     <div className="data-users">
       <Container>
-      {messages && (
+        {messages && (
           <Alert key="primary" variant="primary">
             <>{message}</>
           </Alert>
@@ -63,20 +63,20 @@ const DataUser = () => {
             </tr>
           </thead>
           <tbody>
-          {data &&
-              data?.map((user)=>(
-              <tr key={user.id}>
-                <td>{i++}</td>
-                <td>{user.fullName}</td>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-                <td>{ user.phone }</td>
-                <td>{new Date(user.birthdate).toISOString().substring(0, 10)}</td>
-                <td>{user.nationality}</td>
-                <td>{user.role === "Admin" ? "Admin" : <button className="btn btn-primary fs-6" onClick={()=>handleAddAdmin(user.id)}>Jadikan Admin</button>}</td>
-              </tr>
-         ))
-           } 
+            {data &&
+              data?.map((user) => (
+                <tr key={user.id}>
+                  <td>{i++}</td>
+                  <td>{user.fullName}</td>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                  <td>{user.phone}</td>
+                  <td>{new Date(user.birthdate).toISOString().substring(0, 10)}</td>
+                  <td>{user.nationality}</td>
+                  <td>{user.role === "Admin" ? "Admin" : <button className="btn btn-primary fs-6" onClick={() => handleAddAdmin(user.id)}>Jadikan Admin</button>}</td>
+                </tr>
+              ))
+            }
           </tbody>
         </Table>
         {loading && (
@@ -86,7 +86,7 @@ const DataUser = () => {
         )}
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default DataUser
+export default DataUser;

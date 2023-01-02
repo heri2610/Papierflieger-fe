@@ -21,6 +21,7 @@ import ProtectedRouteAdmin from "./pages/admin/ProtectedRoute";
 import NotFoundPage from "./pages/user/NotFoundPage";
 import Ticket from "./pages/admin/Ticket/Ticket";
 import NewTicket from "./pages/admin/Ticket/NewTicket";
+import ViewTicket from "./pages/admin/Ticket/ViewTicket";
 import DetailTicket from "./components/User/Ticket/DetailTicket";
 import Identitas from "./components/User/Identitas/Identitas";
 import Transaction from "./pages/admin/Transaction/Transaction";
@@ -64,6 +65,7 @@ function App() {
               <Route path="/admin/order" element={<Order />} />
               <Route path="/admin/ticket" element={<Ticket />} />
               <Route path="/admin/ticket/new" element={<NewTicket />} />
+              <Route path="/admin/ticket/view" element={<ViewTicket />} />
               <Route path="/admin/transaction" element={<Transaction />} />
               <Route path="/admin/users" element={<Users />} />
             </Route>

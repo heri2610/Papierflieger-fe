@@ -1,5 +1,7 @@
 import { TicketService } from "../../services/ticketService";
 import airportService from "../../services/airportService";
+import airplaneService from "../../services/airplaneService";
+
 import {
   GET_TICKET,
   FILTER_TICKET,
@@ -22,7 +24,6 @@ export const filterTickets = (tujuan, history) =>
     });
     try {
       const response = await TicketService.filterTickets(tujuan);
-      console.log(response);
       dispatch({
         type: FILTER_TICKET,
         payload: {
@@ -39,7 +40,7 @@ export const filterTickets = (tujuan, history) =>
         payload: {
           loading: false,
           data: false,
-          errorMessage: error.message,
+          errorMessage: error.response.data.message,
         },
       });
     }
@@ -57,11 +58,21 @@ export const getTicket = () =>
     });
     try {
       const datAirport = [];
+      const datAirPlane = [];
+      const airportName = [];
       const response = await TicketService.getTicket();
       const response2 = await airportService.getAirport();
+      const response3 = await airplaneService.getAirplane();
       const airport = response2.data.airports;
+      const airplane = response3.data.dataAirplane;
       airport?.forEach((bandara) => {
         datAirport.push({ label: bandara.city, value: bandara.id });
+      });
+      airport?.forEach((bandara) => {
+        airportName.push({ label: bandara.airportName, value: bandara.id });
+      });
+      airplane?.forEach((pesawat) => {
+        datAirPlane.push({ label: pesawat.airplaneName, value: pesawat.id });
       });
 
       dispatch({
@@ -71,11 +82,13 @@ export const getTicket = () =>
           data: response.data,
           errorMessage: false,
           datAirport: datAirport,
+          datAirPlane,
+          airportName,
         },
       });
     } catch (error) {
       dispatch({
-        type: FILTER_TICKET,
+        type: GET_TICKET,
         payload: {
           loading: false,
           data: false,
@@ -154,9 +167,7 @@ export const addTicket = (data, history) =>
       const response = await TicketService.addTicket(data);
       dispatch({ type: ADD_TICKET, payload: response.data });
       history("/admin/Ticket");
-      // , { state: { message: response.data.message } }
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -171,7 +182,6 @@ export const deleteTicket = (id) =>
         payload: { message: response.data.message, data: response2.data },
       });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -182,7 +192,6 @@ export const updateTicket = (data, id) =>
       const response = await TicketService.updateTicket(data, id);
       dispatch({ type: PUT_TICKET, payload: response.data });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
