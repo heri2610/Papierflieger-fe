@@ -38,7 +38,6 @@ export const dashboard = (data, history) =>
     try {
       const response = await additionasService.dashboard(data);
       dispatch({ type: DASHBOARD_ADMIN, payload: response.data });
-      history("/admin/airport");
     } catch (error) {
       throw error;
     }

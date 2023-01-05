@@ -1,10 +1,12 @@
-import { ABOUT_US } from "../types/index";
+import { ABOUT_US, DASHBOARD_ADMIN } from "../types/index";
 
 const initialState = {
   message: false,
   data: [],
   loading: false,
   errorMessage: false,
+  count: false,
+  transactionsLates: false,
 };
 
 const aboutUsReducer = (state = initialState, action) => {
@@ -17,6 +19,12 @@ const aboutUsReducer = (state = initialState, action) => {
         data: payload.data.dataTim,
         loading: payload.loading,
         errorMessage: payload.errorMessage,
+      };
+    case DASHBOARD_ADMIN:
+      return {
+        ...state,
+        count: payload.count,
+        transactionsLates: payload.transactionsLates,
       };
     default: {
       return state;

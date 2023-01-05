@@ -1,8 +1,9 @@
 import React from "react";
 import "./Widget.scss";
 import { BsCartPlusFill } from "react-icons/bs";
+import {Link} from 'react-router-dom'
 
-const Widget = () => {
+const Widget = ({countOrders}) => {
   return (
     <div className="widget">
         <div className="left">
@@ -10,11 +11,11 @@ const Widget = () => {
                 <BsCartPlusFill/>
                 <span className="title-user">Pesanan</span>
             </div>
-            <h3><span className="counter">5</span></h3>
-            <h6><span className="more">1 pesanan</span></h6>
-            <div className="button">
+            <h3><span className="counter">{countOrders}</span></h3>
+            <h6><span className="more">{countOrders} pesanan</span></h6>
+            <Link to='/admin/order' className="button">
                 <span className="other">Selengkapnya</span>
-            </div>
+            </Link>
         </div>
     </div>
   )

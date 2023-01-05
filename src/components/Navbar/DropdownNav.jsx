@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/actions/auth.js";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./navbar.scss";
 
 function DropdownNav() {
   const { isAdmin } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
-
+  const history = useNavigate()
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 768px)").matches
   );
@@ -30,7 +31,6 @@ function DropdownNav() {
           <Dropdown.Item
             onClick={() => {
               dispatch(logout());
-              window.location.reload();
             }}
           >
             Logout
@@ -44,8 +44,7 @@ function DropdownNav() {
           <Nav.Link className="me-4" href="/user/wishlist">Wishlist</Nav.Link>
           <Nav.Link className="me-4" href="/user/transaction/history">Riwayat Pemesanan</Nav.Link>
           <Nav.Link className="me-4 text-danger" onClick={() => {
-            dispatch(logout());
-            window.location.reload();
+            dispatch(logout(history));
           }}>Logout
           </Nav.Link>
         </Nav>
