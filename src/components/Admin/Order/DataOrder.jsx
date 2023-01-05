@@ -34,6 +34,7 @@ const DataOrder = () => {
     }
   }, [data, errorMessage, message]);
   let i = 1;
+  console.log(data)
   return (
     <div className="data-order">
       <Container>
@@ -66,7 +67,7 @@ const DataOrder = () => {
                 <tr key={pesanan.id}>
                   <td>{i++}</td>
                   <td>{pesanan.passengerName}</td>
-                  <td>{pesanan.birthDate.split("T")[0]}</td>
+                  <td>{pesanan.birthDate?pesanan.birthDate.split("T")[0]:'-'}</td>
                   <td>{pesanan.nationality}</td>
                   <td>{pesanan.passportNumber || pesanan.NIK}</td>
                   <td>{pesanan.issuingCountry || "-"}</td>
