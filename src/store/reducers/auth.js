@@ -32,8 +32,7 @@ const authReducer = (state = initialState, action) => {
     case CHANGE_PASSWORD:
       return {
         ...state,
-        erorMessage: payload.mess,
-        message: payload.err
+        erorMessage: payload,
       };
     case LOGOUT:
       return {

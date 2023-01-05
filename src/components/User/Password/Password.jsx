@@ -3,26 +3,21 @@ import { useDispatch, useSelector} from "react-redux";
 import {Card, Form, Col, Button,Alert} from "react-bootstrap";
 import "./Password.scss";
 import { changePassword } from "../../../store/actions/auth";
+import { useNavigate } from "react-router-dom";
 
 const Password = () => {
+    const history = useNavigate()
     const { erorMessage } = useSelector((state) => state.authReducer);
     const [passwordOld, setPasswordOld] = useState("")
     const [passwordNew, setPasswordNew] = useState("")
     const [passwordCnfrm, setPasswordCnfrm] = useState("")
     const [message, setMessage] = useState(false)
     const dispatch = useDispatch();
-    console.log(erorMessage)
     useEffect(() => {
         if(erorMessage){
             setMessage(erorMessage)
         }
       }, [erorMessage]);
-    useEffect(() => {
-        setTimeout(() => {
-            setMessage(false)
-        }, 900);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [message]);
     const handleSubmit = (e)=>{
         e.preventDefault();
         const data = {
@@ -35,7 +30,7 @@ const Password = () => {
         if(passwordNew !== passwordCnfrm){
            return setMessage("konfirmasi password tidak sama")
         }
-        dispatch(changePassword(data));
+        dispatch(changePassword(data, history));
     }
   return (
     <div className="password">
@@ -44,7 +39,7 @@ const Password = () => {
             <>{message}</>
           </Alert>
         )}
-        <Card Body>
+        <Card body>
             <Form className="form-password" onSubmit={(e)=>handleSubmit(e)}>
                 <Form.Group
                     as={Col}
@@ -57,6 +52,7 @@ const Password = () => {
                     type="password"
                     placeholder="Password"
                     onChange={(e)=> setPasswordOld(e.target.value)}
+                    onKeyUp={()=>setMessage(false)}
                     />
                 </Form.Group>
                 <Form.Group
@@ -70,6 +66,7 @@ const Password = () => {
                     type="password"
                     placeholder="Password"
                     onChange={(e)=> setPasswordNew(e.target.value)}
+                    onKeyUp={()=>setMessage(false)}
                     />
                 </Form.Group>
                 <Form.Group
@@ -83,6 +80,7 @@ const Password = () => {
                     type="password"
                     placeholder="Password"
                     onChange={(e)=> setPasswordCnfrm(e.target.value)}
+                    onKeyUp={()=>setMessage(false)}
                     />
                 </Form.Group>
                 <div className="pass-button">
