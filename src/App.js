@@ -29,6 +29,7 @@ import Users from "./pages/admin/User/User";
 import CheckIn from "./pages/user/Checkin";
 import PageVerify from "./pages/user/PageVerify";
 import NewNotification from "./pages/user/NewNotification";
+import PasswordChange from "./pages/user/PasswordChange";
 
 function App() {
   window.onunload = () => {
@@ -40,6 +41,7 @@ function App() {
         <Routes>
           <Route element={<ProtectedRoute />}>
             <Route path="/user/profile" element={<Profile />} />
+            <Route path="/user/password" element={<PasswordChange />} />
             <Route path="/user/wishlist" element={<WishlistPage />} />
             <Route path="/user/notification" element={<NewNotification />} />
             <Route path="/payment" element={<Payment />} />
