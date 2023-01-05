@@ -5,12 +5,13 @@ import NavigationBar from "../../components/Navbar/NavigationBar";
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 import { getProfile, updateProfile } from "../../store/actions/auth";
 import Loading from "../../components/UIComponents/Loading";
+import { useNavigate } from "react-router-dom";
 
 import "./Profile.scss";
 
 const Profile = () => {
   const { profile, loading } = useSelector((state) => state.authReducer);
-
+  const history = useNavigate()
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProfile());
@@ -20,7 +21,7 @@ const Profile = () => {
 
   const [username, setUsername] = useState("");
   const [fullName, setFullName] = useState("");
-  const [birthdate, setBirthdate] = useState("");
+  const [birthdate, setBirthdate] = useState();
   const [avatar, setAvatar] = useState("");
   const [country, setCountry] = useState("");
   const [nationality, setNationality] = useState("");
@@ -34,18 +35,34 @@ const Profile = () => {
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    const data = {
-      username: username || profile.username,
-      fullName: fullName || profile.fullName,
-      birthdate: birthdate || profile.birthdate,
-      image: avatar || profile.avatar,
-      country: country || profile.country,
-      nationality: nationality || profile.nationality,
-      phone: phone || profile.phone,
-      province: province || profile.province,
-      regency: regency || profile.regency,
-      title: title || profile.title,
-    };
+    let data;
+    if(birthdate || profile.birthdate){
+      data = {
+        username: username || profile.username,
+        fullName: fullName || profile.fullName,
+        birthdate: birthdate || profile.birthdate,
+        image: avatar || profile.avatar,
+        country: country || profile.country,
+        nationality: nationality || profile.nationality,
+        phone: phone || profile.phone,
+        province: province || profile.province,
+        regency: regency || profile.regency,
+        title: title || profile.title,
+      };
+    }else{
+      data = {
+        username: username || profile.username,
+        fullName: fullName || profile.fullName,
+        image: avatar || profile.avatar,
+        country: country || profile.country,
+        nationality: nationality || profile.nationality,
+        phone: phone || profile.phone,
+        province: province || profile.province,
+        regency: regency || profile.regency,
+        title: title || profile.title,
+      };
+    }
+
     const formData = new FormData();
 
     for (const key in data) {
@@ -126,7 +143,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Kebangsaan"
-                              value={nationality ? nationality : profile.nationality || ""}
+                              value={nationality ? nationality : (profile.nationality === "null" ? "": profile.nationality )}
                               onChange={(event) => {
                                 setNationality(event.target.value);
                               }}
@@ -138,7 +155,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Provinsi"
-                              value={province || profile.province || ""}
+                              value={province ?province : profile.province === "null" ? "": profile.province}
                               onChange={(event) => {
                                 setProvince(event.target.value);
                               }}
@@ -150,7 +167,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Nomor HP"
-                              value={phone ? phone : profile.phone || ""}
+                              value={phone ? phone : profile.phone === "null" ? "":profile.phone}
                               onChange={(event) => {
                                 setPhone(event.target.value);
                               }}
@@ -164,7 +181,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Nama Pengguna"
-                              value={username ? username : profile.username}
+                              value={username ? username : profile.username === "null" ? "": profile.username}
                               onChange={(event) => {
                                 setUsername(event.target.value);
                               }}
@@ -180,7 +197,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Negara"
-                              value={country ? country : profile.country || ""}
+                              value={country ? country : profile.country === "null" ? "":profile.country}
                               onChange={(event) => {
                                 setCountry(event.target.value);
                               }}
@@ -192,7 +209,7 @@ const Profile = () => {
                               required
                               type="text"
                               placeholder="Kabupaten/Kota"
-                              value={regency ? regency : profile.regency || ""}
+                              value={regency ? regency : profile.regency === "null" ? "":profile.country}
                               onChange={(event) => {
                                 setRegency(event.target.value);
                               }}
@@ -202,7 +219,7 @@ const Profile = () => {
                             <Form.Label>SAPAAN</Form.Label>
                             <Form.Select
                               aria-label="Default select example"
-                              value={title ? title : profile.title || ""}
+                              value={title ? title : profile.title === "null" ? "":profile.country}
                               onChange={(event) => {
                                 setTitle(event.target.value);
                               }}
@@ -227,9 +244,14 @@ const Profile = () => {
                     Edit Profil
                   </Button>
                 ) : (
-                  <Button className="btn-primary my-5" onClick={handleUpdate}>
-                    Simpan perubahan
-                  </Button>
+                  <>
+                    <Button className="btn-kuning my-5 me-3" onClick={()=>history("/user/password")}>
+                      Ubah Password
+                    </Button>
+                    <Button className="btn-primary my-5" onClick={handleUpdate}>
+                      Simpan perubahan
+                    </Button>
+                  </>
                 )}
               </div>
             </>

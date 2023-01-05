@@ -1,5 +1,5 @@
 import AuthService from "../../services/authService";
-import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE, } from "../types/index";
+import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE,CHANGE_PASSWORD } from "../types/index";
 
 export const login = (params, history) =>
   async function (dispatch) {
@@ -22,12 +22,22 @@ export const register = (params) =>
       throw error;
     }
   };
-
-export const logout = (params, history) =>
+export const changePassword = (params) =>
   async function (dispatch) {
     try {
-      AuthService.logout(params);
+      const response = await AuthService.changePassword(params);
+      dispatch({ type: CHANGE_PASSWORD, payload: {mess: response.data.message , err: false} });
+    } catch (error) {
+      dispatch({ type: CHANGE_PASSWORD, payload:{mess: false , err:error.data.message}  });
+    }
+  };
+
+export const logout = (history) =>
+  async function (dispatch) {
+    try {
+      AuthService.logout();
       dispatch({ type: LOGOUT });
+      history("/")
     } catch (error) {
       throw error;
     }

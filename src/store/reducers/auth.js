@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE, } from "../types/index";
+import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE, CHANGE_PASSWORD, } from "../types/index";
 
 const initialState = {
   user: localStorage.getItem("user") || {},
@@ -8,6 +8,7 @@ const initialState = {
   isAdmin: localStorage.getItem("accessToken") === "A-*dmin?&&%mlm-plgsnwngbuay-$563iedjnjdxgdj" ? true : false,
   profile: {},
   loading: false,
+  erorMessage:false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -27,6 +28,12 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         message: payload.message,
+      };
+    case CHANGE_PASSWORD:
+      return {
+        ...state,
+        erorMessage: payload.mess,
+        message: payload.err
       };
     case LOGOUT:
       return {

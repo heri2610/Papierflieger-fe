@@ -11,6 +11,14 @@ const AuthService = {
       throw err;
     }
   },
+  changePassword: async function (data) {
+    try {
+      const response = await API.put('/auth/reset-password', data);
+      return response;
+    } catch (err) {
+      throw err;
+    }
+  },
 
   register: async function (data) {
     try {
