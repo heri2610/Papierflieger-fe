@@ -1,6 +1,7 @@
 import { TicketService } from "../../services/ticketService";
 import airportService from "../../services/airportService";
 import airplaneService from "../../services/airplaneService";
+import SweatAlert from '../../components/UIComponents/sweatAlert';
 
 import {
   GET_TICKET,
@@ -43,6 +44,7 @@ export const filterTickets = (tujuan, history) =>
           errorMessage: error.response.data.message,
         },
       });
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 export const getTicket = () =>
@@ -96,6 +98,7 @@ export const getTicket = () =>
           datAirport: false,
         },
       });
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 export const getTicketById = (id) =>
@@ -127,6 +130,7 @@ export const getTicketById = (id) =>
           errorMessage: false,
         },
       });
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 export const getTicketDetail = (state, penumpang, history) =>
@@ -159,6 +163,7 @@ export const getTicketDetail = (state, penumpang, history) =>
           errorMessage: false,
         },
       });
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 export const addTicket = (data, history) =>
@@ -167,8 +172,9 @@ export const addTicket = (data, history) =>
       const response = await TicketService.addTicket(data);
       dispatch({ type: ADD_TICKET, payload: response.data });
       history("/admin/Ticket");
+      SweatAlert(String(response.data.message), 'success');
     } catch (error) {
-      throw error;
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 
@@ -181,8 +187,9 @@ export const deleteTicket = (id) =>
         type: DELETE_TICKET,
         payload: { message: response.data.message, data: response2.data },
       });
+      SweatAlert(String(response.data.message), 'success');
     } catch (error) {
-      throw error;
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 
@@ -191,7 +198,8 @@ export const updateTicket = (data, id) =>
     try {
       const response = await TicketService.updateTicket(data, id);
       dispatch({ type: PUT_TICKET, payload: response.data });
+      SweatAlert(String(response.data.message), 'success');
     } catch (error) {
-      throw error;
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };

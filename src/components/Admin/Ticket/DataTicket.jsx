@@ -5,7 +5,6 @@ import {
   Button,
   Container,
   Table,
-  Alert,
   Modal,
   Form,
 } from "react-bootstrap";
@@ -22,10 +21,9 @@ const tipeTicket = [
 ];
 
 const DataTicket = () => {
-  const { loading, data, errorMessage, message, datAirport, airportName, datAirPlane } = useSelector(
+  const { loading, data, datAirport, airportName, datAirPlane } = useSelector(
     (state) => state.ticketReducer
   );
-  const [messages, setMessages] = useState("");
   const [show, setShow] = useState(false);
   const [ticketno, setTicketNumber] = useState("");
   const [depDate, setDepartureDate] = useState();
@@ -43,7 +41,6 @@ const DataTicket = () => {
   const [flightduration, setFlightDuration] = useState("");
   const [arrtimetransit, setArrivalTimeTransit] = useState("");
   const [deptimetransit, setDepartureTimeFromTransit] = useState("");
-  const [eror, setEror] = useState("");
   const [id, setId] = useState("");
 
   const handleSubmit = () => {
@@ -66,40 +63,19 @@ const DataTicket = () => {
       price
     };
 
-    // console.log(datas);
     dispatch(updateTicket(datas, id));
     setShow(false);
   };
-  // const [edit, setEdit] = useState({});
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTicket());
   }, [dispatch]);
-  useEffect(() => {
-    if (errorMessage) {
-      setEror(errorMessage);
-      window.setTimeout(() => {
-        setMessages("");
-      }, 3000);
-    }
-    if (message) {
-      setMessages(message);
-      window.setTimeout(() => {
-        setMessages("");
-      }, 3000);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
   const handleDelete = (id) => {
     dispatch(deleteTicket(id));
   };
-  // console.log(data);
-
-  // update ticket
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDataEdit = (ticket) => {
-    // console.log(ticket);
     setId(ticket.id);
     setTicketNumber(ticket.ticketNumber);
     setDepartureDate(ticket.departureDate.split("T")[0]);
@@ -110,7 +86,6 @@ const DataTicket = () => {
       value: ticket.from.id,
       label: ticket.from.city,
     });
-    // setFlightF()
     setFlightTo({
       value: ticket.to.id,
       label: ticket.to.city,
@@ -142,16 +117,6 @@ const DataTicket = () => {
             Tambahkan Tiket Perjalanan
           </Button>
         </Link>
-        {messages && (
-          <Alert key="primary" variant="primary">
-            <>{message}</>
-          </Alert>
-        )}
-        {eror && (
-          <Alert key="danger" variant="danger">
-            {eror}
-          </Alert>
-        )}
         <Table striped bordered hover>
           <thead>
             <tr>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Table, Container, Alert, Modal, Form } from "react-bootstrap";
+import { Button, Table, Container, Modal, Form } from "react-bootstrap";
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ import { SelectBandara, SelectLokasi } from "../../UIComponents/Select";
 import { getAirport } from "../../../store/actions/airport";
 
 const DataDestination = () => {
-  const { loading, data, errorMessage, message } = useSelector(
+  const { loading, data, } = useSelector(
     (state) => state.destinasiReducer
   );
   const bandara = useSelector((state) => state.airportReducer.data);
@@ -24,32 +24,16 @@ const DataDestination = () => {
     dispatch(getAirport());
   }, [dispatch]);
 
-  const [messages, setMessages] = useState(false);
   const [show, setShow] = useState(false);
   const [idEdit, setIdEdit] = useState("");
   const [names, setName] = useState("");
   const [location, setLocation] = useState("");
   const [airportId, setAirportId] = useState("");
   const [desc, setDescription] = useState("");
-  const [eror, setEror] = useState("");
 
   useEffect(() => {
     dispatch(getDestinasi());
   }, [dispatch]);
-  useEffect(() => {
-    if (errorMessage) {
-      setEror(errorMessage);
-      window.setTimeout(() => {
-        setMessages("");
-      }, 3000);
-    }
-    if (message) {
-      setMessages(message);
-      window.setTimeout(() => {
-        setMessages("");
-      }, 3000);
-    }
-  }, [data, errorMessage, message]);
 
   const handleDelete = (id) => {
     dispatch(deleteDestinasi(id));
@@ -86,16 +70,6 @@ const DataDestination = () => {
             Tambahkan data destinasi
           </Button>
         </Link>
-        {messages && (
-          <Alert key="primary" variant="primary">
-            <>{message}</>
-          </Alert>
-        )}
-        {eror && (
-          <Alert key="danger" variant="danger">
-            {eror}
-          </Alert>
-        )}
         <Table striped bordered hover>
           <thead>
             <tr>

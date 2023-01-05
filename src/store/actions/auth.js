@@ -1,5 +1,6 @@
 import AuthService from "../../services/authService";
 import { LOGIN, REGISTER, LOGOUT, UPDATE_PROFILE, DETAIL_PROFILE,CHANGE_PASSWORD } from "../types/index";
+import SweatAlert from '../../components/UIComponents/sweatAlert';
 
 export const login = (params, history) =>
   async function (dispatch) {
@@ -22,13 +23,14 @@ export const register = (params) =>
       throw error;
     }
   };
-export const changePassword = (params) =>
+export const changePassword = (params, history) =>
   async function (dispatch) {
     try {
       const response = await AuthService.changePassword(params);
-      dispatch({ type: CHANGE_PASSWORD, payload: {mess: response.data.message , err: false} });
+      SweatAlert(String(response.data.message), 'success');
+      history("/user/profile")
     } catch (error) {
-      dispatch({ type: CHANGE_PASSWORD, payload:{mess: false , err:error.data.message}  });
+      dispatch({ type: CHANGE_PASSWORD, payload:error.response.data.message  });
     }
   };
 
@@ -37,7 +39,13 @@ export const logout = (history) =>
     try {
       AuthService.logout();
       dispatch({ type: LOGOUT });
-      history("/")
+      if(window.location.pathname === "/"){
+        SweatAlert(String("Berhasil Logout"), 'success');
+        window.location.reload()
+      }else{
+        SweatAlert(String("Berhasil Logout"), 'success');
+        history("/")
+      }
     } catch (error) {
       throw error;
     }
@@ -92,10 +100,12 @@ export const updateProfile = (params) =>
       const response2 = await AuthService.getProfile();
       dispatch({
         type: UPDATE_PROFILE, payload: {
-          message: response.data.message, profile: response2.data.profile,
+          message: response.data.message, 
+          profile: response2.data.profile,
           loading: false, errorMessage: false
         }
       });
+      SweatAlert(String(response.data.message), 'success');
     } catch (error) {
       dispatch({
         type: UPDATE_PROFILE,

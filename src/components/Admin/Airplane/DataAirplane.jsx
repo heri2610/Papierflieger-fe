@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal, Button, Container, Table, Alert, Form } from "react-bootstrap";
+import { Modal, Button, Container, Table, Form } from "react-bootstrap";
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom";
@@ -26,30 +26,14 @@ const DataAirplane = () => {
   const [klass, setklass] = useState("");
   const [label, setLabel] = useState({ value: "Ekonomi", label: "Ekonomi" });
 
-  const { loading, data, errorMessage, message } = useSelector(
+  const { loading, data, } = useSelector(
     (state) => state.airplaneReducer
   );
-  const [messages, setMessages] = useState("");
-  const [eror, setEror] = useState("");
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAirplane());
   }, [dispatch]);
-  useEffect(() => {
-    if (errorMessage) {
-      setEror(errorMessage);
-      window.setTimeout(() => {
-        setMessages("");
-      }, 3000);
-    }
-    if (message) {
-      setMessages(message);
-      window.setTimeout(() => {
-        setMessages("");
-      }, 3000);
-    }
-  }, [data]);
   const handleDelete = (id) => {
     dispatch(deleteAirplane(id));
   };
@@ -70,7 +54,6 @@ const DataAirplane = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(datas);
     dispatch(updateAirplane(datas, editId));
     handleClose();
   };
@@ -83,16 +66,6 @@ const DataAirplane = () => {
             Tambahkan data pesawat
           </Button>
         </Link>
-        {messages && (
-          <Alert key="primary" variant="primary">
-            <>{message}</>
-          </Alert>
-        )}
-        {eror && (
-          <Alert key="danger" variant="danger">
-            {eror}
-          </Alert>
-        )}
         <Table striped bordered hover>
           <thead>
             <tr>

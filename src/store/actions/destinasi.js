@@ -1,6 +1,7 @@
 import destinasiService from "../../services/destinasiService";
 import airportService from "../../services/airportService";
 import { GET_DESTINASI, ADD_DESTINASI, PUT_DESTINASI, DELETE_DESTINASI, GET_DESTINASIBYID } from "../types/index";
+import SweatAlert from '../../components/UIComponents/sweatAlert';
 
 export const getDestinasi = () =>
   async function (dispatch) {
@@ -45,6 +46,7 @@ export const getDestinasi = () =>
           errorMessage: error.message,
         },
       });
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 export const getDestinasiById = (id) =>
@@ -76,6 +78,7 @@ export const getDestinasiById = (id) =>
           errorMessage: false,
         },
       });
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 export const addDestinasi = (data, history) =>
@@ -84,8 +87,9 @@ export const addDestinasi = (data, history) =>
       const response = await destinasiService.addDestinasi(data);
       dispatch({ type: ADD_DESTINASI, payload: response.data });
       history("/admin/destination");
+      SweatAlert(String(response.data.message), 'success');
     } catch (error) {
-      throw error;
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 
@@ -95,8 +99,9 @@ export const deleteDestinasi = (id) =>
       const response = await destinasiService.deleteDestinasi(id);
       const response2 = await destinasiService.getDestinasi();
       dispatch({ type: DELETE_DESTINASI, payload: { message: response.data.message, data: response2.data } });
+      SweatAlert(String(response.data.message), 'success');
     } catch (error) {
-      throw error;
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
 
@@ -106,7 +111,8 @@ export const updateDestinasi = (data, id) =>
       const response = await destinasiService.updateDestinasi(data, id);
       const response2 = await destinasiService.getDestinasi();
       dispatch({ type: PUT_DESTINASI, payload: { message: response.data.message, data: response2.data } });
+      SweatAlert(String(response.data.message), 'success');
     } catch (error) {
-      throw error;
+      SweatAlert(String(error.response.data.message), 'error');
     }
   };
