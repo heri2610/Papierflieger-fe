@@ -1,6 +1,7 @@
 import React from "react";
 import "./Widget.scss";
 import { BsPersonPlusFill } from "react-icons/bs";
+import {Link} from 'react-router-dom'
 
 const Widget = ({countUsers}) => {
   return (
@@ -12,9 +13,9 @@ const Widget = ({countUsers}) => {
             </div>
             <h3><span className="counter">{countUsers}</span></h3>
             <h6><span className="more">{countUsers} pengguna</span></h6>
-            <div className="button">
+            <Link to="/admin/users" className="button">
                 <span className="other">Selengkapnya</span>
-            </div>
+            </Link>
         </div>
     </div>
   )

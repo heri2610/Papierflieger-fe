@@ -1,6 +1,7 @@
 import React from "react";
 import "./Widget.scss";
 import { BsPaypal } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Widget = ({countTransactions}) => {
   return (
@@ -12,9 +13,9 @@ const Widget = ({countTransactions}) => {
             </div>
             <h3><span className="counter">{countTransactions}</span></h3>
             <h6><span className="more">{countTransactions} transaksi</span></h6>
-            <div className="button">
+            <Link to='/admin/transaction' className="button">
                 <span className="other">Selengkapnya</span>
-            </div>
+            </Link>
         </div>
     </div>
   )
