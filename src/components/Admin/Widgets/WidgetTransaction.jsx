@@ -2,7 +2,7 @@ import React from "react";
 import "./Widget.scss";
 import { BsPaypal } from "react-icons/bs";
 
-const Widget = () => {
+const Widget = ({countTransactions}) => {
   return (
     <div className="widget">
         <div className="left">
@@ -10,8 +10,8 @@ const Widget = () => {
                 <BsPaypal/>
                 <span className="title-user">Transaksi</span>
             </div>
-            <h3><span className="counter">8</span></h3>
-            <h6><span className="more">2 transaksi</span></h6>
+            <h3><span className="counter">{countTransactions}</span></h3>
+            <h6><span className="more">{countTransactions} transaksi</span></h6>
             <div className="button">
                 <span className="other">Selengkapnya</span>
             </div>
