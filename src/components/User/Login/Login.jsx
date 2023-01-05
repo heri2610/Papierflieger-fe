@@ -38,9 +38,6 @@ function Login(props) {
     const res = await dispatch(login(data, history))
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
-
-    // console.log(res.error);
-
     if (res.error) {
       setError(true);
       setErrorMessage(res.error.response.data.message);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Container, Table, Alert, Form, Modal } from "react-bootstrap";
+import { Button, Container, Table, Form, Modal } from "react-bootstrap";
 import { FiEdit } from "react-icons/fi";
 import "../Admin.scss";
 import { Link } from "react-router-dom";
@@ -9,11 +9,9 @@ import Loading from "../../UIComponents/Loading";
 import DeleteConfirmation from "../../UIComponents/DeleteConfirmation";
 
 const DataAirport = () => {
-  const { loading, data, errorMessage, message } = useSelector(
+  const { loading, data } = useSelector(
     (state) => state.airportReducer
   );
-  const [messages, setMessages] = useState("");
-  const [eror, setEror] = useState("");
   const [idEdit, setIdEdit] = useState("");
   const [show, setShow] = useState(false);
   const [airportName, setAirportName] = useState("");
@@ -23,20 +21,6 @@ const DataAirport = () => {
   useEffect(() => {
     dispatch(getAirport());
   }, [dispatch]);
-  useEffect(() => {
-    if (errorMessage) {
-      setEror(errorMessage);
-      window.setTimeout(() => {
-        setMessages("");
-      }, 3000);
-    }
-    if (message) {
-      setMessages(message);
-      window.setTimeout(() => {
-        setMessages("");
-      }, 3000);
-    }
-  }, [errorMessage, message]);
   const handleDelete = (id) => {
     dispatch(deleteAirport(id));
   };
@@ -68,16 +52,6 @@ const DataAirport = () => {
             Tambahkan data bandara
           </Button>
         </Link>
-        {messages && (
-          <Alert key="primary" variant="primary">
-            <>{message}</>
-          </Alert>
-        )}
-        {eror && (
-          <Alert key="danger" variant="danger">
-            {eror}
-          </Alert>
-        )}
         <Table striped bordered hover>
           <thead>
             <tr>

@@ -40,8 +40,10 @@ export const logout = (history) =>
       AuthService.logout();
       dispatch({ type: LOGOUT });
       if(window.location.pathname === "/"){
+        SweatAlert(String("Berhasil Logout"), 'success');
         window.location.reload()
       }else{
+        SweatAlert(String("Berhasil Logout"), 'success');
         history("/")
       }
     } catch (error) {
